@@ -1,0 +1,169 @@
+{
+  "Meta": {
+    "home": {
+      "title": "Lucas Mujica — I build websites that move.",
+      "description": "Senior Webflow & front-end developer, 5+ years deep — fast, scalable sites with motion that earns its place.",
+      "ogAlt": "Lucas Mujica — senior Webflow & front-end developer"
+    },
+    "caseStudy": {
+      "titleTemplate": "{title} — Case study · Lucas Mujica"
+    },
+    "work": {
+      "title": "Work — Case studies & projects · Lucas Mujica",
+      "description": "Selected Webflow & front-end builds — case studies and projects by Lucas Mujica."
+    }
+  },
+  "Nav": {
+    "home": "Home",
+    "work": "Work",
+    "about": "About",
+    "stack": "Stack",
+    "process": "Process",
+    "talk": "Let's talk",
+    "brandAria": "Lucas Mujica — home"
+  },
+  "Dock": {
+    "aria": "Section navigation",
+    "work": "Work",
+    "about": "About",
+    "stack": "Stack",
+    "challenge": "Challenge",
+    "build": "Build",
+    "results": "Results"
+  },
+  "Hero": {
+    "available": "Available for new projects",
+    "line1": "I build",
+    "line2": "websites that",
+    "line3": "move.",
+    "sub": "Senior Webflow & front-end developer, 5+ years deep — fast, scalable sites with motion that earns its place.",
+    "ctaPrimary": "Start a project",
+    "ctaGhost": "View selected work",
+    "scroll": "Scroll",
+    "chip": "Webflow · GSAP",
+    "fps": "60 fps"
+  },
+  "Work": {
+    "eyebrow": "selected work",
+    "heading": "A few builds I'm proud of.",
+    "lede": "Each one paired sharp design with motion that earns its place.",
+    "viewAll": "View all projects",
+    "viewCase": "View case study",
+    "allEyebrow": "all work",
+    "allHeading": "Case studies & projects.",
+    "allLede": "Every build in one place — deep-dive case studies plus the rest of the shelf.",
+    "startProject": "Start a project",
+    "backHome": "Back home"
+  },
+  "About": {
+    "eyebrow": "about",
+    "heading": "A senior developer with a track record.",
+    "lede": "Five years building production-grade websites and custom code. Certified in Client-First, fluent in Lumos, component-first by default — sites that stay fast and easy to edit long after launch.",
+    "statYears": "years shipping",
+    "statProjects": "projects delivered",
+    "cred": ["Webflow Enterprise Partner", "Remote, worldwide"],
+    "ctaPrimary": "Let's talk",
+    "ctaGhost": "See the work",
+    "portraitPlaceholder": "Portrait of Lucas"
+  },
+  "Stack": {
+    "eyebrow": "stack",
+    "headingPre": "The right tool for the job — ",
+    "headingEmber": "every time.",
+    "lede": "Everything here is chosen for speed, maintainability, and shipping fast without cutting corners.",
+    "tiers": {
+      "build": { "label": "Build", "items": "Webflow · Client-First · Lumos" },
+      "code": { "label": "Code", "items": "React · Next.js · GSAP" },
+      "automation": { "label": "Automation", "items": "n8n · Make · Zapier" },
+      "connect": { "label": "Connect", "items": "HubSpot · Stripe · Notion" }
+    }
+  },
+  "Process": {
+    "eyebrow": "process",
+    "heading": "How every project goes.",
+    "lede": "Clear strategy, clean execution, measurable results. No guesswork.",
+    "steps": [
+      {
+        "n": "01",
+        "icon": "target",
+        "title": "Understand",
+        "body": "We get clear on the goal, the constraints, and what success actually looks like."
+      },
+      {
+        "n": "02",
+        "icon": "design",
+        "title": "Design & build",
+        "body": "Component-first, performance-first. Real motion, zero bloat, scalable from day one."
+      },
+      {
+        "n": "03",
+        "icon": "launch",
+        "title": "Launch & optimize",
+        "body": "Ship fast, then tune against real data — no guesswork, just steady gains."
+      }
+    ]
+  },
+  "Testimonials": {
+    "eyebrow": "testimonials",
+    "heading": "Don't take my word for it.",
+    "lede": "Proven results, from the people who shipped alongside me."
+  },
+  "Contact": {
+    "eyebrow": "start a project",
+    "heading": "Ready to build.",
+    "lead": "A few quick details so I can scope it before we even talk — or just email me directly.",
+    "email": "hello@lucasmujica.dev",
+    "available": "Available for new projects",
+    "location": "Buenos Aires · Remote worldwide",
+    "socialsAria": "Social links",
+    "madGreeting": "Hi Lucas, I'm",
+    "madName": "your name",
+    "madFrom": "from",
+    "madCompany": "company",
+    "madBuilding": "I'm building a",
+    "madBudget": "with a budget around",
+    "madReach": "Reach me at",
+    "madEmail": "you@email.com",
+    "projectTypes": ["Webflow site", "web app", "automation", "brand site"],
+    "budgets": ["$5–10k", "$10–25k", "$25k+", "TBD"],
+    "send": "Send it",
+    "replyNote": "Replies within a day",
+    "successHeading": "On its way — talk soon.",
+    "successBody": "I'll get back to you with next steps within a day.",
+    "errorHeading": "That didn't send.",
+    "errorBody": "Something went wrong on my end — email me directly and I'll jump on it.",
+    "validationName": "Add your name.",
+    "validationEmail": "Add a valid email."
+  },
+  "Footer": {
+    "ctaPre": "Let's build something that ",
+    "ctaEmber": "moves.",
+    "email": "hello@lucasmujica.dev",
+    "navAria": "Footer",
+    "socialsAria": "Social links",
+    "copyright": "© {year} Lucas Mujica. All rights reserved."
+  },
+  "CaseStudy": {
+    "back": "Back to work",
+    "eyebrow": "case study",
+    "live": "Live",
+    "challengeEyebrow": "the challenge",
+    "buildEyebrow": "what I built",
+    "resultsEyebrow": "what shipped",
+    "quoteEyebrow": "what they said",
+    "nextEyebrow": "see the next project",
+    "specLabels": {
+      "role": "Role",
+      "stack": "Stack",
+      "integration": "Integration",
+      "timeline": "Timeline"
+    }
+  },
+  "NotFound": {
+    "eyebrow": "404",
+    "heading": "This page took a detour.",
+    "body": "The link's broken or the page moved. Let's get you back to the work.",
+    "home": "Back home",
+    "work": "See the work"
+  }
+}

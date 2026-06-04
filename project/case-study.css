@@ -1,0 +1,295 @@
+/* ============================================================
+   Lucas Mujica — Case Study template
+   Loads on top of tokens.css + homepage.css.
+   Reuses: .nav, .dock, .btn, .eyebrow, .lede, .reveal,
+   .footer, .container, .section, icon sprite.
+   Adds: case-study hero, challenge, build gallery, results
+   flood, pull-quote, next-project closer, page transition.
+   ============================================================ */
+
+/* ---------- page-load fade gate (paired with curtain) ---------- */
+body { opacity: 1; }
+
+/* numbered section eyebrow helper — keeps the "01 —" mono rhythm of home */
+.cs-eyebrow-row { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.cs-idx {
+  font-family: var(--font-mono); font-size: var(--text-tiny); letter-spacing: .12em;
+  color: var(--fg3);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.cs-hero {
+  position: relative; overflow: hidden;
+  padding: 184px var(--gutter-x) 0;
+}
+.cs-hero::before {
+  content: ""; position: absolute; top: -14%; left: -10%;
+  width: 60vw; height: 60vw; max-width: 760px; max-height: 760px;
+  background: radial-gradient(circle, rgba(255,77,46,0.10) 0%, rgba(255,77,46,0) 62%);
+  pointer-events: none; z-index: 0;
+}
+@media (prefers-reduced-motion: no-preference) { .cs-hero::before { animation: bloomBreathe 8s ease-in-out infinite; } }
+.cs-hero__inner { max-width: var(--container); margin-inline: auto; position: relative; z-index: 1; }
+
+.cs-hero__back {
+  display: inline-flex; align-items: center; gap: 9px; margin-bottom: 30px;
+  font-family: var(--font-mono); font-size: var(--text-small); letter-spacing: .02em;
+  color: var(--fg2); transition: color var(--dur-fast);
+}
+.cs-hero__back .ic { width: 16px; height: 16px; color: var(--ember); transition: transform var(--dur-fast) var(--ease-out); }
+.cs-hero__back:hover { color: var(--fg1); }
+.cs-hero__back:hover .ic { transform: translateX(-4px); }
+
+.cs-hero__title {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(5rem, 17vw, 17rem); line-height: 0.86;
+  letter-spacing: -0.045em; margin: 14px 0 0; color: var(--fg1);
+}
+/* mask-up reveal for the title */
+.cs-hero__title .cs-mask { display: block; overflow: hidden; padding-bottom: 0.06em; }
+.cs-hero__title .cs-mask > span { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .cs-hero__title .cs-mask > span { transform: translateY(112%); }
+  .js .cs-hero.in .cs-hero__title .cs-mask > span { transform: translateY(0); transition: transform 1.05s var(--ease-out) 0.15s; }
+}
+
+/* metadata strip — Geist Mono, ember arrow */
+.cs-hero__meta {
+  display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0 14px; margin-top: 30px;
+  font-family: var(--font-mono); font-size: var(--text-medium); letter-spacing: .01em; color: var(--fg2);
+}
+.cs-hero__meta .sep { color: var(--hairline-strong); }
+.cs-hero__meta .arr { color: var(--ember); }
+.cs-hero__meta a { color: var(--fg1); padding-bottom: 2px; background-image: linear-gradient(var(--ember),var(--ember)); background-size: 0% 1.5px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size var(--dur-base) var(--ease-out); }
+.cs-hero__meta a:hover { background-size: 100% 1.5px; color: var(--fg1); }
+
+.cs-hero__outcome {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(1.65rem, 3vw, 2.6rem); line-height: 1.22; letter-spacing: -0.02em;
+  color: var(--fg1); max-width: 22ch; margin: 30px 0 0; text-wrap: balance;
+}
+.cs-hero__outcome .ember-word { color: var(--ember); }
+
+/* tag row */
+.cs-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 32px; }
+.cs-tag { font-family: var(--font-mono); font-size: var(--text-tiny); color: var(--fg2); border: 1px solid var(--hairline); border-radius: 100px; padding: 6px 14px; }
+
+/* big hero media — slow fade + lift in */
+.cs-hero__media {
+  position: relative; max-width: var(--container); margin: 64px auto 0;
+  border-radius: var(--r-card-lg); overflow: hidden;
+  border: 1px solid var(--hairline); aspect-ratio: 16 / 9; background: var(--surface);
+  box-shadow: 0 50px 120px -50px rgba(0,0,0,0.9);
+  z-index: 1;
+}
+.cs-hero__media image-slot { width: 100%; height: 100%; display: block; }
+.cs-hero__img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .cs-hero__media { opacity: 0; transform: translateY(40px) scale(1.015); }
+  .js .cs-hero.in .cs-hero__media { opacity: 1; transform: none; transition: opacity 1.5s var(--ease-out) 0.35s, transform 1.5s var(--ease-out) 0.35s; }
+}
+.cs-hero__media-badge {
+  position: absolute; top: 18px; left: 20px; z-index: 2;
+  font-family: var(--font-mono); font-size: var(--text-tiny); letter-spacing: .06em; color: var(--fg1);
+  background: var(--ink-70); border: 1px solid var(--w-12); border-radius: 100px; padding: 6px 14px; backdrop-filter: blur(6px);
+}
+
+/* ============================================================
+   CHALLENGE
+   ============================================================ */
+.cs-challenge { background: var(--surface); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+.cs-challenge__grid { display: grid; grid-template-columns: 1fr 0.86fr; gap: 72px; align-items: center; }
+@media (max-width: 900px){ .cs-challenge__grid { grid-template-columns: 1fr; gap: 44px; } }
+.cs-challenge__body { display: flex; flex-direction: column; gap: 22px; max-width: 52ch; }
+.cs-challenge__body h2 { font-size: var(--h3); max-width: 18ch; }
+.cs-challenge__p { color: var(--fg2); font-size: var(--text-medium); line-height: 1.6; margin: 0; }
+.cs-challenge__p .ember-word { color: var(--ember); }
+
+/* spec list — the "numbered metadata" rows */
+.cs-spec { display: flex; flex-direction: column; margin-top: 10px; border-top: 1px solid var(--hairline); }
+.cs-spec__row { display: grid; grid-template-columns: 28px 1fr auto; gap: 18px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--hairline); }
+.cs-spec__n { font-family: var(--font-mono); font-size: var(--text-tiny); letter-spacing: .1em; color: var(--ember); }
+.cs-spec__k { font-family: var(--font-mono); font-size: var(--text-small); letter-spacing: .04em; color: var(--fg3); }
+.cs-spec__v { font-family: var(--font-body); font-weight: 500; font-size: var(--text-regular); color: var(--fg1); text-align: right; }
+
+.cs-challenge__visual {
+  position: relative; border-radius: var(--r-card-lg); overflow: hidden;
+  border: 1px solid var(--hairline); aspect-ratio: 4 / 5; min-height: 360px;
+  background: radial-gradient(120% 90% at 80% 10%, color-mix(in srgb, var(--ember), transparent 84%), transparent 55%), linear-gradient(150deg, var(--surface-2), var(--ink));
+}
+.cs-challenge__visual image-slot { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cs-challenge__vcap {
+  position: absolute; left: 18px; bottom: 16px; z-index: 2;
+  font-family: var(--font-mono); font-size: var(--text-tiny); letter-spacing: .04em; color: var(--fg1);
+  background: var(--ink-70); border: 1px solid var(--w-12); border-radius: 100px; padding: 6px 14px; backdrop-filter: blur(6px);
+}
+
+/* ============================================================
+   WHAT I BUILT — intro + vertical gallery
+   ============================================================ */
+.cs-build__head { max-width: 60rem; }
+.cs-build__head h2 { font-size: var(--h3); margin-top: 4px; max-width: 20ch; }
+.cs-build__lead { color: var(--fg2); font-size: var(--text-medium); line-height: 1.6; margin: 22px 0 0; max-width: 56ch; }
+.cs-build__lead .ember-word { color: var(--ember); }
+
+.cs-gallery { display: flex; flex-direction: column; gap: 96px; margin-top: 96px; }
+@media (max-width: 760px){ .cs-gallery { gap: 64px; margin-top: 64px; } }
+.cs-shot { display: grid; grid-template-columns: 1fr; gap: 22px; }
+.cs-shot__frame {
+  position: relative; border-radius: var(--r-card-lg); overflow: hidden;
+  border: 1px solid var(--hairline); background: var(--surface); aspect-ratio: 16 / 10;
+  box-shadow: 0 40px 100px -48px rgba(0,0,0,0.85);
+}
+.cs-shot__frame image-slot { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* parallax inner wrapper (JS sets --py) */
+.cs-shot__inner { position: absolute; inset: -8% 0; will-change: transform; }
+.cs-shot__inner image-slot { position: absolute; inset: 0; width: 100%; height: 100%; }
+@media (prefers-reduced-motion: reduce){ .cs-shot__inner { inset: 0; transform: none !important; } }
+.cs-shot__num {
+  position: absolute; top: 18px; left: 20px; z-index: 2;
+  font-family: var(--font-mono); font-size: var(--text-tiny); letter-spacing: .08em; color: var(--fg1);
+  background: var(--ink-70); border: 1px solid var(--w-12); border-radius: 100px; padding: 6px 13px; backdrop-filter: blur(6px);
+}
+.cs-shot__cap { display: flex; align-items: baseline; gap: 14px; }
+.cs-shot__cap .k { font-family: var(--font-mono); font-size: var(--text-small); color: var(--ember); white-space: nowrap; }
+.cs-shot__cap .t { color: var(--fg2); font-size: var(--text-regular); line-height: 1.5; margin: 0; max-width: 60ch; }
+.cs-shot__cap .t b { color: var(--fg1); font-weight: 500; }
+@media (max-width: 560px){ .cs-shot__cap { flex-direction: column; gap: 6px; } }
+
+/* ============================================================
+   RESULTS — the ONE ember-flooded band
+   ============================================================ */
+.cs-results { background: var(--ember); color: var(--ink); position: relative; overflow: hidden; }
+.cs-results__ghost {
+  position: absolute; right: 2vw; bottom: -6vw; z-index: 0;
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(14rem, 30vw, 30rem);
+  line-height: 0.7; letter-spacing: -0.05em; color: var(--ink); opacity: 0.07; pointer-events: none; user-select: none;
+}
+.cs-results__inner { position: relative; z-index: 1; max-width: var(--container); margin-inline: auto; }
+.cs-results .eyebrow { color: var(--ink-70); }
+.cs-results .eyebrow::before { background: var(--ink); }
+.cs-results__statement {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(2.2rem, 5vw, 4.25rem); line-height: 1.02; letter-spacing: -0.03em;
+  color: var(--ink); max-width: 18ch; margin: 22px 0 0; text-wrap: balance;
+}
+.cs-results__sub { color: var(--ink-70); font-size: var(--text-medium); line-height: 1.5; max-width: 46ch; margin: 24px 0 0; }
+.cs-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 72px; border-top: 2px solid var(--ink-15); }
+@media (max-width: 760px){ .cs-metrics { grid-template-columns: 1fr; gap: 0; } }
+.cs-metric { padding-top: 36px; border-right: 2px solid var(--ink-15); padding-right: 24px; }
+.cs-metric:last-child { border-right: none; }
+@media (max-width: 760px){ .cs-metric { border-right: none; border-bottom: 2px solid var(--ink-15); padding: 30px 0; } .cs-metric:last-child { border-bottom: none; } }
+.cs-metric__n {
+  font-family: var(--font-display); font-weight: 600; font-size: clamp(3.25rem, 6.5vw, 5rem);
+  letter-spacing: -0.035em; line-height: 0.92; color: var(--ink); display: flex; align-items: baseline; gap: 4px;
+}
+.cs-metric__n .u { font-size: 0.42em; font-weight: 500; letter-spacing: -0.01em; }
+.cs-metric__l { font-family: var(--font-mono); font-size: var(--text-small); letter-spacing: .03em; color: var(--ink-70); margin-top: 14px; line-height: 1.4; }
+
+/* ============================================================
+   PULL QUOTE — matches home testimonial feature card
+   ============================================================ */
+.cs-quote__card {
+  position: relative; max-width: 920px; margin-inline: auto;
+  border: 1px solid var(--hairline); border-radius: var(--r-card-lg); background: var(--surface);
+  padding: 64px; overflow: hidden;
+}
+@media (max-width: 560px){ .cs-quote__card { padding: 40px; } }
+.cs-quote__mark { font-family: var(--font-display); font-weight: 700; font-size: 150px; line-height: 0.52; color: var(--ember); height: 56px; }
+.cs-quote__q {
+  font-family: var(--font-display); font-weight: 500; font-size: clamp(1.65rem, 3vw, 2.5rem);
+  line-height: 1.34; letter-spacing: -0.015em; color: var(--fg1); margin: 28px 0 0; text-wrap: pretty;
+}
+.cs-quote__q .ember-word { color: var(--ember); }
+.cs-quote__by { display: flex; align-items: center; gap: 15px; margin-top: 40px; }
+.cs-quote__av { width: 52px; height: 52px; border-radius: 100px; background: radial-gradient(circle at 35% 30%, var(--surface-2), var(--ink)); border: 1px solid var(--hairline-strong); flex-shrink: 0; overflow: hidden; }
+.cs-quote__av image-slot { width: 100%; height: 100%; }
+.cs-quote__name { font-weight: 500; color: var(--fg1); }
+.cs-quote__role { font-family: var(--font-mono); color: var(--fg3); font-size: var(--text-tiny); letter-spacing: .02em; margin-top: 4px; }
+
+/* ============================================================
+   NEXT PROJECT — closing block
+   ============================================================ */
+.cs-next { border-top: 1px solid var(--hairline); }
+.cs-next__link { display: block; position: relative; }
+.cs-next__eyebrow { font-family: var(--font-mono); font-size: var(--text-small); letter-spacing: .04em; color: var(--fg2); }
+.cs-next__grid { display: grid; grid-template-columns: 1fr 0.78fr; gap: 56px; align-items: center; margin-top: 28px; }
+@media (max-width: 900px){ .cs-next__grid { grid-template-columns: 1fr; gap: 36px; } }
+.cs-next__title {
+  font-family: var(--font-display); font-weight: 600; font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 0.92; letter-spacing: -0.035em; color: var(--fg1);
+  display: inline-flex; align-items: center; gap: 0.22em; flex-wrap: wrap;
+}
+.cs-next__title .ic { width: 0.6em; height: 0.6em; color: var(--ember); stroke-width: 2; transition: transform var(--dur-base) var(--ease-out); }
+.cs-next__link:hover .cs-next__title .ic { transform: translateX(14px); }
+.cs-next__meta { font-family: var(--font-mono); font-size: var(--text-small); color: var(--fg2); letter-spacing: .02em; margin: 24px 0 0; display: flex; gap: 8px; flex-wrap: wrap; }
+.cs-next__meta .sep { color: var(--hairline-strong); }
+.cs-next__media {
+  position: relative; border-radius: var(--r-card-lg); overflow: hidden;
+  border: 1px solid var(--hairline); aspect-ratio: 4 / 3; background: var(--surface);
+  box-shadow: 0 40px 100px -50px rgba(0,0,0,0.85);
+}
+.cs-next__media image-slot { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cs-next__media-inner { position: absolute; inset: 0; transition: transform var(--dur-slow) var(--ease-out); }
+.cs-next__link:hover .cs-next__media-inner { transform: scale(1.045); }
+.cs-next__arrow {
+  position: absolute; top: 16px; right: 18px; z-index: 2; width: 46px; height: 46px; border-radius: 100px;
+  display: grid; place-items: center; background: var(--ink-70); backdrop-filter: blur(6px);
+  border: 1px solid var(--w-12); color: var(--fg1);
+  opacity: 0; transform: translateY(-6px) rotate(-12deg);
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out), background var(--dur-fast);
+}
+.cs-next__link:hover .cs-next__arrow { opacity: 1; transform: translateY(0) rotate(0); background: var(--ember); color: var(--ink); border-color: var(--ember); }
+.cs-next__arrow .ic { width: 20px; height: 20px; }
+
+.cs-next__foot { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 80px; padding-top: 28px; border-top: 1px solid var(--hairline); }
+.cs-next__email { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.4rem, 2.6vw, 2.1rem); letter-spacing: -0.02em; color: var(--fg1); display: inline-flex; align-items: center; gap: 12px; }
+.cs-next__email .ember-word { font-size: 0.7em; }
+.cs-next__email:hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.cs-next__avail { font-family: var(--font-mono); font-size: var(--text-small); color: var(--fg2); display: inline-flex; align-items: center; gap: 9px; }
+.cs-next__avail .dot { width: 8px; height: 8px; border-radius: 100px; background: #34D399; flex-shrink: 0; }
+
+/* ============================================================
+   DOCK — case-study section nav (reuses .dock from homepage.css)
+   ============================================================ */
+.dock--cs { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
+@media (max-width: 620px){ .dock--cs .dock__lbl { display: none; } }
+
+/* ============================================================
+   PAGE TRANSITION — ember/ink curtain wipe in + out
+   ============================================================ */
+.cs-curtain {
+  position: fixed; inset: 0; z-index: 1000; background: var(--ink);
+  display: grid; place-items: center; pointer-events: none;
+  /* FAIL-SAFE: default state is lifted/hidden so the page is ALWAYS visible
+     even if no JS runs. The intro cover only plays when JS adds .intro. */
+  transform: translateY(-100%);
+}
+.cs-curtain__mark {
+  font-family: var(--font-display); font-weight: 600; font-size: clamp(3rem, 9vw, 6rem);
+  letter-spacing: -0.03em; color: var(--fg1); line-height: 1; opacity: 0;
+}
+.cs-curtain__mark .e { color: var(--ember); }
+/* intro: cover, hold briefly, then lift away */
+.cs-curtain.intro { animation: csCurtainLift 1.45s var(--ease-out) forwards; }
+.cs-curtain.intro .cs-curtain__mark { animation: csMarkOut 0.85s var(--ease-out) 0.15s forwards; }
+@keyframes csCurtainLift {
+  0%, 24% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+@keyframes csMarkOut {
+  0% { transform: translateY(0); opacity: 1; }
+  32% { opacity: 1; }
+  100% { transform: translateY(-36%); opacity: 0; }
+}
+/* state: covering (about to navigate away) — slides down from top to cover */
+.cs-curtain.is-cover {
+  animation: none; transform: translateY(0);
+  transition: transform 0.55s var(--ease-in-out);
+}
+.cs-curtain.is-cover .cs-curtain__mark { animation: none; opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce){
+  .cs-curtain { display: none; }
+}

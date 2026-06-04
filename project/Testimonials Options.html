@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Testimonials — 3 interactive options</title>
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--ink); color: var(--fg1);
+    font-family: var(--font-body); line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--ember); color: var(--ink); }
+  .ic { width: 1em; height: 1em; display: inline-block; vertical-align: middle; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; margin: 0; }
+  .em { color: var(--ember); }
+
+  /* page intro */
+  .page { max-width: 1180px; margin: 0 auto; padding: 64px 6vw 120px; }
+  .page__eyebrow { font-family: var(--font-mono); font-size: 0.95rem; letter-spacing: .06em; color: var(--ember); }
+  .page__title { font-size: clamp(2.2rem, 4vw, 3.25rem); margin: 14px 0 10px; }
+  .page__sub { color: var(--fg2); font-size: 1.125rem; max-width: 60ch; }
+
+  /* option block */
+  .opt { margin-top: 88px; }
+  .opt__head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 1px solid var(--hairline); }
+  .opt__num { font-family: var(--font-mono); font-size: 0.9rem; color: var(--ember); letter-spacing: .08em; }
+  .opt__name { font-size: 1.5rem; }
+  .opt__desc { color: var(--fg2); font-size: 1rem; margin-left: auto; max-width: 46ch; text-align: right; }
+  @media (max-width: 720px){ .opt__desc { margin-left: 0; text-align: left; } }
+
+  /* shared testimonial card */
+  .t-card {
+    border: 1px solid var(--hairline); border-radius: 28px; padding: 34px;
+    background: var(--surface); display: flex; flex-direction: column; gap: 22px;
+    transition: border-color .4s, transform .4s var(--ease-out), background .4s;
+  }
+  .t-brand { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-mono); font-size: 0.95rem; color: var(--fg2); letter-spacing: .02em; }
+  .t-brand .ic { color: var(--ember); width: 17px; height: 17px; }
+  .t-quote { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: 1.3rem; line-height: 1.42; letter-spacing: -0.01em; color: var(--fg1); }
+  .t-who { display: flex; align-items: center; gap: 13px; padding-top: 20px; border-top: 1px solid var(--hairline); }
+  .t-av { width: 42px; height: 42px; border-radius: 100px; background: radial-gradient(circle at 35% 30%, var(--surface-2), var(--ink)); border: 1px solid var(--hairline-strong); flex-shrink: 0; }
+  .t-name { font-weight: 500; color: var(--fg1); font-size: 0.98rem; }
+  .t-role { font-family: var(--font-mono); color: var(--fg3); font-size: 0.78rem; margin-top: 2px; }
+
+  /* ============ OPTION 1 — MARQUEE ============ */
+  .mq { overflow: hidden; -webkit-mask: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+  .mq__track { display: flex; gap: 22px; width: max-content; }
+  @media (prefers-reduced-motion: no-preference){ .mq__track { animation: mqScroll 46s linear infinite; } }
+  .mq:hover .mq__track { animation-play-state: paused; }
+  @keyframes mqScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .mq .t-card { width: 400px; flex: 0 0 auto; gap: 18px; padding: 30px; }
+  .mq .t-card:hover { border-color: var(--hairline-strong); background: var(--surface-2); }
+  .mq .t-quote { font-size: 1.18rem; }
+
+  /* ============ OPTION 2 — FEATURED + SELECTOR ============ */
+  .sel { display: grid; grid-template-columns: 1fr 340px; gap: 36px; align-items: stretch; }
+  @media (max-width: 860px){ .sel { grid-template-columns: 1fr; } }
+  .sel__feature { position: relative; border: 1px solid var(--hairline); border-radius: 32px; background: var(--surface); padding: 48px; display: flex; flex-direction: column; min-height: 340px; overflow: hidden; }
+  .sel__mark { font-family: var(--font-display); font-weight: 700; font-size: 120px; line-height: 0.5; color: var(--ember); height: 44px; }
+  .sel__body { transition: opacity .32s var(--ease-out), transform .32s var(--ease-out); }
+  .sel__feature.is-out .sel__body { opacity: 0; transform: translateY(10px); }
+  .sel__q { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.4; letter-spacing: -0.015em; margin: 22px 0 0; }
+  .sel__by { display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 28px; }
+  .sel__by .t-av { width: 48px; height: 48px; }
+  .sel__list { display: flex; flex-direction: column; gap: 8px; }
+  .sel__item { display: flex; align-items: center; gap: 13px; text-align: left; width: 100%; cursor: pointer;
+    background: transparent; border: 1px solid transparent; border-radius: 16px; padding: 13px 16px; color: inherit;
+    font-family: inherit; transition: background .25s, border-color .25s; position: relative; }
+  .sel__item:hover { background: var(--surface); }
+  .sel__item.is-active { background: var(--surface); border-color: var(--hairline-strong); }
+  .sel__item.is-active::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px; border-radius: 3px; background: var(--ember); }
+  .sel__dot { width: 34px; height: 34px; border-radius: 100px; background: radial-gradient(circle at 35% 30%, var(--surface-2), var(--ink)); border: 1px solid var(--hairline-strong); flex-shrink: 0; }
+  .sel__item.is-active .sel__dot { border-color: var(--ember); }
+  .sel__nm { font-weight: 500; font-size: 0.96rem; }
+  .sel__co { font-family: var(--font-mono); color: var(--fg3); font-size: 0.76rem; margin-top: 2px; }
+  .sel__prog { height: 2px; background: var(--hairline); border-radius: 2px; margin-top: 14px; overflow: hidden; }
+  .sel__prog i { display: block; height: 100%; width: 0; background: var(--ember); }
+  .sel__feature.is-playing .sel__prog i { animation: selProg 6s linear; }
+  @keyframes selProg { from { width: 0; } to { width: 100%; } }
+
+  /* ============ OPTION 3 — DRAGGABLE CAROUSEL ============ */
+  .car { position: relative; }
+  .car__vp { overflow: hidden; cursor: grab; }
+  .car__vp.is-drag { cursor: grabbing; }
+  .car__track { display: flex; gap: 24px; transition: transform .55s var(--ease-out); will-change: transform; }
+  .car__track.no-anim { transition: none; }
+  .car .t-card { flex: 0 0 calc(50% - 12px); }
+  @media (max-width: 760px){ .car .t-card { flex: 0 0 100%; } }
+  .car__ctrl { display: flex; align-items: center; justify-content: space-between; margin-top: 26px; }
+  .car__dots { display: flex; gap: 8px; }
+  .car__dot { width: 8px; height: 8px; border-radius: 100px; background: var(--hairline-strong); border: none; padding: 0; cursor: pointer; transition: background .25s, width .3s var(--ease-out); }
+  .car__dot.is-active { width: 24px; background: var(--ember); }
+  .car__arrows { display: flex; gap: 10px; }
+  .car__btn { width: 48px; height: 48px; border-radius: 100px; display: grid; place-items: center; cursor: pointer;
+    background: transparent; border: 1px solid var(--hairline-strong); color: var(--fg1); transition: background .2s, border-color .2s, transform .2s; }
+  .car__btn:hover { background: var(--ember); border-color: var(--ember); color: var(--ink); }
+  .car__btn:disabled { opacity: 0.35; cursor: default; }
+  .car__btn:disabled:hover { background: transparent; border-color: var(--hairline-strong); color: var(--fg1); }
+  .car__btn .ic { width: 20px; height: 20px; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-verified" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m8.4 12 2.6 2.6 4.6-5.2"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M20 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+</defs></svg>
+
+<div class="page">
+  <div class="page__eyebrow">testimonials · interactive directions</div>
+  <h1 class="page__title">Three ways to make it move.</h1>
+  <p class="page__sub">Same six client quotes, three interaction models. Try each, then tell me which to drop into the homepage — or mix elements.</p>
+
+  <!-- OPTION 1 -->
+  <section class="opt">
+    <div class="opt__head">
+      <span class="opt__num">option 01</span>
+      <h2 class="opt__name">Auto-scroll marquee</h2>
+      <p class="opt__desc">An endless ribbon that drifts on its own and pauses when you hover a card. Scales to any number of quotes. On-brand for the system's testimonial strip.</p>
+    </div>
+    <div class="mq" id="mq"><div class="mq__track" id="mqTrack"></div></div>
+  </section>
+
+  <!-- OPTION 2 -->
+  <section class="opt">
+    <div class="opt__head">
+      <span class="opt__num">option 02</span>
+      <h2 class="opt__name">Featured + client selector</h2>
+      <p class="opt__desc">One big quote in focus; a roster of clients beside it. Click a name to swap the feature, or let it auto-advance. Editorial and deliberate.</p>
+    </div>
+    <div class="sel">
+      <div class="sel__feature is-playing" id="selFeature"></div>
+      <div>
+        <div class="sel__list" id="selList"></div>
+        <div class="sel__prog"><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPTION 3 -->
+  <section class="opt">
+    <div class="opt__head">
+      <span class="opt__num">option 03</span>
+      <h2 class="opt__name">Draggable carousel</h2>
+      <p class="opt__desc">Two cards in view, swipe or drag to page through, with arrows and an active indicator. Tactile and familiar.</p>
+    </div>
+    <div class="car">
+      <div class="car__vp" id="carVp"><div class="car__track" id="carTrack"></div></div>
+      <div class="car__ctrl">
+        <div class="car__dots" id="carDots"></div>
+        <div class="car__arrows">
+          <button class="car__btn" id="carPrev" aria-label="Previous"><svg class="ic"><use href="#i-left"/></svg></button>
+          <button class="car__btn" id="carNext" aria-label="Next"><svg class="ic"><use href="#i-right"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+const T = [
+  { n: "Artem Khomenko", r: "CTO", c: "Enkonix", q: 'A strong developer with sharp attention to detail and the ability to ship highly custom solutions <span class="em">within the constraints</span> of the platform. Highly recommend.' },
+  { n: "Franco Caputo", r: "CEO", c: "WonderUp", q: 'Worked with Lucas on multiple projects and would happily do a thousand more. Detail-oriented, tech-savvy, and an <span class="em">incredible human</span> — above and beyond every time.' },
+  { n: "Sofía Marín", r: "Founder", c: "Lumen Studio", q: 'He turned a messy brief into a fast, scalable build. The motion finally <span class="em">feels intentional</span>, never decorative.' },
+  { n: "Diego Herrera", r: "Head of Growth", c: "Northbound", q: 'We ship pages in hours, not weeks. Client-First done right — the whole team can <span class="em">edit without breaking</span> anything.' },
+  { n: "Emily Saunders", r: "Product Lead", c: "Cadence", q: 'Lucas sweats the details most devs skip — performance budgets, accessibility, the <span class="em">60fps stuff</span>. It shows.' },
+  { n: "Tomás Vidal", r: "Director", c: "Seilas", q: 'Senior, reliable, no hand-holding. He scoped it, built it, and <span class="em">tuned it against real data</span>.' },
+];
+
+const cardHTML = (t) => `
+  <article class="t-card">
+    <span class="t-brand"><svg class="ic"><use href="#i-verified"/></svg>${t.c}</span>
+    <blockquote class="t-quote">"${t.q}"</blockquote>
+    <div class="t-who"><span class="t-av"></span><div><div class="t-name">${t.n}</div><div class="t-role">${t.r} · ${t.c}</div></div></div>
+  </article>`;
+
+/* ---------- OPTION 1 — marquee ---------- */
+const mqTrack = document.getElementById('mqTrack');
+mqTrack.innerHTML = (T.map(cardHTML).join('')) + (T.map(cardHTML).join(''));
+
+/* ---------- OPTION 2 — featured + selector ---------- */
+const selFeature = document.getElementById('selFeature');
+const selList = document.getElementById('selList');
+let selI = 0, selTimer = null;
+
+selList.innerHTML = T.map((t, i) => `
+  <button class="sel__item${i === 0 ? ' is-active' : ''}" data-i="${i}">
+    <span class="sel__dot"></span>
+    <span class="sel__meta"><span class="sel__nm">${t.n}</span><div class="sel__co">${t.r} · ${t.c}</div></span>
+  </button>`).join('');
+
+const featureBody = (t) => `
+  <div class="sel__mark">"</div>
+  <div class="sel__body">
+    <p class="sel__q">${t.q}</p>
+    <div class="sel__by"><span class="t-av"></span><div><div class="t-name">${t.n}</div><div class="t-role">${t.r} · ${t.c}</div></div></div>
+  </div>`;
+
+function selShow(i, restart = true) {
+  selI = i;
+  selFeature.classList.add('is-out');
+  setTimeout(() => { selFeature.innerHTML = featureBody(T[i]); selFeature.classList.remove('is-out'); }, 280);
+  [...selList.children].forEach((b, bi) => b.classList.toggle('is-active', bi === i));
+  if (restart) selRestart();
+}
+function selRestart() {
+  selFeature.classList.remove('is-playing'); void selFeature.offsetWidth; selFeature.classList.add('is-playing');
+  clearTimeout(selTimer);
+  selTimer = setTimeout(() => selShow((selI + 1) % T.length), 6000);
+}
+selFeature.innerHTML = featureBody(T[0]);
+selList.addEventListener('click', (e) => { const b = e.target.closest('.sel__item'); if (b) selShow(+b.dataset.i); });
+selRestart();
+const selWrap = selFeature.closest('.sel');
+selWrap.addEventListener('mouseenter', () => { clearTimeout(selTimer); selFeature.classList.remove('is-playing'); });
+selWrap.addEventListener('mouseleave', () => selRestart());
+
+/* ---------- OPTION 3 — carousel ---------- */
+const carTrack = document.getElementById('carTrack');
+const carVp = document.getElementById('carVp');
+const carDots = document.getElementById('carDots');
+const carPrev = document.getElementById('carPrev');
+const carNext = document.getElementById('carNext');
+carTrack.innerHTML = T.map(cardHTML).join('');
+
+function perView() { return window.matchMedia('(max-width: 760px)').matches ? 1 : 2; }
+let carI = 0;
+function maxI() { return Math.max(0, T.length - perView()); }
+function carStep() { const card = carTrack.children[0]; const w = card.getBoundingClientRect().width; const gap = 24; return w + gap; }
+function carRender() {
+  carI = Math.min(carI, maxI());
+  carTrack.style.transform = `translateX(${-carI * carStep()}px)`;
+  const pages = maxI() + 1;
+  carDots.innerHTML = Array.from({ length: pages }, (_, i) => `<button class="car__dot${i === carI ? ' is-active' : ''}" data-i="${i}" aria-label="Go to ${i + 1}"></button>`).join('');
+  carPrev.disabled = carI <= 0;
+  carNext.disabled = carI >= maxI();
+}
+carPrev.addEventListener('click', () => { carI = Math.max(0, carI - 1); carRender(); });
+carNext.addEventListener('click', () => { carI = Math.min(maxI(), carI + 1); carRender(); });
+carDots.addEventListener('click', (e) => { const d = e.target.closest('.car__dot'); if (d) { carI = +d.dataset.i; carRender(); } });
+window.addEventListener('resize', carRender);
+
+/* drag / swipe */
+let dragX = 0, startX = 0, dragging = false, baseTx = 0;
+carVp.addEventListener('pointerdown', (e) => {
+  dragging = true; startX = e.clientX; baseTx = -carI * carStep();
+  carTrack.classList.add('no-anim'); carVp.classList.add('is-drag'); carVp.setPointerCapture(e.pointerId);
+});
+carVp.addEventListener('pointermove', (e) => {
+  if (!dragging) return; dragX = e.clientX - startX;
+  carTrack.style.transform = `translateX(${baseTx + dragX}px)`;
+});
+function endDrag() {
+  if (!dragging) return; dragging = false;
+  carTrack.classList.remove('no-anim'); carVp.classList.remove('is-drag');
+  const threshold = carStep() * 0.22;
+  if (dragX < -threshold) carI = Math.min(maxI(), carI + 1);
+  else if (dragX > threshold) carI = Math.max(0, carI - 1);
+  dragX = 0; carRender();
+}
+carVp.addEventListener('pointerup', endDrag);
+carVp.addEventListener('pointercancel', endDrag);
+carRender();
+</script>
+</body>
+</html>

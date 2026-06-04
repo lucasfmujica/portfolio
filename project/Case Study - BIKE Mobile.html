@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>BIKE — Case study · Lucas Mujica</title>
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="mobile.css" />
+<link rel="stylesheet" href="case-study-mobile.css" />
+</head>
+<body class="cs-body">
+
+<!-- ============ ICON SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M20 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r="0.7" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-build" viewBox="0 0 24 24"><path d="M3 8.4 12 4l9 4.4-9 4.4-9-4.4Z"/><path d="M3 12.4 12 16.8l9-4.4M3 15.8 12 20.2l9-4.4"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 16 9 10l4 4 8-8M16 6h5v5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56z"/></symbol>
+    <symbol id="i-gh" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.13-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ PAGE-TRANSITION CURTAIN ============ -->
+<div class="cs-curtain" id="curtain" aria-hidden="true">
+  <span class="cs-curtain__mark">Lucas&nbsp;Mujica<span class="e">.</span></span>
+</div>
+<script>
+  (function () {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var c = document.getElementById('curtain');
+    if (c) c.classList.add('intro');
+  })();
+</script>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar" id="topbar" data-screen-label="Top bar">
+  <a class="topbar__brand" href="Homepage Mobile.html" aria-label="Lucas Mujica — home">Lucas&nbsp;Mujica<span class="topbar__dot">.</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navmenu">
+    <span class="menu-btn__bars"><i></i><i></i><i></i></span>
+  </button>
+</header>
+
+<div class="navscrim" id="navscrim" aria-hidden="true"></div>
+<nav class="navmenu" id="navmenu" aria-label="Menu" data-screen-label="Menu">
+  <a href="Homepage Mobile.html#work">Work <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+  <a href="Homepage Mobile.html#about">About <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+  <a href="Homepage Mobile.html#stack">Stack <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+  <a href="Homepage Mobile.html#process">Process <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+  <a href="Homepage Mobile.html#contact" class="navmenu__cta">Let's talk <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="cs-hero" id="hero" data-screen-label="Case study hero">
+  <div class="cs-hero__inner">
+    <a href="Homepage Mobile.html#work" class="cs-hero__back"><svg class="ic"><use href="#i-arrow-left"/></svg> Back to work</a>
+    <span class="eyebrow reveal" data-d="1">case study</span>
+    <h1 class="cs-hero__title">
+      <span class="cs-mask"><span>BIKE</span></span>
+    </h1>
+    <div class="cs-hero__meta reveal" data-d="2">
+      <span>Webflow</span><span class="sep">·</span>
+      <span>2024</span><span class="sep">·</span>
+      <span>Live</span><span class="arr">→</span><a href="https://bike.uy" target="_blank" rel="noopener">bike.uy</a>
+    </div>
+    <p class="cs-hero__outcome reveal" data-d="3">An English school that teaches by talking. The site had to do the <span class="ember-word">same.</span></p>
+    <div class="cs-tags reveal" data-d="3">
+      <span class="cs-tag">Next.js</span>
+      <span class="cs-tag">TypeScript</span>
+      <span class="cs-tag">HubSpot</span>
+      <span class="cs-tag">GSAP</span>
+      <span class="cs-tag">Web app</span>
+    </div>
+  </div>
+  <div class="cs-hero__media">
+    <span class="cs-hero__media-badge">bike.uy · home</span>
+    <img class="cs-hero__img" src="assets/project-bike.png" alt="BIKE — bike.uy homepage" />
+  </div>
+</header>
+
+<!-- ============ THE CHALLENGE ============ -->
+<section class="cs-section cs-challenge" id="challenge" data-screen-label="The challenge">
+  <div class="cs-challenge__body">
+    <span class="eyebrow reveal">the challenge</span>
+    <h2 class="reveal" data-d="1">A method built on conversation, trapped in a template.</h2>
+    <p class="cs-challenge__p reveal" data-d="1">BIKE teaches English by getting people talking from day one — no grammar drills, no passive lectures. Their old site did the opposite: a slow, generic template that buried the method and <span class="ember-word">leaked trial signups</span>. They needed a site that felt as alive as a class — quick to move through, easy for the team to run, and wired into the tools the business already uses.</p>
+    <div class="cs-spec reveal" data-d="2">
+      <div class="cs-spec__row"><span class="cs-spec__n">01</span><span class="cs-spec__k">Role</span><span class="cs-spec__v">Design &amp; front-end build</span></div>
+      <div class="cs-spec__row"><span class="cs-spec__n">02</span><span class="cs-spec__k">Stack</span><span class="cs-spec__v">Next.js · TypeScript · GSAP</span></div>
+      <div class="cs-spec__row"><span class="cs-spec__n">03</span><span class="cs-spec__k">Integration</span><span class="cs-spec__v">HubSpot CRM</span></div>
+      <div class="cs-spec__row"><span class="cs-spec__n">04</span><span class="cs-spec__k">Timeline</span><span class="cs-spec__v">6 weeks, end to end</span></div>
+    </div>
+  </div>
+  <div class="cs-challenge__visual reveal" data-d="1">
+    <span class="cs-challenge__vcap">Before · legacy template</span>
+    <image-slot id="cs-challenge-before" shape="rect" placeholder="Drop a 'before' screenshot"></image-slot>
+  </div>
+</section>
+
+<!-- ============ WHAT I BUILT ============ -->
+<section class="cs-section cs-build" id="build" data-screen-label="What I built">
+  <div class="cs-build__head">
+    <span class="eyebrow reveal">what I built</span>
+    <h2 class="reveal" data-d="1">A site that moves the way a conversation does.</h2>
+    <p class="cs-build__lead reveal" data-d="2">I rebuilt BIKE on Next.js and TypeScript, wired straight into HubSpot so every lead, level test, and course enquiry lands where the team already works. GSAP carries the motion — reveals that pace the story, a <span class="ember-word">real-time level-test flow</span>, and a homepage that earns attention without ever getting in the way.</p>
+  </div>
+
+  <div class="cs-gallery">
+    <figure class="cs-shot reveal">
+      <div class="cs-shot__frame">
+        <span class="cs-shot__num">01</span>
+        <span class="cs-shot__motion">GSAP scroll reveal</span>
+        <div class="cs-shot__inner">
+          <image-slot id="cs-shot-1" shape="rect" placeholder="Homepage — drop screenshot"></image-slot>
+        </div>
+      </div>
+      <figcaption class="cs-shot__cap">
+        <span class="k">01 — Homepage</span>
+        <p class="t"><b>A conversational hero with motion that paces the pitch.</b> The method lands in the first three seconds, not the third scroll.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="cs-shot reveal">
+      <div class="cs-shot__frame">
+        <span class="cs-shot__num">02</span>
+        <span class="cs-shot__motion">Real-time · animated</span>
+        <div class="cs-shot__inner">
+          <image-slot id="cs-shot-2" shape="rect" placeholder="Level test — drop screenshot"></image-slot>
+        </div>
+      </div>
+      <figcaption class="cs-shot__cap">
+        <span class="k">02 — Level test</span>
+        <p class="t"><b>A real-time flow that scores English level</b> and routes the lead straight into HubSpot — no spreadsheets, no manual follow-up.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="cs-shot reveal">
+      <div class="cs-shot__frame">
+        <span class="cs-shot__num">03</span>
+        <span class="cs-shot__motion">Staggered reveal</span>
+        <div class="cs-shot__inner">
+          <image-slot id="cs-shot-3" shape="rect" placeholder="Courses — drop screenshot"></image-slot>
+        </div>
+      </div>
+      <figcaption class="cs-shot__cap">
+        <span class="k">03 — Courses</span>
+        <p class="t"><b>A CMS-driven catalog the team updates without touching code</b> — new courses ship in minutes, not tickets.</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ RESULTS (the one ember-flooded band) ============ -->
+<section class="cs-section cs-results" id="results" data-screen-label="Results">
+  <div class="cs-results__ghost" aria-hidden="true">BIKE</div>
+  <div class="cs-results__inner">
+    <span class="eyebrow reveal">what shipped</span>
+    <h2 class="cs-results__statement reveal" data-d="1">The site finally teaches the way BIKE does — fast, warm, impossible to ignore.</h2>
+    <p class="cs-results__sub reveal" data-d="2">Launched on time, handed off clean. The team runs it themselves, and the numbers moved where they needed to.</p>
+    <div class="cs-metrics reveal" data-d="2">
+      <div class="cs-metric">
+        <div class="cs-metric__n">0.7<span class="u">s</span></div>
+        <div class="cs-metric__l">median load — down from 3.1s</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric__n">+38<span class="u">%</span></div>
+        <div class="cs-metric__l">trial signups in the first quarter</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric__n">100</div>
+        <div class="cs-metric__l">Lighthouse performance score</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT THEY SAID ============ -->
+<section class="cs-section cs-saidsection" data-screen-label="What they said">
+  <div class="section-head reveal" style="margin-bottom:26px">
+    <span class="eyebrow">what they said</span>
+  </div>
+  <figure class="cs-quote__card reveal" data-d="1">
+    <div class="cs-quote__mark">&ldquo;</div>
+    <blockquote class="cs-quote__q">Lucas turned our method into a website. It's fast, it's unmistakably us, and it <span class="ember-word">finally converts</span> — and the whole team can run it without breaking anything.</blockquote>
+    <figcaption class="cs-quote__by">
+      <span class="cs-quote__av"><image-slot id="cs-quote-av" shape="rect" placeholder="Avatar"></image-slot></span>
+      <div>
+        <div class="cs-quote__name">Paula Méndez</div>
+        <div class="cs-quote__role">Director · BIKE Escuela de Inglés</div>
+      </div>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ============ NEXT PROJECT ============ -->
+<section class="cs-section cs-next" data-screen-label="Next project">
+  <a href="#" class="cs-next__link" id="nextLink">
+    <span class="cs-next__eyebrow">see the next project</span>
+    <div class="cs-next__media">
+      <span class="cs-next__arrow"><svg class="ic"><use href="#i-arrow-ur"/></svg></span>
+      <image-slot id="cs-next-k2b" shape="rect" placeholder="K2BTools — drop preview screenshot"></image-slot>
+    </div>
+    <span class="cs-next__title">K2BTools <svg class="ic"><use href="#i-arrow-right"/></svg></span>
+    <p class="cs-next__meta"><span>Webflow</span><span class="sep">·</span><span>Client-First</span><span class="sep">·</span><span>GSAP</span><span class="sep">·</span><span>2023</span></p>
+  </a>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" data-screen-label="Footer">
+  <h2 class="footer__cta">Let's build something that <span class="ember-word">moves.</span></h2>
+  <a href="mailto:hello@lucasmujica.dev" class="footer__mail">hello@lucasmujica.dev <span class="ember-word">↗</span></a>
+  <div class="footer__divide"></div>
+  <span class="footer__wordmark">Lucas&nbsp;Mujica<span class="footer__dot">.</span></span>
+  <nav class="footer__nav">
+    <a href="Homepage Mobile.html#work">Work</a>
+    <a href="Homepage Mobile.html#about">About</a>
+    <a href="Homepage Mobile.html#stack">Stack</a>
+    <a href="Homepage Mobile.html#process">Process</a>
+  </nav>
+  <div class="footer__soc" aria-label="Social links">
+    <a href="#" aria-label="X"><svg class="ic"><use href="#i-x"/></svg></a>
+    <a href="#" aria-label="LinkedIn"><svg class="ic"><use href="#i-in"/></svg></a>
+    <a href="#" aria-label="GitHub"><svg class="ic"><use href="#i-gh"/></svg></a>
+  </div>
+  <div class="footer__copy">© 2026 Lucas Mujica. All rights reserved.</div>
+</footer>
+
+<!-- ============ CASE-STUDY BOTTOM DOCK ============ -->
+<nav class="csdock" id="csdock" aria-label="Case study navigation" data-screen-label="Bottom dock">
+  <div class="csdock__nav">
+    <a href="#challenge" class="csdock__item is-active"><svg class="ic"><use href="#i-target"/></svg><span class="csdock__lbl">Challenge</span></a>
+    <a href="#build" class="csdock__item"><svg class="ic"><use href="#i-build"/></svg><span class="csdock__lbl">Build</span></a>
+    <a href="#results" class="csdock__item"><svg class="ic"><use href="#i-trend"/></svg><span class="csdock__lbl">Results</span></a>
+  </div>
+  <a href="Homepage Mobile.html#contact" class="csdock__cta">Let's talk</a>
+</nav>
+
+<script src="image-slot.js"></script>
+<script>
+  document.documentElement.classList.add('js');
+  if (new URLSearchParams(location.search).has('frame')) document.documentElement.classList.add('embedded');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Hero reveal kick ---- */
+  const curtain = document.getElementById('curtain');
+  requestAnimationFrame(() => requestAnimationFrame(() => { document.getElementById('hero').classList.add('in'); }));
+  setTimeout(() => { const h = document.getElementById('hero'); if (h) h.classList.add('in'); }, 400);
+
+  /* ---- Intercept internal .html links → cover-out, then navigate ---- */
+  document.querySelectorAll('a[href]').forEach((a) => {
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('http') || a.target === '_blank') return;
+    if (!/\.html(\?|#|$)/.test(href)) return;
+    a.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      if (!curtain || reduce) { window.location.href = href; return; }
+      curtain.classList.add('is-cover');
+      setTimeout(() => { window.location.href = href; }, 560);
+    });
+  });
+
+  /* ---- Top bar background fade on scroll ---- */
+  const topbar = document.getElementById('topbar');
+  const onScroll = () => { topbar.classList.toggle('scrolled', window.scrollY > 20); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---- Nav menu toggle ---- */
+  (function () {
+    const btn = document.getElementById('menuBtn');
+    const scrim = document.getElementById('navscrim');
+    const menu = document.getElementById('navmenu');
+    if (!btn || !scrim || !menu) return;
+    const root = document.documentElement;
+    const set = (open) => {
+      root.classList.toggle('menu-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    btn.addEventListener('click', () => set(!root.classList.contains('menu-open')));
+    scrim.addEventListener('click', () => set(false));
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => set(false)));
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+  })();
+
+  /* ---- Dock scrollspy ---- */
+  (function () {
+    const items = [...document.querySelectorAll('.csdock__item')];
+    const sections = ['challenge', 'build', 'results'].map((id) => document.getElementById(id)).filter(Boolean);
+    if (!items.length || !sections.length || !('IntersectionObserver' in window)) return;
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const href = '#' + e.target.id;
+        items.forEach((it) => it.classList.toggle('is-active', it.getAttribute('href') === href));
+      });
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+    sections.forEach((s) => spy.observe(s));
+  })();
+
+  /* ---- Generic reveal-on-scroll ---- */
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+  }
+
+  /* ---- Gallery parallax — subtle, scroll-tied ---- */
+  (function () {
+    if (reduce) return;
+    const shots = [...document.querySelectorAll('.cs-shot__inner')];
+    if (!shots.length) return;
+    let ticking = false;
+    function update() {
+      const vh = window.innerHeight;
+      shots.forEach((el) => {
+        const r = el.parentElement.getBoundingClientRect();
+        const center = r.top + r.height / 2;
+        const prog = (center - vh / 2) / vh;
+        const shift = Math.max(-1, Math.min(1, prog)) * -26;
+        el.style.transform = 'translateY(' + shift.toFixed(1) + 'px)';
+      });
+      ticking = false;
+    }
+    function onScrollP() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener('scroll', onScrollP, { passive: true });
+    window.addEventListener('resize', onScrollP, { passive: true });
+    update();
+  })();
+</script>
+</body>
+</html>

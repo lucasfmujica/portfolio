@@ -1,0 +1,297 @@
+/* ============================================================
+   Lucas Mujica — Mobile case study (390px)
+   Builds on tokens.css + mobile.css (shared chrome: topbar,
+   navmenu, mdock, .btn, .eyebrow, .reveal, footer).
+   Single column · gallery stacks full-width · one ember band.
+   ============================================================ */
+
+:root { --cs-dock-h: 76px; }
+
+.cs-body {
+  background: var(--ink);
+  color: var(--fg1);
+  font-family: var(--font-body);
+  line-height: var(--leading-body);
+  padding-bottom: calc(var(--cs-dock-h) + 24px);
+}
+
+/* ---------- page-transition curtain (mobile) ---------- */
+.cs-curtain {
+  position: fixed; inset: 0; z-index: 1000; background: var(--ink);
+  display: grid; place-items: center; pointer-events: none;
+  transform: translateY(-100%);
+}
+.cs-curtain__mark {
+  font-family: var(--font-display); font-weight: 600; font-size: 3rem;
+  letter-spacing: -0.03em; color: var(--fg1); line-height: 1; opacity: 0;
+}
+.cs-curtain__mark .e { color: var(--ember); }
+.cs-curtain.intro { animation: csCurtainLift 1.4s var(--ease-out) forwards; }
+.cs-curtain.intro .cs-curtain__mark { animation: csMarkOut 0.85s var(--ease-out) 0.15s forwards; }
+@keyframes csCurtainLift { 0%,24% { transform: translateY(0); } 100% { transform: translateY(-100%); } }
+@keyframes csMarkOut { 0% { transform: translateY(0); opacity: 1; } 32% { opacity: 1; } 100% { transform: translateY(-36%); opacity: 0; } }
+.cs-curtain.is-cover { animation: none; transform: translateY(0); transition: transform 0.55s var(--ease-in-out); }
+.cs-curtain.is-cover .cs-curtain__mark { animation: none; opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .cs-curtain { display: none; } }
+
+/* ============================================================
+   CASE-STUDY BOTTOM DOCK — section nav (Challenge/Build/Results)
+   ============================================================ */
+.csdock {
+  position: fixed; left: 14px; right: 14px; bottom: 22px; z-index: 95;
+  display: flex; align-items: center; gap: 4px;
+  padding: 6px 6px 6px 8px; border: 1px solid var(--w-12); border-radius: 100px;
+  background: var(--ink-70); backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  box-shadow: 0 18px 50px -20px rgba(0,0,0,.9);
+}
+.csdock__nav { display: flex; align-items: center; flex: 1; min-width: 0; gap: 4px; justify-content: center; }
+.csdock__item {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: .01em; color: var(--fg2);
+  padding: 9px 11px; border-radius: 100px; white-space: nowrap;
+  transition: color var(--dur-fast), background var(--dur-fast), padding var(--dur-fast);
+}
+.csdock__item .ic { width: 16px; height: 16px; flex-shrink: 0; }
+.csdock__lbl { display: none; }
+.csdock__item.is-active { color: var(--fg1); background: var(--w-8); padding-right: 14px; }
+.csdock__item.is-active .ic { color: var(--ember); }
+.csdock__item.is-active .csdock__lbl { display: inline; }
+.csdock__cta {
+  font-family: var(--font-body); font-weight: 600; font-size: 0.78rem;
+  background: var(--ember); color: var(--ink); border-radius: 100px;
+  padding: 10px 15px; white-space: nowrap; flex-shrink: 0; transition: background var(--dur-fast);
+}
+.csdock__cta:active { transform: scale(0.97); }
+
+/* embedded in device frame */
+.embedded .csdock { bottom: 36px; }
+.embedded .cs-hero { padding-top: 132px; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.cs-hero { position: relative; overflow: hidden; padding: 104px var(--m-gutter) 0; }
+.cs-hero::before {
+  content: ""; position: absolute; top: -8%; left: -18%;
+  width: 80vw; height: 80vw; max-width: 420px; max-height: 420px;
+  background: radial-gradient(circle, rgba(255,77,46,0.12) 0%, rgba(255,77,46,0) 62%);
+  pointer-events: none; z-index: 0;
+}
+@media (prefers-reduced-motion: no-preference) { .cs-hero::before { animation: bloomBreathe 8s ease-in-out infinite; } }
+@keyframes bloomBreathe { 0%,100% { opacity:.6; transform: scale(1);} 50% { opacity:1; transform: scale(1.08);} }
+.cs-hero__inner { position: relative; z-index: 1; }
+
+.cs-hero__back {
+  display: flex; width: fit-content; align-items: center; gap: 9px; margin-bottom: 22px;
+  font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: .02em; color: var(--fg2);
+}
+.cs-hero__back .ic { width: 16px; height: 16px; color: var(--ember); }
+.eyebrow { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: var(--tracking-mono); color: var(--fg2); text-transform: lowercase; display: inline-flex; align-items: center; gap: 9px; }
+.eyebrow::before { content: ""; width: 20px; height: 1px; background: var(--ember); display: inline-block; }
+
+.cs-hero__title {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(4.5rem, 27vw, 7.5rem); line-height: 0.86;
+  letter-spacing: -0.045em; margin: 14px 0 0; color: var(--fg1);
+}
+.cs-hero__title .cs-mask { display: block; overflow: hidden; padding-bottom: 0.06em; }
+.cs-hero__title .cs-mask > span { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .cs-hero__title .cs-mask > span { transform: translateY(112%); }
+  .js .cs-hero.in .cs-hero__title .cs-mask > span { transform: translateY(0); transition: transform 1.05s var(--ease-out) 0.15s; }
+}
+
+/* metadata strip — wraps cleanly, mono, ember arrow */
+.cs-hero__meta {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; margin-top: 24px;
+  font-family: var(--font-mono); font-size: 0.9rem; letter-spacing: .01em; color: var(--fg2);
+}
+.cs-hero__meta .sep { color: var(--hairline-strong); }
+.cs-hero__meta .arr { color: var(--ember); }
+.cs-hero__meta a { color: var(--fg1); border-bottom: 1.5px solid var(--ember); padding-bottom: 1px; }
+
+.cs-hero__outcome {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: 1.55rem; line-height: 1.25; letter-spacing: -0.02em;
+  color: var(--fg1); margin: 26px 0 0; text-wrap: balance;
+}
+.cs-hero__outcome .ember-word { color: var(--ember); }
+
+.cs-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 26px; }
+.cs-tag { font-family: var(--font-mono); font-size: 0.74rem; color: var(--fg2); border: 1px solid var(--hairline); border-radius: 100px; padding: 6px 13px; }
+
+.cs-hero__media {
+  position: relative; margin: 40px 0 0;
+  border-radius: var(--r-card); overflow: hidden; border: 1px solid var(--hairline);
+  aspect-ratio: 16 / 11; background: var(--surface);
+  box-shadow: 0 36px 90px -44px rgba(0,0,0,0.9);
+}
+.cs-hero__media image-slot { width: 100%; height: 100%; display: block; }
+.cs-hero__img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .cs-hero__media { opacity: 0; transform: translateY(34px) scale(1.015); }
+  .js .cs-hero.in .cs-hero__media { opacity: 1; transform: none; transition: opacity 1.4s var(--ease-out) 0.35s, transform 1.4s var(--ease-out) 0.35s; }
+}
+.cs-hero__media-badge {
+  position: absolute; top: 14px; left: 16px; z-index: 2;
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: .06em; color: var(--fg1);
+  background: var(--ink-70); border: 1px solid var(--w-12); border-radius: 100px; padding: 5px 12px; backdrop-filter: blur(6px);
+}
+
+/* ============================================================
+   SECTION primitives (mobile)
+   ============================================================ */
+.cs-section { padding: var(--m-section-y) var(--m-gutter); position: relative; }
+.ember-word { color: var(--ember); }
+
+/* ============================================================
+   CHALLENGE
+   ============================================================ */
+.cs-challenge { background: var(--surface); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+.cs-challenge__body { display: flex; flex-direction: column; gap: 18px; }
+.cs-challenge__body h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--mh2); letter-spacing: -0.02em; line-height: 1.05; margin: 0; text-wrap: balance; }
+.cs-challenge__p { color: var(--fg2); font-size: 1.0625rem; line-height: 1.6; margin: 0; }
+.cs-challenge__p .ember-word { color: var(--ember); }
+
+/* spec list — numbered metadata rows, wrap cleanly */
+.cs-spec { display: flex; flex-direction: column; margin-top: 8px; border-top: 1px solid var(--hairline); }
+.cs-spec__row { display: grid; grid-template-columns: 24px 1fr; gap: 4px 14px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--hairline); }
+.cs-spec__n { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: .1em; color: var(--ember); grid-row: span 2; }
+.cs-spec__k { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: .04em; color: var(--fg3); }
+.cs-spec__v { font-family: var(--font-body); font-weight: 500; font-size: 1.0625rem; color: var(--fg1); }
+
+.cs-challenge__visual {
+  position: relative; margin-top: 30px; border-radius: var(--r-card); overflow: hidden;
+  border: 1px solid var(--hairline); aspect-ratio: 4 / 5;
+  background: radial-gradient(120% 90% at 80% 10%, color-mix(in srgb, var(--ember), transparent 84%), transparent 55%), linear-gradient(150deg, var(--surface-2), var(--ink));
+}
+.cs-challenge__visual image-slot { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cs-challenge__vcap {
+  position: absolute; left: 14px; bottom: 14px; z-index: 2;
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: .04em; color: var(--fg1);
+  background: var(--ink-70); border: 1px solid var(--w-12); border-radius: 100px; padding: 5px 12px; backdrop-filter: blur(6px);
+}
+
+/* ============================================================
+   WHAT I BUILT — intro + gallery stacks full-width
+   ============================================================ */
+.cs-build__head { display: flex; flex-direction: column; gap: 14px; }
+.cs-build__head h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--mh2); letter-spacing: -0.02em; line-height: 1.05; margin: 0; text-wrap: balance; }
+.cs-build__lead { color: var(--fg2); font-size: 1.0625rem; line-height: 1.6; margin: 4px 0 0; }
+.cs-build__lead .ember-word { color: var(--ember); }
+
+.cs-gallery { display: flex; flex-direction: column; gap: 20px; margin: 40px calc(-1 * var(--m-gutter)) 0; }
+.cs-shot {
+  display: flex; flex-direction: column; overflow: hidden; margin: 0;
+  border: 1px solid var(--hairline); border-radius: var(--r-card-lg);
+  background: var(--surface); box-shadow: 0 30px 80px -50px rgba(0,0,0,0.85);
+}
+.cs-shot__frame {
+  position: relative; aspect-ratio: 16 / 11; overflow: hidden; border-bottom: 1px solid var(--hairline);
+  background: radial-gradient(120% 90% at 80% 8%, color-mix(in srgb, var(--ember), transparent 86%), transparent 55%), linear-gradient(160deg, var(--surface-2), var(--ink));
+}
+.cs-shot__frame image-slot { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cs-shot__inner { position: absolute; inset: -7% 0; will-change: transform; }
+.cs-shot__inner image-slot { position: absolute; inset: 0; width: 100%; height: 100%; }
+@media (prefers-reduced-motion: reduce) { .cs-shot__inner { inset: 0; transform: none !important; } }
+.cs-shot__num {
+  position: absolute; top: 14px; left: 14px; z-index: 2;
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: .08em; color: var(--fg1);
+  background: var(--ink-70); border: 1px solid var(--w-12); border-radius: 100px; padding: 5px 12px; backdrop-filter: blur(6px);
+}
+/* motion annotation — pinned to the screenshot, top-right */
+.cs-shot__motion {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: .04em; color: var(--fg1);
+  background: var(--ink-70); border: 1px solid var(--w-12); border-radius: 100px; padding: 6px 12px; backdrop-filter: blur(6px);
+}
+.cs-shot__motion::before { content: ""; width: 6px; height: 6px; border-radius: 100px; background: var(--ember); flex-shrink: 0; }
+@media (prefers-reduced-motion: no-preference) { .cs-shot__motion::before { animation: motionPulse 2.4s var(--ease-in-out) infinite; } }
+@keyframes motionPulse { 0%,100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ember), transparent 40%); } 50% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--ember), transparent 100%); } }
+/* card body */
+.cs-shot__cap { display: flex; flex-direction: column; gap: 10px; padding: 22px 22px 24px; }
+.cs-shot__cap .k { font-family: var(--font-mono); font-size: 0.74rem; color: var(--ember); letter-spacing: .06em; }
+.cs-shot__cap .t { color: var(--fg2); font-size: 1.02rem; line-height: 1.55; margin: 0; }
+.cs-shot__cap .t b { color: var(--fg1); font-weight: 500; }
+
+/* ============================================================
+   RESULTS — the ONE ember-flooded band
+   ============================================================ */
+.cs-results { background: var(--ember); color: var(--ink); position: relative; overflow: hidden; }
+.cs-results__ghost {
+  position: absolute; right: -3vw; bottom: -9vw; z-index: 0;
+  font-family: var(--font-display); font-weight: 700; font-size: 58vw;
+  line-height: 0.7; letter-spacing: -0.05em; color: var(--ink); opacity: 0.07; pointer-events: none; user-select: none;
+}
+.cs-results__inner { position: relative; z-index: 1; }
+.cs-results .eyebrow { color: var(--ink-55); }
+.cs-results .eyebrow::before { background: var(--ink); }
+.cs-results__statement {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 2.3rem; line-height: 1.04; letter-spacing: -0.03em;
+  color: var(--ink); margin: 18px 0 0; text-wrap: balance;
+}
+.cs-results__sub { color: var(--ink-70); font-size: 1.0625rem; line-height: 1.5; margin: 18px 0 0; }
+.cs-metrics { display: flex; flex-direction: column; margin-top: 40px; border-top: 2px solid var(--ink-15); }
+.cs-metric { padding: 28px 0; border-bottom: 2px solid var(--ink-15); }
+.cs-metric:last-child { border-bottom: none; }
+.cs-metric__n {
+  font-family: var(--font-display); font-weight: 600; font-size: 3.6rem;
+  letter-spacing: -0.035em; line-height: 0.9; color: var(--ink); display: flex; align-items: baseline; gap: 4px;
+}
+.cs-metric__n .u { font-size: 0.42em; font-weight: 500; letter-spacing: -0.01em; }
+.cs-metric__l { font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: .03em; color: var(--ink-70); margin-top: 12px; line-height: 1.4; }
+
+/* ============================================================
+   PULL QUOTE
+   ============================================================ */
+.cs-saidsection { padding-left: 0; padding-right: 0; }
+.cs-saidsection .section-head { padding-left: var(--m-gutter); padding-right: var(--m-gutter); }
+.cs-quote__card {
+  position: relative; margin: 0; border: 1px solid var(--hairline); border-radius: var(--r-card-lg);
+  background: var(--surface); padding: 38px 24px 34px; overflow: hidden;
+}
+.cs-quote__mark { font-family: var(--font-display); font-weight: 700; font-size: 104px; line-height: 0.52; color: var(--ember); height: 40px; }
+.cs-quote__q {
+  font-family: var(--font-display); font-weight: 500; font-size: 1.62rem;
+  line-height: 1.32; letter-spacing: -0.015em; color: var(--fg1); margin: 24px 0 0; text-wrap: pretty;
+}
+.cs-quote__q .ember-word { color: var(--ember); }
+.cs-quote__by { display: flex; align-items: center; gap: 13px; margin-top: 30px; }
+.cs-quote__av { width: 46px; height: 46px; border-radius: 100px; background: radial-gradient(circle at 35% 30%, var(--surface-2), var(--ink)); border: 1px solid var(--hairline-strong); flex-shrink: 0; overflow: hidden; }
+.cs-quote__av image-slot { width: 100%; height: 100%; }
+.cs-quote__name { font-weight: 500; color: var(--fg1); }
+.cs-quote__role { font-family: var(--font-mono); color: var(--fg3); font-size: 0.72rem; letter-spacing: .02em; margin-top: 4px; }
+
+/* ============================================================
+   NEXT PROJECT — closing block
+   ============================================================ */
+.cs-next { border-top: 1px solid var(--hairline); }
+.cs-next__eyebrow { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: .04em; color: var(--fg2); }
+.cs-next__title {
+  font-family: var(--font-display); font-weight: 600; font-size: clamp(3rem, 17vw, 4.5rem);
+  line-height: 0.9; letter-spacing: -0.035em; color: var(--fg1);
+  display: inline-flex; align-items: center; gap: 0.16em; margin-top: 18px;
+}
+.cs-next__title .ic { width: 0.55em; height: 0.55em; color: var(--ember); stroke-width: 2; }
+.cs-next__meta { font-family: var(--font-mono); font-size: 0.82rem; color: var(--fg2); letter-spacing: .02em; margin: 18px 0 0; display: flex; gap: 8px; flex-wrap: wrap; }
+.cs-next__meta .sep { color: var(--hairline-strong); }
+.cs-next__media {
+  position: relative; margin-top: 24px; border-radius: var(--r-card); overflow: hidden;
+  border: 1px solid var(--hairline); aspect-ratio: 16 / 11; background: var(--surface);
+  box-shadow: 0 30px 80px -46px rgba(0,0,0,0.85);
+}
+.cs-next__media image-slot { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cs-next__arrow {
+  position: absolute; top: 14px; right: 16px; z-index: 2; width: 42px; height: 42px; border-radius: 100px;
+  display: grid; place-items: center; background: var(--ember); color: var(--ink);
+  border: 1px solid var(--ember);
+}
+.cs-next__arrow .ic { width: 19px; height: 19px; }
+.cs-next__foot { display: flex; flex-direction: column; gap: 16px; margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--hairline); }
+.cs-next__email { font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; letter-spacing: -0.02em; color: var(--fg1); display: inline-flex; align-items: center; gap: 12px; }
+.cs-next__email .ember-word { font-size: 0.7em; }
+.cs-next__avail { font-family: var(--font-mono); font-size: 0.82rem; color: var(--fg2); display: inline-flex; align-items: center; gap: 9px; }
+.cs-next__avail .dot { width: 8px; height: 8px; border-radius: 100px; background: #34D399; flex-shrink: 0; }

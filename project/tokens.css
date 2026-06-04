@@ -1,0 +1,126 @@
+/* ============================================================
+   LUCAS MUJICA — Homepage tokens
+   Refined palette per brief: warm near-black, off-white text,
+   single Ember accent. Display: Clash Display · Body: General
+   Sans · Mono: Geist Mono.
+   ============================================================ */
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("fonts/ClashDisplay-Medium.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Clash Display";
+  src: url("fonts/ClashDisplay-Semibold.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Clash Display";
+  src: url("fonts/ClashDisplay-Bold.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("fonts/GeneralSans-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("fonts/GeneralSans-Medium.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Geist Mono";
+  src: url("fonts/GeistMono-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+
+:root {
+  /* ---- Refined surface palette (brief) ---- */
+  --ink:        #0B0B0D;   /* page canvas, and text on ember     */
+  --surface:    #16161A;   /* elevated band / cards              */
+  --surface-2:  #1E1E23;   /* hover / nested surface             */
+  --hairline:   #2A2A30;   /* hairlines & dividers               */
+  --hairline-strong: #3A3A42;
+  --fg1:        #FAFAF7;   /* primary off-white text             */
+  --fg2:        #9A9A94;   /* muted / secondary                  */
+  --fg3:        #6A6A66;   /* tertiary / captions                */
+
+  /* ---- Ember (single accent) ---- */
+  --ember:      #FF4D2E;
+  --ember-hover:#E23E22;
+  --ember-deep: #4C170D;
+  --ember-tint: #FFDBD5;
+
+  --accent: var(--ember);
+
+  /* ---- Alpha whites ---- */
+  --w-5:  rgba(250,250,247,0.05);
+  --w-8:  rgba(250,250,247,0.08);
+  --w-12: rgba(250,250,247,0.12);
+  --w-20: rgba(250,250,247,0.20);
+  --w-40: rgba(250,250,247,0.40);
+
+  /* ---- Ink alpha (for use on ember) ---- */
+  --ink-70: rgba(11,11,13,0.70);
+  --ink-55: rgba(11,11,13,0.55);
+  --ink-40: rgba(11,11,13,0.40);
+  --ink-15: rgba(11,11,13,0.15);
+
+  /* ---- Type families ---- */
+  --font-display: "Clash Display", "Space Grotesk", system-ui, sans-serif;
+  --font-body:    "General Sans", "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono:    "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* ---- Type scale (desktop) ---- */
+  --h-display: clamp(3.5rem, 8vw, 7rem);  /* hero */
+  --h1: 5.25rem;   /* 84 */
+  --h2: 3.75rem;   /* 60 */
+  --h3: 3rem;      /* 48 */
+  --h4: 2.5rem;    /* 40 */
+  --h5: 2rem;      /* 32 */
+  --h6: 1.625rem;  /* 26 */
+  --text-large:   1.625rem;
+  --text-medium:  1.25rem;
+  --text-regular: 1.125rem;
+  --text-small:   1rem;
+  --text-tiny:    0.8125rem;
+
+  --tracking-display: -0.025em;
+  --tracking-mono:     0.06em;
+  --leading-display:   1.02;
+  --leading-body:      1.55;
+
+  /* ---- Radii ---- */
+  --r-button: 100px;
+  --r-badge:  100px;
+  --r-input:  12px;
+  --r-card-lg: 32px;
+  --r-card:    24px;
+  --r-image:   24px;
+
+  /* ---- Spacing ---- */
+  --section-y: 9rem;
+  --gutter-x:  6vw;
+  --container: 1280px;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.22s;
+  --dur-base: 0.5s;
+  --dur-slow: 0.9s;
+
+  /* ---- Glow ---- */
+  --glow-ember: 0 14px 50px -16px rgba(255,77,46,0.55);
+}
+
+@media (max-width: 991px) {
+  :root {
+    --h1: 3rem; --h2: 2.5rem; --h3: 2rem; --h4: 1.625rem;
+    --h5: 1.375rem; --h6: 1.25rem;
+    --text-large: 1.25rem; --text-medium: 1.0625rem;
+    --section-y: 5.5rem; --gutter-x: 6vw;
+  }
+}

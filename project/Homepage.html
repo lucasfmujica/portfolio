@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lucas Mujica — I build websites that move.</title>
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="homepage.css" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..600,0..1,0&display=block" rel="stylesheet" />
+<style>
+  /* Self-contained inline line-icon system — no external font dependency. */
+  .ic {
+    width: 1em; height: 1em; display: inline-block; vertical-align: middle;
+    fill: none; stroke: currentColor; stroke-width: 1.7;
+    stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ ICON SPRITE (inline, self-contained) ============ -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 4v15M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-build" viewBox="0 0 24 24"><path d="M3 8.4 12 4l9 4.4-9 4.4-9-4.4Z"/><path d="M3 12.4 12 16.8l9-4.4M3 15.8 12 20.2l9-4.4"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></symbol>
+    <symbol id="i-hub" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.4"/><circle cx="12" cy="4.2" r="1.7"/><circle cx="12" cy="19.8" r="1.7"/><circle cx="4.6" cy="8" r="1.7"/><circle cx="19.4" cy="8" r="1.7"/><path d="M12 6.6v3M10.9 11 6.1 8.8M13.1 11l4.8-2.2M12 14.4v3.6"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r="0.7" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-design" viewBox="0 0 24 24"><path d="M4 20s2.4-.4 3.9-1.9l9.6-9.6a2.05 2.05 0 0 0-2.9-2.9L5 15.2C3.5 16.7 4 20 4 20Z"/><path d="M14.3 5.7l3 3"/></symbol>
+    <symbol id="i-launch" viewBox="0 0 24 24"><path d="M3 16 9 10l4 4 8-8M16 6h5v5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.2v5l3.4 2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.8-6.1 6.8-11A6.8 6.8 0 0 0 5.2 10C5.2 14.9 12 21 12 21Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2.5c.6 5 1.4 5.8 6.4 6.4-5 .6-5.8 1.4-6.4 6.4-.6-5-1.4-5.8-6.4-6.4 5-.6 5.8-1.4 6.4-6.4Z"/></symbol>
+    <symbol id="i-verified" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m8.4 12 2.6 2.6 4.6-5.2"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56z"/></symbol>
+    <symbol id="i-gh" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.13-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav" data-screen-label="Nav">
+  <a class="nav__brand" href="#top" aria-label="Lucas Mujica — home">Lucas&nbsp;Mujica<span class="nav__dot">.</span></a>
+  <div class="nav__links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#stack">Stack</a>
+  </div>
+  <div class="nav__right">
+    <a href="#contact" class="btn btn--primary">Let's talk</a>
+  </div>
+</nav>
+
+<!-- ============ BOTTOM DOCK (appears past the hero) ============ -->
+<nav class="dock" id="dock" aria-label="Section navigation" data-screen-label="Dock">
+  <a href="#work" class="dock__item is-active"><span class="material-symbols-rounded">work</span><span class="dock__lbl">Work</span></a>
+  <a href="#about" class="dock__item"><span class="material-symbols-rounded">person</span><span class="dock__lbl">About</span></a>
+  <a href="#stack" class="dock__item"><span class="material-symbols-rounded">stacks</span><span class="dock__lbl">Stack</span></a>
+  <span class="dock__div"></span>
+  <a href="#contact" class="btn btn--primary dock__cta">Let's talk</a>
+</nav>
+
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="hero" data-screen-label="Hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__pill reveal">
+        <span class="hero__dot"></span> Available for new projects
+      </div>
+      <h1>
+        <span class="hero__line"><span>I build</span></span>
+        <span class="hero__line"><span>websites that</span></span>
+        <span class="hero__line"><span class="ember-word">move.</span></span>
+      </h1>
+      <p class="hero__sub reveal" data-d="2">Senior Webflow &amp; front-end developer, 5+ years deep — fast, scalable sites with motion that earns its place.</p>
+      <div class="hero__cta reveal" data-d="3">
+        <a href="#contact" class="btn btn--primary">Start a project <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+        <a href="#work" class="btn btn--ghost">View selected work</a>
+      </div>
+    </div>
+    <div class="hero__visual reveal" data-d="2" aria-hidden="true">
+      <div class="browser">
+        <div class="browser__bar">
+          <span class="browser__dots"><i></i><i></i><i></i></span>
+          <span class="browser__url"><svg class="ic browser__lock"><use href="#i-verified"/></svg><span id="browserUrl">lucasmujica.dev</span></span>
+        </div>
+        <div class="browser__screen" id="heroScreen" data-hero="build">
+          <!-- BUILD — a site that assembles itself -->
+          <div class="hero-panel hp-build">
+            <div class="wf-rail"><span class="wf-ico is-active"></span><span class="wf-ico"></span><span class="wf-ico"></span><span class="wf-ico"></span><span class="wf-ico"></span></div>
+            <div class="wf-canvas">
+              <div class="wf-site">
+                <div class="wf-nav"><span class="wf-logo"></span><span class="wf-links"><i></i><i></i><i></i></span><span class="wf-btn"></span></div>
+                <div class="wf-hero">
+                  <span class="wf-bar w70"></span>
+                  <span class="wf-bar w90"></span>
+                  <span class="wf-bar w45 ember"></span>
+                  <span class="wf-sub"></span>
+                  <span class="wf-cta"></span>
+                </div>
+                <div class="wf-cards"><span></span><span></span></div>
+              </div>
+              <div class="wf-select"><span class="wf-label">Div Block</span><i class="wf-h tl"></i><i class="wf-h tr"></i><i class="wf-h bl"></i><i class="wf-h br"></i></div>
+            </div>
+            <div class="wf-style">
+              <span class="wf-row"><b></b><u></u></span>
+              <span class="wf-row"><b></b><u></u></span>
+              <span class="wf-swatches"><i></i><i></i><i class="ember"></i><i></i></span>
+              <span class="wf-slider"><i></i></span>
+              <span class="wf-row"><b></b><u></u></span>
+              <span class="wf-slider"><i></i></span>
+            </div>
+          </div>
+          <!-- CODE — a GSAP reveal -->
+          <pre class="hero-panel hp-code"><code><span class="cm">// motion that earns its place</span>
+<span class="kw">const</span> tl = gsap.<span class="fn">timeline</span>();
+
+tl.<span class="fn">from</span>(<span class="str">".hero h1"</span>, {
+  yPercent: <span class="num">112</span>,
+  duration: <span class="num">0.95</span>,
+  ease: <span class="str">"power3.out"</span>,
+  stagger: <span class="num">0.1</span>,
+})<span class="cur"></span></code></pre>
+          <!-- MOTION — easing curve + playhead -->
+          <div class="hero-panel hp-motion">
+            <div class="hp-graph">
+              <svg viewBox="0 0 120 76" class="hp-curve">
+                <line class="hp-axis" x1="10" y1="64" x2="113" y2="64"/>
+                <line class="hp-axis" x1="10" y1="64" x2="10" y2="7"/>
+                <path id="hp-mpath" class="hp-path" d="M10 64 C 34 -4 44 7 113 12" fill="none"/>
+                <circle r="3.6" class="hp-play"><animateMotion dur="2.8s" begin="0.5s" repeatCount="indefinite" calcMode="spline" keyPoints="0;1;1" keyTimes="0;0.6;1" keySplines="0.22 1 0.36 1; 0 0 1 1"><mpath href="#hp-mpath"/></animateMotion></circle>
+              </svg>
+              <span class="hp-cap">ease-out-quint · 0.95s</span>
+            </div>
+            <div class="hp-tracks">
+              <div class="hp-track"><span class="hp-tk-l"></span><span class="hp-tk-bar"><i style="left:14%"></i><i class="ember" style="left:48%"></i><i style="left:82%"></i></span></div>
+              <div class="hp-track"><span class="hp-tk-l"></span><span class="hp-tk-bar"><i style="left:24%"></i><i style="left:66%"></i></span></div>
+              <div class="hp-track"><span class="hp-tk-l"></span><span class="hp-tk-bar"><i style="left:10%"></i><i style="left:40%"></i><i class="ember" style="left:74%"></i></span></div>
+            </div>
+          </div>
+          <span class="browser__scan"></span>
+        </div>
+      </div>
+      <span class="hero__chip"><span class="hero__chip-dot"></span>Webflow · GSAP</span>
+      <span class="hero__fps">60 fps</span>
+    </div>
+  </div>
+  <a href="#work" class="hero__scroll">Scroll <svg class="ic"><use href="#i-arrow-down"/></svg></a>
+</header>
+
+<!-- ============ SELECTED WORK ============ -->
+<section class="section" id="work" data-screen-label="Selected work">
+  <div class="bloom" style="top:-8%;right:-5%;width:46vw;height:46vw;max-width:640px;max-height:640px;"></div>
+  <div class="container">
+    <div class="work__top">
+      <div class="section-head reveal">
+        <span class="eyebrow">selected work</span>
+        <h2>A few builds I'm proud&nbsp;of.</h2>
+        <p class="lede">Each one paired sharp design with motion that earns its place.</p>
+      </div>
+      <a href="#contact" class="btn btn--link reveal" data-d="1">View all projects <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+    </div>
+
+    <div class="workstack">
+      <article class="wcard reveal">
+        <div class="wcard__media">
+          <span class="wcard__num">01</span>
+          <image-slot id="proj-truenorth" shape="rect" placeholder="True North Jerseys — drop screenshot"></image-slot>
+        </div>
+        <div class="wcard__body">
+          <span class="wcard__eyebrow">01 — E-commerce build · 2024</span>
+          <h3 class="wcard__title">True North Jerseys</h3>
+          <p class="wcard__blurb">Custom apparel store built to <span class="ember-word">convert</span> — Webflow + GSAP, scroll-tied product reveals.</p>
+          <div class="wcard__tags"><span class="wcard__tag">Webflow</span><span class="wcard__tag">GSAP</span><span class="wcard__tag">E-commerce</span></div>
+          <a href="#contact" class="wcard__link">View case study <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+        </div>
+      </article>
+
+      <article class="wcard reveal">
+        <div class="wcard__media">
+          <span class="wcard__num">02</span>
+          <image-slot id="proj-bike" shape="rect" src="assets/project-bike.png" placeholder="BIKE — drop screenshot"></image-slot>
+        </div>
+        <div class="wcard__body">
+          <span class="wcard__eyebrow">02 — Web app · 2024</span>
+          <h3 class="wcard__title">BIKE</h3>
+          <p class="wcard__blurb">Next.js, TypeScript &amp; HubSpot with <span class="ember-word">real-time</span> data visualization for an English school.</p>
+          <div class="wcard__tags"><span class="wcard__tag">Next.js</span><span class="wcard__tag">TypeScript</span><span class="wcard__tag">HubSpot</span></div>
+          <a href="#contact" class="wcard__link">View case study <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+        </div>
+      </article>
+
+      <article class="wcard reveal">
+        <div class="wcard__media">
+          <span class="wcard__num">03</span>
+          <image-slot id="proj-k2b" shape="rect" placeholder="K2BTools — drop screenshot"></image-slot>
+        </div>
+        <div class="wcard__body">
+          <span class="wcard__eyebrow">03 — Marketing site · 2023</span>
+          <h3 class="wcard__title">K2BTools</h3>
+          <p class="wcard__blurb">Webflow, Client-First &amp; GSAP — scroll animations with serious <span class="ember-word">performance</span> tuning.</p>
+          <div class="wcard__tags"><span class="wcard__tag">Webflow</span><span class="wcard__tag">Client-First</span><span class="wcard__tag">GSAP</span></div>
+          <a href="#contact" class="wcard__link">View case study <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+        </div>
+      </article>
+
+      <article class="wcard reveal">
+        <div class="wcard__media">
+          <span class="wcard__num">04</span>
+          <image-slot id="proj-nova" shape="rect" placeholder="NOVA Ventures — drop screenshot"></image-slot>
+        </div>
+        <div class="wcard__body">
+          <span class="wcard__eyebrow">04 — Automation · 2023</span>
+          <h3 class="wcard__title">NOVA Ventures</h3>
+          <p class="wcard__blurb">n8n, Zapier &amp; Airtable workflows — email sequences and lead scoring that <span class="ember-word">run themselves</span>.</p>
+          <div class="wcard__tags"><span class="wcard__tag">n8n</span><span class="wcard__tag">Zapier</span><span class="wcard__tag">Airtable</span></div>
+          <a href="#contact" class="wcard__link">View case study <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+        </div>
+      </article>
+
+      <article class="wcard reveal">
+        <div class="wcard__media">
+          <span class="wcard__num">05</span>
+          <image-slot id="proj-somnio" shape="rect" placeholder="Somnio Software — drop screenshot"></image-slot>
+        </div>
+        <div class="wcard__body">
+          <span class="wcard__eyebrow">05 — Partner site · 2023</span>
+          <h3 class="wcard__title">Somnio Software</h3>
+          <p class="wcard__blurb">A product-studio site, <span class="ember-word">component-first</span> and easy for the team to extend.</p>
+          <div class="wcard__tags"><span class="wcard__tag">Webflow</span><span class="wcard__tag">Lumos</span><span class="wcard__tag">CMS</span></div>
+          <a href="#contact" class="wcard__link">View case study <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+        </div>
+      </article>
+
+      <article class="wcard reveal">
+        <div class="wcard__media">
+          <span class="wcard__num">06</span>
+          <image-slot id="proj-seilas" shape="rect" placeholder="Seilas Ship Supplies — drop screenshot"></image-slot>
+        </div>
+        <div class="wcard__body">
+          <span class="wcard__eyebrow">06 — B2B catalog · 2022</span>
+          <h3 class="wcard__title">Seilas Ship Supplies</h3>
+          <p class="wcard__blurb">A marine supply catalog built to <span class="ember-word">scale</span> across thousands of SKUs.</p>
+          <div class="wcard__tags"><span class="wcard__tag">Webflow</span><span class="wcard__tag">CMS</span><span class="wcard__tag">B2B</span></div>
+          <a href="#contact" class="wcard__link">View case study <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section about" id="about" data-screen-label="About">
+  <div class="container about__grid">
+    <div class="about__portrait reveal">
+      <image-slot id="portrait" shape="rounded" radius="24" placeholder="Drop a portrait of Lucas"></image-slot>
+    </div>
+    <div class="about__body">
+      <span class="eyebrow reveal">about</span>
+      <h2 class="reveal" data-d="1">A senior developer with a track&nbsp;record.</h2>
+      <p class="lede reveal" data-d="1">Five years building production-grade websites and custom code. Certified in Client-First, fluent in Lumos, component-first by default — sites that stay fast and easy to edit long after launch.</p>
+      <div class="stats reveal" data-d="2">
+        <div class="stat">
+          <div class="stat__num" data-count="5" data-suffix="+">0<span class="plus">+</span></div>
+          <div class="stat__lbl">years shipping</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num" data-count="70" data-suffix="+">0<span class="plus">+</span></div>
+          <div class="stat__lbl">projects delivered</div>
+        </div>
+      </div>
+      <div class="about__cred reveal" data-d="2">
+        <span>Webflow Enterprise Partner</span>
+        <span>Client-First certified</span>
+        <span>Remote, worldwide</span>
+      </div>
+      <div class="about__actions reveal" data-d="3">
+        <a href="#contact" class="btn btn--primary">Let's talk</a>
+        <a href="#work" class="btn btn--ghost">See the work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STACK ============ -->
+<section class="section" id="stack" data-screen-label="Stack">
+  <div class="bloom bloom--b" style="bottom:-12%;left:-6%;width:42vw;height:42vw;max-width:560px;max-height:560px;"></div>
+  <div class="container">
+    <div class="section-head center reveal" style="margin-bottom:64px">
+      <span class="eyebrow eyebrow--accent">stack</span>
+      <h2>The right tool for the job — <span class="ember-word">every time.</span></h2>
+      <p class="lede">Everything here is chosen for speed, maintainability, and shipping fast without cutting corners.</p>
+    </div>
+    <div class="smq">
+      <div class="smq__row smq__row--a"><div class="smq__t" id="smqA"></div></div>
+      <div class="smq__row smq__row--b"><div class="smq__t" id="smqB"></div></div>
+    </div>
+    <div class="smq__tiers">
+      <span class="smq__tier reveal"><svg class="ic"><use href="#i-build"/></svg><b>Build</b> — Webflow · Client-First · Lumos</span>
+      <span class="smq__tier reveal" data-d="1"><svg class="ic"><use href="#i-code"/></svg><b>Code</b> — React · Next.js · GSAP</span>
+      <span class="smq__tier reveal" data-d="2"><svg class="ic"><use href="#i-bolt"/></svg><b>Automation</b> — n8n · Make · Zapier</span>
+      <span class="smq__tier reveal" data-d="3"><svg class="ic"><use href="#i-hub"/></svg><b>Connect</b> — HubSpot · Stripe · Notion</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section process" id="process" data-screen-label="Process">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">process</span>
+      <h2>How every project&nbsp;goes.</h2>
+      <p class="lede">Clear strategy, clean execution, measurable results. No guesswork.</p>
+    </div>
+    <div class="pflow" data-pflow>
+      <div class="pflow__rail" aria-hidden="true">
+        <span class="pflow__fill"></span>
+        <span class="pflow__comet"></span>
+      </div>
+      <div class="pflow__steps">
+        <div class="pstep">
+          <div class="pstep__node">
+            <svg class="ic pstep__ic"><use href="#i-target"/></svg>
+          </div>
+          <span class="pstep__n">01</span>
+          <h3>Understand</h3>
+          <p>We get clear on the goal, the constraints, and what success actually looks like.</p>
+        </div>
+        <div class="pstep">
+          <div class="pstep__node">
+            <svg class="ic pstep__ic"><use href="#i-design"/></svg>
+          </div>
+          <span class="pstep__n">02</span>
+          <h3>Design &amp; build</h3>
+          <p>Component-first, performance-first. Real motion, zero bloat, scalable from day one.</p>
+        </div>
+        <div class="pstep">
+          <div class="pstep__node">
+            <svg class="ic pstep__ic"><use href="#i-launch"/></svg>
+          </div>
+          <span class="pstep__n">03</span>
+          <h3>Launch &amp; optimize</h3>
+          <p>Ship fast, then tune against real data — no guesswork, just steady gains.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section" id="testimonials" data-screen-label="Testimonials">
+  <div class="bloom" style="top:6%;right:-7%;width:40vw;height:40vw;max-width:520px;max-height:520px;"></div>
+  <div class="container">
+    <div class="section-head center reveal" style="margin-bottom:56px">
+      <span class="eyebrow">testimonials</span>
+      <h2>Don't take my word for&nbsp;it.</h2>
+      <p class="lede">Proven results, from the people who shipped alongside me.</p>
+    </div>
+    <div class="tst reveal">
+      <div class="tst__feature" id="tstFeature"></div>
+      <div>
+        <div class="tst__list" id="tstList"></div>
+        <div class="tst__prog"><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT (ember-flooded) ============ -->
+<section class="section contact scheme-ember" id="contact" data-screen-label="Contact">
+  <div class="contact__ghost" aria-hidden="true">LM<span class="e">.</span></div>
+  <div class="container contact__grid">
+    <div class="contact__main">
+      <span class="eyebrow reveal">start a project</span>
+      <h2 class="reveal" data-d="1">Ready to build.</h2>
+      <p class="contact__lead reveal" data-d="2">A few quick details so I can scope it before we even talk — or just email me directly.</p>
+      <div class="contact__meta reveal" data-d="2">
+        <a href="mailto:hello@lucasmujica.dev" class="contact__mail">hello@lucasmujica.dev <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+        <div class="contact__avail"><span class="contact__pulse"></span> Available for new projects</div>
+        <div class="contact__loc">Buenos Aires · Remote worldwide</div>
+      </div>
+      <div class="contact__socials" aria-label="Social links">
+        <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.8 0 0 .78 0 1.74v20.52C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0z"/></svg></a>
+        <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.13-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.62c-3.15 0-3.52.01-4.76.07-1.15.05-1.77.24-2.18.4-.55.22-.94.47-1.35.88-.41.41-.66.8-.88 1.35-.16.41-.35 1.03-.4 2.18-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.05 1.15.24 1.77.4 2.18.22.55.47.94.88 1.35.41.41.8.66 1.35.88.41.16 1.03.35 2.18.4 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c1.15-.05 1.77-.24 2.18-.4.55-.22.94-.47 1.35-.88.41-.41.66-.8.88-1.35.16-.41.35-1.03.4-2.18.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.05-1.15-.24-1.77-.4-2.18a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.16-1.03-.35-2.18-.4-1.24-.06-1.61-.07-4.76-.07zm0 2.76a5.46 5.46 0 1 1 0 10.92 5.46 5.46 0 0 1 0-10.92zm0 9a3.54 3.54 0 1 0 0-7.08 3.54 3.54 0 0 0 0 7.08zm6.95-9.22a1.28 1.28 0 1 1-2.55 0 1.28 1.28 0 0 1 2.55 0z"/></svg></a>
+      </div>
+    </div>
+    <div class="contact__formwrap reveal" data-d="2">
+      <form id="contactForm" novalidate>
+        <p class="mad">
+          Hi Lucas, I'm <input class="min" name="name" placeholder="your name" size="10" required /> from <input class="min" name="company" placeholder="company" size="9" />.
+          I'm building a
+          <select class="msel" name="type"><option>Webflow site</option><option>web app</option><option>automation</option><option>brand site</option></select>
+          with a budget around
+          <select class="msel" name="budget"><option>$5–10k</option><option>$10–25k</option><option>$25k+</option><option>TBD</option></select>.
+          Reach me at <input class="min" name="email" type="email" placeholder="you@email.com" size="13" required />.
+        </p>
+        <div class="mad__foot">
+          <button class="f-btn" type="submit">Send it <span class="arr">→</span></button>
+          <span class="f-note"><span class="f-note__dot"></span> Replies within a day</span>
+        </div>
+      </form>
+      <div class="f-done" id="contactDone"><div class="f-done__ic"><svg viewBox="0 0 24 24" class="f-chk"><path d="M4 12l5 5L20 6"/></svg></div><div class="f-done__h">On its way — talk soon.</div><p class="f-done__p">I'll get back to you with next steps within a day.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" data-screen-label="Footer">
+  <div class="container">
+    <h2 class="footer__cta">Let's build something that <span class="ember-word">moves.</span></h2>
+    <a href="mailto:hello@lucasmujica.dev" class="footer__mail">hello@lucasmujica.dev <span class="ember-word">↗</span></a>
+    <div class="footer__row">
+      <span class="footer__wordmark">Lucas&nbsp;Mujica<span class="footer__dot">.</span></span>
+      <nav class="footer__nav">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#stack">Stack</a>
+        <a href="#process">Process</a>
+      </nav>
+      <div class="footer__soc" aria-label="Social links">
+        <a href="#" aria-label="X"><svg class="ic"><use href="#i-x"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg class="ic"><use href="#i-in"/></svg></a>
+        <a href="#" aria-label="GitHub"><svg class="ic"><use href="#i-gh"/></svg></a>
+      </div>
+    </div>
+    <div class="footer__copy">© 2026 Lucas Mujica. All rights reserved.</div>
+  </div>
+</footer>
+
+<div class="grain" aria-hidden="true"></div>
+
+<script src="image-slot.js"></script>
+<script>
+  document.documentElement.classList.add('js');
+
+  /* ---- Nav background fade on scroll ---- */
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---- Hero → dock handoff: top-bar links recede, bottom dock rises ---- */
+  (function () {
+    const heroEl = document.getElementById('hero');
+    if (!heroEl || !('IntersectionObserver' in window)) return;
+    const ho = new IntersectionObserver((entries) => {
+      entries.forEach((e) => document.body.classList.toggle('past-hero', !e.isIntersecting));
+    }, { rootMargin: '-72px 0px 0px 0px', threshold: 0 });
+    ho.observe(heroEl);
+
+    /* dock scrollspy — mark the section you're reading */
+    const items = [...document.querySelectorAll('.dock__item')];
+    const sections = ['work', 'about', 'stack'].map((id) => document.getElementById(id)).filter(Boolean);
+    if (!items.length || !sections.length) return;
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const href = '#' + e.target.id;
+        items.forEach((it) => it.classList.toggle('is-active', it.getAttribute('href') === href));
+      });
+    }, { rootMargin: '-48% 0px -48% 0px', threshold: 0 });
+    sections.forEach((s) => spy.observe(s));
+  })();
+
+  /* ---- Hero line reveal on load ---- */
+  const hero = document.getElementById('hero');
+  requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('in')));
+
+  /* ---- Generic reveal-on-scroll ---- */
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+  }
+
+  /* ---- Count-up stats ---- */
+  const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+  function countUp(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const dur = 1400; const start = performance.now();
+    function tick(now) {
+      const p = Math.min(1, (now - start) / dur);
+      const val = Math.round(easeOut(p) * target);
+      el.innerHTML = val + '<span class="plus">' + suffix + '</span>';
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if (!reduce && 'IntersectionObserver' in window) {
+    const so = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { countUp(e.target); so.unobserve(e.target); }
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-count]').forEach((el) => so.observe(el));
+  } else {
+    document.querySelectorAll('[data-count]').forEach((el) => {
+      el.innerHTML = el.dataset.count + '<span class="plus">' + (el.dataset.suffix||'') + '</span>';
+    });
+  }
+
+  /* ---- Testimonials: featured + client selector ---- */
+  (function () {
+    const T = [
+      { n: "Artem Khomenko", r: "CTO", c: "Enkonix", q: 'A strong developer with sharp attention to detail and the ability to ship highly custom solutions <span class="ember-word">within the constraints</span> of the platform. Highly recommend.' },
+      { n: "Franco Caputo", r: "CEO", c: "WonderUp", q: 'Worked with Lucas on multiple projects and would happily do a thousand more. Detail-oriented, tech-savvy, and an <span class="ember-word">incredible human</span> — above and beyond every time.' },
+      { n: "Sofía Marín", r: "Founder", c: "Lumen Studio", q: 'He turned a messy brief into a fast, scalable build. The motion finally <span class="ember-word">feels intentional</span>, never decorative.' },
+      { n: "Diego Herrera", r: "Head of Growth", c: "Northbound", q: 'We ship pages in hours, not weeks. Client-First done right — the whole team can <span class="ember-word">edit without breaking</span> anything.' },
+      { n: "Emily Saunders", r: "Product Lead", c: "Cadence", q: 'Lucas sweats the details most devs skip — performance budgets, accessibility, the <span class="ember-word">60fps stuff</span>. It shows.' },
+      { n: "Tomás Vidal", r: "Director", c: "Seilas", q: 'Senior, reliable, no hand-holding. He scoped it, built it, and <span class="ember-word">tuned it against real data</span>.' },
+    ];
+    const feat = document.getElementById('tstFeature');
+    const list = document.getElementById('tstList');
+    const prog = document.querySelector('.tst__prog');
+    const wrap = document.querySelector('.tst');
+    if (!feat || !list || !wrap) return;
+    let i = 0, timer = null;
+    const reduceMo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    list.innerHTML = T.map((t, idx) =>
+      '<button class="tst__item' + (idx === 0 ? ' is-active' : '') + '" data-i="' + idx + '">' +
+        '<span class="tst__dot"></span>' +
+        '<span class="tst__meta"><span class="tst__nm">' + t.n + '</span><span class="tst__co">' + t.r + ' · ' + t.c + '</span></span>' +
+      '</button>').join('');
+
+    const body = (t) =>
+      '<div class="tst__mark">&ldquo;</div>' +
+      '<div class="tst__body"><p class="tst__q">"' + t.q + '"</p>' +
+        '<div class="tst__by"><span class="tst__av"></span><div><div class="tst__name">' + t.n + '</div>' +
+        '<div class="tst__role">' + t.r + ' · ' + t.c + '</div></div></div></div>';
+
+    feat.innerHTML = body(T[0]);
+
+    function setActive(idx) { [...list.children].forEach((b, bi) => b.classList.toggle('is-active', bi === idx)); }
+    function restart() {
+      if (reduceMo) return;
+      if (prog) { prog.classList.remove('run'); void prog.offsetWidth; prog.classList.add('run'); }
+      clearTimeout(timer);
+      timer = setTimeout(() => show((i + 1) % T.length), 6000);
+    }
+    function show(idx) {
+      i = idx; feat.classList.add('is-out');
+      setTimeout(() => { feat.innerHTML = body(T[i]); feat.classList.remove('is-out'); }, 280);
+      setActive(i); restart();
+    }
+    list.addEventListener('click', (e) => { const b = e.target.closest('.tst__item'); if (b) show(+b.dataset.i); });
+    wrap.addEventListener('mouseenter', () => { clearTimeout(timer); if (prog) prog.classList.remove('run'); });
+    wrap.addEventListener('mouseleave', () => restart());
+    restart();
+  })();
+
+  /* ---- Contact brief form ---- */
+  document.querySelectorAll('.contact [data-chips]').forEach((group) => {
+    group.addEventListener('click', (e) => {
+      const chip = e.target.closest('.chip'); if (!chip) return;
+      group.querySelectorAll('.chip').forEach((c) => c.classList.toggle('is-on', c === chip ? !chip.classList.contains('is-on') : false));
+    });
+  });
+  (function () {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    const done = document.getElementById('contactDone');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let ok = true;
+      form.querySelectorAll('[required]').forEach((el) => {
+        const bad = !el.value.trim() || (el.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value));
+        el.style.boxShadow = ''; el.style.borderBottomColor = '';
+        if (bad) {
+          ok = false;
+          if (el.classList.contains('min')) el.style.borderBottomColor = 'var(--ink)';
+          else el.style.boxShadow = '0 0 0 2px var(--ink)';
+        }
+      });
+      if (!ok) return;
+      form.classList.add('hide'); done.classList.add('show');
+    });
+  })();
+
+  /* ---- Process: animated horizontal flow (line draws, nodes light up) ---- */
+  (function () {
+    const flow = document.querySelector('[data-pflow]');
+    if (!flow) return;
+    if (reduce || !('IntersectionObserver' in window)) { flow.classList.add('play'); return; }
+    const po = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { flow.classList.add('play'); po.unobserve(e.target); } });
+    }, { threshold: 0.45 });
+    po.observe(flow);
+  })();
+
+  /* ---- Stack: kinetic tech marquee ---- */
+  (function () {
+    const a = document.getElementById('smqA'); const b = document.getElementById('smqB');
+    if (!a || !b) return;
+    const ALL = ["Webflow", "Client-First", "Lumos", "React", "Next.js", "TypeScript", "GSAP", "n8n", "Make", "Zapier", "Airtable", "HubSpot", "Stripe", "Notion", "Slack", "Figma"];
+    const HOT = new Set(["Webflow", "GSAP", "Next.js", "n8n", "HubSpot"]);
+    const chip = (t) => '<span class="smqchip' + (HOT.has(t) ? ' on' : '') + '">' + t + '</span>';
+    const rA = ALL.map(chip).join(''); const rB = ALL.slice().reverse().map(chip).join('');
+    a.innerHTML = rA + rA; b.innerHTML = rB + rB;
+  })();
+</script>
+
+<!-- ============ TWEAKS PANEL ============ -->
+<div id="tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+const { useTweaks, TweaksPanel, TweakSection, TweakColor, TweakRadio } = window;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "#FF4D2E",
+  "mood": "Ink",
+  "motion": "Kinetic",
+  "hero": "Build"
+}/*EDITMODE-END*/;
+
+// Each accent is bright enough that ink text stays legible on the contact flood.
+const ACCENTS = ['#FF4D2E', '#BEF264', '#54A0FF', '#FFB23E'];
+// [ink, surface, surface-2, hairline, hairline-strong]
+const MOODS = {
+  Ink:  ['#0B0B0D', '#16161A', '#1E1E23', '#2A2A30', '#3A3A42'],
+  Onyx: ['#000000', '#0D0D0F', '#16161A', '#242428', '#34343C'],
+  Warm: ['#0E0B0A', '#1A1411', '#221A15', '#322820', '#473726'],
+};
+// [reveal-shift, dur-slow, dur-base]
+const MOTION = {
+  Calm:     ['12px', '0.55s', '0.35s'],
+  Balanced: ['26px', '0.90s', '0.50s'],
+  Kinetic:  ['54px', '1.05s', '0.62s'],
+};
+
+// Hero panel — abstract content shown inside the browser frame
+const HERO_PANEL = {
+  Build:  { key: 'build',  url: 'lucasmujica.dev' },
+  Code:   { key: 'code',   url: 'reveal.js' },
+  Motion: { key: 'motion', url: 'timeline · gsap' },
+};
+
+function TweaksApp() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  React.useEffect(() => {
+    const s = document.documentElement.style;
+    // Accent — recolors every ember touchpoint + the contact band
+    s.setProperty('--ember', t.accent);
+    s.setProperty('--ember-hover', `color-mix(in srgb, ${t.accent}, #000 16%)`);
+    // Canvas mood — surface temperature
+    const m = MOODS[t.mood] || MOODS.Ink;
+    s.setProperty('--ink', m[0]);
+    s.setProperty('--surface', m[1]);
+    s.setProperty('--surface-2', m[2]);
+    s.setProperty('--hairline', m[3]);
+    s.setProperty('--hairline-strong', m[4]);
+    // Motion energy — entrance reveal distance + speed
+    const mo = MOTION[t.motion] || MOTION.Balanced;
+    s.setProperty('--reveal-y', mo[0]);
+    s.setProperty('--dur-slow', mo[1]);
+    s.setProperty('--dur-base', mo[2]);
+    // Hero panel — swap the abstract visual inside the browser frame
+    const hp = HERO_PANEL[t.hero] || HERO_PANEL.Build;
+    const screen = document.getElementById('heroScreen');
+    const url = document.getElementById('browserUrl');
+    if (screen) screen.dataset.hero = hp.key;
+    if (url) url.textContent = hp.url;
+  }, [t.accent, t.mood, t.motion, t.hero]);
+
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection label="Accent" />
+      <TweakColor label="Ember" value={t.accent} options={ACCENTS}
+                  onChange={(v) => setTweak('accent', v)} />
+      <TweakSection label="Canvas mood" />
+      <TweakRadio label="Surface" value={t.mood} options={['Ink', 'Onyx', 'Warm']}
+                  onChange={(v) => setTweak('mood', v)} />
+      <TweakSection label="Motion" />
+      <TweakRadio label="Energy" value={t.motion} options={['Calm', 'Balanced', 'Kinetic']}
+                  onChange={(v) => setTweak('motion', v)} />
+      <TweakSection label="Hero panel" />
+      <TweakRadio label="Visual" value={t.hero} options={['Build', 'Code', 'Motion']}
+                  onChange={(v) => setTweak('hero', v)} />
+    </TweaksPanel>
+  );
+}
+ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<TweaksApp />);
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify form detection</title>
+  </head>
+  <body>
+    <!--
+      Static form shell so Netlify's build-time bot can register the "contact"
+      form. The App Router renders the real form dynamically (not parseable at
+      build), so this mirror must list every field the client POSTs.
+      Keep field names in sync with ContactForm.tsx.
+    -->
+    <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
+      <input type="text" name="name" />
+      <input type="text" name="company" />
+      <input type="text" name="type" />
+      <input type="text" name="budget" />
+      <input type="email" name="email" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lucas Mujica — Mobile (390px)</title>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    background:
+      radial-gradient(120% 80% at 50% -10%, #17171b 0%, #0b0b0d 60%),
+      #0b0b0d;
+    min-height: 100vh;
+    font-family: -apple-system, system-ui, sans-serif;
+  }
+  #root { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 32px 20px; box-sizing: border-box; }
+  .framewrap iframe {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    border: 0; border-radius: 48px; background: #0b0b0d;
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+const { useTweaks, TweaksPanel, TweakSection, TweakColor, TweakRadio } = window;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "#FF4D2E",
+  "mood": "Ink",
+  "motion": "Kinetic"
+}/*EDITMODE-END*/;
+
+/* Each accent is bright enough that ink text stays legible on the contact flood. */
+const ACCENTS = ['#FF4D2E', '#FFB23E', '#BEF264', '#54A0FF'];
+/* [ink, surface, surface-2, hairline, hairline-strong] — surface temperature */
+const MOODS = {
+  Ink:  ['#0B0B0D', '#16161A', '#1E1E23', '#2A2A30', '#3A3A42'],
+  Onyx: ['#000000', '#0D0D0F', '#16161A', '#242428', '#34343C'],
+  Warm: ['#0E0B0A', '#1A1411', '#221A15', '#322820', '#473726'],
+};
+/* [reveal-shift, dur-slow, dur-base] — entrance energy */
+const MOTION = {
+  Calm:     ['10px', '0.55s', '0.35s'],
+  Balanced: ['22px', '0.90s', '0.50s'],
+  Kinetic:  ['46px', '1.05s', '0.62s'],
+};
+
+function applyTweaks(doc, t) {
+  if (!doc || !doc.documentElement) return;
+  const s = doc.documentElement.style;
+  // Accent — recolors every ember touchpoint + the contact flood
+  s.setProperty('--ember', t.accent);
+  s.setProperty('--ember-hover', `color-mix(in srgb, ${t.accent}, #000 14%)`);
+  // Canvas mood — surface temperature
+  const m = MOODS[t.mood] || MOODS.Ink;
+  s.setProperty('--ink', m[0]);
+  s.setProperty('--surface', m[1]);
+  s.setProperty('--surface-2', m[2]);
+  s.setProperty('--hairline', m[3]);
+  s.setProperty('--hairline-strong', m[4]);
+  // Motion energy — reveal distance + speed
+  const mo = MOTION[t.motion] || MOTION.Balanced;
+  s.setProperty('--reveal-y', mo[0]);
+  s.setProperty('--dur-slow', mo[1]);
+  s.setProperty('--dur-base', mo[2]);
+}
+
+function Root() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const iframeRef = React.useRef(null);
+  const [scale, setScale] = React.useState(1);
+
+  React.useEffect(() => {
+    const fit = () => setScale(Math.min(1, (window.innerHeight - 56) / 844, (window.innerWidth - 56) / 390));
+    fit();
+    window.addEventListener('resize', fit);
+    return () => window.removeEventListener('resize', fit);
+  }, []);
+
+  const apply = React.useCallback(() => {
+    const f = iframeRef.current;
+    if (f && f.contentDocument) applyTweaks(f.contentDocument, t);
+  }, [t]);
+
+  React.useEffect(() => { apply(); }, [apply]);
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ transform: `scale(${scale})`, transformOrigin: 'center center' }}>
+        <IOSDevice width={390} height={844} dark>
+          <div className="framewrap" style={{ position: 'absolute', inset: 0 }}>
+            <iframe ref={iframeRef} onLoad={apply} src="Homepage Mobile.html?frame=ios"
+                    title="Lucas Mujica — mobile homepage" scrolling="yes"></iframe>
+          </div>
+        </IOSDevice>
+      </div>
+
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Accent" />
+        <TweakColor label="Ember" value={t.accent} options={ACCENTS}
+                    onChange={(v) => setTweak('accent', v)} />
+        <TweakSection label="Canvas mood" />
+        <TweakRadio label="Surface" value={t.mood} options={['Ink', 'Onyx', 'Warm']}
+                    onChange={(v) => setTweak('mood', v)} />
+        <TweakSection label="Motion" />
+        <TweakRadio label="Energy" value={t.motion} options={['Calm', 'Balanced', 'Kinetic']}
+                    onChange={(v) => setTweak('motion', v)} />
+      </TweaksPanel>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Root />);
+</script>
+</body>
+</html>

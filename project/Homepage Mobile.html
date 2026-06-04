@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Lucas Mujica — I build websites that move.</title>
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="mobile.css" />
+</head>
+<body>
+
+<!-- ============ ICON SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-work" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></symbol>
+    <symbol id="i-stack" viewBox="0 0 24 24"><path d="M12 3 3 7.5 12 12l9-4.5L12 3Z"/><path d="M3 12.5 12 17l9-4.5M3 16.8 12 21.3l9-4.5"/></symbol>
+    <symbol id="i-build" viewBox="0 0 24 24"><path d="M3 8.4 12 4l9 4.4-9 4.4-9-4.4Z"/><path d="M3 12.4 12 16.8l9-4.4M3 15.8 12 20.2l9-4.4"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></symbol>
+    <symbol id="i-hub" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.4"/><circle cx="12" cy="4.2" r="1.7"/><circle cx="12" cy="19.8" r="1.7"/><circle cx="4.6" cy="8" r="1.7"/><circle cx="19.4" cy="8" r="1.7"/><path d="M12 6.6v3M10.9 11 6.1 8.8M13.1 11l4.8-2.2M12 14.4v3.6"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r="0.7" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-design" viewBox="0 0 24 24"><path d="M4 20s2.4-.4 3.9-1.9l9.6-9.6a2.05 2.05 0 0 0-2.9-2.9L5 15.2C3.5 16.7 4 20 4 20Z"/><path d="M14.3 5.7l3 3"/></symbol>
+    <symbol id="i-launch" viewBox="0 0 24 24"><path d="M3 16 9 10l4 4 8-8M16 6h5v5"/></symbol>
+    <symbol id="i-verified" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m8.4 12 2.6 2.6 4.6-5.2"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56z"/></symbol>
+    <symbol id="i-gh" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.13-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ TOP BAR (collapsed) ============ -->
+<header class="topbar" id="topbar" data-screen-label="Top bar">
+  <a class="topbar__brand" href="#top" aria-label="Lucas Mujica — home">Lucas&nbsp;Mujica<span class="topbar__dot">.</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navmenu">
+    <span class="menu-btn__bars"><i></i><i></i><i></i></span>
+  </button>
+</header>
+
+<div class="navscrim" id="navscrim" aria-hidden="true"></div>
+<nav class="navmenu" id="navmenu" aria-label="Menu" data-screen-label="Menu">
+  <a href="#work">Work <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+  <a href="#about">About <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+  <a href="#stack">Stack <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+  <a href="#process">Process <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+  <a href="#contact" class="navmenu__cta">Let's talk <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+</nav>
+
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<header class="hero section" id="hero" data-screen-label="Hero">
+  <div class="hero__inner">
+    <div class="hero__pill reveal">
+      <span class="hero__dot"></span> Available for new projects
+    </div>
+    <h1>
+      <span class="hero__line"><span>I build</span></span>
+      <span class="hero__line"><span>websites</span></span>
+      <span class="hero__line"><span>that <span class="ember-word">move.</span></span></span>
+    </h1>
+    <p class="hero__sub reveal" data-d="2">Senior Webflow &amp; front-end developer, 5+ years deep — fast, scalable sites with motion that earns its place.</p>
+    <div class="hero__cta reveal" data-d="3">
+      <a href="#contact" class="btn btn--primary btn--block">Start a project <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+      <a href="#work" class="btn btn--ghost btn--block">View selected work</a>
+    </div>
+
+    <!-- hero visual: Webflow Designer "Build" mock (matches desktop) -->
+    <div class="hero__visual reveal" data-d="3" aria-hidden="true">
+      <div class="browser">
+        <div class="browser__bar">
+          <span class="browser__dots"><i></i><i></i><i></i></span>
+          <span class="browser__url"><svg class="ic browser__lock"><use href="#i-verified"/></svg>lucasmujica.dev</span>
+        </div>
+        <div class="browser__screen">
+          <div class="hp-build">
+            <div class="wf-rail"><span class="wf-ico is-active"></span><span class="wf-ico"></span><span class="wf-ico"></span><span class="wf-ico"></span><span class="wf-ico"></span></div>
+            <div class="wf-canvas">
+              <div class="wf-site">
+                <div class="wf-nav"><span class="wf-logo"></span><span class="wf-links"><i></i><i></i><i></i></span><span class="wf-btn"></span></div>
+                <div class="wf-hero">
+                  <span class="wf-bar w70"></span>
+                  <span class="wf-bar w90"></span>
+                  <span class="wf-bar w45 ember"></span>
+                  <span class="wf-sub"></span>
+                  <span class="wf-cta"></span>
+                </div>
+                <div class="wf-cards"><span></span><span></span></div>
+              </div>
+              <div class="wf-select"><span class="wf-label">Div Block</span><i class="wf-h tl"></i><i class="wf-h tr"></i><i class="wf-h bl"></i><i class="wf-h br"></i></div>
+            </div>
+            <div class="wf-style">
+              <span class="wf-row"><b></b><u></u></span>
+              <span class="wf-row"><b></b><u></u></span>
+              <span class="wf-swatches"><i></i><i></i><i class="ember"></i><i></i></span>
+              <span class="wf-slider"><i></i></span>
+              <span class="wf-row"><b></b><u></u></span>
+              <span class="wf-slider"><i></i></span>
+            </div>
+          </div>
+          <span class="browser__scan"></span>
+        </div>
+      </div>
+      <span class="hero__chip"><span class="hero__chip-dot"></span>Webflow · GSAP</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SELECTED WORK ============ -->
+<section class="section sec-blob" id="work" data-screen-label="Selected work">
+  <span class="mblob" style="top:2%;right:-26%" aria-hidden="true"></span>
+  <span class="mblob mblob--n mblob--b" style="bottom:8%;left:-30%" aria-hidden="true"></span>
+  <div class="work__top">
+    <div class="section-head reveal">
+      <span class="eyebrow">selected work</span>
+      <h2>A few builds I'm proud&nbsp;of.</h2>
+      <p class="lede">Each one paired sharp design with motion that earns its place.</p>
+    </div>
+    <a href="#contact" class="btn btn--link reveal" data-d="1">View all projects <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+  </div>
+
+  <div class="workstack">
+    <article class="wcard reveal">
+      <div class="wcard__media">
+        <span class="wcard__num">01</span>
+        <image-slot id="proj-truenorth" shape="rect" placeholder="True North Jerseys"></image-slot>
+      </div>
+      <div class="wcard__body">
+        <span class="wcard__eyebrow">01 — E-commerce build · 2024</span>
+        <h3 class="wcard__title">True North Jerseys</h3>
+        <p class="wcard__blurb">Custom apparel store built to <span class="ember-word">convert</span> — Webflow + GSAP, scroll-tied product reveals.</p>
+        <div class="wcard__tags"><span class="wcard__tag">Webflow</span><span class="wcard__tag">GSAP</span><span class="wcard__tag">E-commerce</span></div>
+        <a href="#contact" class="wcard__link">View case study <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+      </div>
+    </article>
+
+    <article class="wcard reveal">
+      <div class="wcard__media">
+        <span class="wcard__num">02</span>
+        <image-slot id="proj-bike" shape="rect" src="assets/project-bike.png" placeholder="BIKE"></image-slot>
+      </div>
+      <div class="wcard__body">
+        <span class="wcard__eyebrow">02 — Web app · 2024</span>
+        <h3 class="wcard__title">BIKE</h3>
+        <p class="wcard__blurb">Next.js, TypeScript &amp; HubSpot with <span class="ember-word">real-time</span> data visualization for an English school.</p>
+        <div class="wcard__tags"><span class="wcard__tag">Next.js</span><span class="wcard__tag">TypeScript</span><span class="wcard__tag">HubSpot</span></div>
+        <a href="#contact" class="wcard__link">View case study <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+      </div>
+    </article>
+
+    <article class="wcard reveal">
+      <div class="wcard__media">
+        <span class="wcard__num">03</span>
+        <image-slot id="proj-k2b" shape="rect" placeholder="K2BTools"></image-slot>
+      </div>
+      <div class="wcard__body">
+        <span class="wcard__eyebrow">03 — Marketing site · 2023</span>
+        <h3 class="wcard__title">K2BTools</h3>
+        <p class="wcard__blurb">Webflow, Client-First &amp; GSAP — scroll animations with serious <span class="ember-word">performance</span> tuning.</p>
+        <div class="wcard__tags"><span class="wcard__tag">Webflow</span><span class="wcard__tag">Client-First</span><span class="wcard__tag">GSAP</span></div>
+        <a href="#contact" class="wcard__link">View case study <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+      </div>
+    </article>
+
+    <article class="wcard reveal">
+      <div class="wcard__media">
+        <span class="wcard__num">04</span>
+        <image-slot id="proj-nova" shape="rect" placeholder="NOVA Ventures"></image-slot>
+      </div>
+      <div class="wcard__body">
+        <span class="wcard__eyebrow">04 — Automation · 2023</span>
+        <h3 class="wcard__title">NOVA Ventures</h3>
+        <p class="wcard__blurb">n8n, Zapier &amp; Airtable workflows — email sequences and lead scoring that <span class="ember-word">run themselves</span>.</p>
+        <div class="wcard__tags"><span class="wcard__tag">n8n</span><span class="wcard__tag">Zapier</span><span class="wcard__tag">Airtable</span></div>
+        <a href="#contact" class="wcard__link">View case study <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+      </div>
+    </article>
+
+    <article class="wcard reveal">
+      <div class="wcard__media">
+        <span class="wcard__num">05</span>
+        <image-slot id="proj-somnio" shape="rect" placeholder="Somnio Software"></image-slot>
+      </div>
+      <div class="wcard__body">
+        <span class="wcard__eyebrow">05 — Partner site · 2023</span>
+        <h3 class="wcard__title">Somnio Software</h3>
+        <p class="wcard__blurb">A product-studio site, <span class="ember-word">component-first</span> and easy for the team to extend.</p>
+        <div class="wcard__tags"><span class="wcard__tag">Webflow</span><span class="wcard__tag">Lumos</span><span class="wcard__tag">CMS</span></div>
+        <a href="#contact" class="wcard__link">View case study <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+      </div>
+    </article>
+
+    <article class="wcard reveal">
+      <div class="wcard__media">
+        <span class="wcard__num">06</span>
+        <image-slot id="proj-seilas" shape="rect" placeholder="Seilas Ship Supplies"></image-slot>
+      </div>
+      <div class="wcard__body">
+        <span class="wcard__eyebrow">06 — B2B catalog · 2022</span>
+        <h3 class="wcard__title">Seilas Ship Supplies</h3>
+        <p class="wcard__blurb">A marine supply catalog built to <span class="ember-word">scale</span> across thousands of SKUs.</p>
+        <div class="wcard__tags"><span class="wcard__tag">Webflow</span><span class="wcard__tag">CMS</span><span class="wcard__tag">B2B</span></div>
+        <a href="#contact" class="wcard__link">View case study <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section about" id="about" data-screen-label="About">
+  <div class="about__grid">
+    <div class="about__portrait reveal">
+      <image-slot id="portrait" shape="rounded" radius="24" placeholder="Portrait of Lucas"></image-slot>
+    </div>
+    <div class="about__body">
+      <span class="eyebrow reveal">about</span>
+      <h2 class="reveal" data-d="1">A senior developer with a track&nbsp;record.</h2>
+      <p class="lede reveal" data-d="1">Five years building production-grade websites and custom code. Certified in Client-First, fluent in Lumos, component-first by default — sites that stay fast and easy to edit long after launch.</p>
+      <div class="stats reveal" data-d="2">
+        <div class="stat">
+          <div class="stat__num" data-count="5" data-suffix="+">0<span class="plus">+</span></div>
+          <div class="stat__lbl">years shipping</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num" data-count="70" data-suffix="+">0<span class="plus">+</span></div>
+          <div class="stat__lbl">projects delivered</div>
+        </div>
+      </div>
+      <div class="about__cred reveal" data-d="2">
+        <span>Webflow Enterprise Partner</span>
+        <span>Client-First certified</span>
+        <span>Remote, worldwide</span>
+      </div>
+      <div class="about__actions reveal" data-d="3">
+        <a href="#contact" class="btn btn--primary btn--block">Let's talk</a>
+        <a href="#work" class="btn btn--ghost btn--block">See the work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STACK ============ -->
+<section class="section sec-blob" id="stack" data-screen-label="Stack">
+  <span class="mblob mblob--b" style="top:14%;left:-30%" aria-hidden="true"></span>
+  <span class="mblob mblob--n" style="bottom:4%;right:-28%" aria-hidden="true"></span>
+  <div class="section-head center reveal">
+    <span class="eyebrow eyebrow--accent">stack</span>
+    <h2>The right tool for the job — <span class="ember-word">every time.</span></h2>
+    <p class="lede">Chosen for speed, maintainability, and shipping fast without cutting corners.</p>
+  </div>
+  <div class="smq">
+    <div class="smq__row smq__row--a"><div class="smq__t" id="smqA"></div></div>
+    <div class="smq__row smq__row--b"><div class="smq__t" id="smqB"></div></div>
+  </div>
+  <div class="smq__tiers">
+    <div class="smq__tier reveal"><span class="smq__tier-h"><svg class="ic"><use href="#i-build"/></svg><b>Build</b></span><span class="smq__tier-d">Webflow · Client-First · Lumos</span></div>
+    <div class="smq__tier reveal" data-d="1"><span class="smq__tier-h"><svg class="ic"><use href="#i-code"/></svg><b>Code</b></span><span class="smq__tier-d">React · Next.js · GSAP</span></div>
+    <div class="smq__tier reveal" data-d="2"><span class="smq__tier-h"><svg class="ic"><use href="#i-bolt"/></svg><b>Automation</b></span><span class="smq__tier-d">n8n · Make · Zapier</span></div>
+    <div class="smq__tier reveal" data-d="3"><span class="smq__tier-h"><svg class="ic"><use href="#i-hub"/></svg><b>Connect</b></span><span class="smq__tier-d">HubSpot · Stripe · Notion</span></div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section process" id="process" data-screen-label="Process">
+  <div class="section-head reveal">
+    <span class="eyebrow">process</span>
+    <h2>How every project&nbsp;goes.</h2>
+    <p class="lede">Clear strategy, clean execution, measurable results. No guesswork.</p>
+  </div>
+  <div class="ptimeline" data-ptimeline>
+    <div class="ptimeline__rail" aria-hidden="true"><span class="ptimeline__fill"></span></div>
+    <div class="psteps">
+      <div class="pstep">
+        <div class="pstep__node"><svg class="ic pstep__ic"><use href="#i-target"/></svg></div>
+        <div class="pstep__body">
+          <span class="pstep__n">01</span>
+          <h3>Understand</h3>
+          <p>We get clear on the goal, the constraints, and what success actually looks like.</p>
+        </div>
+      </div>
+      <div class="pstep">
+        <div class="pstep__node"><svg class="ic pstep__ic"><use href="#i-design"/></svg></div>
+        <div class="pstep__body">
+          <span class="pstep__n">02</span>
+          <h3>Design &amp; build</h3>
+          <p>Component-first, performance-first. Real motion, zero bloat, scalable from day one.</p>
+        </div>
+      </div>
+      <div class="pstep">
+        <div class="pstep__node"><svg class="ic pstep__ic"><use href="#i-launch"/></svg></div>
+        <div class="pstep__body">
+          <span class="pstep__n">03</span>
+          <h3>Launch &amp; optimize</h3>
+          <p>Ship fast, then tune against real data — no guesswork, just steady gains.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section sec-blob" id="testimonials" data-screen-label="Testimonials">
+  <span class="mblob" style="top:6%;right:-28%" aria-hidden="true"></span>
+  <div class="section-head reveal">
+    <span class="eyebrow">testimonials</span>
+    <h2>Don't take my word for&nbsp;it.</h2>
+    <p class="lede">Proven results, from the people who shipped alongside me.</p>
+  </div>
+  <div class="tst reveal" style="margin-top:34px">
+    <div class="tst__track" id="tstTrack"></div>
+    <div class="tst__sel" id="tstSel"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT (ember-flooded) ============ -->
+<section class="section contact scheme-ember" id="contact" data-screen-label="Contact">
+  <div class="contact__ghost" aria-hidden="true">LM<span class="e">.</span></div>
+  <div class="contact__inner">
+    <div class="contact__main">
+      <span class="eyebrow reveal">start a project</span>
+      <h2 class="reveal" data-d="1">Ready to build.</h2>
+      <p class="contact__lead reveal" data-d="2">A few quick details so I can scope it before we even talk — or just email me directly.</p>
+    </div>
+
+    <div class="contact__formwrap reveal" data-d="2">
+      <form id="contactForm" novalidate>
+        <p class="mad">
+          <span class="mad__line"><span class="mad__lbl">Hi Lucas, I'm</span> <input class="min" name="name" placeholder="your name" required /></span>
+          <span class="mad__line"><span class="mad__lbl">from</span> <input class="min" name="company" placeholder="company" /><span class="mad__lbl">.</span></span>
+          <span class="mad__line"><span class="mad__lbl">I'm building a</span>
+            <select class="msel" name="type"><option>Webflow site</option><option>web app</option><option>automation</option><option>brand site</option></select>
+          </span>
+          <span class="mad__line"><span class="mad__lbl">with a budget around</span>
+            <select class="msel" name="budget"><option>$5–10k</option><option>$10–25k</option><option>$25k+</option><option>TBD</option></select>
+          </span>
+          <span class="mad__line"><span class="mad__lbl">Reach me at</span> <input class="min" name="email" type="email" placeholder="you@email.com" required /></span>
+        </p>
+        <div class="mad__foot">
+          <button class="f-btn" type="submit">Send it <span class="arr">→</span></button>
+          <span class="f-note"><span class="f-note__dot"></span> Replies within a day</span>
+        </div>
+      </form>
+      <div class="f-done" id="contactDone"><div class="f-done__ic"><svg viewBox="0 0 24 24" class="f-chk"><path d="M4 12l5 5L20 6"/></svg></div><div class="f-done__h">On its way — talk soon.</div><p class="f-done__p">I'll get back to you with next steps within a day.</p></div>
+    </div>
+
+    <div class="contact__meta">
+      <a href="mailto:hello@lucasmujica.dev" class="contact__mail">hello@lucasmujica.dev <svg class="ic"><use href="#i-arrow-ur"/></svg></a>
+      <div class="contact__avail"><span class="contact__pulse"></span> Available for new projects</div>
+      <div class="contact__loc">Buenos Aires · Remote worldwide</div>
+      <div class="contact__socials" aria-label="Social links">
+        <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-x"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-in"/></svg></a>
+        <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-gh"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" data-screen-label="Footer">
+  <h2 class="footer__cta">Let's build something that <span class="ember-word">moves.</span></h2>
+  <a href="mailto:hello@lucasmujica.dev" class="footer__mail">hello@lucasmujica.dev <span class="ember-word">↗</span></a>
+  <div class="footer__divide"></div>
+  <span class="footer__wordmark">Lucas&nbsp;Mujica<span class="footer__dot">.</span></span>
+  <nav class="footer__nav">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#stack">Stack</a>
+    <a href="#process">Process</a>
+  </nav>
+  <div class="footer__soc" aria-label="Social links">
+    <a href="#" aria-label="X"><svg class="ic"><use href="#i-x"/></svg></a>
+    <a href="#" aria-label="LinkedIn"><svg class="ic"><use href="#i-in"/></svg></a>
+    <a href="#" aria-label="GitHub"><svg class="ic"><use href="#i-gh"/></svg></a>
+  </div>
+  <div class="footer__copy">© 2026 Lucas Mujica. All rights reserved.</div>
+</footer>
+
+<!-- ============ FLOATING BOTTOM DOCK (primary mobile nav) ============ -->
+<nav class="mdock" id="mdock" aria-label="Section navigation" data-screen-label="Bottom dock">
+  <div class="mdock__nav">
+    <a href="#work" class="mdock__item is-active"><svg class="ic"><use href="#i-work"/></svg>Work</a>
+    <a href="#about" class="mdock__item"><svg class="ic"><use href="#i-person"/></svg>About</a>
+    <a href="#stack" class="mdock__item"><svg class="ic"><use href="#i-stack"/></svg>Stack</a>
+  </div>
+  <a href="#contact" class="mdock__cta">Let's talk</a>
+</nav>
+
+<script src="image-slot.js"></script>
+<script>
+  document.documentElement.classList.add('js');
+  if (new URLSearchParams(location.search).has('frame')) document.documentElement.classList.add('embedded');
+
+  /* ---- Top bar background fade on scroll ---- */
+  const topbar = document.getElementById('topbar');
+  const onScroll = () => { topbar.classList.toggle('scrolled', window.scrollY > 20); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---- Nav menu toggle ---- */
+  (function () {
+    const btn = document.getElementById('menuBtn');
+    const scrim = document.getElementById('navscrim');
+    const menu = document.getElementById('navmenu');
+    if (!btn || !scrim || !menu) return;
+    const root = document.documentElement;
+    const set = (open) => {
+      root.classList.toggle('menu-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    btn.addEventListener('click', () => set(!root.classList.contains('menu-open')));
+    scrim.addEventListener('click', () => set(false));
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => set(false)));
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+  })();
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Dock scrollspy ---- */
+  (function () {
+    const items = [...document.querySelectorAll('.mdock__item')];
+    const sections = ['work', 'about', 'stack'].map((id) => document.getElementById(id)).filter(Boolean);
+    if (!items.length || !sections.length || !('IntersectionObserver' in window)) return;
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const href = '#' + e.target.id;
+        items.forEach((it) => it.classList.toggle('is-active', it.getAttribute('href') === href));
+      });
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+    sections.forEach((s) => spy.observe(s));
+  })();
+
+  /* ---- Generic reveal-on-scroll ---- */
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+  }
+
+  /* ---- Count-up stats ---- */
+  const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+  function countUp(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const dur = 1400; const start = performance.now();
+    function tick(now) {
+      const p = Math.min(1, (now - start) / dur);
+      el.innerHTML = Math.round(easeOut(p) * target) + '<span class="plus">' + suffix + '</span>';
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if (!reduce && 'IntersectionObserver' in window) {
+    const so = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { countUp(e.target); so.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-count]').forEach((el) => so.observe(el));
+  } else {
+    document.querySelectorAll('[data-count]').forEach((el) => {
+      el.innerHTML = el.dataset.count + '<span class="plus">' + (el.dataset.suffix || '') + '</span>';
+    });
+  }
+
+  /* ---- Process: vertical timeline play on scroll ---- */
+  (function () {
+    const flow = document.querySelector('[data-ptimeline]');
+    if (!flow) return;
+    if (reduce || !('IntersectionObserver' in window)) { flow.classList.add('play'); return; }
+    const po = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { flow.classList.add('play'); po.unobserve(e.target); } });
+    }, { threshold: 0.35 });
+    po.observe(flow);
+  })();
+
+  /* ---- Stack: kinetic tech marquee ---- */
+  (function () {
+    const a = document.getElementById('smqA'); const b = document.getElementById('smqB');
+    if (!a || !b) return;
+    const ALL = ["Webflow", "Client-First", "Lumos", "React", "Next.js", "TypeScript", "GSAP", "n8n", "Make", "Zapier", "Airtable", "HubSpot", "Stripe", "Notion", "Slack", "Figma"];
+    const HOT = new Set(["Webflow", "GSAP", "Next.js", "n8n", "HubSpot"]);
+    const chip = (t) => '<span class="smqchip' + (HOT.has(t) ? ' on' : '') + '">' + t + '</span>';
+    const rA = ALL.map(chip).join(''); const rB = ALL.slice().reverse().map(chip).join('');
+    a.innerHTML = rA + rA; b.innerHTML = rB + rB;
+  })();
+
+  /* ---- Testimonials: swipeable quote cards + compact selector ---- */
+  (function () {
+    const T = [
+      { n: "Artem Khomenko", r: "CTO", c: "Enkonix", q: 'A strong developer with sharp attention to detail and the ability to ship highly custom solutions <span class="ember-word">within the constraints</span> of the platform. Highly recommend.' },
+      { n: "Franco Caputo", r: "CEO", c: "WonderUp", q: 'Worked with Lucas on multiple projects and would happily do a thousand more. Detail-oriented, tech-savvy, and an <span class="ember-word">incredible human</span> — above and beyond every time.' },
+      { n: "Sofía Marín", r: "Founder", c: "Lumen Studio", q: 'He turned a messy brief into a fast, scalable build. The motion finally <span class="ember-word">feels intentional</span>, never decorative.' },
+      { n: "Diego Herrera", r: "Head of Growth", c: "Northbound", q: 'We ship pages in hours, not weeks. Client-First done right — the whole team can <span class="ember-word">edit without breaking</span> anything.' },
+      { n: "Emily Saunders", r: "Product Lead", c: "Cadence", q: 'Lucas sweats the details most devs skip — performance budgets, accessibility, the <span class="ember-word">60fps stuff</span>. It shows.' },
+      { n: "Tomás Vidal", r: "Director", c: "Seilas", q: 'Senior, reliable, no hand-holding. He scoped it, built it, and <span class="ember-word">tuned it against real data</span>.' },
+    ];
+    const track = document.getElementById('tstTrack');
+    const sel = document.getElementById('tstSel');
+    if (!track || !sel) return;
+    const reduceMo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = 0, timer = null, scrollLock = null;
+
+    track.innerHTML = T.map((t) =>
+      '<article class="tst__card">' +
+        '<div class="tst__mark">&ldquo;</div>' +
+        '<p class="tst__q">"' + t.q + '"</p>' +
+        '<div class="tst__by"><span class="tst__av"></span><div><div class="tst__name">' + t.n + '</div>' +
+        '<div class="tst__role">' + t.r + ' · ' + t.c + '</div></div></div>' +
+      '</article>').join('');
+
+    sel.innerHTML = T.map((t, idx) =>
+      '<button class="tst__chip' + (idx === 0 ? ' is-active' : '') + '" data-i="' + idx + '">' +
+        '<span class="tst__dot"></span><span class="tst__cnm">' + t.n + '</span></button>').join('');
+
+    const cards = [...track.children];
+    const chips = [...sel.children];
+
+    function setActive(idx) {
+      i = idx;
+      chips.forEach((b, bi) => b.classList.toggle('is-active', bi === idx));
+      const chip = chips[idx];
+      if (chip) sel.scrollTo({ left: chip.offsetLeft - 16, behavior: reduceMo ? 'auto' : 'smooth' });
+    }
+    function goTo(idx, smooth) {
+      idx = (idx + T.length) % T.length;
+      const card = cards[idx];
+      if (!card) return;
+      track.scrollTo({ left: card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2, behavior: (smooth && !reduceMo) ? 'smooth' : 'auto' });
+      setActive(idx);
+    }
+    function restart() {
+      if (reduceMo) return;
+      clearTimeout(timer);
+      timer = setTimeout(() => goTo(i + 1, true), 6000);
+    }
+    // sync active chip while user swipes the track
+    track.addEventListener('scroll', () => {
+      clearTimeout(scrollLock);
+      scrollLock = setTimeout(() => {
+        const c = track.scrollLeft + track.clientWidth / 2;
+        let best = 0, bestD = Infinity;
+        cards.forEach((card, idx) => {
+          const center = card.offsetLeft + card.offsetWidth / 2;
+          const d = Math.abs(center - c);
+          if (d < bestD) { bestD = d; best = idx; }
+        });
+        if (best !== i) setActive(best);
+        restart();
+      }, 90);
+    }, { passive: true });
+    track.addEventListener('pointerdown', () => clearTimeout(timer));
+    sel.addEventListener('click', (e) => { const b = e.target.closest('.tst__chip'); if (b) goTo(+b.dataset.i, true); });
+    restart();
+  })();
+
+  /* ---- Contact brief form ---- */
+  (function () {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    const done = document.getElementById('contactDone');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let ok = true;
+      form.querySelectorAll('[required]').forEach((el) => {
+        const bad = !el.value.trim() || (el.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value));
+        el.style.borderBottomColor = '';
+        if (bad) { ok = false; el.style.borderBottomColor = 'var(--ink)'; }
+      });
+      if (!ok) return;
+      form.classList.add('hide'); done.classList.add('show');
+    });
+  })();
+</script>
+</body>
+</html>

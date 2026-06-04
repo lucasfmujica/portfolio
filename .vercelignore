@@ -1,0 +1,7 @@
+node_modules
+.next
+project
+chats
+.env
+.env.local
+tsconfig.tsbuildinfo

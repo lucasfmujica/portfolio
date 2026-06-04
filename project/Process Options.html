@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Process — 3 layout options</title>
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--ink); color: var(--fg1); font-family: var(--font-body); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--ember); color: var(--ink); }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; margin: 0; }
+  .ic { width: 1em; height: 1em; display: inline-block; vertical-align: middle; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .em { color: var(--ember); }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 5vw; }
+  .eyebrow { font-family: var(--font-mono); font-size: var(--text-small); letter-spacing: .04em; color: var(--fg2); display: inline-flex; align-items: center; gap: 10px; }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--ember); }
+
+  .intro { padding: 56px 5vw 8px; max-width: 1200px; margin: 0 auto; }
+  .intro__e { font-family: var(--font-mono); font-size: .95rem; letter-spacing: .06em; color: var(--ember); }
+  .intro__t { font-size: clamp(2rem, 4vw, 2.9rem); margin: 12px 0 8px; }
+  .intro__s { color: var(--fg2); max-width: 58ch; }
+  .opthead { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--ink) 86%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 15px 5vw; margin-top: 56px; }
+  .opthead__in { max-width: 1200px; margin: 0 auto; display: flex; align-items: baseline; gap: 14px; }
+  .opthead__n { font-family: var(--font-mono); color: var(--ember); font-size: .9rem; letter-spacing: .06em; }
+  .opthead__name { font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; }
+  .opthead__d { font-family: var(--font-mono); color: var(--fg3); font-size: .8rem; margin-left: auto; }
+  @media (max-width: 720px){ .opthead__d { display: none; } }
+  .sec { padding: 64px 0 90px; }
+  .head { max-width: 46rem; margin-bottom: 48px; display: flex; flex-direction: column; gap: 16px; }
+  .head h2 { font-size: clamp(2rem, 4vw, 3rem); }
+  .head p { color: var(--fg2); margin: 0; }
+
+  /* OPT 1 — connected horizontal stepper */
+  .p1 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
+  @media (max-width: 760px){ .p1 { grid-template-columns: 1fr; } }
+  .p1__step { padding: 0 28px; position: relative; display: flex; flex-direction: column; gap: 14px; }
+  .p1__step:not(:last-child)::after { content: ""; position: absolute; top: 19px; right: 0; width: calc(100% - 64px); left: 56px; height: 2px; background: var(--hairline); }
+  .p1__step:not(:last-child)::before { content: ""; position: absolute; top: 14px; right: -5px; z-index: 2; width: 11px; height: 11px; border-radius: 100px; background: var(--ember); }
+  @media (max-width: 760px){ .p1__step::after, .p1__step::before { display: none; } .p1__step { padding: 0 0 28px; } }
+  .p1__node { width: 40px; height: 40px; border-radius: 100px; border: 2px solid var(--ember); display: grid; place-items: center; font-family: var(--font-mono); font-size: .85rem; color: var(--ember); background: var(--ink); position: relative; z-index: 1; }
+  .p1__t { font-size: 1.5rem; margin-top: 6px; }
+  .p1__d { color: var(--fg2); margin: 0; font-size: var(--text-small); line-height: 1.55; max-width: 30ch; }
+
+  /* OPT 2 — vertical timeline */
+  .p2 { position: relative; padding-left: 40px; }
+  .p2::before { content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--ember), var(--hairline)); }
+  .p2__step { position: relative; padding: 0 0 44px; }
+  .p2__step:last-child { padding-bottom: 0; }
+  .p2__dot { position: absolute; left: -40px; top: 2px; width: 24px; height: 24px; border-radius: 100px; border: 2px solid var(--ember); background: var(--ink); display: grid; place-items: center; }
+  .p2__dot i { width: 8px; height: 8px; border-radius: 100px; background: var(--ember); }
+  .p2__n { font-family: var(--font-mono); font-size: .82rem; color: var(--ember); }
+  .p2__t { font-size: 1.8rem; margin: 6px 0 8px; }
+  .p2__d { color: var(--fg2); margin: 0; max-width: 48ch; }
+
+  /* OPT 3 — big numbered rows */
+  .p3 { display: flex; flex-direction: column; border-top: 1px solid var(--hairline); }
+  .p3__row { display: grid; grid-template-columns: 90px 1fr 1.2fr; gap: 32px; align-items: baseline; padding: 38px 8px; border-bottom: 1px solid var(--hairline); transition: padding .35s var(--ease-out), background .3s; }
+  .p3__row:hover { background: var(--surface); padding-left: 18px; padding-right: 18px; }
+  @media (max-width: 720px){ .p3__row { grid-template-columns: 1fr; gap: 10px; } }
+  .p3__n { font-family: var(--font-mono); font-size: 1rem; color: var(--ember); }
+  .p3__t { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.8rem, 3.4vw, 2.8rem); letter-spacing: -0.02em; }
+  .p3__d { color: var(--fg2); font-size: var(--text-regular); max-width: 44ch; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r="0.7" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-design" viewBox="0 0 24 24"><path d="M4 20s2.4-.4 3.9-1.9l9.6-9.6a2.05 2.05 0 0 0-2.9-2.9L5 15.2C3.5 16.7 4 20 4 20Z"/><path d="M14.3 5.7l3 3"/></symbol>
+  <symbol id="i-launch" viewBox="0 0 24 24"><path d="M3 16 9 10l4 4 8-8M16 6h5v5"/></symbol>
+</defs></svg>
+
+<div class="intro">
+  <div class="intro__e">process · layout directions</div>
+  <h1 class="intro__t">Three ways to show the method.</h1>
+  <p class="intro__s">Same three steps — Understand, Design &amp; build, Launch &amp; optimize. Pick a treatment.</p>
+</div>
+
+<!-- OPTION 1 -->
+<div class="opthead"><div class="opthead__in"><span class="opthead__n">option 01</span><span class="opthead__name">Connected stepper</span><span class="opthead__d">horizontal flow with ember nodes</span></div></div>
+<div class="wrap"><div class="sec">
+  <div class="head"><span class="eyebrow">process</span><h2>How every project&nbsp;goes.</h2><p>Clear strategy, clean execution, measurable results.</p></div>
+  <div class="p1">
+    <div class="p1__step"><div class="p1__node">01</div><h3 class="p1__t">Understand</h3><p class="p1__d">We get clear on the goal, the constraints, and what success actually looks like.</p></div>
+    <div class="p1__step"><div class="p1__node">02</div><h3 class="p1__t">Design &amp; build</h3><p class="p1__d">Component-first, performance-first. Real motion, zero bloat, scalable from day one.</p></div>
+    <div class="p1__step"><div class="p1__node">03</div><h3 class="p1__t">Launch &amp; optimize</h3><p class="p1__d">Ship fast, then tune against real data — no guesswork, just steady gains.</p></div>
+  </div>
+</div></div>
+
+<!-- OPTION 2 -->
+<div class="opthead"><div class="opthead__in"><span class="opthead__n">option 02</span><span class="opthead__name">Vertical timeline</span><span class="opthead__d">connected rail, top-to-bottom</span></div></div>
+<div class="wrap"><div class="sec">
+  <div class="head"><span class="eyebrow">process</span><h2>How every project&nbsp;goes.</h2></div>
+  <div class="p2">
+    <div class="p2__step"><div class="p2__dot"><i></i></div><div class="p2__n">01</div><h3 class="p2__t">Understand</h3><p class="p2__d">We get clear on the goal, the constraints, and what success actually looks like.</p></div>
+    <div class="p2__step"><div class="p2__dot"><i></i></div><div class="p2__n">02</div><h3 class="p2__t">Design &amp; build</h3><p class="p2__d">Component-first, performance-first. Real motion, zero bloat, scalable from day one.</p></div>
+    <div class="p2__step"><div class="p2__dot"><i></i></div><div class="p2__n">03</div><h3 class="p2__t">Launch &amp; optimize</h3><p class="p2__d">Ship fast, then tune against real data — no guesswork, just steady gains.</p></div>
+  </div>
+</div></div>
+
+<!-- OPTION 3 -->
+<div class="opthead"><div class="opthead__in"><span class="opthead__n">option 03</span><span class="opthead__name">Editorial rows</span><span class="opthead__d">big-type list, hover highlight</span></div></div>
+<div class="wrap"><div class="sec">
+  <div class="head"><span class="eyebrow">process</span><h2>How every project&nbsp;goes.</h2></div>
+  <div class="p3">
+    <div class="p3__row"><span class="p3__n">01</span><span class="p3__t">Understand</span><span class="p3__d">We get clear on the goal, the constraints, and what success actually looks like.</span></div>
+    <div class="p3__row"><span class="p3__n">02</span><span class="p3__t">Design &amp; build</span><span class="p3__d">Component-first, performance-first. Real motion, zero bloat, scalable from day one.</span></div>
+    <div class="p3__row"><span class="p3__n">03</span><span class="p3__t">Launch &amp; optimize</span><span class="p3__d">Ship fast, then tune against real data — no guesswork, just steady gains.</span></div>
+  </div>
+</div></div>
+</body>
+</html>

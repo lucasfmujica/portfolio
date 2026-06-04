@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Selected Work — 3 layout options</title>
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--ink); color: var(--fg1); font-family: var(--font-body); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--ember); color: var(--ink); }
+  h1,h2,h3 { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; line-height: 1.04; margin: 0; }
+  .ic { width: 1em; height: 1em; display: inline-block; vertical-align: middle; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .em { color: var(--ember); }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 5vw; }
+
+  .intro { padding: 60px 5vw 24px; max-width: 1280px; margin: 0 auto; }
+  .intro__eyebrow { font-family: var(--font-mono); font-size: 0.95rem; letter-spacing: .06em; color: var(--ember); }
+  .intro__title { font-size: clamp(2.1rem, 4vw, 3rem); margin: 12px 0 8px; }
+  .intro__sub { color: var(--fg2); font-size: 1.075rem; max-width: 58ch; }
+
+  .opthead { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--ink) 86%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 16px 5vw; margin-top: 70px; }
+  .opthead__in { max-width: 1280px; margin: 0 auto; display: flex; align-items: baseline; gap: 14px; }
+  .opthead__n { font-family: var(--font-mono); color: var(--ember); font-size: 0.9rem; letter-spacing: .06em; }
+  .opthead__name { font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; }
+  .opthead__desc { font-family: var(--font-mono); color: var(--fg3); font-size: 0.8rem; margin-left: auto; }
+  @media (max-width: 720px){ .opthead__desc { display: none; } }
+
+  /* image placeholder */
+  .shot { position: relative; overflow: hidden; background:
+      radial-gradient(120% 90% at 85% 12%, color-mix(in srgb, var(--ember), transparent 80%), transparent 55%),
+      linear-gradient(150deg, var(--surface-2), var(--ink)); }
+  .shot::after { content: attr(data-n); position: absolute; right: 16px; bottom: 4px; font-family: var(--font-display); font-weight: 700; font-size: clamp(5rem, 14vw, 11rem); line-height: 0.8; color: var(--white-5); pointer-events: none; }
+  .shot__chip { position: absolute; top: 16px; left: 16px; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: .04em; color: var(--fg1); background: var(--ink-70); border: 1px solid var(--white-10); border-radius: 100px; padding: 5px 11px; backdrop-filter: blur(6px); }
+
+  /* ============ OPTION 1 — STICKY STACK ============ */
+  .stack { padding: 48px 0 80px; }
+  .stack__card {
+    position: sticky; top: 90px; display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 460px; border: 1px solid var(--hairline); border-radius: 32px; overflow: hidden;
+    background: var(--surface); box-shadow: 0 -10px 60px -20px rgba(0,0,0,.7); margin-bottom: 32px;
+  }
+  .stack__card:nth-child(even) .shot { order: 2; }
+  .stack__shot { min-height: 460px; }
+  .stack__body { padding: 48px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+  .stack__eyebrow { font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: .05em; color: var(--ember); }
+  .stack__title { font-size: clamp(2rem, 3.4vw, 2.9rem); }
+  .stack__blurb { color: var(--fg2); font-size: 1.075rem; max-width: 42ch; line-height: 1.5; }
+  .stack__meta { font-family: var(--font-mono); font-size: 0.82rem; color: var(--fg3); margin-top: 4px; }
+  .stack__tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .stack__tag { font-family: var(--font-mono); font-size: 0.74rem; color: var(--fg2); border: 1px solid var(--hairline); border-radius: 100px; padding: 5px 12px; }
+  .stack__link { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font-weight: 500; color: var(--fg1); width: fit-content; }
+  .stack__link .ic { color: var(--ember); width: 18px; height: 18px; transition: transform .2s; }
+  .stack__link:hover .ic { transform: translate(3px,-3px); }
+  @media (max-width: 760px){ .stack__card { grid-template-columns: 1fr; } .stack__card:nth-child(even) .shot { order: 0; } .stack__shot { min-height: 240px; } .stack__body { padding: 32px; } }
+
+  /* ============ OPTION 2 — HOVER INDEX LIST ============ */
+  .idx { padding: 24px 0 80px; }
+  .idx__row { display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 24px; padding: 30px 8px; border-top: 1px solid var(--hairline); cursor: pointer; position: relative; transition: padding .35s var(--ease-out); }
+  .idx:last-child .idx__row { border-bottom: 1px solid var(--hairline); }
+  .idx__row:last-child { border-bottom: 1px solid var(--hairline); }
+  .idx__num { font-family: var(--font-mono); font-size: 0.85rem; color: var(--fg3); }
+  .idx__name { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.8rem, 4.4vw, 3.4rem); letter-spacing: -0.02em; color: var(--fg3); transition: color .3s, transform .35s var(--ease-out); }
+  .idx__row:hover { padding-left: 24px; }
+  .idx__row:hover .idx__name { color: var(--fg1); }
+  .idx__role { font-family: var(--font-mono); font-size: 0.82rem; color: var(--fg3); text-align: right; }
+  .idx__arrow { position: absolute; right: 8px; color: var(--ember); opacity: 0; transform: translateX(-12px); transition: opacity .3s, transform .3s var(--ease-out); }
+  .idx__row:hover .idx__arrow { opacity: 1; transform: translateX(0); }
+  .idx__preview { position: fixed; width: 320px; height: 220px; border-radius: 16px; overflow: hidden; pointer-events: none; opacity: 0; transform: translate(-50%, -50%) scale(0.92); transition: opacity .25s, transform .25s var(--ease-out); z-index: 60; border: 1px solid var(--white-15); box-shadow: var(--shadow-pop, 0 30px 60px -20px rgba(0,0,0,.8)); }
+  .idx__preview.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+  /* ============ OPTION 3 — BENTO GRID ============ */
+  .bento { padding: 40px 0 90px; display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 220px; gap: 20px; }
+  @media (max-width: 860px){ .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; } }
+  .bento__card { position: relative; border-radius: 24px; overflow: hidden; border: 1px solid var(--hairline); cursor: pointer; }
+  .bento__card .shot { position: absolute; inset: 0; transition: transform .6s var(--ease-out); }
+  .bento__card:hover .shot { transform: scale(1.05); }
+  .bento__card::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(11,11,13,.85) 0%, rgba(11,11,13,.1) 50%, transparent 100%); }
+  .bento__body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 24px; }
+  .bento__title { font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; letter-spacing: -0.01em; }
+  .bento__meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--fg2); margin-top: 4px; }
+  .bento__card .shot::after { font-size: clamp(3rem, 7vw, 6rem); }
+  /* spans */
+  .bento__card.f { grid-column: span 4; grid-row: span 2; }
+  .bento__card.t { grid-column: span 2; grid-row: span 2; }
+  .bento__card.w { grid-column: span 3; }
+  .bento__card.s { grid-column: span 2; }
+  @media (max-width: 860px){
+    .bento__card.f { grid-column: span 2; grid-row: span 2; }
+    .bento__card.t, .bento__card.w, .bento__card.s { grid-column: span 2; grid-row: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+</defs></svg>
+
+<div class="intro">
+  <div class="intro__eyebrow">selected work · layout directions</div>
+  <h1 class="intro__title">Three ways to show the work.</h1>
+  <p class="intro__sub">Same six builds, three layouts. Scroll through each — then tell me which to drop into the homepage. Images are placeholders; you'll drop in real screenshots.</p>
+</div>
+
+<!-- OPTION 1 -->
+<div class="opthead"><div class="opthead__in"><span class="opthead__n">option 01</span><span class="opthead__name">Sticky stack</span><span class="opthead__desc">full-width 50 / 50 cards that pin &amp; stack on scroll</span></div></div>
+<div class="wrap"><div class="stack" id="stack"></div></div>
+
+<!-- OPTION 2 -->
+<div class="opthead"><div class="opthead__in"><span class="opthead__n">option 02</span><span class="opthead__name">Hover index</span><span class="opthead__desc">editorial type list, image follows the cursor</span></div></div>
+<div class="wrap"><div class="idx" id="idx"></div></div>
+<div class="idx__preview" id="idxPreview"></div>
+
+<!-- OPTION 3 -->
+<div class="opthead"><div class="opthead__in"><span class="opthead__n">option 03</span><span class="opthead__name">Bento grid</span><span class="opthead__desc">asymmetric magazine grid, image-led</span></div></div>
+<div class="wrap"><div class="bento" id="bento"></div></div>
+
+<script>
+const P = [
+  { n: "True North Jerseys", role: "E-commerce build", year: "2024", blurb: 'Custom apparel store built to convert — Webflow + GSAP, scroll-tied product reveals.', tags: ["Webflow", "GSAP", "E-commerce"], hl: "convert" },
+  { n: "BIKE", role: "Web app", year: "2024", blurb: 'Next.js, TypeScript & HubSpot with real-time data visualization for an English school.', tags: ["Next.js", "TypeScript", "HubSpot"], hl: "real-time" },
+  { n: "K2BTools", role: "Marketing site", year: "2023", blurb: 'Client-First & GSAP scroll animations, tuned for serious performance.', tags: ["Webflow", "Client-First", "GSAP"], hl: "performance" },
+  { n: "NOVA Ventures", role: "Automation", year: "2023", blurb: 'n8n, Zapier & Airtable workflows — lead scoring that runs itself.', tags: ["n8n", "Zapier", "Airtable"], hl: "runs itself" },
+  { n: "Somnio Software", role: "Partner site", year: "2023", blurb: 'A product-studio site, component-first and easy to extend.', tags: ["Webflow", "Lumos"], hl: "component-first" },
+  { n: "Seilas Ship Supplies", role: "B2B catalog", year: "2022", blurb: 'A marine supply catalog built to scale across thousands of SKUs.', tags: ["Webflow", "CMS"], hl: "at scale" },
+];
+const pad = (i) => String(i + 1).padStart(2, "0");
+const shot = (i, big) => '<div class="shot' + (big ? ' stack__shot' : '') + '" data-n="' + pad(i) + '"><span class="shot__chip">' + P[i].role + ' · ' + P[i].year + '</span></div>';
+
+/* OPTION 1 — sticky stack */
+document.getElementById('stack').innerHTML = P.slice(0, 4).map((p, i) =>
+  '<article class="stack__card">' +
+    shot(i, true) +
+    '<div class="stack__body">' +
+      '<span class="stack__eyebrow">' + pad(i) + ' — ' + p.role + '</span>' +
+      '<h3 class="stack__title">' + p.n + '</h3>' +
+      '<p class="stack__blurb">' + p.blurb.replace(p.hl, '<span class="em">' + p.hl + '</span>') + '</p>' +
+      '<div class="stack__tags">' + p.tags.map((t) => '<span class="stack__tag">' + t + '</span>').join('') + '</div>' +
+      '<a class="stack__link" href="#">View case study <svg class="ic"><use href="#i-ur"/></svg></a>' +
+    '</div>' +
+  '</article>').join('');
+
+/* OPTION 2 — hover index */
+document.getElementById('idx').innerHTML = P.map((p, i) =>
+  '<div class="idx__row" data-i="' + i + '">' +
+    '<span class="idx__num">' + pad(i) + '</span>' +
+    '<span class="idx__name">' + p.n + '</span>' +
+    '<span class="idx__role">' + p.role + ' · ' + p.year + '</span>' +
+    '<span class="idx__arrow"><svg class="ic" style="width:22px;height:22px"><use href="#i-ur"/></svg></span>' +
+  '</div>').join('');
+
+const preview = document.getElementById('idxPreview');
+const idxEl = document.getElementById('idx');
+idxEl.addEventListener('pointermove', (e) => { preview.style.left = e.clientX + 'px'; preview.style.top = e.clientY + 'px'; });
+idxEl.addEventListener('pointerover', (e) => {
+  const row = e.target.closest('.idx__row'); if (!row) return;
+  const i = +row.dataset.i;
+  preview.innerHTML = shot(i, false);
+  preview.classList.add('show');
+});
+idxEl.addEventListener('pointerleave', () => preview.classList.remove('show'));
+
+/* OPTION 3 — bento */
+const spans = ['f', 't', 'w', 's', 's', 'w'];
+document.getElementById('bento').innerHTML = P.map((p, i) =>
+  '<article class="bento__card ' + spans[i] + '">' +
+    shot(i, false) +
+    '<div class="bento__body"><div class="bento__title">' + p.n + '</div><div class="bento__meta">' + p.role + ' · ' + p.year + '</div></div>' +
+  '</article>').join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wordmark — Lucas Mujica</title>
+<link rel="stylesheet" href="tokens.css" />
+<style>
+  html, body { margin: 0; background: #14141A; }
+  /* ---- wordmark lockup styling ---- */
+  .wm {
+    width: 100%; height: 100%; box-sizing: border-box;
+    background: var(--ink); color: var(--fg1);
+    font-family: var(--font-display);
+    padding: 46px 48px; display: flex; flex-direction: column;
+    border-radius: 18px;
+  }
+  .wm .e { color: var(--ember); }
+  .wm__tag {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--fg3);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .wm__tag b { color: var(--ember); font-weight: 400; }
+  .wm__main {
+    margin-top: auto; font-weight: 600; font-size: 44px; line-height: 1;
+    letter-spacing: -0.022em; color: var(--fg1);
+  }
+  .wm__rule { height: 1px; background: var(--hairline); margin: 30px 0; }
+  .wm__monorow { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; }
+  .wm__cap { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg3); padding-bottom: 6px; }
+  .wm__mono { font-weight: 700; font-size: 46px; line-height: 0.9; letter-spacing: -0.01em; }
+  .wm__nav {
+    margin-top: auto; display: flex; align-items: center; justify-content: space-between;
+    gap: 14px; padding-top: 30px;
+  }
+  .wm__navmark { font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
+  .wm__navhint { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg3); }
+
+  /* ---- V2 : mid-dot separator ---- */
+  .wm--mid .wm__main { letter-spacing: -0.024em; }
+  .wm--mid .dot { color: var(--ember); margin: 0 0.16em; position: relative; top: -0.06em; }
+
+  /* ---- V3 : tracked caps + ember bar ---- */
+  .wm--caps .wm__main { font-weight: 500; font-size: 33px; letter-spacing: 0.135em; }
+  .wm--caps .wm__mono { font-weight: 600; letter-spacing: 0.06em; }
+  .bar { display: block; width: 38px; height: 3px; background: var(--ember); border-radius: 2px; margin-top: 16px; }
+  .wm--caps .wm__navmark { font-weight: 500; font-size: 15px; letter-spacing: 0.12em; }
+
+  .wm__monowrap { display: flex; flex-direction: column; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+
+<script type="text/babel">
+const { DesignCanvas, DCSection, DCArtboard } = window;
+
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection id="wordmark" title="Wordmark — Lucas Mujica" subtitle="Clash Display · off-white on ink · one ember detail. Three directions, each with name lockup + LM monogram + nav-scale preview.">
+
+        {/* V1 — Trailing period */}
+        <DCArtboard id="v1" label="01 · Trailing period" width={620} height={440}>
+          <div className="wm wm--period">
+            <div className="wm__tag"><span>01</span><b>•</b><span>Ember period</span></div>
+            <div className="wm__main">Lucas Mujica<span className="e">.</span></div>
+            <div className="wm__rule"></div>
+            <div className="wm__monorow">
+              <div className="wm__mono">LM<span className="e">.</span></div>
+              <span className="wm__cap">Monogram</span>
+            </div>
+            <div className="wm__nav">
+              <span className="wm__navmark">Lucas Mujica<span className="e">.</span></span>
+              <span className="wm__navhint">at nav scale</span>
+            </div>
+          </div>
+        </DCArtboard>
+
+        {/* V2 — Mid-dot separator */}
+        <DCArtboard id="v2" label="02 · Mid-dot" width={620} height={440}>
+          <div className="wm wm--mid">
+            <div className="wm__tag"><span>02</span><b>•</b><span>Ember mid-dot</span></div>
+            <div className="wm__main">Lucas<span className="dot">·</span>Mujica</div>
+            <div className="wm__rule"></div>
+            <div className="wm__monorow">
+              <div className="wm__mono">L<span className="dot">·</span>M</div>
+              <span className="wm__cap">Monogram</span>
+            </div>
+            <div className="wm__nav">
+              <span className="wm__navmark">Lucas<span className="dot">·</span>Mujica</span>
+              <span className="wm__navhint">at nav scale</span>
+            </div>
+          </div>
+        </DCArtboard>
+
+        {/* V3 — Tracked caps + ember bar */}
+        <DCArtboard id="v3" label="03 · Tracked caps" width={620} height={440}>
+          <div className="wm wm--caps">
+            <div className="wm__tag"><span>03</span><b>•</b><span>Ember underbar</span></div>
+            <div className="wm__monowrap" style={{marginTop:'auto'}}>
+              <div className="wm__main">LUCAS MUJICA</div>
+              <span className="bar"></span>
+            </div>
+            <div className="wm__rule"></div>
+            <div className="wm__monorow">
+              <div className="wm__monowrap">
+                <div className="wm__mono">LM</div>
+                <span className="bar" style={{marginTop:'12px'}}></span>
+              </div>
+              <span className="wm__cap">Monogram</span>
+            </div>
+            <div className="wm__nav">
+              <span className="wm__navmark">LUCAS MUJICA</span>
+              <span className="wm__navhint">at nav scale</span>
+            </div>
+          </div>
+        </DCArtboard>
+
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
