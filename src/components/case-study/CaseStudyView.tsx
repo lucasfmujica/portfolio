@@ -41,19 +41,15 @@ export function CaseStudyView({
             <p className="cs-challenge__p" data-reveal data-reveal-delay="1">
               <RichText text={cs.challengeBody} />
             </p>
-            <div className="cs-spec" data-reveal data-reveal-delay="2">
-              {cs.specs.map((spec, i) => (
-                <div className="cs-spec__row" key={spec.key}>
-                  <span className="cs-spec__n">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="cs-spec__k">{t(`specLabels.${spec.key}`)}</span>
-                  <span className="cs-spec__v">{spec.value}</span>
-                </div>
-              ))}
-            </div>
           </div>
-          <div className="cs-challenge__visual" data-reveal data-reveal-delay="1">
-            <span className="cs-challenge__vcap">{cs.challengeVisualCaption}</span>
-            <ImageFill placeholder="Drop a 'before' screenshot" sizes="(max-width: 900px) 100vw, 45vw" />
+          <div className="cs-spec" data-reveal data-reveal-delay="2">
+            {cs.specs.map((spec, i) => (
+              <div className="cs-spec__row" key={spec.key}>
+                <span className="cs-spec__n">{String(i + 1).padStart(2, "0")}</span>
+                <span className="cs-spec__k">{t(`specLabels.${spec.key}`)}</span>
+                <span className="cs-spec__v">{spec.value}</span>
+              </div>
+            ))}
           </div>
         </div>
       </RevealScope>
