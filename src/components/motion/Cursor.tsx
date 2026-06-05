@@ -23,17 +23,29 @@ export function Cursor() {
       const xTo = gsap.quickTo(el, "x", { duration: 0.14, ease: "power3.out" });
       const yTo = gsap.quickTo(el, "y", { duration: 0.14, ease: "power3.out" });
 
-      // The centre dot rides out to the rim of the ring in the pointer's travel
-      // direction — a little compass needle that points where you're headed —
-      // and eases back to centre when you stop. The offset radius tracks the
-      // ring's current size so it always lands just inside the edge.
+      // The centre dot stays pegged to the rim of the ring, aimed in the
+      // direction of the last pointer travel — it never returns to centre and
+      // never slips outside. A ticker eases the angle (a smooth orbit around the
+      // rim) and re-reads the ring's live size every frame, so the dot hugs the
+      // current edge as the ring grows/shrinks. Default aim: straight down.
       const dotEl = el.querySelector<HTMLElement>(".cursor__dot");
-      const dotXTo = dotEl && gsap.quickTo(dotEl, "x", { duration: 0.18, ease: "power2.out" });
-      const dotYTo = dotEl && gsap.quickTo(dotEl, "y", { duration: 0.18, ease: "power2.out" });
       let lastX = 0;
       let lastY = 0;
       let primed = false;
-      let recenter: ReturnType<typeof setTimeout>;
+      let targetAngle = Math.PI / 2;
+      let angle = Math.PI / 2;
+      const orbit = () => {
+        if (!dotEl) return;
+        let diff = targetAngle - angle;
+        diff = Math.atan2(Math.sin(diff), Math.cos(diff)); // shortest way round
+        angle += diff * 0.2;
+        const dotR = (dotEl.offsetWidth || 4) / 2;
+        // Pin the dot's outer edge just inside the ring's inner border so it
+        // hugs the rim at the ring's current size and can never escape.
+        const radius = Math.max(0, el.offsetWidth / 2 - 1.5 - dotR - 0.5);
+        gsap.set(dotEl, { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius });
+      };
+      gsap.ticker.add(orbit);
 
       let shown = false;
       const move = (e: MouseEvent) => {
@@ -44,23 +56,10 @@ export function Cursor() {
         xTo(e.clientX);
         yTo(e.clientY);
 
-        if (dotXTo && dotYTo) {
-          if (primed) {
-            const dx = e.clientX - lastX;
-            const dy = e.clientY - lastY;
-            const speed = Math.hypot(dx, dy);
-            if (speed > 0.5) {
-              // Park the dot just inside the rim of the (possibly grown) ring.
-              const radius = Math.max(8, el.offsetWidth / 2 - 5);
-              dotXTo((dx / speed) * radius);
-              dotYTo((dy / speed) * radius);
-            }
-          }
-          clearTimeout(recenter);
-          recenter = setTimeout(() => {
-            dotXTo(0);
-            dotYTo(0);
-          }, 90);
+        if (primed) {
+          const dx = e.clientX - lastX;
+          const dy = e.clientY - lastY;
+          if (Math.hypot(dx, dy) > 0.5) targetAngle = Math.atan2(dy, dx);
         }
         lastX = e.clientX;
         lastY = e.clientY;
@@ -106,7 +105,7 @@ export function Cursor() {
       window.addEventListener("mouseup", up);
 
       return () => {
-        clearTimeout(recenter);
+        gsap.ticker.remove(orbit);
         document.documentElement.classList.remove("has-cursor");
         window.removeEventListener("mousemove", move);
         window.removeEventListener("mouseover", over);
