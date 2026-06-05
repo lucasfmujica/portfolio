@@ -92,6 +92,9 @@ export interface CaseStudy {
   buildHeading: string;
   /** Lead with one `*ember phrase*`. */
   buildLead: string;
+  /** Aspect ratio for the build-gallery frames, e.g. "16 / 10". Tuned per case
+   *  study so each set of screenshots crops cleanly. Defaults to 16 / 10. */
+  shotAspect?: string;
   shots: CaseStudyShot[];
   /** Results (ember-flooded) band. */
   resultsStatement: string;
@@ -311,6 +314,7 @@ export const projects: Project[] = [
       buildHeading: "A site that moves the way a conversation does.",
       buildLead:
         "I built BIKE in Webflow with GSAP carrying the motion — a *custom preloader* that sets the tone before the first scroll, reveals that pace the story, and Finsweet-driven accordions and forms the team runs themselves. The 404 is its own small moment: an interactive Spline bicycle for anyone who pedals somewhere that doesn't exist yet.",
+      shotAspect: "16 / 9",
       shots: [
         {
           n: "01",
@@ -387,6 +391,7 @@ export const projects: Project[] = [
       buildHeading: "A bespoke static build, tuned by hand.",
       buildLead:
         "Hand-written HTML, CSS custom properties and vanilla JavaScript — no framework, self-hosted Sora and Overpass for speed, and GSAP + ScrollTrigger for the motion. The centrepiece is a *before/after slider I wrote from scratch*: a carousel with a draggable reveal handle on mobile. Contact runs on Netlify Forms, and the SEO is deliberate down to the JSON-LD LocalBusiness schema.",
+      shotAspect: "16 / 9",
       shots: [
         {
           n: "01",

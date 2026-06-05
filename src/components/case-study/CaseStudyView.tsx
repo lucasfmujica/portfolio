@@ -67,7 +67,7 @@ export function CaseStudyView({
               <RichText text={cs.buildLead} />
             </p>
           </div>
-          <CaseStudyGallery shots={cs.shots} />
+          <CaseStudyGallery shots={cs.shots} aspect={cs.shotAspect} />
         </div>
       </RevealScope>
 

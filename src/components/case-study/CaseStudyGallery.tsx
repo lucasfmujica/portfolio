@@ -10,7 +10,13 @@ import type { CaseStudyShot } from "@/data/projects";
  * inner image (±34px) and a fade-up reveal per figure. Reduced-motion shows
  * static figures (CSS resets the parallax inset).
  */
-export function CaseStudyGallery({ shots }: { shots: CaseStudyShot[] }) {
+export function CaseStudyGallery({
+  shots,
+  aspect,
+}: {
+  shots: CaseStudyShot[];
+  aspect?: string;
+}) {
   const root = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -43,7 +49,11 @@ export function CaseStudyGallery({ shots }: { shots: CaseStudyShot[] }) {
   );
 
   return (
-    <div className="cs-gallery" ref={root}>
+    <div
+      className="cs-gallery"
+      ref={root}
+      style={aspect ? ({ "--cs-shot-aspect": aspect } as React.CSSProperties) : undefined}
+    >
       {shots.map((shot) => (
         <figure className="cs-shot" key={shot.n}>
           <div className="cs-shot__frame">

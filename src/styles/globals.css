@@ -3263,7 +3263,7 @@
     overflow: hidden;
     border: 1px solid var(--hairline);
     background: var(--surface);
-    aspect-ratio: 16 / 9;
+    aspect-ratio: var(--cs-shot-aspect, 16 / 10);
     box-shadow: 0 40px 100px -48px rgba(0, 0, 0, 0.85);
   }
   .cs-shot__frame img {
