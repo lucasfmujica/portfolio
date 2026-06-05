@@ -3812,9 +3812,10 @@
     opacity: 0;
     display: grid;
     place-items: center;
+    will-change: transform;
+    /* No width/height here: animating to/from the label pill's `auto` width
+       can't interpolate and stutters. Fixed-px states below opt into it. */
     transition:
-      width 0.25s var(--ease-out),
-      height 0.25s var(--ease-out),
       background-color 0.25s var(--ease-out),
       border-color 0.25s var(--ease-out);
   }
@@ -3829,6 +3830,11 @@
     width: 56px;
     height: 56px;
     background: color-mix(in srgb, var(--ember), transparent 86%);
+    transition:
+      width 0.25s var(--ease-out),
+      height 0.25s var(--ease-out),
+      background-color 0.25s var(--ease-out),
+      border-color 0.25s var(--ease-out);
   }
   .cursor.is-active .cursor__dot {
     opacity: 0;
@@ -3836,6 +3842,9 @@
   .cursor.is-down {
     width: 22px;
     height: 22px;
+    transition:
+      width 0.25s var(--ease-out),
+      height 0.25s var(--ease-out);
   }
   .cursor.is-hidden {
     opacity: 0 !important;

@@ -33,8 +33,18 @@ export function Cursor() {
         yTo(e.clientY);
       };
       const labelEl = el.querySelector<HTMLElement>(".cursor__label");
+      // `mouseover` fires for every descendant the pointer crosses — many times
+      // per sweep across a card. Recomputing (and especially rewriting the pill's
+      // text, which relayouts an auto-width element) on each one thrashes the
+      // main thread and stutters the cursor tween. Skip when the element hasn't
+      // changed, and only touch the DOM when the resolved state actually flips.
+      let lastTarget: HTMLElement | null = null;
+      let lastLabel = "";
       const over = (e: MouseEvent) => {
         const target = e.target as HTMLElement | null;
+        if (target === lastTarget) return;
+        lastTarget = target;
+
         const field = target?.closest?.("input, textarea, select, [contenteditable='true']");
         const interactive = target?.closest?.("a, button, [data-cursor], .wcard, .awcard, .tst__item");
         // Over fields and selectable body text, hide the ring so the native
@@ -46,7 +56,8 @@ export function Cursor() {
         // A `data-cursor` value turns the ring into a labelled pill (e.g. "View").
         const labelHost = target?.closest?.<HTMLElement>("[data-cursor]");
         const label = labelHost?.dataset.cursor || "";
-        if (labelEl && label) labelEl.textContent = label;
+        if (labelEl && label && label !== lastLabel) labelEl.textContent = label;
+        lastLabel = label;
         el.classList.toggle("is-hidden", !!field || !!text);
         el.classList.toggle("is-active", !!interactive && !field);
         el.classList.toggle("is-invert", !!onEmber);
