@@ -26,8 +26,6 @@ export function Hero() {
         linesClass: "hero__line",
       });
 
-      const slot = heading.current?.querySelector<HTMLElement>(".hero__cycle");
-      const inner = heading.current?.querySelector<HTMLElement>(".hero__cycle-inner");
       let drift: gsap.core.Timeline | undefined;
       let cycle: gsap.core.Timeline | undefined;
 
@@ -35,7 +33,12 @@ export function Hero() {
       // and resolves back on "move." — which then drifts forever. The brand
       // promise stays literally in motion (and the footer echoes it: "moves.").
       const startCycle = () => {
+        // Revert FIRST, then query: SplitText's mask mode rebuilds the heading's
+        // markup on revert, so any node grabbed earlier is now detached. Querying
+        // after revert is what makes the word actually animate.
         split.revert();
+        const slot = heading.current?.querySelector<HTMLElement>(".hero__cycle");
+        const inner = heading.current?.querySelector<HTMLElement>(".hero__cycle-inner");
         if (!slot || !inner) return;
         const words = ["convert.", "scale.", "last.", "move."];
         cycle = gsap.timeline({ delay: 0.9 });
