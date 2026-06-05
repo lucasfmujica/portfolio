@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { RevealScope } from "@/components/motion/RevealScope";
 import { MaskHeading } from "@/components/motion/MaskHeading";
+import { RichText } from "@/components/ui/RichText";
 import { ImageFill } from "@/components/ui/ImageFill";
 import { Icon } from "@/components/ui/Icon";
 import { projects } from "@/data/projects";
@@ -24,7 +25,7 @@ export function SelectedWork() {
         <div className="work__top">
           <div className="section-head">
             <span className="eyebrow" data-reveal>{t("eyebrow")}</span>
-            <MaskHeading>{t("heading")}</MaskHeading>
+            <MaskHeading><RichText text={t("heading")} /></MaskHeading>
             <p className="lede" data-reveal data-reveal-delay="1">{t("lede")}</p>
           </div>
           <Link href="/work" className="btn btn--link" data-reveal data-reveal-delay="1">

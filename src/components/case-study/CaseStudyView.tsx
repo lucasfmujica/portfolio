@@ -149,7 +149,7 @@ export function CaseStudyView({
         <div className="container cs-cta__inner" data-reveal>
           <div>
             <span className="eyebrow eyebrow--accent">{t("ctaEyebrow")}</span>
-            <h2 className="cs-cta__h">{t("ctaHeading")}</h2>
+            <h2 className="cs-cta__h"><RichText text={t("ctaHeading")} /></h2>
           </div>
           <a href="/#contact" className="btn btn--primary">
             {t("ctaButton")} <Icon name="arrow-ur" />

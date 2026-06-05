@@ -160,7 +160,7 @@ export const projects: Project[] = [
         "Native Webflow Ecommerce + custom-quote flow, wired in on-brand.",
         "Built to scale — new product lines drop in as components, not rebuilds.",
       ],
-      services: ["Strategy", "Web Design", "Development", "Webflow Ecommerce", "CMS"],
+      services: ["Strategy", "Web Design", "Development", "Webflow Ecommerce", "Webflow CMS"],
       challengeHeading: "A premium, made-to-order product on a generic shelf.",
       challengeBody:
         "True North makes custom hockey and baseball jerseys in BC — sublimated, reversible, embroidered, the craft is the whole pitch. But that detail is exactly what a stock template *flattens into a grid*. The brand needed a store that felt as considered as the product, kept the catalog easy to run, and put the path to a quote one tap away.",
@@ -177,7 +177,7 @@ export const projects: Project[] = [
         {
           n: "01",
           label: "01 — Storefront",
-          lead: "A bold “built different” brand, front and centre",
+          lead: "A bold “built different” brand, front and center",
           body: " — action photography and scroll-tied reveals that mirror the craft, not a generic grid.",
           placeholder: "Storefront — drop screenshot",
           image: "/assets/truenorth-shot1.webp",
@@ -254,7 +254,7 @@ export const projects: Project[] = [
       ],
       buildHeading: "A component system the team ships in three languages.",
       buildLead:
-        "I built the marketing site in Webflow on Client-First, with GSAP doing the heavy lifting — *scroll animations that read as craft*, reduced-motion aware. The whole thing runs on Webflow Localization across three languages (Spanish, English, Portuguese), componentised and CMS-driven, so the team ships solution pages, articles and success stories in any locale without a developer in the loop.",
+        "I built the marketing site in Webflow on Client-First, with GSAP doing the heavy lifting — *scroll animations that read as craft*, reduced-motion aware. The whole thing runs on Webflow Localization across three languages (Spanish, English, Portuguese), componentized and CMS-driven, so the team ships solution pages, articles and success stories in any locale without a developer in the loop.",
       shots: [
         {
           n: "01",
@@ -419,7 +419,7 @@ export const projects: Project[] = [
       ],
       buildHeading: "A bespoke static build, tuned by hand.",
       buildLead:
-        "Hand-written HTML, CSS custom properties and vanilla JavaScript — no framework, self-hosted Sora and Overpass for speed, and GSAP + ScrollTrigger for the motion. The centrepiece is a *before/after slider I wrote from scratch*: a carousel with a draggable reveal handle on mobile. Contact runs on Netlify Forms, and the SEO is deliberate down to the JSON-LD LocalBusiness schema.",
+        "Hand-written HTML, CSS custom properties and vanilla JavaScript — no framework, self-hosted Sora and Overpass for speed, and GSAP + ScrollTrigger for the motion. The centerpiece is a *before/after slider I wrote from scratch*: a carousel with a draggable reveal handle on mobile. Contact runs on Netlify Forms, and the SEO is deliberate down to the JSON-LD LocalBusiness schema.",
       shotAspect: "2 / 1",
       shots: [
         {
@@ -569,7 +569,7 @@ export const projects: Project[] = [
       heroBadge: "nadetir.com · home",
       highlights: [
         "A century of trust, finally *legible online* for B2B buyers.",
-        "A world map of 500+ clients across 30+ countries, front and centre.",
+        "A world map of 500+ clients across 30+ countries, front and center.",
         "CMS-driven where it counts, so the team keeps it current.",
       ],
       services: ["Strategy", "Web Design", "Development", "Webflow CMS"],
@@ -590,7 +590,7 @@ export const projects: Project[] = [
           n: "01",
           label: "01 — Home",
           lead: "“Keeping vessels moving, worldwide”",
-          body: " — a world map of 500+ clients across 30+ countries, front and centre.",
+          body: " — a world map of 500+ clients across 30+ countries, front and center.",
           image: "/assets/seilas-card.webp",
           placeholder: "Home / map — drop screenshot",
         },

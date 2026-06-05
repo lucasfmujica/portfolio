@@ -122,7 +122,7 @@ export function Testimonials() {
       <div className="container">
         <div className="section-head center" style={{ marginBottom: 56 }}>
           <span className="eyebrow" data-reveal>{t("eyebrow")}</span>
-          <MaskHeading>{t("heading")}</MaskHeading>
+          <MaskHeading><RichText text={t("heading")} /></MaskHeading>
           <p className="lede" data-reveal data-reveal-delay="1">{t("lede")}</p>
         </div>
 

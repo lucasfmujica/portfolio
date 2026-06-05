@@ -1490,7 +1490,7 @@
     top: 92px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 460px;
+    align-items: center;
     border: 1px solid var(--hairline);
     border-radius: var(--r-card-lg);
     overflow: hidden;
@@ -1544,13 +1544,25 @@
   }
   .wcard__media {
     position: relative;
-    min-height: 460px;
+    align-self: center;
     background: radial-gradient(
         120% 90% at 85% 12%,
         color-mix(in srgb, var(--ember), transparent 82%),
         transparent 55%
       ),
       linear-gradient(150deg, var(--surface-2), var(--ink));
+  }
+  /* Each featured card's media matches its hero screenshot's native ratio, so
+     the image shows in full proportion (cover crops nothing). Order mirrors
+     SelectedWork's FEATURED = projects[0..2]: True North · K2BTools · BIKE. */
+  .workstack .wcard:nth-child(1) .wcard__media {
+    aspect-ratio: 1500 / 806;
+  }
+  .workstack .wcard:nth-child(2) .wcard__media {
+    aspect-ratio: 1500 / 870;
+  }
+  .workstack .wcard:nth-child(3) .wcard__media {
+    aspect-ratio: 1500 / 746;
   }
   .wcard__media .imgslot,
   .wcard__media img {
@@ -1639,9 +1651,6 @@
     }
     .wcard:nth-child(even) .wcard__media {
       order: 0;
-    }
-    .wcard__media {
-      min-height: 220px;
     }
     .wcard__body {
       padding: 32px;
@@ -3311,6 +3320,7 @@
   .cs-gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    align-items: start;
     gap: 28px;
     margin-top: 64px;
   }
@@ -3344,12 +3354,11 @@
   .cs-shot__frame img {
     object-position: 50% top;
   }
-  /* Small parallax overscan: a taller inner crops the (wide) screenshots on the
-     sides under object-fit:cover, so keep it minimal to preserve proportion. */
+  /* Frame matches the screenshot's native ratio, so the image fills it exactly
+     (cover crops nothing). No overscan — proportion is preserved over parallax. */
   .cs-shot__inner {
     position: absolute;
-    inset: -2% 0;
-    will-change: transform;
+    inset: 0;
   }
   .cs-shot__inner > * {
     position: absolute;

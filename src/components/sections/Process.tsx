@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { MaskHeading } from "@/components/motion/MaskHeading";
+import { RichText } from "@/components/ui/RichText";
 import { Icon, type IconName } from "@/components/ui/Icon";
 
 interface Step {
@@ -125,7 +126,7 @@ export function Process() {
       <div className="container process__grid">
         <div className="process__aside">
           <span className="eyebrow" data-reveal>{t("eyebrow")}</span>
-          <MaskHeading>{t("heading")}</MaskHeading>
+          <MaskHeading><RichText text={t("heading")} /></MaskHeading>
           <p className="lede" data-reveal data-reveal-delay="1">{t("lede")}</p>
         </div>
 

@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { RevealScope } from "@/components/motion/RevealScope";
+import { RichText } from "@/components/ui/RichText";
 import { Icon } from "@/components/ui/Icon";
 import { ContactForm } from "./ContactForm";
 
@@ -25,7 +26,7 @@ export function Contact() {
             {t("eyebrow")}
           </span>
           <h2 data-reveal data-reveal-delay="1">
-            {t("heading")}
+            <RichText text={t("heading")} />
           </h2>
           <p className="contact__lead" data-reveal data-reveal-delay="2">
             {t("lead")}

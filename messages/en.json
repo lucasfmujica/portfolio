@@ -45,7 +45,7 @@
   },
   "Work": {
     "eyebrow": "selected work",
-    "heading": "Builds I'm proud to put my name on.",
+    "heading": "Builds I'm *proud* to put my name on.",
     "lede": "Each one is built to be owned — a component system the client's marketing team can run, scale and keep editing without a developer on call.",
     "viewAll": "View all projects",
     "seeAll": "See all projects",
@@ -58,8 +58,8 @@
   },
   "About": {
     "eyebrow": "about",
-    "heading": "A senior Webflow developer who ships.",
-    "lede": "Five years and 100+ projects of production-grade Webflow — component-first builds with CMS architecture that marketing teams and small businesses actually enjoy running. Client-First certified, GSAP for the motion, and React / Next.js when a build calls for it. Fast on day one, still easy to edit a year later.",
+    "heading": "A senior Webflow developer who *ships*.",
+    "lede": "Five-plus years and 100+ projects of production-grade Webflow — component-first builds with CMS architecture that marketing teams and small businesses actually enjoy running. Client-First certified, GSAP for the motion, and React / Next.js when a build calls for it. Fast on day one, still easy to edit a year later.",
     "statYears": "years shipping",
     "statProjects": "projects delivered",
     "cred": ["Webflow Certified Expert", "Remote, worldwide"],
@@ -82,7 +82,7 @@
   },
   "Process": {
     "eyebrow": "process",
-    "heading": "How I work.",
+    "heading": "How I *work*.",
     "lede": "No mystery, no bloated decks — just the three phases behind every site I ship.",
     "steps": [
       {
@@ -107,12 +107,12 @@
   },
   "Testimonials": {
     "eyebrow": "testimonials",
-    "heading": "Don't take my word for it.",
+    "heading": "Don't take my *word* for it.",
     "lede": "Proven results, from the people who shipped alongside me."
   },
   "Contact": {
     "eyebrow": "start a project",
-    "heading": "Ready to build.",
+    "heading": "Ready to *build*.",
     "lead": "A few quick details so I can scope it before we even talk — or just email me directly.",
     "email": "hello@lucasmujica.dev",
     "available": "Replies within a day",
@@ -156,7 +156,7 @@
     "resultsEyebrow": "what shipped",
     "quoteEyebrow": "what they said",
     "ctaEyebrow": "start a project",
-    "ctaHeading": "Have a project like this one?",
+    "ctaHeading": "Have a project *like this one*?",
     "ctaButton": "Start a project",
     "nextEyebrow": "see the next project",
     "specLabels": {

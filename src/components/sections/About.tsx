@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { ImageFill } from "@/components/ui/ImageFill";
+import { RichText } from "@/components/ui/RichText";
 import { CertBadge } from "@/components/ui/CertBadge";
 
 const STATS = [
@@ -87,7 +88,7 @@ export function About() {
             {t("eyebrow")}
           </span>
           <h2 data-reveal data-reveal-delay="1">
-            {t("heading")}
+            <RichText text={t("heading")} />
           </h2>
           <p className="lede" data-reveal data-reveal-delay="1">
             {t("lede")}
