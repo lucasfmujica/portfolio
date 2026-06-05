@@ -877,49 +877,47 @@
       grid-template-columns: 1fr;
     }
   }
-  .hero__pill {
+  .hero__eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
     font-family: var(--font-mono);
     font-size: var(--text-small);
-    letter-spacing: 0.03em;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     color: var(--fg2);
-    border: 1px solid var(--hairline);
-    border-radius: 100px;
-    padding: 8px 16px 8px 14px;
-    background: var(--surface);
-    margin-bottom: 36px;
+    margin: 0 0 36px;
   }
-  .hero__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 100px;
-    background: var(--positive);
+  .hero__eyebrow-mark {
     position: relative;
+    width: 34px;
+    height: 2px;
+    border-radius: 2px;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--ember), transparent 62%);
   }
-  .hero__dot::after {
+  /* an ember spark runs the rail — motion that echoes the headline */
+  .hero__eyebrow-mark::after {
     content: "";
     position: absolute;
-    inset: 0;
-    border-radius: 100px;
-    background: var(--positive);
-    animation: dotPulse 2.6s var(--ease-out) infinite;
+    inset: 0 auto 0 0;
+    width: 13px;
+    border-radius: 2px;
+    background: var(--ember);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--ember), transparent 30%);
+    animation: eyebrowRun 2.8s var(--ease-in-out) infinite;
   }
-  @media (prefers-reduced-motion: reduce) {
-    .hero__dot::after {
-      animation: none;
-    }
-  }
-  @keyframes dotPulse {
+  @keyframes eyebrowRun {
     0% {
-      box-shadow: 0 0 0 0 color-mix(in srgb, var(--positive), transparent 45%);
-    }
-    70% {
-      box-shadow: 0 0 0 9px color-mix(in srgb, var(--positive), transparent 100%);
+      transform: translateX(-13px);
     }
     100% {
-      box-shadow: 0 0 0 0 color-mix(in srgb, var(--positive), transparent 100%);
+      transform: translateX(34px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__eyebrow-mark::after {
+      animation: none;
     }
   }
   .hero h1 {

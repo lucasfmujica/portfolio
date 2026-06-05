@@ -26,7 +26,25 @@ export function Hero() {
         linesClass: "hero__line",
       });
 
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      // "move." keeps moving after the intro: once the headline has revealed,
+      // we drop the line masks and let the ember word drift on a gentle,
+      // never-ending orbit — the brand promise stays literally in motion.
+      const ember = heading.current?.querySelector<HTMLElement>(".ember-word");
+      let drift: gsap.core.Timeline | undefined;
+
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+        onComplete: () => {
+          split.revert();
+          if (!ember) return;
+          gsap.set(ember, { display: "inline-block", transformOrigin: "0% 100%" });
+          drift = gsap
+            .timeline({ repeat: -1, yoyo: true, defaults: { ease: "sine.inOut" } })
+            .to(ember, { y: -8, duration: 1.9 })
+            .to(ember, { x: 5, duration: 1.9 }, 0)
+            .to(ember, { rotation: -2.5, duration: 1.9 }, 0);
+        },
+      });
       tl.from(split.lines, { yPercent: 110, duration: 0.95, stagger: 0.1 })
         .from(
           root.current.querySelectorAll<HTMLElement>("[data-hero-stagger]"),
@@ -44,7 +62,10 @@ export function Hero() {
           0.9,
         );
 
-      return () => split.revert();
+      return () => {
+        drift?.kill();
+        split.revert();
+      };
     },
     { scope: root },
   );
@@ -53,9 +74,10 @@ export function Hero() {
     <header className="hero" id="hero" ref={root}>
       <div className="hero__inner">
         <div className="hero__content">
-          <div className="hero__pill" data-hero-stagger>
-            <span className="hero__dot" /> {t("available")}
-          </div>
+          <p className="hero__eyebrow" data-hero-stagger>
+            <span className="hero__eyebrow-mark" aria-hidden="true" />
+            {t("eyebrow")}
+          </p>
           <h1 ref={heading}>
             {t("line1")}
             <br />
