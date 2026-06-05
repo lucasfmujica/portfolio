@@ -76,7 +76,7 @@ export function About() {
       <div className="container about__grid">
         <div className="about__portrait" data-reveal>
           <ImageFill
-            src="/assets/portrait.webp"
+            src="/assets/portrait.jpg"
             alt="Lucas Mujica"
             placeholder={t("portraitPlaceholder")}
             sizes="(max-width: 860px) 100vw, 40vw"

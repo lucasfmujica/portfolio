@@ -17,7 +17,7 @@ const personEntity = {
   name: siteName,
   url: siteUrl,
   email: "hello@lucasmujica.dev",
-  image: `${siteUrl}/assets/portrait.webp`,
+  image: `${siteUrl}/assets/portrait.jpg`,
   jobTitle: "Senior Webflow & Front-End Developer",
   description:
     "Senior Webflow & front-end developer, 5+ years deep — fast, scalable sites with motion that earns its place.",
