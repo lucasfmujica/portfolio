@@ -3669,4 +3669,87 @@
     justify-content: center;
     margin-top: 8px;
   }
+
+  /* ============================================================
+     CUSTOM CURSOR  (desktop / motion only — see Cursor.tsx)
+     ============================================================ */
+  .cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid var(--ember);
+    border-radius: 100px;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    display: grid;
+    place-items: center;
+    transition:
+      width 0.25s var(--ease-out),
+      height 0.25s var(--ease-out),
+      background-color 0.25s var(--ease-out),
+      border-color 0.25s var(--ease-out);
+  }
+  .cursor__dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 100px;
+    background: var(--ember);
+    transition: opacity 0.2s var(--ease-out);
+  }
+  .cursor.is-active {
+    width: 56px;
+    height: 56px;
+    background: color-mix(in srgb, var(--ember), transparent 86%);
+  }
+  .cursor.is-active .cursor__dot {
+    opacity: 0;
+  }
+  .cursor.is-down {
+    width: 22px;
+    height: 22px;
+  }
+  .cursor.is-hidden {
+    opacity: 0 !important;
+  }
+  html.has-cursor,
+  html.has-cursor * {
+    cursor: none !important;
+  }
+  /* Keep the native caret / I-beam over form fields and selectable body text. */
+  html.has-cursor :is(input, textarea, select, [contenteditable]),
+  html.has-cursor
+    :is(p, li, blockquote, figcaption, label, .lede):not(a *):not(button *):not(.wcard *):not(
+      .awcard *
+    ):not(.tst__item *) {
+    cursor: auto !important;
+  }
+
+  /* ============================================================
+     DRAWN UNDERLINE  (DrawSVG — see DrawUnderline.tsx)
+     ============================================================ */
+  .draw-ul {
+    position: relative;
+    display: inline-block;
+  }
+  .draw-ul__svg {
+    position: absolute;
+    left: -0.04em;
+    right: -0.04em;
+    bottom: -0.16em;
+    width: calc(100% + 0.08em);
+    height: 0.4em;
+    overflow: visible;
+    pointer-events: none;
+  }
+  .draw-ul__svg path {
+    fill: none;
+    stroke: var(--ember);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
 }

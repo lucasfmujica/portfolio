@@ -6,6 +6,7 @@ import { ImageFill } from "@/components/ui/ImageFill";
 import { Icon } from "@/components/ui/Icon";
 import { CaseStudyHero } from "./CaseStudyHero";
 import { CaseStudyGallery } from "./CaseStudyGallery";
+import { Metric } from "@/components/ui/Metric";
 import { getNextCaseStudy, type Project, type CaseStudy } from "@/data/projects";
 
 /**
@@ -87,13 +88,7 @@ export function CaseStudyView({
           </p>
           <div className="cs-metrics" data-reveal data-reveal-delay="2">
             {cs.metrics.map((m) => (
-              <div className="cs-metric" key={m.label}>
-                <div className="cs-metric__n">
-                  {m.value}
-                  {m.unit && <span className="u">{m.unit}</span>}
-                </div>
-                <div className="cs-metric__l">{m.label}</div>
-              </div>
+              <Metric value={m.value} unit={m.unit} label={m.label} key={m.label} />
             ))}
           </div>
         </div>

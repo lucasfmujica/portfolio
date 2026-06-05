@@ -77,7 +77,7 @@ export function Hero() {
         </div>
 
         <div className="hero__visual" aria-hidden="true">
-          <div className="browser">
+          <div className="browser" data-parallax="0.08">
             <div className="browser__bar">
               <span className="browser__dots">
                 <i />

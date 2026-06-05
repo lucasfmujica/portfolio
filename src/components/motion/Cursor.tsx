@@ -1,0 +1,69 @@
+"use client";
+
+import { useRef } from "react";
+import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+
+/**
+ * Custom cursor — an ember ring (with a centre dot) that trails the pointer and
+ * grows over interactive elements. Hides the native cursor only while active.
+ * Skipped entirely on touch devices and under reduced-motion (native cursor
+ * stays), so it never costs usability.
+ */
+export function Cursor() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const el = ref.current;
+      if (!el || prefersReducedMotion() || window.matchMedia("(hover: none)").matches) return;
+
+      document.documentElement.classList.add("has-cursor");
+      gsap.set(el, { xPercent: -50, yPercent: -50 });
+      // Snappy follow so it never reads as laggy.
+      const xTo = gsap.quickTo(el, "x", { duration: 0.14, ease: "power3.out" });
+      const yTo = gsap.quickTo(el, "y", { duration: 0.14, ease: "power3.out" });
+
+      let shown = false;
+      const move = (e: MouseEvent) => {
+        if (!shown) {
+          shown = true;
+          gsap.to(el, { autoAlpha: 1, duration: 0.2 });
+        }
+        xTo(e.clientX);
+        yTo(e.clientY);
+      };
+      const over = (e: MouseEvent) => {
+        const target = e.target as HTMLElement | null;
+        const field = target?.closest?.("input, textarea, select, [contenteditable='true']");
+        const interactive = target?.closest?.("a, button, [data-cursor], .wcard, .awcard, .tst__item");
+        // Over fields and selectable body text, hide the ring so the native
+        // caret / I-beam shows (CSS restores it). Interactive wins over text.
+        const text = !interactive && target?.closest?.("p, li, blockquote, figcaption, label, .lede");
+        el.classList.toggle("is-hidden", !!field || !!text);
+        el.classList.toggle("is-active", !!interactive && !field);
+      };
+      const down = () => el.classList.add("is-down");
+      const up = () => el.classList.remove("is-down");
+
+      window.addEventListener("mousemove", move);
+      window.addEventListener("mouseover", over);
+      window.addEventListener("mousedown", down);
+      window.addEventListener("mouseup", up);
+
+      return () => {
+        document.documentElement.classList.remove("has-cursor");
+        window.removeEventListener("mousemove", move);
+        window.removeEventListener("mouseover", over);
+        window.removeEventListener("mousedown", down);
+        window.removeEventListener("mouseup", up);
+      };
+    },
+    { scope: ref },
+  );
+
+  return (
+    <div ref={ref} className="cursor" aria-hidden="true">
+      <span className="cursor__dot" />
+    </div>
+  );
+}

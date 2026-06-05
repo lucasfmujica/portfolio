@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { RevealScope } from "@/components/motion/RevealScope";
+import { DrawUnderline } from "@/components/motion/DrawUnderline";
 import { Icon, type IconName } from "@/components/ui/Icon";
 
 const TECHS = [
@@ -42,12 +43,14 @@ export function Stack() {
           <span className="eyebrow eyebrow--accent">{t("eyebrow")}</span>
           <h2>
             {t("headingPre")}
-            <span className="ember-word">{t("headingEmber")}</span>
+            <DrawUnderline>
+              <span className="ember-word">{t("headingEmber")}</span>
+            </DrawUnderline>
           </h2>
           <p className="lede">{t("lede")}</p>
         </div>
 
-        <div className="smq" aria-hidden="true">
+        <div className="smq" aria-hidden="true" data-skew>
           <div className="smq__row smq__row--a">
             <div className="smq__t">
               {rowA.map((tech, i) => (

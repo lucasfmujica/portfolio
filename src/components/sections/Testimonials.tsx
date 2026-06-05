@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type TouchEvent as ReactTouchEvent } from "react";
 import { useTranslations } from "next-intl";
-import { prefersReducedMotion } from "@/lib/gsap";
+import { gsap, prefersReducedMotion } from "@/lib/gsap";
 import { RichText } from "@/components/ui/RichText";
 import { RevealScope } from "@/components/motion/RevealScope";
 import { testimonials } from "@/data/testimonials";
@@ -19,11 +19,12 @@ const FADE_MS = 280;
 export function Testimonials() {
   const t = useTranslations("Testimonials");
   const [current, setCurrent] = useState(0);
-  const [out, setOut] = useState(false);
   const currentRef = useRef(0);
   const advanceTimer = useRef<number>(0);
   const swapTimer = useRef<number>(0);
   const progRef = useRef<HTMLDivElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const didMount = useRef(false);
   const reduce = useRef(false);
   const touchX = useRef<number | null>(null);
 
@@ -52,15 +53,32 @@ export function Testimonials() {
       setCurrent(i);
       return;
     }
-    setOut(true);
+    // Slide the current quote out, then swap; the [current] effect slides it in.
+    const targets = bodyRef.current?.querySelectorAll(".tst__q, .tst__by");
+    if (targets) gsap.to(targets, { autoAlpha: 0, x: -24, duration: 0.22, ease: "power2.in" });
     window.clearTimeout(swapTimer.current);
     swapTimer.current = window.setTimeout(() => {
       currentRef.current = i;
       setCurrent(i);
-      setOut(false);
     }, FADE_MS);
     restart();
   };
+
+  // Animate the freshly-swapped quote in (skip the first paint).
+  useEffect(() => {
+    if (reduce.current || !didMount.current) {
+      didMount.current = true;
+      return;
+    }
+    const targets = bodyRef.current?.querySelectorAll(".tst__q, .tst__by");
+    if (targets) {
+      gsap.fromTo(
+        targets,
+        { autoAlpha: 0, x: 24 },
+        { autoAlpha: 1, x: 0, duration: 0.5, stagger: 0.09, ease: "power3.out" },
+      );
+    }
+  }, [current]);
 
   useEffect(() => {
     reduce.current = prefersReducedMotion();
@@ -115,9 +133,9 @@ export function Testimonials() {
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
-          <div className={`tst__feature${out ? " is-out" : ""}`}>
+          <div className="tst__feature">
             <div className="tst__mark">&ldquo;</div>
-            <div className="tst__body">
+            <div className="tst__body" ref={bodyRef}>
               <p className="tst__q">
                 &ldquo;
                 <RichText text={active.quote} />
