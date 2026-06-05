@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { MaskHeading } from "@/components/motion/MaskHeading";
 import { Icon, type IconName } from "@/components/ui/Icon";
 
 interface Step {
@@ -62,10 +63,10 @@ export function Process() {
   return (
     <section className="section process" id="process" ref={root}>
       <div className="container">
-        <div className="section-head" data-reveal>
-          <span className="eyebrow">{t("eyebrow")}</span>
-          <h2>{t("heading")}</h2>
-          <p className="lede">{t("lede")}</p>
+        <div className="section-head">
+          <span className="eyebrow" data-reveal>{t("eyebrow")}</span>
+          <MaskHeading>{t("heading")}</MaskHeading>
+          <p className="lede" data-reveal data-reveal-delay="1">{t("lede")}</p>
         </div>
         <div className="pflow" ref={flow}>
           <div className="pflow__rail" aria-hidden="true">

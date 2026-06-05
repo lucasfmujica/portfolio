@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
-import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { ImageFill } from "@/components/ui/ImageFill";
 import { CertBadge } from "@/components/ui/CertBadge";
 
@@ -18,7 +18,14 @@ export function About() {
 
   useGSAP(
     () => {
-      if (prefersReducedMotion() || !root.current) return;
+      if (!root.current) return;
+      const timeline = root.current.querySelector<HTMLElement>(".stats--timeline");
+
+      if (prefersReducedMotion()) {
+        // No scroll triggers under reduced-motion — show the rail fully drawn.
+        timeline?.classList.add("play");
+        return;
+      }
       const revealY =
         parseInt(getComputedStyle(document.documentElement).getPropertyValue("--reveal-y"), 10) ||
         26;
@@ -49,6 +56,17 @@ export function About() {
           },
         });
       });
+
+      // Timeline rail draws + nodes light in sequence as the stats enter view,
+      // synced with the count-up (the Process comet motif, reused here).
+      if (timeline) {
+        ScrollTrigger.create({
+          trigger: timeline,
+          start: "top 85%",
+          once: true,
+          onEnter: () => timeline.classList.add("play"),
+        });
+      }
     },
     { scope: root },
   );
@@ -74,9 +92,14 @@ export function About() {
           <p className="lede" data-reveal data-reveal-delay="1">
             {t("lede")}
           </p>
-          <div className="stats" data-reveal data-reveal-delay="2">
+          <div className="stats stats--timeline" data-reveal data-reveal-delay="2">
+            <span className="stats__rail" aria-hidden="true">
+              <span className="stats__fill" />
+              <span className="stats__comet" />
+            </span>
             {STATS.map((s) => (
               <div className="stat" key={s.labelKey}>
+                <span className="stat__node" aria-hidden="true" />
                 <div className="stat__num" data-count={s.target} data-suffix={s.suffix}>
                   0<span className="plus">{s.suffix}</span>
                 </div>

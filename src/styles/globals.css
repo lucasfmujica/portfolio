@@ -1486,6 +1486,39 @@
     background: var(--surface);
     box-shadow: 0 -12px 70px -28px rgba(0, 0, 0, 0.75);
   }
+  /* Ember frame that strokes on around the card on hover (dash draw — the
+     DrawSVG/underline motif, here as a CSS perimeter draw). No viewBox so the
+     32px corner radius never distorts. */
+  .wcard__frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+    overflow: visible;
+  }
+  .wcard__frame rect {
+    x: 1px;
+    y: 1px;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    rx: 31px;
+    ry: 31px;
+    fill: none;
+    stroke: var(--ember);
+    stroke-width: 1.5;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    opacity: 0;
+    transition:
+      stroke-dashoffset 0.7s var(--ease-out),
+      opacity 0.3s var(--ease-out);
+  }
+  .wcard:hover .wcard__frame rect {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
   .wcard:nth-child(even) .wcard__media {
     order: 2;
   }
@@ -1672,6 +1705,88 @@
     font-size: var(--text-small);
     margin-top: 10px;
     letter-spacing: 0.02em;
+  }
+
+  /* Timeline variant — the Process comet rail, reused to connect the two stats
+     as milestones that light up in sequence (see About.tsx). */
+  .stats--timeline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 56px;
+    position: relative;
+  }
+  .stats--timeline .stat {
+    position: relative;
+    padding-top: 32px;
+  }
+  .stat__node {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 100px;
+    border: 2px solid var(--hairline-strong);
+    background: var(--surface);
+    z-index: 1;
+    transition:
+      border-color 0.5s var(--ease-out),
+      box-shadow 0.5s var(--ease-out);
+  }
+  /* Rail spans node-1 centre → node-2 centre. With two equal columns the second
+     node sits at 50% + half-the-gap, so its centre is (50% + 28px) past the
+     first — derived, so it stays aligned at any width. */
+  .stats__rail {
+    position: absolute;
+    top: 6px;
+    left: 7px;
+    width: calc(50% + 28px);
+    height: 2px;
+    background: var(--hairline);
+    border-radius: 2px;
+  }
+  .stats__fill {
+    position: absolute;
+    inset: 0;
+    background: var(--ember);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 1.4s var(--ease-out);
+  }
+  .stats--timeline.play .stats__fill {
+    transform: scaleX(1);
+  }
+  .stats__comet {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 9px;
+    height: 9px;
+    margin: -4.5px 0 0 -4.5px;
+    border-radius: 100px;
+    background: var(--ember);
+    box-shadow:
+      0 0 0 4px color-mix(in srgb, var(--ember), transparent 80%),
+      0 0 14px 2px var(--ember);
+    opacity: 0;
+    transition:
+      left 1.4s var(--ease-out),
+      opacity 0.4s var(--ease-out);
+  }
+  .stats--timeline.play .stats__comet {
+    left: 100%;
+    opacity: 1;
+  }
+  .stats--timeline.play .stat:nth-of-type(1) .stat__node {
+    border-color: var(--ember);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--ember), transparent 88%);
+    transition-delay: 0.15s;
+  }
+  .stats--timeline.play .stat:nth-of-type(2) .stat__node {
+    border-color: var(--ember);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--ember), transparent 88%);
+    transition-delay: 0.75s;
   }
   .about__actions {
     display: flex;
@@ -3715,6 +3830,48 @@
   .cursor.is-hidden {
     opacity: 0 !important;
   }
+  .cursor.is-invert {
+    border-color: var(--ink);
+  }
+  .cursor.is-invert .cursor__dot {
+    background: var(--ink);
+  }
+  .cursor.is-invert.is-active {
+    background: color-mix(in srgb, var(--ink), transparent 86%);
+  }
+  .cursor__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    white-space: nowrap;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-width 0.3s var(--ease-out),
+      opacity 0.2s var(--ease-out);
+  }
+  .cursor__label::after {
+    content: " →";
+  }
+  /* Labelled pill — overrides the active ring sizing. */
+  .cursor.is-label {
+    width: auto;
+    height: auto;
+    padding: 9px 15px;
+    background: var(--ember);
+    border-color: var(--ember);
+    border-radius: 100px;
+  }
+  .cursor.is-label .cursor__dot {
+    display: none;
+  }
+  .cursor.is-label .cursor__label {
+    max-width: 120px;
+    opacity: 1;
+  }
   html.has-cursor,
   html.has-cursor * {
     cursor: none !important;
@@ -3726,6 +3883,46 @@
       .awcard *
     ):not(.tst__item *) {
     cursor: auto !important;
+  }
+
+  /* ============================================================
+     SCROLL PROGRESS RAIL  (Process comet motif — see ScrollProgress.tsx)
+     ============================================================ */
+  .sprog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    z-index: 150;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-out);
+  }
+  .sprog.is-live {
+    opacity: 1;
+  }
+  .sprog__fill {
+    position: absolute;
+    inset: 0;
+    background: var(--ember);
+    transform: scaleX(0);
+    transform-origin: left center;
+    will-change: transform;
+  }
+  .sprog__comet {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px;
+    border-radius: 100px;
+    background: var(--ember);
+    box-shadow:
+      0 0 0 3px color-mix(in srgb, var(--ember), transparent 80%),
+      0 0 14px 2px var(--ember);
+    will-change: transform;
   }
 
   /* ============================================================

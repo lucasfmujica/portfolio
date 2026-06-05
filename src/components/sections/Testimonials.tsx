@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 import { RichText } from "@/components/ui/RichText";
 import { RevealScope } from "@/components/motion/RevealScope";
+import { MaskHeading } from "@/components/motion/MaskHeading";
 import { testimonials } from "@/data/testimonials";
 
 const ADVANCE_MS = 6000;
@@ -119,10 +120,10 @@ export function Testimonials() {
         style={{ top: "6%", right: "-7%", width: "40vw", height: "40vw", maxWidth: 520, maxHeight: 520 }}
       />
       <div className="container">
-        <div className="section-head center" style={{ marginBottom: 56 }} data-reveal>
-          <span className="eyebrow">{t("eyebrow")}</span>
-          <h2>{t("heading")}</h2>
-          <p className="lede">{t("lede")}</p>
+        <div className="section-head center" style={{ marginBottom: 56 }}>
+          <span className="eyebrow" data-reveal>{t("eyebrow")}</span>
+          <MaskHeading>{t("heading")}</MaskHeading>
+          <p className="lede" data-reveal data-reveal-delay="1">{t("lede")}</p>
         </div>
 
         <div

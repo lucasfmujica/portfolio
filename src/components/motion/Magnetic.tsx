@@ -22,7 +22,8 @@ export function Magnetic() {
       els.forEach((el) => {
         const xTo = gsap.quickTo(el, "x", { duration: 0.5, ease: "power3.out" });
         const yTo = gsap.quickTo(el, "y", { duration: 0.5, ease: "power3.out" });
-        const strength = 0.45;
+        // `data-magnetic="0.1"` tunes the pull per element; CTAs default to 0.45.
+        const strength = parseFloat(el.dataset.magnetic || "") || 0.45;
 
         const move = (e: MouseEvent) => {
           const r = el.getBoundingClientRect();

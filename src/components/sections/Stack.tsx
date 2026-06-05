@@ -50,7 +50,7 @@ export function Stack() {
           <p className="lede">{t("lede")}</p>
         </div>
 
-        <div className="smq" aria-hidden="true" data-skew>
+        <div className="smq" aria-hidden="true">
           <div className="smq__row smq__row--a">
             <div className="smq__t">
               {rowA.map((tech, i) => (

@@ -32,6 +32,7 @@ export function Cursor() {
         xTo(e.clientX);
         yTo(e.clientY);
       };
+      const labelEl = el.querySelector<HTMLElement>(".cursor__label");
       const over = (e: MouseEvent) => {
         const target = e.target as HTMLElement | null;
         const field = target?.closest?.("input, textarea, select, [contenteditable='true']");
@@ -39,8 +40,17 @@ export function Cursor() {
         // Over fields and selectable body text, hide the ring so the native
         // caret / I-beam shows (CSS restores it). Interactive wins over text.
         const text = !interactive && target?.closest?.("p, li, blockquote, figcaption, label, .lede");
+        // Over ember-flooded bands (e.g. Contact) the ember ring vanishes —
+        // flip it to ink so it stays legible.
+        const onEmber = target?.closest?.(".scheme-ember");
+        // A `data-cursor` value turns the ring into a labelled pill (e.g. "View").
+        const labelHost = target?.closest?.<HTMLElement>("[data-cursor]");
+        const label = labelHost?.dataset.cursor || "";
+        if (labelEl && label) labelEl.textContent = label;
         el.classList.toggle("is-hidden", !!field || !!text);
         el.classList.toggle("is-active", !!interactive && !field);
+        el.classList.toggle("is-invert", !!onEmber);
+        el.classList.toggle("is-label", !!label && !field);
       };
       const down = () => el.classList.add("is-down");
       const up = () => el.classList.remove("is-down");
@@ -64,6 +74,7 @@ export function Cursor() {
   return (
     <div ref={ref} className="cursor" aria-hidden="true">
       <span className="cursor__dot" />
+      <span className="cursor__label" />
     </div>
   );
 }

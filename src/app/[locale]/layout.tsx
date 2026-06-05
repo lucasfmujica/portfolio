@@ -15,6 +15,7 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { Cursor } from "@/components/motion/Cursor";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { ScrollFX } from "@/components/motion/ScrollFX";
+import { ScrollProgress } from "@/components/motion/ScrollProgress";
 
 import "@/styles/globals.css";
 
@@ -97,6 +98,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <SmoothScroll />
+          <ScrollProgress />
           <ScrollFX />
           <Cursor />
           <Magnetic />
