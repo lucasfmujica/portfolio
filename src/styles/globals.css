@@ -4101,50 +4101,70 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 52px;
-    height: 52px;
+    gap: 11px;
+    height: 50px;
+    padding: 0 20px 0 13px;
     border-radius: 100px;
     border: 1px solid var(--w-12);
     background: var(--ink-70);
     color: var(--fg1);
     backdrop-filter: blur(18px) saturate(1.3);
     -webkit-backdrop-filter: blur(18px) saturate(1.3);
-    box-shadow: 0 18px 50px -22px rgba(0, 0, 0, 0.85);
+    box-shadow:
+      0 18px 50px -22px rgba(0, 0, 0, 0.85),
+      var(--glow-ember);
     cursor: pointer;
+    animation: accent-bob 5s var(--ease-in-out) 1.2s infinite;
     transition:
       transform var(--dur-fast) var(--ease-out),
       border-color var(--dur-fast),
       box-shadow var(--dur-fast);
   }
   .accent-toggle:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.03);
     border-color: var(--ember);
-    box-shadow: var(--glow-ember);
+    animation-play-state: paused;
   }
   .accent-toggle:focus-visible {
     outline: 2px solid var(--ember);
     outline-offset: 3px;
   }
-  .accent-toggle__icon {
-    color: var(--fg1);
-    transition: opacity var(--dur-fast);
-  }
-  /* the live swatch sits behind the icon and pulses to call for a tap */
-  .accent-toggle__swatch {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 14px;
-    height: 14px;
+  /* color-wheel orb — reads as "recolour" at a glance, slowly spinning */
+  .accent-toggle__orb {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
     border-radius: 100px;
-    opacity: 0;
-    transform: scale(0.6);
-    transition:
-      opacity var(--dur-fast),
-      transform var(--dur-fast) var(--ease-out);
+    background: conic-gradient(
+      from 0deg,
+      #ff4d2e,
+      #ffb23e,
+      #bef264,
+      #54a0ff,
+      #ff4d2e
+    );
+    box-shadow: inset 0 0 0 1px var(--w-20);
+    animation: accent-spin 7s linear infinite;
   }
+  /* centre dot reflects the visitor's current pick */
+  .accent-toggle__current {
+    width: 11px;
+    height: 11px;
+    border-radius: 100px;
+    border: 2px solid var(--ink);
+  }
+  .accent-toggle__label {
+    font-family: var(--font-mono);
+    font-size: var(--text-tiny);
+    letter-spacing: var(--tracking-mono);
+    text-transform: uppercase;
+    color: var(--fg1);
+    white-space: nowrap;
+  }
+  /* a halo ring keeps pinging until the picker is opened */
   .accent-toggle::after {
     content: "";
     position: absolute;
@@ -4152,27 +4172,38 @@
     border-radius: inherit;
     border: 1.5px solid var(--ember);
     opacity: 0;
-    animation: accent-ping 2.8s var(--ease-out) infinite;
+    animation: accent-ping 2.6s var(--ease-out) infinite;
     pointer-events: none;
+  }
+  @keyframes accent-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes accent-bob {
+    0%,
+    88%,
+    100% {
+      transform: translateY(0);
+    }
+    93% {
+      transform: translateY(-5px);
+    }
   }
   @keyframes accent-ping {
     0% {
-      opacity: 0.55;
+      opacity: 0.5;
       transform: scale(1);
     }
     70%,
     100% {
       opacity: 0;
-      transform: scale(1.35);
+      transform: scale(1.32);
     }
   }
-  /* open state: hide the call-to-tap, reveal the current colour */
-  .accent-picker[data-open] .accent-toggle__icon {
-    opacity: 0;
-  }
-  .accent-picker[data-open] .accent-toggle__swatch {
-    opacity: 1;
-    transform: scale(1);
+  /* open state: settle down — stop the bob + ping (orb keeps its calm spin) */
+  .accent-picker[data-open] .accent-toggle {
+    animation: none;
   }
   .accent-picker[data-open] .accent-toggle::after {
     animation: none;
@@ -4255,12 +4286,21 @@
       right: 16px;
       bottom: 16px;
     }
+    /* collapse to a circular orb — the label is desktop-only */
     .accent-toggle {
-      width: 46px;
-      height: 46px;
+      gap: 0;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      justify-content: center;
+    }
+    .accent-toggle__label {
+      display: none;
     }
   }
   @media (prefers-reduced-motion: reduce) {
+    .accent-toggle,
+    .accent-toggle__orb,
     .accent-toggle::after {
       animation: none;
     }

@@ -127,25 +127,10 @@ export function ThemePicker() {
         aria-label={open ? "Close accent picker" : "Change accent colour"}
         onClick={() => setOpen((v) => !v)}
       >
-        <span className="accent-toggle__swatch" style={{ background: current }} aria-hidden="true" />
-        <svg
-          className="accent-toggle__icon"
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M12 3a9 9 0 1 0 0 18c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.36-.6-.36-.99 0-.83.67-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.42-4.03-8-9-8Z"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinejoin="round"
-          />
-          <circle cx="7.5" cy="11.5" r="1.3" fill="currentColor" />
-          <circle cx="12" cy="8" r="1.3" fill="currentColor" />
-          <circle cx="16.5" cy="11.5" r="1.3" fill="currentColor" />
-        </svg>
+        <span className="accent-toggle__orb" aria-hidden="true">
+          <span className="accent-toggle__current" style={{ background: current }} />
+        </span>
+        <span className="accent-toggle__label">Theme</span>
       </button>
     </div>
   );
