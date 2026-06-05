@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { routing, type Locale } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
 import { caseStudies, getProject } from "@/data/projects";
 import { siteName, siteUrl } from "@/lib/site";
 import { CaseStudyView } from "@/components/case-study/CaseStudyView";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { caseStudyJsonLd } from "@/lib/jsonld";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -54,5 +56,10 @@ export default async function CaseStudyPage({
   const project = getProject(slug);
   if (!project || project.kind !== "full" || !project.caseStudy) notFound();
 
-  return <CaseStudyView project={project as typeof project & { caseStudy: NonNullable<typeof project.caseStudy> }} />;
+  return (
+    <>
+      <JsonLd data={caseStudyJsonLd(project)} />
+      <CaseStudyView project={project as typeof project & { caseStudy: NonNullable<typeof project.caseStudy> }} />
+    </>
+  );
 }
