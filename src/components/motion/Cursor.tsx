@@ -23,6 +23,17 @@ export function Cursor() {
       const xTo = gsap.quickTo(el, "x", { duration: 0.14, ease: "power3.out" });
       const yTo = gsap.quickTo(el, "y", { duration: 0.14, ease: "power3.out" });
 
+      // The centre dot leans toward the pointer's travel direction (and harder
+      // the faster you move), then eases back to centre when you stop — so the
+      // cursor reads its own momentum.
+      const dotEl = el.querySelector<HTMLElement>(".cursor__dot");
+      const dotXTo = dotEl && gsap.quickTo(dotEl, "x", { duration: 0.2, ease: "power3.out" });
+      const dotYTo = dotEl && gsap.quickTo(dotEl, "y", { duration: 0.2, ease: "power3.out" });
+      let lastX = 0;
+      let lastY = 0;
+      let primed = false;
+      let recenter: ReturnType<typeof setTimeout>;
+
       let shown = false;
       const move = (e: MouseEvent) => {
         if (!shown) {
@@ -31,6 +42,27 @@ export function Cursor() {
         }
         xTo(e.clientX);
         yTo(e.clientY);
+
+        if (dotXTo && dotYTo) {
+          if (primed) {
+            const dx = e.clientX - lastX;
+            const dy = e.clientY - lastY;
+            const speed = Math.hypot(dx, dy);
+            if (speed > 0.4) {
+              const amt = Math.min(speed * 0.6, 7);
+              dotXTo((dx / speed) * amt);
+              dotYTo((dy / speed) * amt);
+            }
+          }
+          clearTimeout(recenter);
+          recenter = setTimeout(() => {
+            dotXTo(0);
+            dotYTo(0);
+          }, 110);
+        }
+        lastX = e.clientX;
+        lastY = e.clientY;
+        primed = true;
       };
       const labelEl = el.querySelector<HTMLElement>(".cursor__label");
       // `mouseover` fires for every descendant the pointer crosses — many times
@@ -72,6 +104,7 @@ export function Cursor() {
       window.addEventListener("mouseup", up);
 
       return () => {
+        clearTimeout(recenter);
         document.documentElement.classList.remove("has-cursor");
         window.removeEventListener("mousemove", move);
         window.removeEventListener("mouseover", over);

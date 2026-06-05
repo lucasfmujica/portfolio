@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Icon } from "@/components/ui/Icon";
 import { CertBadge } from "@/components/ui/CertBadge";
-import { MovingWord } from "@/components/motion/MovingWord";
+import { DraggableWord } from "@/components/motion/DraggableWord";
 import { Wordmark } from "./Wordmark";
 
 const SOCIALS = [
@@ -21,7 +21,7 @@ export function Footer() {
       <div className="container">
         <h2 className="footer__cta">
           {t("ctaPre")}
-          <MovingWord className="ember-word">{t("ctaEmber")}</MovingWord>
+          <DraggableWord className="ember-word">{t("ctaEmber")}</DraggableWord>
         </h2>
         <a href={`mailto:${t("email")}`} className="footer__mail">
           {t("email")} <span className="ember-word">↗</span>

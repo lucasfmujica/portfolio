@@ -1635,6 +1635,14 @@
     color: var(--fg1);
     width: fit-content;
   }
+  /* Stretch the case-study link across the whole card so the entire card is
+     clickable (the frame sits above at z-index 3 but is pointer-events:none). */
+  .wcard__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
   .wcard__link .ic {
     color: var(--ember);
     width: 18px;
@@ -2846,6 +2854,19 @@
     max-width: 16ch;
     margin: 0;
     text-wrap: balance;
+  }
+  /* The grab-and-fling "moves." — inline-block so transforms apply; touch-action
+     none lets a touch drag it without scrolling the page. */
+  .dragword {
+    display: inline-block;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    will-change: transform;
+  }
+  .dragword.is-grabbing {
+    cursor: grabbing;
   }
   .footer__mail {
     display: inline-flex;
