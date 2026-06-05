@@ -2,7 +2,7 @@
   "Meta": {
     "home": {
       "title": "Lucas Mujica — I build websites that move.",
-      "description": "Senior Webflow & front-end developer, 5+ years deep — component-driven Webflow sites that marketing teams can own, scale and maintain.",
+      "description": "Senior Webflow & front-end developer, 5+ years deep — high-performing, component-driven Webflow sites your marketing team can own, scale and maintain.",
       "ogAlt": "Lucas Mujica — senior Webflow & front-end developer"
     },
     "caseStudy": {
@@ -36,7 +36,7 @@
     "line1": "I build",
     "line2": "websites that",
     "line3": "move.",
-    "sub": "Senior Webflow & front-end developer, 5+ years deep — component-driven sites your marketing team can own, scale and keep editing long after launch.",
+    "sub": "Senior Webflow & front-end developer, 5+ years deep. I build high-performing, component-driven sites your marketing team can own, scale and keep editing long after launch.",
     "ctaPrimary": "Start a project",
     "ctaGhost": "View selected work",
     "scroll": "Scroll",
@@ -45,7 +45,7 @@
   },
   "Work": {
     "eyebrow": "selected work",
-    "heading": "A few builds I'm proud of.",
+    "heading": "Builds I'm proud to put my name on.",
     "lede": "Each one is built to be owned — a component system the client's marketing team can run, scale and keep editing without a developer on call.",
     "viewAll": "View all projects",
     "seeAll": "See all projects",
@@ -126,8 +126,8 @@
     "madBudget": "with a budget around",
     "madReach": "Reach me at",
     "madEmail": "you@email.com",
-    "projectTypes": ["Webflow site", "web app", "automation", "brand site"],
-    "budgets": ["$5–10k", "$10–25k", "$25k+", "TBD"],
+    "projectTypes": ["Webflow site", "Webflow migration", "web app", "automation"],
+    "budgets": ["$2–5k", "$5–10k", "$10–25k", "$25k+", "TBD"],
     "send": "Send it",
     "replyNote": "Replies within a day",
     "successHeading": "On its way — talk soon.",

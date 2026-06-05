@@ -6,9 +6,38 @@ import { ImageFill } from "@/components/ui/ImageFill";
 import type { CaseStudyShot } from "@/data/projects";
 
 /**
- * The "what I built" gallery — stacked figures with scroll-tied parallax on the
- * inner image (±34px) and a fade-up reveal per figure. Reduced-motion shows
- * static figures (CSS resets the parallax inset).
+ * Native aspect ratio per screenshot, so each frame matches its image exactly
+ * and `object-fit: cover` crops nothing. Keyed by the asset basename — mirror
+ * the real file dimensions here when adding or swapping a shot.
+ */
+const SHOT_ASPECT: Record<string, string> = {
+  "truenorth-shot1": "1400 / 786",
+  "truenorth-shot2": "1400 / 816",
+  "truenorth-shot3": "1400 / 824",
+  "k2btools-shot1": "1400 / 713",
+  "k2btools-shot2": "1400 / 812",
+  "k2btools-shot3": "1400 / 967",
+  "bike-shot1": "1400 / 822",
+  "bike-shot2": "1400 / 652",
+  "bike-shot3": "1400 / 673",
+  "homeorganizers-shot1": "1400 / 697",
+  "homeorganizers-shot2": "1400 / 719",
+  "homeorganizers-shot3": "1400 / 719",
+  "nextfense-shot1": "1400 / 814",
+  "nextfense-shot2": "1400 / 782",
+  "nextfense-shot3": "1400 / 782",
+  "seilas-card": "1400 / 878",
+  "seilas-history": "1710 / 948",
+};
+
+const aspectFor = (src?: string): string | undefined => {
+  const base = src?.match(/\/([^/]+)\.[a-z]+$/i)?.[1];
+  return base ? SHOT_ASPECT[base] : undefined;
+};
+
+/**
+ * The "what I built" gallery — stacked figures, each sized to its screenshot's
+ * native proportion (no cropping) with a fade-up reveal per figure.
  */
 export function CaseStudyGallery({
   shots,
@@ -31,51 +60,41 @@ export function CaseStudyGallery({
           ease: "power3.out",
           scrollTrigger: { trigger: shot, start: "top 88%", once: true },
         });
-        const inner = shot.querySelector<HTMLElement>(".cs-shot__inner");
-        if (inner) {
-          gsap.fromTo(
-            inner,
-            { yPercent: -1.5 },
-            {
-              yPercent: 1.5,
-              ease: "none",
-              scrollTrigger: { trigger: shot, start: "top bottom", end: "bottom top", scrub: true },
-            },
-          );
-        }
       });
     },
     { scope: root },
   );
 
   return (
-    <div
-      className="cs-gallery"
-      ref={root}
-      style={aspect ? ({ "--cs-shot-aspect": aspect } as CSSProperties) : undefined}
-    >
-      {shots.map((shot) => (
-        <figure className="cs-shot" key={shot.n}>
-          <div className="cs-shot__frame">
-            <span className="cs-shot__num">{shot.n}</span>
-            <div className="cs-shot__inner">
-              <ImageFill
-                src={shot.image}
-                alt={shot.label}
-                placeholder={shot.placeholder}
-                sizes="(max-width: 1280px) 100vw, 1200px"
-              />
+    <div className="cs-gallery" ref={root}>
+      {shots.map((shot) => {
+        const ratio = aspectFor(shot.image) ?? aspect;
+        return (
+          <figure className="cs-shot" key={shot.n}>
+            <div
+              className="cs-shot__frame"
+              style={ratio ? ({ "--cs-shot-aspect": ratio } as CSSProperties) : undefined}
+            >
+              <span className="cs-shot__num">{shot.n}</span>
+              <div className="cs-shot__inner">
+                <ImageFill
+                  src={shot.image}
+                  alt={shot.label}
+                  placeholder={shot.placeholder}
+                  sizes="(max-width: 1280px) 100vw, 1200px"
+                />
+              </div>
             </div>
-          </div>
-          <figcaption className="cs-shot__cap">
-            <span className="k">{shot.label}</span>
-            <p className="t">
-              <b>{shot.lead}</b>
-              {shot.body}
-            </p>
-          </figcaption>
-        </figure>
-      ))}
+            <figcaption className="cs-shot__cap">
+              <span className="k">{shot.label}</span>
+              <p className="t">
+                <b>{shot.lead}</b>
+                {shot.body}
+              </p>
+            </figcaption>
+          </figure>
+        );
+      })}
     </div>
   );
 }

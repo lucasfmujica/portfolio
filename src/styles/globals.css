@@ -937,6 +937,19 @@
     display: block;
     will-change: transform;
   }
+  /* The cycling last word: a vertical slot that masks each word swap, then
+     drifts once it resolves on "move." (overflow flips to visible in JS). */
+  .hero__cycle {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.16em;
+    margin-bottom: -0.16em;
+  }
+  .hero__cycle-inner {
+    display: inline-block;
+    will-change: transform;
+  }
   .hero__sub {
     font-size: var(--text-large);
     color: var(--fg2);

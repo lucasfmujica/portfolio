@@ -26,24 +26,42 @@ export function Hero() {
         linesClass: "hero__line",
       });
 
-      // "move." keeps moving after the intro: once the headline has revealed,
-      // we drop the line masks and let the ember word drift on a gentle,
-      // never-ending orbit — the brand promise stays literally in motion.
-      const ember = heading.current?.querySelector<HTMLElement>(".ember-word");
+      const slot = heading.current?.querySelector<HTMLElement>(".hero__cycle");
+      const inner = heading.current?.querySelector<HTMLElement>(".hero__cycle-inner");
       let drift: gsap.core.Timeline | undefined;
+      let cycle: gsap.core.Timeline | undefined;
+
+      // After the headline reveals, the last word rolls through the value props
+      // and resolves back on "move." — which then drifts forever. The brand
+      // promise stays literally in motion (and the footer echoes it: "moves.").
+      const startCycle = () => {
+        split.revert();
+        if (!slot || !inner) return;
+        const words = ["convert.", "scale.", "last.", "move."];
+        cycle = gsap.timeline({ delay: 0.9 });
+        words.forEach((word, i) => {
+          cycle!
+            .to(inner, { yPercent: -120, duration: 0.4, ease: "power2.in" })
+            .add(() => {
+              inner.textContent = word;
+            })
+            .set(inner, { yPercent: 120 })
+            .to(inner, { yPercent: 0, duration: 0.55, ease: "power3.out" });
+          if (i < words.length - 1) cycle!.to({}, { duration: 1.15 });
+        });
+        cycle!.add(() => {
+          gsap.set(slot, { overflow: "visible", transformOrigin: "0% 100%" });
+          drift = gsap
+            .timeline({ repeat: -1, yoyo: true, defaults: { ease: "sine.inOut" } })
+            .to(slot, { y: -8, duration: 1.9 })
+            .to(slot, { x: 5, duration: 1.9 }, 0)
+            .to(slot, { rotation: -2.5, duration: 1.9 }, 0);
+        });
+      };
 
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
-        onComplete: () => {
-          split.revert();
-          if (!ember) return;
-          gsap.set(ember, { display: "inline-block", transformOrigin: "0% 100%" });
-          drift = gsap
-            .timeline({ repeat: -1, yoyo: true, defaults: { ease: "sine.inOut" } })
-            .to(ember, { y: -8, duration: 1.9 })
-            .to(ember, { x: 5, duration: 1.9 }, 0)
-            .to(ember, { rotation: -2.5, duration: 1.9 }, 0);
-        },
+        onComplete: startCycle,
       });
       tl.from(split.lines, { yPercent: 110, duration: 0.95, stagger: 0.1 })
         .from(
@@ -63,6 +81,7 @@ export function Hero() {
         );
 
       return () => {
+        cycle?.kill();
         drift?.kill();
         split.revert();
       };
@@ -83,7 +102,9 @@ export function Hero() {
             <br />
             {t("line2")}
             <br />
-            <span className="ember-word">{t("line3")}</span>
+            <span className="ember-word hero__cycle">
+              <span className="hero__cycle-inner">{t("line3")}</span>
+            </span>
           </h1>
           <p className="hero__sub" data-hero-stagger>
             {t("sub")}
