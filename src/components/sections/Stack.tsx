@@ -3,14 +3,16 @@ import { RevealScope } from "@/components/motion/RevealScope";
 import { Icon, type IconName } from "@/components/ui/Icon";
 
 const TECHS = [
-  "Webflow", "Client-First", "Lumos", "React", "Next.js", "TypeScript", "GSAP", "n8n",
-  "Make", "Zapier", "Airtable", "HubSpot", "Stripe", "Notion", "Slack", "Figma",
+  "Webflow", "Client-First", "Lumos", "React", "Next.js", "TypeScript", "GSAP",
+  "ScrollTrigger", "DrawSVG", "n8n", "Make", "Zapier", "Airtable", "HubSpot",
+  "Stripe", "Notion", "Slack", "Figma",
 ];
 const HOT = new Set(["Webflow", "GSAP", "Next.js", "n8n", "HubSpot"]);
 
-const TIERS: { key: "build" | "code" | "automation" | "connect"; icon: IconName }[] = [
+const TIERS: { key: "build" | "code" | "motion" | "automation" | "connect"; icon: IconName }[] = [
   { key: "build", icon: "build" },
   { key: "code", icon: "code" },
+  { key: "motion", icon: "spark" },
   { key: "automation", icon: "bolt" },
   { key: "connect", icon: "hub" },
 ];

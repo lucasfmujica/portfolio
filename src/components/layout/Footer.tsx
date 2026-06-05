@@ -4,9 +4,7 @@ import { CertBadge } from "@/components/ui/CertBadge";
 import { Wordmark } from "./Wordmark";
 
 const SOCIALS = [
-  { name: "x" as const, label: "X", href: "https://x.com/" },
-  { name: "in" as const, label: "LinkedIn", href: "https://linkedin.com/" },
-  { name: "gh" as const, label: "GitHub", href: "https://github.com/" },
+  { name: "in" as const, label: "LinkedIn", href: "https://www.linkedin.com/in/lucasfmujica" },
 ];
 
 /**

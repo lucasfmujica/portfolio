@@ -73,7 +73,8 @@
     "lede": "Everything here is chosen for speed, maintainability, and shipping fast without cutting corners.",
     "tiers": {
       "build": { "label": "Build", "items": "Webflow · Client-First · Lumos" },
-      "code": { "label": "Code", "items": "React · Next.js · TypeScript · GSAP" },
+      "code": { "label": "Code", "items": "React · Next.js · TypeScript" },
+      "motion": { "label": "Motion", "items": "GSAP · ScrollTrigger · DrawSVG" },
       "automation": { "label": "Automation", "items": "n8n · Make · Zapier" },
       "connect": { "label": "Connect", "items": "HubSpot · Stripe · Notion" }
     }

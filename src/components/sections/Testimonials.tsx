@@ -124,7 +124,10 @@ export function Testimonials() {
                 &rdquo;
               </p>
               <div className="tst__by">
-                <span className="tst__av" />
+                <span className="tst__av">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={active.avatar} alt={active.name} width={48} height={48} loading="lazy" />
+                </span>
                 <div>
                   <div className="tst__name">{active.name}</div>
                   <div className="tst__role">
@@ -145,7 +148,10 @@ export function Testimonials() {
                   aria-pressed={i === current}
                   onClick={() => show(i)}
                 >
-                  <span className="tst__dot" />
+                  <span className="tst__dot">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.avatar} alt={item.name} width={36} height={36} loading="lazy" />
+                  </span>
                   <span className="tst__meta">
                     <span className="tst__nm">{item.name}</span>
                     <span className="tst__co">

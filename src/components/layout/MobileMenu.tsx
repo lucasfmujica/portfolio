@@ -14,9 +14,7 @@ const LINKS: { href: string; key: "work" | "about" | "stack" | "process" }[] = [
 ];
 
 const SOCIALS: { name: IconName; label: string; href: string }[] = [
-  { name: "x", label: "X", href: "https://x.com/" },
-  { name: "in", label: "LinkedIn", href: "https://linkedin.com/" },
-  { name: "gh", label: "GitHub", href: "https://github.com/" },
+  { name: "in", label: "LinkedIn", href: "https://www.linkedin.com/in/lucasfmujica" },
 ];
 
 /**
