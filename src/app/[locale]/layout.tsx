@@ -16,8 +16,12 @@ import { Cursor } from "@/components/motion/Cursor";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { ScrollFX } from "@/components/motion/ScrollFX";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
+import { ThemePicker } from "@/components/motion/ThemePicker";
 
 import "@/styles/globals.css";
+
+// Applies a saved accent before first paint so there's no flash of the default.
+const accentInitScript = `(function(){try{var c=localStorage.getItem('lm-accent');if(!c||c.toLowerCase()==='#ff4d2e')return;var d=document.documentElement.style;d.setProperty('--ember',c);d.setProperty('--ember-hover','color-mix(in srgb, '+c+', black 12%)');d.setProperty('--ember-deep','color-mix(in srgb, '+c+', black 70%)');d.setProperty('--ember-tint','color-mix(in srgb, '+c+', white 76%)');d.setProperty('--glow-ember','0 14px 50px -16px color-mix(in srgb, '+c+', transparent 45%)');}catch(e){}})();`;
 
 export const viewport: Viewport = {
   themeColor: "#0B0B0D",
@@ -94,7 +98,11 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       className={`${clashDisplay.variable} ${generalSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: accentInitScript }} />
+      </head>
       <body>
         <NextIntlClientProvider messages={messages}>
           <SmoothScroll />
@@ -107,6 +115,7 @@ export default async function LocaleLayout({
           <Dock />
           <main id="top">{children}</main>
           <Footer />
+          <ThemePicker />
           <div className="grain" aria-hidden="true" />
         </NextIntlClientProvider>
       </body>
