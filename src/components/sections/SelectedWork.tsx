@@ -34,7 +34,7 @@ export function SelectedWork() {
 
         <div className="workstack">
           {FEATURED.map((p) => (
-            <article className="wcard" key={p.slug} data-reveal data-cursor="View" data-magnetic="0.05">
+            <article className="wcard" key={p.slug} data-reveal data-cursor="View">
               <svg className="wcard__frame" aria-hidden="true">
                 <rect x="1" y="1" rx="31" ry="31" pathLength={100} />
               </svg>

@@ -65,6 +65,9 @@ export default async function WorkIndexPage({
             const isCase = p.kind === "full";
             const inner = (
               <>
+                <svg className="awcard__frame" aria-hidden="true">
+                  <rect pathLength={100} />
+                </svg>
                 <div className="awcard__media">
                   <span className="awcard__num">{p.index}</span>
                   <ImageFill
@@ -95,11 +98,11 @@ export default async function WorkIndexPage({
             );
 
             return isCase ? (
-              <Link key={p.slug} href={`/work/${p.slug}`} className="awcard">
+              <Link key={p.slug} href={`/work/${p.slug}`} className="awcard" data-cursor="View">
                 {inner}
               </Link>
             ) : (
-              <a key={p.slug} href="/#contact" className="awcard">
+              <a key={p.slug} href="/#contact" className="awcard" data-cursor="View">
                 {inner}
               </a>
             );

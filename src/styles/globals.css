@@ -1488,8 +1488,9 @@
   }
   /* Ember frame that strokes on around the card on hover (dash draw — the
      DrawSVG/underline motif, here as a CSS perimeter draw). No viewBox so the
-     32px corner radius never distorts. */
-  .wcard__frame {
+     corner radius never distorts. Shared by home .wcard and /work .awcard. */
+  .wcard__frame,
+  .awcard__frame {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -1498,7 +1499,8 @@
     pointer-events: none;
     overflow: visible;
   }
-  .wcard__frame rect {
+  .wcard__frame rect,
+  .awcard__frame rect {
     x: 1px;
     y: 1px;
     width: calc(100% - 2px);
@@ -1511,11 +1513,18 @@
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
     opacity: 0;
+    pointer-events: none;
     transition:
       stroke-dashoffset 0.7s var(--ease-out),
       opacity 0.3s var(--ease-out);
   }
-  .wcard:hover .wcard__frame rect {
+  /* /work cards use the smaller --r-card (24px). */
+  .awcard__frame rect {
+    rx: 23px;
+    ry: 23px;
+  }
+  .wcard:hover .wcard__frame rect,
+  .awcard:hover .awcard__frame rect {
     stroke-dashoffset: 0;
     opacity: 1;
   }
@@ -1849,6 +1858,7 @@
     margin-top: 56px;
   }
   .awcard {
+    position: relative;
     display: flex;
     flex-direction: column;
     border: 1px solid var(--hairline);
@@ -3856,7 +3866,9 @@
   .cursor__label::after {
     content: " →";
   }
-  /* Labelled pill — overrides the active ring sizing. */
+  /* Labelled pill — overrides the active ring sizing. width/height snap (the
+     base transitions can't interpolate to `auto`, which read as a stutter), so
+     only colour eases here; the label itself fades/expands. */
   .cursor.is-label {
     width: auto;
     height: auto;
@@ -3864,6 +3876,9 @@
     background: var(--ember);
     border-color: var(--ember);
     border-radius: 100px;
+    transition:
+      background-color 0.2s var(--ease-out),
+      border-color 0.2s var(--ease-out);
   }
   .cursor.is-label .cursor__dot {
     display: none;
