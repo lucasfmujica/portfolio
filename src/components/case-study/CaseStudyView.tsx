@@ -105,27 +105,29 @@ export function CaseStudyView({
         </div>
       </RevealScope>
 
-      {/* What they said */}
-      <RevealScope as="section" className="section">
-        <div className="container">
-          <div className="section-head center" style={{ marginBottom: 48 }} data-reveal>
-            <span className="eyebrow">{t("quoteEyebrow")}</span>
+      {/* What they said — only when a real testimonial exists */}
+      {cs.quote && (
+        <RevealScope as="section" className="section">
+          <div className="container">
+            <div className="section-head center" style={{ marginBottom: 48 }} data-reveal>
+              <span className="eyebrow">{t("quoteEyebrow")}</span>
+            </div>
+            <figure className="cs-quote__card" data-reveal data-reveal-delay="1">
+              <div className="cs-quote__mark">&ldquo;</div>
+              <blockquote className="cs-quote__q">
+                <RichText text={cs.quote.quote} />
+              </blockquote>
+              <figcaption className="cs-quote__by">
+                <span className="cs-quote__av" />
+                <div>
+                  <div className="cs-quote__name">{cs.quote.name}</div>
+                  <div className="cs-quote__role">{cs.quote.role}</div>
+                </div>
+              </figcaption>
+            </figure>
           </div>
-          <figure className="cs-quote__card" data-reveal data-reveal-delay="1">
-            <div className="cs-quote__mark">&ldquo;</div>
-            <blockquote className="cs-quote__q">
-              <RichText text={cs.quote.quote} />
-            </blockquote>
-            <figcaption className="cs-quote__by">
-              <span className="cs-quote__av" />
-              <div>
-                <div className="cs-quote__name">{cs.quote.name}</div>
-                <div className="cs-quote__role">{cs.quote.role}</div>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-      </RevealScope>
+        </RevealScope>
+      )}
 
       {/* Next project */}
       <RevealScope as="section" className="section cs-next">

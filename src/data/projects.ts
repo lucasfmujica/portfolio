@@ -5,10 +5,15 @@
  * `/work/[slug]` case-study template. Adding or reordering work is a data
  * edit here — no component changes.
  *
- * Rich copy (challenge body, build lead, results statement, quotes) uses the
+ * Rich copy (challenge body, build lead, results statement) uses the
  * `*asterisk*` convention to mark the one ember-highlighted phrase per block;
  * the <RichText> component renders those spans. Short heading highlights use
  * an explicit `{ pre, ember, post }` split.
+ *
+ * Honesty note: metrics are real, measured Lighthouse scores (desktop preset,
+ * run against the live sites). Testimonials are only included where a real
+ * client quote about the work exists — `quote` is optional and currently
+ * omitted everywhere until real testimonials are collected.
  *
  * i18n note: to localize, these string fields become locale-keyed lookups;
  * the types and component contracts stay identical, so it's a content task.
@@ -92,8 +97,8 @@ export interface CaseStudy {
   resultsStatement: string;
   resultsSub: string;
   metrics: CaseStudyMetric[];
-  /** Pull quote. */
-  quote: CaseStudyQuote;
+  /** Pull quote — optional; only rendered when a real client testimonial exists. */
+  quote?: CaseStudyQuote;
 }
 
 export interface Project {
@@ -115,346 +120,373 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "true-north-jerseys",
-    index: "01",
-    name: "True North Jerseys",
-    category: "E-commerce build",
-    year: "2024",
-    tags: ["Webflow", "GSAP", "E-commerce"],
-    blurb: {
-      pre: "Custom apparel store built to ",
-      ember: "convert",
-      post: " — Webflow + GSAP, scroll-tied product reveals.",
-    },
-    imageAlt: "True North Jerseys — custom apparel store",
-    kind: "full",
-    caseStudy: {
-      platform: "Webflow",
-      year: "2024",
-      liveUrl: "https://truenorthjerseys.com",
-      liveLabel: "truenorthjerseys.com",
-      outcome: {
-        pre: "A custom-kit brand that lives on detail. The store had to ",
-        ember: "sell it.",
-      },
-      tags: ["Webflow", "GSAP", "E-commerce", "CMS"],
-      heroBadge: "truenorthjerseys.com · shop",
-      challengeHeading: "A premium product on a checkout that felt like everyone else's.",
-      challengeBody:
-        "True North sells made-to-order jerseys where the craft is the whole pitch — stitching, fabric, the fit. But the old store flattened all of that into a stock template, and the *configurator buried the good part*. People bounced before they ever saw what made a kit theirs. The brief: make the product feel as considered online as it does in hand, without slowing the path to buy.",
-      challengeVisualCaption: "Before · stock template",
-      specs: [
-        { key: "role", value: "Design & front-end build" },
-        { key: "stack", value: "Webflow · GSAP · CMS" },
-        { key: "integration", value: "Shopify checkout" },
-        { key: "timeline", value: "5 weeks, end to end" },
-      ],
-      buildHeading: "A store that shows the craft before it asks for the sale.",
-      buildLead:
-        "I rebuilt the storefront in Webflow with a CMS-driven catalog and GSAP scroll-tied reveals that let each kit breathe. The configurator got *rebuilt around the product*, not the form — fabric, fit and finish front and centre, with checkout one tap away the moment intent lands.",
-      shots: [
-        {
-          n: "01",
-          label: "01 — Storefront",
-          lead: "A scroll-tied product reveal that earns the premium price",
-          body: " — each kit lands with motion that mirrors the craft, not a generic grid.",
-          placeholder: "Storefront — drop screenshot",
-        },
-        {
-          n: "02",
-          label: "02 — Configurator",
-          lead: "A kit builder rebuilt around the product",
-          body: " — fabric, fit and finish up front, with the catalog driven entirely by the CMS.",
-          placeholder: "Configurator — drop screenshot",
-        },
-        {
-          n: "03",
-          label: "03 — Checkout",
-          lead: "A Shopify checkout wired in without leaving the brand",
-          body: " — fast, familiar, and one tap from any product the moment intent lands.",
-          placeholder: "Checkout — drop screenshot",
-        },
-      ],
-      resultsStatement: "The store finally feels like the product — and it converts like it.",
-      resultsSub:
-        "Launched on time, handed off clean. The team adds new kits from the CMS, and the numbers moved where they needed to.",
-      metrics: [
-        { value: "+52", unit: "%", label: "conversion rate vs. the old store" },
-        { value: "1.1", unit: "s", label: "median load — down from 4.0s" },
-        { value: "98", label: "Lighthouse performance score" },
-      ],
-      quote: {
-        quote:
-          "Lucas made our jerseys look online the way they feel in person. Sales are up, the site is fast, and *we run it ourselves* now.",
-        name: "Marcus Hale",
-        role: "Founder · True North Jerseys",
-      },
-    },
-  },
-  {
     slug: "bike",
-    index: "02",
+    index: "01",
     name: "BIKE",
-    category: "Web app",
-    year: "2024",
-    tags: ["Next.js", "TypeScript", "HubSpot"],
+    category: "Webflow build",
+    year: "2025",
+    tags: ["Webflow", "GSAP", "3D / Spline"],
     blurb: {
-      pre: "Next.js, TypeScript & HubSpot with ",
-      ember: "real-time",
-      post: " data visualization for an English school.",
+      pre: "A Montevideo English school that teaches by talking — a Webflow build with a custom loader and a ",
+      ember: "3D bike on the 404",
+      post: ".",
     },
     image: "/assets/project-bike.png",
     imageAlt: "BIKE — bike.uy homepage",
     kind: "full",
     caseStudy: {
       platform: "Webflow",
-      year: "2024",
+      year: "2025",
       liveUrl: "https://bike.uy",
       liveLabel: "bike.uy",
       outcome: {
-        pre: "An English school that teaches by talking. The site had to do the ",
-        ember: "same.",
+        pre: "An English school that teaches by talking. The site had to feel just as ",
+        ember: "alive.",
       },
-      tags: ["Next.js", "TypeScript", "HubSpot", "GSAP", "Web app"],
+      tags: ["Webflow", "GSAP", "Spline", "Finsweet"],
       heroImage: "/assets/project-bike.png",
       heroImageAlt: "BIKE — bike.uy homepage on a laptop",
       heroBadge: "bike.uy · home",
-      challengeHeading: "A method built on conversation, trapped in a template.",
+      challengeHeading: "A method built on movement — flattened into a static page.",
       challengeBody:
-        "BIKE teaches English by getting people talking from day one — no grammar drills, no passive lectures. Their old site did the opposite: a slow, generic template that buried the method and *leaked trial signups*. They needed a site that felt as alive as a class — quick to move through, easy for the team to run, and wired into the tools the business already uses.",
-      challengeVisualCaption: "Before · legacy template",
+        "BIKE teaches English the way you learn to ride a bike: by doing, from day one. The brand leans entirely on that metaphor — pedalling as progress — so a flat, conventional site would have *undercut the whole pitch*. It needed motion that felt playful and earned, a structure the team could keep editing, and the personality to carry levels from A1 to C2 without ever feeling like a textbook.",
+      challengeVisualCaption: "bike.uy · home",
       specs: [
-        { key: "role", value: "Design & front-end build" },
-        { key: "stack", value: "Next.js · TypeScript · GSAP" },
-        { key: "integration", value: "HubSpot CRM" },
-        { key: "timeline", value: "6 weeks, end to end" },
+        { key: "role", value: "Front-end build (design: Clearframe Studio)" },
+        { key: "stack", value: "Webflow · GSAP · Spline" },
+        { key: "integration", value: "Webflow CMS · Finsweet" },
       ],
       buildHeading: "A site that moves the way a conversation does.",
       buildLead:
-        "I rebuilt BIKE on Next.js and TypeScript, wired straight into HubSpot so every lead, level test, and course enquiry lands where the team already works. GSAP carries the motion — reveals that pace the story, a *real-time level-test flow*, and a homepage that earns attention without ever getting in the way.",
+        "I built BIKE in Webflow with GSAP carrying the motion — a *custom preloader* that sets the tone before the first scroll, reveals that pace the story, and Finsweet-driven accordions and forms the team runs themselves. The 404 is its own small moment: an interactive Spline bicycle for anyone who pedals somewhere that doesn't exist yet.",
       shots: [
         {
           n: "01",
           label: "01 — Homepage",
-          lead: "A conversational hero with motion that paces the pitch",
-          body: " — the method lands in the first three seconds, not the third scroll.",
+          lead: "A conversational hero with a custom loader",
+          body: " — the bike metaphor lands in the first three seconds, motion paced by GSAP.",
           placeholder: "Homepage — drop screenshot",
         },
         {
           n: "02",
-          label: "02 — Level test",
-          lead: "A real-time flow that scores English level",
-          body: " and routes the lead straight into HubSpot — no spreadsheets, no manual follow-up.",
-          placeholder: "Level test — drop screenshot",
+          label: "02 — Courses",
+          lead: "Roadmap, Talk and Career, structured A1–C2",
+          body: " — CMS-driven so the team adds courses and content without touching code.",
+          placeholder: "Courses — drop screenshot",
         },
         {
           n: "03",
-          label: "03 — Courses",
-          lead: "A CMS-driven catalog the team updates without touching code",
-          body: " — new courses ship in minutes, not tickets.",
-          placeholder: "Courses — drop screenshot",
+          label: "03 — 404 page",
+          lead: "An interactive 3D bicycle for the lost",
+          body: " — a Spline scene that turns a dead end into a piece of the brand.",
+          placeholder: "404 / 3D bike — drop screenshot",
         },
       ],
-      resultsStatement:
-        "The site finally teaches the way BIKE does — fast, warm, impossible to ignore.",
+      resultsStatement: "A site that feels like a class — fast, playful, unmistakably BIKE.",
       resultsSub:
-        "Launched on time, handed off clean. The team runs it themselves, and the numbers moved where they needed to.",
+        "Shipped on Webflow and handed off clean: the team runs courses, content and forms themselves. Measured on the live site, the build holds up where it counts.",
       metrics: [
-        { value: "0.7", unit: "s", label: "median load — down from 3.1s" },
-        { value: "+38", unit: "%", label: "trial signups in the first quarter" },
-        { value: "100", label: "Lighthouse performance score" },
+        { value: "100", label: "Lighthouse SEO" },
+        { value: "90", label: "Lighthouse accessibility" },
+        { value: "81", label: "Lighthouse performance" },
       ],
-      quote: {
-        quote:
-          "Lucas turned our method into a website. It's fast, it's unmistakably us, and it *finally converts* — and the whole team can run it without breaking anything.",
-        name: "Paula Méndez",
-        role: "Director · BIKE Escuela de Inglés",
+    },
+  },
+  {
+    slug: "home-organizers",
+    index: "02",
+    name: "Home Organizers LI",
+    category: "Custom-coded site",
+    year: "2026",
+    tags: ["Custom code", "Vanilla JS", "GSAP"],
+    blurb: {
+      pre: "A Long Island organizing studio, ",
+      ember: "hand-coded end to end",
+      post: " — vanilla JS, GSAP, and a before/after slider I built from scratch.",
+    },
+    imageAlt: "Home Organizers Long Island — custom-coded site",
+    kind: "full",
+    caseStudy: {
+      platform: "Custom code",
+      year: "2026",
+      liveUrl: "https://homeorganizersli.com",
+      liveLabel: "homeorganizersli.com",
+      outcome: {
+        pre: "A calm, premium service that deserved a site to match — so I built it ",
+        ember: "from scratch.",
       },
+      tags: ["HTML", "CSS", "Vanilla JS", "GSAP", "Netlify"],
+      heroBadge: "homeorganizersli.com · home",
+      challengeHeading: "A warm, hands-on service — with no site to show for it.",
+      challengeBody:
+        "Home Organizers help busy Long Island homeowners reclaim their space, and the whole promise is *calm without judgment*. That feeling is hard to fake with a template. I took the project end to end — design, copy, SEO and code — and chose to hand-build it: no Webflow, no framework, no build step, so every detail of the feel and the performance was mine to tune.",
+      challengeVisualCaption: "homeorganizersli.com · home",
+      specs: [
+        { key: "role", value: "Design, build, copy & SEO" },
+        { key: "stack", value: "HTML · CSS · vanilla JS · GSAP" },
+        { key: "integration", value: "Netlify Forms · JSON-LD" },
+      ],
+      buildHeading: "A bespoke static build, tuned by hand.",
+      buildLead:
+        "Hand-written HTML, CSS custom properties and vanilla JavaScript — no framework, self-hosted Sora and Overpass for speed, and GSAP + ScrollTrigger for the motion. The centrepiece is a *before/after slider I wrote from scratch*: a carousel with a draggable reveal handle on mobile. Contact runs on Netlify Forms, and the SEO is deliberate down to the JSON-LD LocalBusiness schema.",
+      shots: [
+        {
+          n: "01",
+          label: "01 — Hero",
+          lead: "“Trade the clutter for a home that finally feels calm”",
+          body: " — warm neutral palette, Sora + Overpass, GSAP reveals that breathe.",
+          placeholder: "Hero — drop screenshot",
+        },
+        {
+          n: "02",
+          label: "02 — Before / After",
+          lead: "A reveal slider built by hand in vanilla JS",
+          body: " — drag to compare on mobile, dot-navigated carousel on desktop. No library.",
+          placeholder: "Before/After slider — drop screenshot",
+        },
+        {
+          n: "03",
+          label: "03 — Contact",
+          lead: "A validated form on Netlify, with real SEO underneath",
+          body: " — Open Graph, Twitter cards and JSON-LD ProfessionalService schema, all hand-authored.",
+          placeholder: "Contact — drop screenshot",
+        },
+      ],
+      resultsStatement: "Proof I can take a brand from blank page to live — design, copy, code and SEO.",
+      resultsSub:
+        "No framework, no page builder — a fast static site I own end to end. The numbers below are measured on the live build.",
+      metrics: [
+        { value: "100", label: "Lighthouse SEO" },
+        { value: "100", label: "Lighthouse best practices" },
+        { value: "94", label: "Lighthouse accessibility" },
+      ],
+    },
+  },
+  {
+    slug: "nextfense",
+    index: "03",
+    name: "Nextfense",
+    category: "Webflow build",
+    year: "2025",
+    tags: ["Webflow", "GSAP", "Illustration"],
+    blurb: {
+      pre: "A Montevideo cybersecurity firm — a Webflow build with ",
+      ember: "custom illustration",
+      post: " for its managed-security platform.",
+    },
+    imageAlt: "Nextfense — cybersecurity site",
+    kind: "full",
+    caseStudy: {
+      platform: "Webflow",
+      year: "2025",
+      liveUrl: "https://nextfense.com",
+      liveLabel: "nextfense.com",
+      outcome: {
+        pre: "A security platform is only as trusted as it looks. This one had to read as ",
+        ember: "serious.",
+      },
+      tags: ["Webflow", "GSAP", "Illustrator", "Multilingual"],
+      heroBadge: "nextfense.com · home",
+      challengeHeading: "Selling trust in a category built on it.",
+      challengeBody:
+        "Nextfense centralises managed cybersecurity — pentesting, vulnerability scanning, virtual CISO — into one platform, Nextfense Core. The site had to make a complex, abstract service feel *concrete and credible* to a corporate buyer, hold up in two languages, and stay easy for the team to extend as the offering grows.",
+      challengeVisualCaption: "nextfense.com · home",
+      specs: [
+        { key: "role", value: "Front-end build & custom illustration" },
+        { key: "stack", value: "Webflow · GSAP · Illustrator" },
+        { key: "integration", value: "Webflow CMS · es / en" },
+      ],
+      buildHeading: "A platform site that earns the word “secure”.",
+      buildLead:
+        "I built Nextfense in Webflow with a *six-pillar approach laid out around custom Illustrator artwork* — abstract security iconography that gives an intangible service something to look at. The whole thing is bilingual (es/en) on Webflow locales, CMS-driven for case studies and blog, with GSAP carrying restrained, on-brand motion.",
+      shots: [
+        {
+          n: "01",
+          label: "01 — Hero",
+          lead: "“Construye un futuro digital más seguro”",
+          body: " — a violet-led, high-contrast hero that signals security without the cliché padlocks.",
+          placeholder: "Hero — drop screenshot",
+        },
+        {
+          n: "02",
+          label: "02 — Approach",
+          lead: "Six pillars, anchored by custom illustration",
+          body: " — Illustrator artwork gives an abstract managed service something concrete to read.",
+          placeholder: "Approach / illustration — drop screenshot",
+        },
+        {
+          n: "03",
+          label: "03 — Case studies",
+          lead: "CMS-driven success stories, bilingual",
+          body: " — es/en on Webflow locales, so the team ships new work without a developer.",
+          placeholder: "Case studies — drop screenshot",
+        },
+      ],
+      resultsStatement: "A site that reads as credible as the service it sells.",
+      resultsSub:
+        "Bilingual, CMS-driven and handed off clean. Measured on the live site, the build scores where trust is decided.",
+      metrics: [
+        { value: "100", label: "Lighthouse SEO" },
+        { value: "100", label: "Lighthouse best practices" },
+        { value: "97", label: "Lighthouse accessibility" },
+      ],
+    },
+  },
+  {
+    slug: "true-north-jerseys",
+    index: "04",
+    name: "True North Jerseys",
+    category: "E-commerce build",
+    year: "2026",
+    tags: ["Webflow", "Ecommerce", "GSAP"],
+    blurb: {
+      pre: "Custom hockey & baseball kits for a BC brand — a Webflow store, ",
+      ember: "built different",
+      post: ", with scroll-tied product reveals.",
+    },
+    imageAlt: "True North Jerseys — custom apparel store",
+    kind: "full",
+    caseStudy: {
+      platform: "Webflow",
+      year: "2026",
+      liveUrl: "https://truenorthjerseys.com",
+      liveLabel: "truenorthjerseys.com",
+      outcome: {
+        pre: "A custom-kit brand that lives on detail. The store had to ",
+        ember: "show it.",
+      },
+      tags: ["Webflow", "Ecommerce", "GSAP", "CMS"],
+      heroBadge: "truenorthjerseys.com · shop",
+      challengeHeading: "A premium, made-to-order product on a generic shelf.",
+      challengeBody:
+        "True North makes custom hockey and baseball jerseys in BC — sublimated, reversible, embroidered, the craft is the whole pitch. But that detail is exactly what a stock template *flattens into a grid*. The brand needed a store that felt as considered as the product, kept the catalog easy to run, and put the path to a quote one tap away.",
+      challengeVisualCaption: "truenorthjerseys.com · shop",
+      specs: [
+        { key: "role", value: "Front-end build, end to end" },
+        { key: "stack", value: "Webflow · GSAP · CMS" },
+        { key: "integration", value: "Webflow Ecommerce" },
+      ],
+      buildHeading: "A store that shows the craft before it asks for the sale.",
+      buildLead:
+        "I built the storefront in Webflow on native Webflow Ecommerce, with a CMS-driven catalog and *GSAP scroll-tied reveals that let each kit breathe*. Product lines — hockey, baseball, team apparel — are structured so the family-run team adds and edits everything itself, with the cart and quote flow wired in without leaving the brand.",
+      shots: [
+        {
+          n: "01",
+          label: "01 — Storefront",
+          lead: "A bold “built different” brand, front and centre",
+          body: " — action photography and scroll-tied reveals that mirror the craft, not a generic grid.",
+          placeholder: "Storefront — drop screenshot",
+        },
+        {
+          n: "02",
+          label: "02 — Product lines",
+          lead: "Hockey, baseball and team apparel, CMS-driven",
+          body: " — sublimated, reversible and embroidered options the team manages without code.",
+          placeholder: "Product line — drop screenshot",
+        },
+        {
+          n: "03",
+          label: "03 — Cart & quote",
+          lead: "Webflow Ecommerce wired in, on-brand throughout",
+          body: " — add-to-cart and the quote path stay one tap away the moment intent lands.",
+          placeholder: "Cart — drop screenshot",
+        },
+      ],
+      resultsStatement: "The store finally feels like the product — considered, bold, and theirs to run.",
+      resultsSub:
+        "Shipped on Webflow and handed off clean: the team adds kits from the CMS. The numbers below are measured on the live store.",
+      metrics: [
+        { value: "100", label: "Lighthouse SEO" },
+        { value: "92", label: "Lighthouse accessibility" },
+        { value: "87", label: "Lighthouse performance" },
+      ],
     },
   },
   {
     slug: "k2btools",
-    index: "03",
+    index: "05",
     name: "K2BTools",
     category: "Marketing site",
-    year: "2023",
+    year: "2025",
     tags: ["Webflow", "Client-First", "GSAP"],
     blurb: {
-      pre: "Webflow, Client-First & GSAP — scroll animations with serious ",
-      ember: "performance",
-      post: " tuning.",
+      pre: "Developer tooling for GeneXus — a trilingual Webflow site with ",
+      ember: "performance-tuned",
+      post: " Client-First motion.",
     },
     image: "/assets/project-k2btools.webp",
-    imageAlt: "K2BTools — developer tooling marketing site",
+    imageAlt: "K2BTools — GeneXus developer tooling site",
     kind: "full",
     caseStudy: {
       platform: "Webflow",
-      year: "2023",
-      liveUrl: "https://k2btools.com",
+      year: "2025",
+      liveUrl: "https://web.k2btools.com",
       liveLabel: "k2btools.com",
       outcome: {
         pre: "A developer-tools company whose site had to feel as sharp as the ",
         ember: "product.",
       },
-      tags: ["Webflow", "Client-First", "GSAP", "Marketing site"],
+      tags: ["Webflow", "Client-First", "GSAP", "Multilingual"],
       heroBadge: "k2btools.com · home",
-      challengeHeading: "Heavy animations, a heavier page — and a team that couldn't touch it.",
+      challengeHeading: "A whole product suite, three languages, one team to run it.",
       challengeBody:
-        "K2BTools wanted motion that signalled engineering quality, but the previous build chased it with stacked libraries and *a load time that undid the whole point*. Worse, every edit went through a developer. They needed the polish without the weight, and a structure the marketing team could actually run.",
-      challengeVisualCaption: "Before · bloated build",
+        "K2BTools builds tooling that accelerates GeneXus development — eight-plus products, from web and mobile generators to auditing and AI. The site had to make that range *legible without burying the buyer*, ship in Spanish, English and Portuguese, and stay editable by the marketing team. Motion had to signal engineering quality without dragging the page down.",
+      challengeVisualCaption: "k2btools.com · home",
       specs: [
-        { key: "role", value: "Design & front-end build" },
+        { key: "role", value: "Front-end build" },
         { key: "stack", value: "Webflow · Client-First · GSAP" },
-        { key: "integration", value: "Webflow CMS" },
-        { key: "timeline", value: "4 weeks, end to end" },
+        { key: "integration", value: "Webflow CMS · es / en / pt" },
       ],
-      buildHeading: "Serious motion, on a page that stays light.",
+      buildHeading: "Serious motion on a structure that scales to three languages.",
       buildLead:
-        "I rebuilt the marketing site in Webflow on Client-First, with GSAP doing the heavy lifting — *scroll animations tuned against a performance budget*, lazy-loaded and reduced-motion aware. The whole thing is componentised so the team ships pages without a developer in the loop.",
+        "I built the marketing site in Webflow on Client-First, with GSAP doing the heavy lifting — *scroll animations that read as craft*, reduced-motion aware. The whole thing is componentised and CMS-driven across three locales, so the team ships solution pages, articles and success stories in any language without a developer in the loop.",
       shots: [
         {
           n: "01",
           label: "01 — Homepage",
-          lead: "Scroll animations that signal engineering quality",
-          body: " — every reveal is budgeted, lazy-loaded, and reduced-motion aware.",
+          lead: "“Impulsamos el mundo GeneXus”, with motion that signals quality",
+          body: " — GSAP reveals on a Client-First structure, tuned to stay light.",
           placeholder: "Homepage — drop screenshot",
         },
         {
           n: "02",
-          label: "02 — Features",
-          lead: "A Client-First component system the team extends itself",
-          body: " — new feature pages assemble from blocks, no developer required.",
-          placeholder: "Features — drop screenshot",
+          label: "02 — Solutions",
+          lead: "Eight-plus products, each its own clear page",
+          body: " — a Client-First component system the team extends without code.",
+          placeholder: "Solutions — drop screenshot",
         },
         {
           n: "03",
-          label: "03 — Docs hub",
-          lead: "A CMS-driven resource hub built to scale",
-          body: " — structured content that stays fast as it grows.",
-          placeholder: "Docs — drop screenshot",
+          label: "03 — Trilingual CMS",
+          lead: "Spanish, English and Portuguese from one source",
+          body: " — articles, success stories and solution pages, localized and team-run.",
+          placeholder: "Multilingual — drop screenshot",
         },
       ],
-      resultsStatement: "The motion finally reads as craft — and the page stays fast under it.",
+      resultsStatement: "The motion reads as craft — and the structure holds across three languages.",
       resultsSub:
-        "Launched lean, handed off documented. The marketing team ships on their own, and performance held as the site grew.",
+        "Launched on Client-First and handed off documented: the marketing team ships in any locale. Measured on the live site, the build scores clean.",
       metrics: [
-        { value: "100", label: "Lighthouse performance score" },
-        { value: "-71", unit: "%", label: "total page weight vs. the old build" },
-        { value: "0", unit: "dev", label: "developer hours per page edit" },
+        { value: "100", label: "Lighthouse SEO" },
+        { value: "100", label: "Lighthouse best practices" },
+        { value: "95", label: "Lighthouse accessibility" },
       ],
-      quote: {
-        quote:
-          "It looks high-end and still loads instantly — and *we ship pages in hours now*, not weeks. Client-First done right.",
-        name: "Diego Herrera",
-        role: "Head of Growth · K2BTools",
-      },
     },
-  },
-  {
-    slug: "nova-ventures",
-    index: "04",
-    name: "NOVA Ventures",
-    category: "Automation",
-    year: "2023",
-    tags: ["n8n", "Zapier", "Airtable"],
-    blurb: {
-      pre: "n8n, Zapier & Airtable workflows — email sequences and lead scoring that ",
-      ember: "run themselves",
-      post: ".",
-    },
-    imageAlt: "NOVA Ventures — automation workflows",
-    kind: "full",
-    caseStudy: {
-      platform: "Automation",
-      year: "2023",
-      outcome: {
-        pre: "A venture studio drowning in manual follow-up. The ops had to ",
-        ember: "run themselves.",
-      },
-      tags: ["n8n", "Zapier", "Airtable", "HubSpot", "Automation"],
-      heroBadge: "nova · ops dashboard",
-      challengeHeading: "Great deal flow, leaking out of a dozen disconnected tools.",
-      challengeBody:
-        "NOVA's team was copying leads between forms, sheets and inboxes by hand — and *good opportunities slipped through the gaps*. Follow-up depended on whoever remembered. They needed the busywork to disappear so the team could spend its time on the work only people can do.",
-      challengeVisualCaption: "Before · manual handoffs",
-      specs: [
-        { key: "role", value: "Automation design & build" },
-        { key: "stack", value: "n8n · Zapier · Airtable" },
-        { key: "integration", value: "HubSpot CRM" },
-        { key: "timeline", value: "3 weeks, end to end" },
-      ],
-      buildHeading: "Workflows that do the busywork so the team doesn't.",
-      buildLead:
-        "I mapped the whole funnel and rebuilt it as connected n8n and Zapier workflows on an Airtable backbone, synced to HubSpot. Leads score and route themselves, sequences fire on real signals, and *the team gets a clean dashboard* instead of a dozen tabs.",
-      shots: [
-        {
-          n: "01",
-          label: "01 — Lead capture",
-          lead: "Every inbound lands in one place, scored automatically",
-          body: " — no more copy-paste between forms, sheets and inboxes.",
-          placeholder: "Lead capture — drop screenshot",
-        },
-        {
-          n: "02",
-          label: "02 — Sequences",
-          lead: "Email sequences that fire on real behaviour",
-          body: " — triggered by signals, routed by score, logged back to the CRM.",
-          placeholder: "Sequences — drop screenshot",
-        },
-        {
-          n: "03",
-          label: "03 — Dashboard",
-          lead: "A single Airtable view the whole team trusts",
-          body: " — pipeline, status and next action, always current.",
-          placeholder: "Dashboard — drop screenshot",
-        },
-      ],
-      resultsStatement: "The pipeline runs itself now — and nothing slips through.",
-      resultsSub:
-        "Built quietly in the background, switched on without a hitch. The team got its time back and the follow-up never sleeps.",
-      metrics: [
-        { value: "12", unit: "hrs", label: "manual work saved per week" },
-        { value: "+44", unit: "%", label: "lead response rate" },
-        { value: "0", label: "leads lost to manual handoff" },
-      ],
-      quote: {
-        quote:
-          "Lucas mapped our chaos and turned it into something that just runs. *We got our week back* — and the follow-up never sleeps.",
-        name: "Sofía Marín",
-        role: "Operations Lead · NOVA Ventures",
-      },
-    },
-  },
-  {
-    slug: "somnio-software",
-    index: "05",
-    name: "Somnio Software",
-    category: "Partner site",
-    year: "2023",
-    tags: ["Webflow", "Lumos", "CMS"],
-    blurb: {
-      pre: "A product-studio site, ",
-      ember: "component-first",
-      post: " and easy for the team to extend.",
-    },
-    image: "/assets/project-somnio.webp",
-    imageAlt: "Somnio Software — product studio site",
-    kind: "compact",
   },
   {
     slug: "seilas-ship-supplies",
     index: "06",
     name: "Seilas Ship Supplies",
-    category: "B2B catalog",
-    year: "2022",
+    category: "B2B site",
+    year: "2024",
     tags: ["Webflow", "CMS", "B2B"],
     blurb: {
-      pre: "A marine supply catalog built to ",
-      ember: "scale",
-      post: " across thousands of SKUs.",
+      pre: "A century-old Uruguayan ship chandler — a clean Webflow site spanning ",
+      ember: "500+ clients",
+      post: " across 30+ countries.",
     },
     image: "/assets/project-seilas.webp",
-    imageAlt: "Seilas Ship Supplies — B2B marine catalog",
+    imageAlt: "Seilas Ship Supplies — B2B marine supplier",
     kind: "compact",
   },
 ];
