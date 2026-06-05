@@ -327,7 +327,7 @@ export const projects: Project[] = [
       services: ["Development", "Web Build", "Motion", "Webflow CMS"],
       challengeHeading: "A method built on movement — flattened into a static page.",
       challengeBody:
-        "BIKE teaches English the way you learn to ride a bike: by doing, from day one. The brand leans entirely on that metaphor — pedalling as progress — so a flat, conventional site would have *undercut the whole pitch*. It needed motion that felt playful and earned, a structure the team could keep editing, and the personality to carry levels from A1 to C2 without ever feeling like a textbook.",
+        "BIKE teaches English the way you learn to ride a bike: by doing, from day one. The brand leans entirely on that metaphor — pedaling as progress — so a flat, conventional site would have *undercut the whole pitch*. It needed motion that felt playful and earned, a structure the team could keep editing, and the personality to carry levels from A1 to C2 without ever feeling like a textbook.",
       challengeVisualCaption: "bike.uy · home",
       specs: [
         { key: "role", value: "Front-end build (design: Clearframe Studio)" },
