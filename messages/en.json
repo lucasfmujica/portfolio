@@ -57,11 +57,11 @@
   },
   "About": {
     "eyebrow": "about",
-    "heading": "A senior developer with a track record.",
-    "lede": "Five years building production-grade websites and custom code. Certified in Client-First, fluent in Lumos, component-first by default — sites that stay fast and easy to edit long after launch.",
+    "heading": "A senior Webflow developer who ships.",
+    "lede": "Five years and 100+ projects of production-grade Webflow — component-first builds with CMS architecture that marketing teams and small businesses actually enjoy running. Client-First certified, GSAP for the motion, and React / Next.js when a build calls for it. Fast on day one, still easy to edit a year later.",
     "statYears": "years shipping",
     "statProjects": "projects delivered",
-    "cred": ["Webflow Enterprise Partner", "Remote, worldwide"],
+    "cred": ["Webflow Certified Expert", "Remote, worldwide"],
     "ctaPrimary": "Let's talk",
     "ctaGhost": "See the work",
     "portraitPlaceholder": "Portrait of Lucas"
@@ -73,7 +73,7 @@
     "lede": "Everything here is chosen for speed, maintainability, and shipping fast without cutting corners.",
     "tiers": {
       "build": { "label": "Build", "items": "Webflow · Client-First · Lumos" },
-      "code": { "label": "Code", "items": "React · Next.js · GSAP" },
+      "code": { "label": "Code", "items": "React · Next.js · TypeScript · GSAP" },
       "automation": { "label": "Automation", "items": "n8n · Make · Zapier" },
       "connect": { "label": "Connect", "items": "HubSpot · Stripe · Notion" }
     }

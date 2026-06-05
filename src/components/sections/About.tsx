@@ -8,7 +8,7 @@ import { CertBadge } from "@/components/ui/CertBadge";
 
 const STATS = [
   { target: 5, suffix: "+", labelKey: "statYears" as const },
-  { target: 70, suffix: "+", labelKey: "statProjects" as const },
+  { target: 100, suffix: "+", labelKey: "statProjects" as const },
 ];
 
 export function About() {
