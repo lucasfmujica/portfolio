@@ -51,8 +51,10 @@ export function DraggableWord({
       };
       const onMove = (e: PointerEvent) => {
         if (!dragging) return;
-        const dx = e.clientX - sx;
-        const dy = e.clientY - sy;
+        // Cap the throw so it can't be flung far enough to overflow the page.
+        const max = Math.min(window.innerWidth * 0.3, 200);
+        const dx = gsap.utils.clamp(-max, max, e.clientX - sx);
+        const dy = gsap.utils.clamp(-max, max, e.clientY - sy);
         gsap.set(el, { x: dx, y: dy, rotation: gsap.utils.clamp(-20, 20, dx * 0.14) });
       };
       const onUp = () => {
@@ -88,6 +90,9 @@ export function DraggableWord({
   return (
     <span ref={ref} className={`dragword ${className ?? ""}`.trim()} data-cursor="Drag">
       {children}
+      <span className="dragword__hint" aria-hidden="true">
+        drag me
+      </span>
     </span>
   );
 }

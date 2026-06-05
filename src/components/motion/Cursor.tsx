@@ -29,6 +29,10 @@ export function Cursor() {
       // rim) and re-reads the ring's live size every frame, so the dot hugs the
       // current edge as the ring grows/shrinks. Default aim: straight down.
       const dotEl = el.querySelector<HTMLElement>(".cursor__dot");
+      // Centre the dot on its own midpoint (it's absolutely positioned at the
+      // ring centre in CSS) so the orbit offset is measured from the true centre
+      // — not the grid row it used to sit in, which pushed it off-centre.
+      if (dotEl) gsap.set(dotEl, { xPercent: -50, yPercent: -50 });
       let lastX = 0;
       let lastY = 0;
       let primed = false;
@@ -80,9 +84,6 @@ export function Cursor() {
 
         const field = target?.closest?.("input, textarea, select, [contenteditable='true']");
         const interactive = target?.closest?.("a, button, [data-cursor], .wcard, .awcard, .tst__item");
-        // Over fields and selectable body text, hide the ring so the native
-        // caret / I-beam shows (CSS restores it). Interactive wins over text.
-        const text = !interactive && target?.closest?.("p, li, blockquote, figcaption, label, .lede");
         // Over ember-flooded bands (e.g. Contact) the ember ring vanishes —
         // flip it to ink so it stays legible.
         const onEmber = target?.closest?.(".scheme-ember");
@@ -91,7 +92,9 @@ export function Cursor() {
         const label = labelHost?.dataset.cursor || "";
         if (labelEl && label && label !== lastLabel) labelEl.textContent = label;
         lastLabel = label;
-        el.classList.toggle("is-hidden", !!field || !!text);
+        // Only true form fields hide the ring (so the native caret shows); over
+        // body text and the process cards the ring now stays, like on headings.
+        el.classList.toggle("is-hidden", !!field);
         el.classList.toggle("is-active", !!interactive && !field);
         el.classList.toggle("is-invert", !!onEmber);
         el.classList.toggle("is-label", !!label && !field);
