@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type CSSProperties, type MouseEvent as ReactMouseEvent } from "react";
+import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Icon, type IconName } from "@/components/ui/Icon";
@@ -28,6 +29,12 @@ const SOCIALS: { name: IconName; label: string; href: string }[] = [
 export function MobileMenu() {
   const t = useTranslations("Nav");
   const [open, setOpen] = useState(false);
+  // The overlay is portaled to <body> so it isn't trapped by .nav's
+  // backdrop-filter, which (once scrolled) becomes a containing block for
+  // fixed descendants and would otherwise clip the overlay to the nav bar
+  // — the Safari bug where opening the menu lower down looked broken.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const close = () => {
     document.documentElement.classList.remove("menu-open");
@@ -84,55 +91,59 @@ export function MobileMenu() {
         </span>
       </button>
 
-      <div
-        id="mobile-menu"
-        className={`navmenu__overlay${open ? " is-open" : ""}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Menu"
-      >
-        <div className="navmenu__head">
-          <Link className="navmenu__brand" href="/" onClick={close} aria-label={t("brandAria")}>
-            <Wordmark dotClass="nav__dot" />
-          </Link>
-        </div>
-
-        <nav className="navmenu__links" aria-label="Mobile">
-          {LINKS.map((l, i) => (
-            <a
-              key={l.key}
-              href={l.href}
-              onClick={(e) => navTo(e, l.href)}
-              style={{ "--i": i } as CSSProperties}
-            >
-              {t(l.key)}
-            </a>
-          ))}
-        </nav>
-
-        <div className="navmenu__foot">
-          <a
-            href="/#contact"
-            className="btn btn--primary navmenu__cta"
-            onClick={(e) => navTo(e, "/#contact")}
+      {mounted &&
+        createPortal(
+          <div
+            id="mobile-menu"
+            className={`navmenu__overlay${open ? " is-open" : ""}`}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
           >
-            {t("talk")}
-          </a>
-          <div className="navmenu__soc" aria-label="Social links">
-            {SOCIALS.map((s) => (
+            <div className="navmenu__head">
+              <Link className="navmenu__brand" href="/" onClick={close} aria-label={t("brandAria")}>
+                <Wordmark dotClass="nav__dot" />
+              </Link>
+            </div>
+
+            <nav className="navmenu__links" aria-label="Mobile">
+              {LINKS.map((l, i) => (
+                <a
+                  key={l.key}
+                  href={l.href}
+                  onClick={(e) => navTo(e, l.href)}
+                  style={{ "--i": i } as CSSProperties}
+                >
+                  {t(l.key)}
+                </a>
+              ))}
+            </nav>
+
+            <div className="navmenu__foot">
               <a
-                key={s.name}
-                href={s.href}
-                aria-label={s.label}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/#contact"
+                className="btn btn--primary navmenu__cta"
+                onClick={(e) => navTo(e, "/#contact")}
               >
-                <Icon name={s.name} />
+                {t("talk")}
               </a>
-            ))}
-          </div>
-        </div>
-      </div>
+              <div className="navmenu__soc" aria-label="Social links">
+                {SOCIALS.map((s) => (
+                  <a
+                    key={s.name}
+                    href={s.href}
+                    aria-label={s.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon name={s.name} />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }

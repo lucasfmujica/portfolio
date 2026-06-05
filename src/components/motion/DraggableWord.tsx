@@ -39,6 +39,19 @@ export function DraggableWord({
       let dragging = false;
       let sx = 0;
       let sy = 0;
+      let curX = 0;
+      let curY = 0;
+      // Footer bounds + the word's home box, captured on grab so the throw can
+      // be clamped to keep the (rotated) word inside the section.
+      const pad = 8;
+      let bx = 0; // footer left/right/top/bottom, inset by pad
+      let bxr = 0;
+      let bty = 0;
+      let bby = 0;
+      let homeCx = 0; // word centre at transform 0
+      let homeCy = 0;
+      let halfW = 0;
+      let halfH = 0;
 
       const onDown = (e: PointerEvent) => {
         dragging = true;
@@ -46,16 +59,34 @@ export function DraggableWord({
         gsap.killTweensOf(el);
         sx = e.clientX;
         sy = e.clientY;
+        curX = Number(gsap.getProperty(el, "x")) || 0;
+        curY = Number(gsap.getProperty(el, "y")) || 0;
+        const bounds = (el.closest(".footer") ?? el.parentElement)?.getBoundingClientRect();
+        const r = el.getBoundingClientRect();
+        bx = (bounds?.left ?? 0) + pad;
+        bxr = (bounds?.right ?? window.innerWidth) - pad;
+        bty = (bounds?.top ?? 0) + pad;
+        bby = (bounds?.bottom ?? window.innerHeight) - pad;
+        homeCx = (r.left + r.right) / 2 - curX;
+        homeCy = (r.top + r.bottom) / 2 - curY;
+        halfW = r.width / 2;
+        halfH = r.height / 2;
         el.setPointerCapture?.(e.pointerId);
         el.classList.add("is-grabbing");
       };
       const onMove = (e: PointerEvent) => {
         if (!dragging) return;
-        // Cap the throw so it can't be flung far enough to overflow the page.
-        const max = Math.min(window.innerWidth * 0.3, 200);
-        const dx = gsap.utils.clamp(-max, max, e.clientX - sx);
-        const dy = gsap.utils.clamp(-max, max, e.clientY - sy);
-        gsap.set(el, { x: dx, y: dy, rotation: gsap.utils.clamp(-20, 20, dx * 0.14) });
+        // Tilt toward the throw, then size the clamp to the *rotated* box so the
+        // tilted word still can't poke past the footer (which would overflow).
+        const rot = gsap.utils.clamp(-20, 20, (e.clientX - sx) * 0.14);
+        const rad = (rot * Math.PI) / 180;
+        const cos = Math.abs(Math.cos(rad));
+        const sin = Math.abs(Math.sin(rad));
+        const hw = halfW * cos + halfH * sin;
+        const hh = halfW * sin + halfH * cos;
+        const x = gsap.utils.clamp(bx - (homeCx - hw), bxr - (homeCx + hw), curX + (e.clientX - sx));
+        const y = gsap.utils.clamp(bty - (homeCy - hh), bby - (homeCy + hh), curY + (e.clientY - sy));
+        gsap.set(el, { x, y, rotation: rot });
       };
       const onUp = () => {
         if (!dragging) return;

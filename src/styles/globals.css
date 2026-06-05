@@ -786,6 +786,21 @@
   html.menu-open {
     overflow: hidden;
   }
+  /* The overlay is portaled to <body> (z 200) to escape .nav's backdrop-filter
+     containing block. That drops the toggle — which lives inside .nav — behind
+     it, so lift .nav above the overlay while open and strip its scrolled bar/
+     brand, leaving only the morphing hamburger→✕ visible to close with. */
+  html.menu-open .nav {
+    z-index: 300;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom-color: transparent;
+  }
+  html.menu-open .nav__brand {
+    opacity: 0;
+    pointer-events: none;
+  }
   @media (prefers-reduced-motion: reduce) {
     .navmenu__overlay,
     .navmenu__links a,
