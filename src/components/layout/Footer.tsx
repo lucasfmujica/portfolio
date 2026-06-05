@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Icon } from "@/components/ui/Icon";
 import { CertBadge } from "@/components/ui/CertBadge";
 import { Wordmark } from "./Wordmark";
@@ -27,7 +28,7 @@ export function Footer() {
         <div className="footer__row">
           <Wordmark className="footer__wordmark" dotClass="footer__dot" />
           <nav className="footer__nav" aria-label={t("navAria")}>
-            <a href="/#work">Work</a>
+            <Link href="/work">Work</Link>
             <a href="/#about">About</a>
             <a href="/#stack">Stack</a>
             <a href="/#process">Process</a>

@@ -105,6 +105,12 @@ export default async function WorkIndexPage({
             );
           })}
         </div>
+
+        <div className="allwork__cta">
+          <a href="/#contact" className="btn btn--primary">
+            {t("startProject")} <Icon name="arrow-right" />
+          </a>
+        </div>
       </div>
     </section>
   );

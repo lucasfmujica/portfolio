@@ -21,7 +21,7 @@ export function Nav() {
           <Wordmark dotClass="nav__dot" />
         </Link>
         <div className="nav__links">
-          <a href="/#work">{t("work")}</a>
+          <Link href="/work">{t("work")}</Link>
           <a href="/#about">{t("about")}</a>
           <a href="/#stack">{t("stack")}</a>
         </div>

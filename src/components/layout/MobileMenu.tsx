@@ -7,7 +7,7 @@ import { Icon, type IconName } from "@/components/ui/Icon";
 import { Wordmark } from "./Wordmark";
 
 const LINKS: { href: string; key: "work" | "about" | "stack" | "process" }[] = [
-  { href: "/#work", key: "work" },
+  { href: "/work", key: "work" },
   { href: "/#about", key: "about" },
   { href: "/#stack", key: "stack" },
   { href: "/#process", key: "process" },

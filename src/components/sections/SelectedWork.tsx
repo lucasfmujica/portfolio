@@ -75,7 +75,7 @@ export function SelectedWork() {
 
         <div className="work__cta" data-reveal>
           <Link href="/work" className="btn btn--primary">
-            {t("seeAll", { count: projects.length })} <Icon name="arrow-right" />
+            {t("seeAll")} <Icon name="arrow-right" />
           </Link>
         </div>
       </div>

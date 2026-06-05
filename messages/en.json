@@ -48,7 +48,7 @@
     "heading": "A few builds I'm proud of.",
     "lede": "Each one paired sharp design with motion that earns its place.",
     "viewAll": "View all projects",
-    "seeAll": "See all {count} projects",
+    "seeAll": "See all projects",
     "viewCase": "View case study",
     "allEyebrow": "all work",
     "allHeading": "Case studies & projects.",
@@ -153,6 +153,9 @@
     "buildEyebrow": "what I built",
     "resultsEyebrow": "what shipped",
     "quoteEyebrow": "what they said",
+    "ctaEyebrow": "start a project",
+    "ctaHeading": "Have a project like this one?",
+    "ctaButton": "Start a project",
     "nextEyebrow": "see the next project",
     "specLabels": {
       "role": "Role",
