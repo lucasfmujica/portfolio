@@ -6,10 +6,11 @@ import { Icon } from "@/components/ui/Icon";
 import { projects } from "@/data/projects";
 
 /**
- * Selected work — six sticky stacking cards, alternating image side, numbered
- * 01–06. Full projects link to their case study; compact ones point to the
- * contact section. Hover lift / image scale / ember underline are CSS.
+ * Selected work — the three lead case studies as alternating stacking cards.
+ * The full set lives on /work; a primary CTA below sends people there.
  */
+const FEATURED = projects.slice(0, 3);
+
 export function SelectedWork() {
   const t = useTranslations("Work");
   return (
@@ -31,7 +32,7 @@ export function SelectedWork() {
         </div>
 
         <div className="workstack">
-          {projects.map((p) => (
+          {FEATURED.map((p) => (
             <article className="wcard" key={p.slug} data-reveal>
               <div className="wcard__media">
                 <span className="wcard__num">{p.index}</span>
@@ -70,6 +71,12 @@ export function SelectedWork() {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="work__cta" data-reveal>
+          <Link href="/work" className="btn btn--primary">
+            {t("seeAll", { count: projects.length })} <Icon name="arrow-right" />
+          </Link>
         </div>
       </div>
     </RevealScope>

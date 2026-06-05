@@ -4,7 +4,6 @@ import { RevealScope } from "@/components/motion/RevealScope";
 import { RichText } from "@/components/ui/RichText";
 import { ImageFill } from "@/components/ui/ImageFill";
 import { Icon } from "@/components/ui/Icon";
-import { Curtain } from "./Curtain";
 import { CaseStudyHero } from "./CaseStudyHero";
 import { CaseStudyGallery } from "./CaseStudyGallery";
 import { getNextCaseStudy, type Project, type CaseStudy } from "@/data/projects";
@@ -25,7 +24,6 @@ export function CaseStudyView({
 
   return (
     <>
-      <Curtain />
       <CaseStudyHero project={project} />
 
       {/* The challenge */}

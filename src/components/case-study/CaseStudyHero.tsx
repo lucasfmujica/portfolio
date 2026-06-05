@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { Link } from "@/i18n/navigation";
 import { Icon } from "@/components/ui/Icon";
 import { ImageFill } from "@/components/ui/ImageFill";
 import type { Project, CaseStudy } from "@/data/projects";
@@ -39,9 +40,9 @@ export function CaseStudyHero({
   return (
     <header className="cs-hero" id="hero" ref={root}>
       <div className="cs-hero__inner">
-        <a href="/#work" className="cs-hero__back" data-cs-stagger>
+        <Link href="/work" className="cs-hero__back" data-cs-stagger>
           <Icon name="arrow-left" /> {t("back")}
-        </a>
+        </Link>
         <div className="cs-eyebrow-row" data-cs-stagger>
           <span className="eyebrow">{t("eyebrow")}</span>
         </div>

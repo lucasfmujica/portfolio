@@ -513,7 +513,64 @@ export const projects: Project[] = [
     },
     image: "/assets/seilas-card.webp",
     imageAlt: "Seilas Ship Supplies — B2B marine supplier",
-    kind: "compact",
+    kind: "full",
+    caseStudy: {
+      platform: "Webflow",
+      year: "2024",
+      liveUrl: "https://www.nadetir.com",
+      liveLabel: "nadetir.com",
+      outcome: {
+        pre: "A ship chandler that's supplied Uruguay's ports for a century. The site had to carry that ",
+        ember: "legacy.",
+      },
+      tags: ["Webflow", "CMS", "B2B"],
+      heroImage: "/assets/seilas-card.webp",
+      heroImageAlt: "Seilas Ship Supplies — 'Keeping vessels moving, worldwide'",
+      heroBadge: "nadetir.com · home",
+      challengeHeading: "A hundred years of trust — and nothing online to show it.",
+      challengeBody:
+        "Seilas Ship Supplies (Nadetir S.A.) has provisioned vessels at every port in Uruguay since 1921 — deck and safety gear, engine-room supplies, provisions, bonded stores. A century of reputation, but a web presence that *didn't carry the weight*. The brief: a credible, international-feeling B2B site that says “trusted since 1921” without saying a word.",
+      challengeVisualCaption: "nadetir.com · home",
+      specs: [
+        { key: "role", value: "Front-end build" },
+        { key: "stack", value: "Webflow · CMS" },
+        { key: "integration", value: "Webflow CMS" },
+      ],
+      buildHeading: "A clean, global home for a century-old supplier.",
+      buildLead:
+        "I built the site in Webflow — restrained, confident, and built to scale. A *world map of 500+ clients across 30+ countries* anchors the story, the full service range is laid out for maritime buyers, and the brand's 1921 heritage runs through the whole thing. CMS-driven where it counts, so the team keeps it current.",
+      shots: [
+        {
+          n: "01",
+          label: "01 — Home",
+          lead: "“Keeping vessels moving, worldwide”",
+          body: " — a world map of 500+ clients across 30+ countries, front and centre.",
+          placeholder: "Home / map — drop screenshot",
+        },
+        {
+          n: "02",
+          label: "02 — Heritage",
+          lead: "A hundred years of history, told with intent",
+          body: " — the 1921 founding story, framed for a B2B audience.",
+          placeholder: "About / history — drop screenshot",
+        },
+        {
+          n: "03",
+          label: "03 — Services",
+          lead: "The full chandlery range, clearly laid out",
+          body: " — deck, safety, engine-room, provisions and bonded stores for any vessel.",
+          placeholder: "Services — drop screenshot",
+        },
+      ],
+      resultsStatement: "A site that finally looks the part — a century of trust, online.",
+      resultsSub:
+        "Shipped on Webflow and handed off clean. The numbers below are measured on the live site.",
+      metrics: [
+        { value: "100", label: "Lighthouse SEO" },
+        { value: "100", label: "Lighthouse best practices" },
+        { value: "90", label: "Lighthouse accessibility" },
+      ],
+    },
   },
 ];
 
