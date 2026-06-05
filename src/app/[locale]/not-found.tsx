@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { RichText } from "@/components/ui/RichText";
 
 /**
  * Locale-scoped 404 — renders inside the root layout (nav, dock, footer, grain
@@ -14,7 +15,7 @@ export default function NotFound() {
       />
       <div className="nf__inner">
         <span className="eyebrow eyebrow--accent">{t("eyebrow")}</span>
-        <h1>{t("heading")}</h1>
+        <h1><RichText text={t("heading")} /></h1>
         <p className="lede">{t("body")}</p>
         <div className="nf__actions">
           <a href="/" className="btn btn--primary">

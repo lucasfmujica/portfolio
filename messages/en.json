@@ -2,7 +2,7 @@
   "Meta": {
     "home": {
       "title": "Lucas Mujica — I build websites that move.",
-      "description": "Senior Webflow & front-end developer, 5+ years deep — high-performing, component-driven Webflow sites your marketing team can own, scale and maintain.",
+      "description": "Senior Webflow & front-end developer, 5+ years deep — high-performing, component-driven Webflow sites marketing teams and small businesses can own, scale and maintain.",
       "ogAlt": "Lucas Mujica — senior Webflow & front-end developer"
     },
     "caseStudy": {
@@ -36,7 +36,7 @@
     "line1": "I build",
     "line2": "websites that",
     "line3": "move.",
-    "sub": "Senior Webflow & front-end developer, 5+ years deep. I build high-performing, component-driven sites your marketing team can own, scale and keep editing long after launch.",
+    "sub": "5+ years deep. I build high-performing, component-driven sites marketing teams and small businesses can own, scale and maintain long after launch.",
     "ctaPrimary": "Start a project",
     "ctaGhost": "View selected work",
     "scroll": "Scroll",
@@ -46,12 +46,12 @@
   "Work": {
     "eyebrow": "selected work",
     "heading": "Builds I'm *proud* to put my name on.",
-    "lede": "Each one is built to be owned — a component system the client's marketing team can run, scale and keep editing without a developer on call.",
+    "lede": "Each one is built to be owned — a component system the client's team can run, scale and maintain — no developer on call.",
     "viewAll": "View all projects",
     "seeAll": "See all projects",
     "viewCase": "View case study",
     "allEyebrow": "all work",
-    "allHeading": "Case studies & projects.",
+    "allHeading": "Case studies & *projects*.",
     "allLede": "Every build in one place — deep-dive case studies plus the rest of the shelf.",
     "startProject": "Start a project",
     "backHome": "Back home"
@@ -168,7 +168,7 @@
   },
   "NotFound": {
     "eyebrow": "404",
-    "heading": "This page took a detour.",
+    "heading": "This page took a *detour*.",
     "body": "The link's broken or the page moved. Let's get you back to the work.",
     "home": "Back home",
     "work": "See the work"

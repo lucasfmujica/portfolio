@@ -8,6 +8,7 @@ import { projects } from "@/data/projects";
 import { Link } from "@/i18n/navigation";
 import { ImageFill } from "@/components/ui/ImageFill";
 import { Icon } from "@/components/ui/Icon";
+import { RichText } from "@/components/ui/RichText";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -55,7 +56,7 @@ export default async function WorkIndexPage({
           </Link>
           <div className="section-head" style={{ marginBottom: 8 }}>
             <span className="eyebrow">{t("allEyebrow")}</span>
-            <h1>{t("allHeading")}</h1>
+            <h1><RichText text={t("allHeading")} /></h1>
             <p className="lede">{t("allLede")}</p>
           </div>
         </div>
