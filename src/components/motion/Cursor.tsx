@@ -23,12 +23,13 @@ export function Cursor() {
       const xTo = gsap.quickTo(el, "x", { duration: 0.14, ease: "power3.out" });
       const yTo = gsap.quickTo(el, "y", { duration: 0.14, ease: "power3.out" });
 
-      // The centre dot leans toward the pointer's travel direction (and harder
-      // the faster you move), then eases back to centre when you stop — so the
-      // cursor reads its own momentum.
+      // The centre dot rides out to the rim of the ring in the pointer's travel
+      // direction — a little compass needle that points where you're headed —
+      // and eases back to centre when you stop. The offset radius tracks the
+      // ring's current size so it always lands just inside the edge.
       const dotEl = el.querySelector<HTMLElement>(".cursor__dot");
-      const dotXTo = dotEl && gsap.quickTo(dotEl, "x", { duration: 0.2, ease: "power3.out" });
-      const dotYTo = dotEl && gsap.quickTo(dotEl, "y", { duration: 0.2, ease: "power3.out" });
+      const dotXTo = dotEl && gsap.quickTo(dotEl, "x", { duration: 0.18, ease: "power2.out" });
+      const dotYTo = dotEl && gsap.quickTo(dotEl, "y", { duration: 0.18, ease: "power2.out" });
       let lastX = 0;
       let lastY = 0;
       let primed = false;
@@ -48,17 +49,18 @@ export function Cursor() {
             const dx = e.clientX - lastX;
             const dy = e.clientY - lastY;
             const speed = Math.hypot(dx, dy);
-            if (speed > 0.4) {
-              const amt = Math.min(speed * 0.6, 7);
-              dotXTo((dx / speed) * amt);
-              dotYTo((dy / speed) * amt);
+            if (speed > 0.5) {
+              // Park the dot just inside the rim of the (possibly grown) ring.
+              const radius = Math.max(8, el.offsetWidth / 2 - 5);
+              dotXTo((dx / speed) * radius);
+              dotYTo((dy / speed) * radius);
             }
           }
           clearTimeout(recenter);
           recenter = setTimeout(() => {
             dotXTo(0);
             dotYTo(0);
-          }, 110);
+          }, 90);
         }
         lastX = e.clientX;
         lastY = e.clientY;
