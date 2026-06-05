@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: `${siteName} — Webflow & Front-End Developer`,
     short_name: siteName,
     description:
-      "Senior Webflow & front-end developer, 5+ years deep — fast, scalable sites with motion that earns its place.",
+      "Senior Webflow & front-end developer, 5+ years deep — component-driven Webflow sites that marketing teams can own, scale and maintain.",
     start_url: "/",
     display: "standalone",
     background_color: "#0b0b0d",

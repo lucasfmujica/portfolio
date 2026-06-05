@@ -82,6 +82,11 @@ export interface CaseStudy {
   heroImage?: string;
   heroImageAlt?: string;
   heroBadge: string;
+  /** CandidLeap-style summary band, right under the hero. */
+  /** 3 outcome bullets; each may carry one `*ember phrase*`. */
+  highlights: string[];
+  /** Engagement scope, e.g. "Strategy", "Development", "Webflow CMS". */
+  services: string[];
   /** Challenge section. */
   challengeHeading: string;
   /** Body copy with one `*ember phrase*`. */
@@ -92,8 +97,8 @@ export interface CaseStudy {
   buildHeading: string;
   /** Lead with one `*ember phrase*`. */
   buildLead: string;
-  /** Aspect ratio for the build-gallery frames, e.g. "16 / 10". Tuned per case
-   *  study so each set of screenshots crops cleanly. Defaults to 16 / 10. */
+  /** Aspect ratio for the build-gallery frames, e.g. "2 / 1". Tuned per case
+   *  study to match its screenshots' proportions. Defaults to 16 / 9. */
   shotAspect?: string;
   shots: CaseStudyShot[];
   /** Results (ember-flooded) band. */
@@ -150,6 +155,12 @@ export const projects: Project[] = [
       heroImage: "/assets/truenorth-hero.webp",
       heroImageAlt: "True North Jerseys — 'built different' storefront",
       heroBadge: "truenorthjerseys.com · shop",
+      highlights: [
+        "A CMS-driven catalog the *family-run team runs and grows themselves*.",
+        "Native Webflow Ecommerce + custom-quote flow, wired in on-brand.",
+        "Built to scale — new product lines drop in as components, not rebuilds.",
+      ],
+      services: ["Strategy", "Web Design", "Development", "Webflow Ecommerce", "CMS"],
       challengeHeading: "A premium, made-to-order product on a generic shelf.",
       challengeBody:
         "True North makes custom hockey and baseball jerseys in BC — sublimated, reversible, embroidered, the craft is the whole pitch. But that detail is exactly what a stock template *flattens into a grid*. The brand needed a store that felt as considered as the product, kept the catalog easy to run, and put the path to a quote one tap away.",
@@ -226,6 +237,12 @@ export const projects: Project[] = [
       heroImage: "/assets/k2btools-hero.webp",
       heroImageAlt: "K2BTools — 'Impulsamos el mundo GeneXus' homepage",
       heroBadge: "k2btools.com · home",
+      highlights: [
+        "A Client-First component system the *marketing team ships pages with, solo*.",
+        "Trilingual on Webflow Localization — es / en / pt from one CMS.",
+        "Eight-plus products made legible without burying the buyer.",
+      ],
+      services: ["Strategy", "Development", "Client-First System", "Webflow Localization"],
       challengeHeading: "A whole product suite, three languages, one team to run it.",
       challengeBody:
         "K2BTools builds tooling that accelerates GeneXus development — eight-plus products, from web and mobile generators to auditing and AI. The site had to make that range *legible without burying the buyer*, ship in Spanish, English and Portuguese, and stay editable by the marketing team. Motion had to signal engineering quality without dragging the page down.",
@@ -235,7 +252,7 @@ export const projects: Project[] = [
         { key: "stack", value: "Webflow · Client-First · GSAP" },
         { key: "integration", value: "Webflow Localization · es / en / pt" },
       ],
-      buildHeading: "Serious motion on a structure that scales to three languages.",
+      buildHeading: "A component system the team ships in three languages.",
       buildLead:
         "I built the marketing site in Webflow on Client-First, with GSAP doing the heavy lifting — *scroll animations that read as craft*, reduced-motion aware. The whole thing runs on Webflow Localization across three languages (Spanish, English, Portuguese), componentised and CMS-driven, so the team ships solution pages, articles and success stories in any locale without a developer in the loop.",
       shots: [
@@ -264,7 +281,7 @@ export const projects: Project[] = [
           image: "/assets/k2btools-shot3.webp",
         },
       ],
-      resultsStatement: "The motion reads as craft — and the structure holds across three languages.",
+      resultsStatement: "Componentised and trilingual — the marketing team ships in any language, solo.",
       resultsSub:
         "Launched on Client-First and handed off documented: the marketing team ships in any locale. Measured on the live site, the build scores clean.",
       metrics: [
@@ -302,6 +319,12 @@ export const projects: Project[] = [
       heroImage: "/assets/bike-hero.webp",
       heroImageAlt: "BIKE — bike.uy homepage",
       heroBadge: "bike.uy · home",
+      highlights: [
+        "Courses, content and forms the *team runs themselves* from the CMS.",
+        "A custom preloader and paced reveals that set the brand's tone.",
+        "An interactive 3D-bike 404 that turns a dead end into part of the brand.",
+      ],
+      services: ["Development", "Web Build", "Motion", "Webflow CMS"],
       challengeHeading: "A method built on movement — flattened into a static page.",
       challengeBody:
         "BIKE teaches English the way you learn to ride a bike: by doing, from day one. The brand leans entirely on that metaphor — pedalling as progress — so a flat, conventional site would have *undercut the whole pitch*. It needed motion that felt playful and earned, a structure the team could keep editing, and the personality to carry levels from A1 to C2 without ever feeling like a textbook.",
@@ -379,6 +402,12 @@ export const projects: Project[] = [
       heroImage: "/assets/homeorganizers-hero.webp",
       heroImageAlt: "Home Organizers Long Island — 'a home that finally feels calm'",
       heroBadge: "homeorganizersli.com · home",
+      highlights: [
+        "Taken end to end — *design, copy, SEO and hand-written code*.",
+        "A before/after reveal slider built from scratch in vanilla JS.",
+        "Deliberate SEO, down to the JSON-LD LocalBusiness schema.",
+      ],
+      services: ["Strategy", "Design", "Copywriting", "Development", "SEO"],
       challengeHeading: "A warm, hands-on service — with no site to show for it.",
       challengeBody:
         "Home Organizers help busy Long Island homeowners reclaim their space, and the whole promise is *calm without judgment*. That feeling is hard to fake with a template. I took the project end to end — design, copy, SEO and code — and chose to hand-build it: no Webflow, no framework, no build step, so every detail of the feel and the performance was mine to tune.",
@@ -391,7 +420,7 @@ export const projects: Project[] = [
       buildHeading: "A bespoke static build, tuned by hand.",
       buildLead:
         "Hand-written HTML, CSS custom properties and vanilla JavaScript — no framework, self-hosted Sora and Overpass for speed, and GSAP + ScrollTrigger for the motion. The centrepiece is a *before/after slider I wrote from scratch*: a carousel with a draggable reveal handle on mobile. Contact runs on Netlify Forms, and the SEO is deliberate down to the JSON-LD LocalBusiness schema.",
-      shotAspect: "16 / 9",
+      shotAspect: "2 / 1",
       shots: [
         {
           n: "01",
@@ -456,6 +485,12 @@ export const projects: Project[] = [
       heroImage: "/assets/nextfense-hero.webp",
       heroImageAlt: "Nextfense — 'Construye un futuro digital más seguro' hero",
       heroBadge: "nextfense.com · home",
+      highlights: [
+        "A bilingual (es / en) build the *team extends as the offering grows*.",
+        "Six-pillar approach anchored by custom Illustrator artwork.",
+        "An abstract security service made concrete and credible.",
+      ],
+      services: ["Strategy", "Development", "Custom Illustration", "Webflow Localization"],
       challengeHeading: "Selling trust in a category built on it.",
       challengeBody:
         "Nextfense centralises managed cybersecurity — pentesting, vulnerability scanning, virtual CISO — into one platform, Nextfense Core. The site had to make a complex, abstract service feel *concrete and credible* to a corporate buyer, hold up in two languages, and stay easy for the team to extend as the offering grows.",
@@ -532,6 +567,12 @@ export const projects: Project[] = [
       heroImage: "/assets/seilas-hero.webp",
       heroImageAlt: "Seilas Ship Supplies — 'Since 1921, your trusted ship supplier in Uruguay'",
       heroBadge: "nadetir.com · home",
+      highlights: [
+        "A century of trust, finally *legible online* for B2B buyers.",
+        "A world map of 500+ clients across 30+ countries, front and centre.",
+        "CMS-driven where it counts, so the team keeps it current.",
+      ],
+      services: ["Strategy", "Web Design", "Development", "Webflow CMS"],
       challengeHeading: "A hundred years of trust — and nothing online to show it.",
       challengeBody:
         "Seilas Ship Supplies (Nadetir S.A.) has provisioned vessels at every port in Uruguay since 1921 — deck and safety gear, engine-room supplies, provisions, bonded stores. A century of reputation, but a web presence that *didn't carry the weight*. The brief: a credible, international-feeling B2B site that says “trusted since 1921” without saying a word.",

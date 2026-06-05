@@ -27,6 +27,32 @@ export function CaseStudyView({
     <>
       <CaseStudyHero project={project} />
 
+      {/* Summary — highlights + services provided */}
+      <RevealScope as="section" className="section cs-summary" id="summary">
+        <div className="container cs-summary__grid">
+          <div className="cs-summary__col cs-summary__col--hl" data-reveal>
+            <span className="eyebrow">{t("highlightsEyebrow")}</span>
+            <ul className="cs-highlights">
+              {cs.highlights.map((h, i) => (
+                <li className="cs-highlights__item" key={i}>
+                  <RichText text={h} />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="cs-summary__col" data-reveal data-reveal-delay="1">
+            <span className="eyebrow">{t("servicesEyebrow")}</span>
+            <ul className="cs-services">
+              {cs.services.map((s) => (
+                <li className="cs-services__item" key={s}>
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </RevealScope>
+
       {/* The challenge */}
       <RevealScope as="section" className="section cs-challenge" id="challenge">
         <div className="container cs-challenge__grid">

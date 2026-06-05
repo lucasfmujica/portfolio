@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, type CSSProperties } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { ImageFill } from "@/components/ui/ImageFill";
 import type { CaseStudyShot } from "@/data/projects";
@@ -35,9 +35,9 @@ export function CaseStudyGallery({
         if (inner) {
           gsap.fromTo(
             inner,
-            { yPercent: -6 },
+            { yPercent: -1.5 },
             {
-              yPercent: 6,
+              yPercent: 1.5,
               ease: "none",
               scrollTrigger: { trigger: shot, start: "top bottom", end: "bottom top", scrub: true },
             },
@@ -52,7 +52,7 @@ export function CaseStudyGallery({
     <div
       className="cs-gallery"
       ref={root}
-      style={aspect ? ({ "--cs-shot-aspect": aspect } as React.CSSProperties) : undefined}
+      style={aspect ? ({ "--cs-shot-aspect": aspect } as CSSProperties) : undefined}
     >
       {shots.map((shot) => (
         <figure className="cs-shot" key={shot.n}>

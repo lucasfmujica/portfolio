@@ -2082,177 +2082,180 @@
     background: var(--surface);
     border-top: 1px solid var(--hairline);
   }
-  .pflow {
-    position: relative;
-    margin-top: 84px;
-  }
-  .pflow__steps {
+  .process__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(48px, 8vw, 120px);
+    align-items: start;
   }
-  .pstep {
+  .process__aside {
+    position: sticky;
+    top: 120px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 12px;
-    padding: 0 14px;
+    gap: 22px;
   }
+  .process__aside .lede {
+    max-width: 34ch;
+  }
+
+  .pflow {
+    position: relative;
+  }
+  .pflow__track {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  /* The connecting line — sized in JS to span first→last node centers. */
   .pflow__rail {
     position: absolute;
-    top: 28px;
-    left: 16.667%;
-    right: 16.667%;
-    height: 2px;
+    left: 27px;
+    top: 0;
+    width: 2px;
+    height: 100%;
     background: var(--hairline);
     border-radius: 2px;
     z-index: 0;
+    overflow: visible;
   }
   .pflow__fill {
     position: absolute;
     inset: 0;
     background: var(--ember);
     border-radius: 2px;
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 1.4s var(--ease-out);
+    transform: scaleY(0);
+    transform-origin: top center;
+    box-shadow: 0 0 12px 0 color-mix(in srgb, var(--ember), transparent 55%);
   }
-  .pflow.play .pflow__fill {
-    transform: scaleX(1);
-  }
-  .pflow__comet {
+  /* The travelling tip — a soft ember glow that rides the end of the fill. */
+  .pflow__fill::after {
+    content: "";
     position: absolute;
-    top: 50%;
-    left: 0;
-    width: 10px;
-    height: 10px;
-    margin: -5px 0 0 -5px;
+    left: 50%;
+    bottom: 0;
+    width: 8px;
+    height: 8px;
+    margin-left: -4px;
     border-radius: 100px;
     background: var(--ember);
     box-shadow:
-      0 0 0 4px color-mix(in srgb, var(--ember), transparent 78%),
-      0 0 16px 3px var(--ember);
-    opacity: 0;
-    transition:
-      left 1.4s var(--ease-out),
-      opacity 0.4s var(--ease-out);
+      0 0 0 4px color-mix(in srgb, var(--ember), transparent 80%),
+      0 0 14px 3px var(--ember);
   }
-  .pflow.play .pflow__comet {
-    left: 100%;
-    opacity: 1;
+
+  .pstep {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    align-items: start;
+    column-gap: 28px;
+    padding: 30px 0;
+  }
+  .pstep:first-child {
+    padding-top: 0;
+  }
+  .pstep:last-child {
+    padding-bottom: 0;
+  }
+  .pstep + .pstep {
+    border-top: 1px solid var(--hairline);
   }
   .pstep__node {
-    width: 56px;
-    height: 56px;
+    width: 54px;
+    height: 54px;
     border-radius: 100px;
     border: 2px solid var(--hairline-strong);
     background: var(--surface);
     display: grid;
     place-items: center;
-    color: var(--fg2);
+    color: var(--fg3);
     position: relative;
     z-index: 2;
     transition:
-      border-color 0.55s var(--ease-out),
-      color 0.55s var(--ease-out),
-      box-shadow 0.55s var(--ease-out),
-      transform 0.55s var(--ease-out);
+      border-color 0.5s var(--ease-out),
+      color 0.5s var(--ease-out),
+      box-shadow 0.5s var(--ease-out),
+      transform 0.5s var(--ease-out);
+  }
+  .pstep.is-active .pstep__node {
+    border-color: var(--ember);
+    color: var(--ember);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--ember), transparent 88%);
+    transform: scale(1.04);
   }
   .pstep__ic {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     stroke-width: 1.6;
     color: inherit;
+  }
+  .pstep__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 2px;
   }
   .pstep__n {
     font-family: var(--font-mono);
     font-size: var(--text-small);
-    letter-spacing: 0.12em;
+    letter-spacing: 0.18em;
     color: var(--fg3);
-    transition: color 0.55s var(--ease-out);
+    transition: color 0.5s var(--ease-out);
+  }
+  .pstep.is-active .pstep__n {
+    color: var(--ember);
   }
   .pstep h3 {
     font-family: var(--font-display);
     font-weight: 600;
     font-size: var(--h5);
     letter-spacing: -0.02em;
-    margin: 2px 0 0;
+    margin: 0;
   }
   .pstep p {
     color: var(--fg2);
     margin: 0;
-    line-height: 1.55;
+    line-height: 1.6;
     font-size: var(--text-regular);
-    max-width: 30ch;
+    max-width: 44ch;
   }
-  .pflow.play .pstep:nth-child(1) .pstep__node,
-  .pflow.play .pstep:nth-child(2) .pstep__node,
-  .pflow.play .pstep:nth-child(3) .pstep__node {
-    border-color: var(--ember);
-    color: var(--ember);
-    box-shadow: 0 0 0 6px color-mix(in srgb, var(--ember), transparent 88%);
+
+  @media (max-width: 860px) {
+    .process__grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .process__aside {
+      position: static;
+      top: auto;
+    }
+    .process__aside .lede {
+      max-width: 52ch;
+    }
   }
-  .pflow.play .pstep:nth-child(1) .pstep__node {
-    transition-delay: 0.15s;
-  }
-  .pflow.play .pstep:nth-child(2) .pstep__node {
-    transition-delay: 0.75s;
-  }
-  .pflow.play .pstep:nth-child(3) .pstep__node {
-    transition-delay: 1.35s;
-  }
-  .pflow.play .pstep:nth-child(1) .pstep__n {
-    color: var(--ember);
-    transition-delay: 0.15s;
-  }
-  .pflow.play .pstep:nth-child(2) .pstep__n {
-    color: var(--ember);
-    transition-delay: 0.75s;
-  }
-  .pflow.play .pstep:nth-child(3) .pstep__n {
-    color: var(--ember);
-    transition-delay: 1.35s;
-  }
-  @media (max-width: 760px) {
-    .pflow {
-      margin-top: 56px;
+  @media (max-width: 560px) {
+    .pstep {
+      grid-template-columns: 44px 1fr;
+      column-gap: 18px;
+      padding: 26px 0;
     }
     .pflow__rail {
-      display: none;
-    }
-    .pflow__steps {
-      grid-template-columns: 1fr;
-      gap: 36px;
-    }
-    .pstep {
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      text-align: left;
-      column-gap: 16px;
-      row-gap: 6px;
-      padding: 0;
+      left: 22px;
     }
     .pstep__node {
-      flex: 0 0 auto;
+      width: 44px;
+      height: 44px;
     }
-    .pstep h3 {
-      flex: 1 1 auto;
-      min-width: 60%;
-    }
-    .pstep p {
-      flex: 1 1 100%;
-      max-width: none;
-      padding-left: 72px;
-    }
-    .pstep__n {
-      order: -1;
+    .pstep__ic {
+      width: 20px;
+      height: 20px;
     }
   }
   @media (prefers-reduced-motion: reduce) {
     .pflow__fill,
-    .pflow__comet,
     .pstep__node,
     .pstep__n {
       transition: none !important;
@@ -3121,6 +3124,65 @@
     backdrop-filter: blur(6px);
   }
 
+  /* Case-study summary — highlights + services provided */
+  .cs-summary__grid {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    gap: 72px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .cs-summary__grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+  .cs-summary__col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .cs-highlights {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 46ch;
+  }
+  .cs-highlights__item {
+    position: relative;
+    padding-left: 30px;
+    font-size: var(--text-medium);
+    line-height: 1.45;
+    color: var(--fg1);
+  }
+  .cs-highlights__item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 16px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--ember);
+  }
+  .cs-services {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .cs-services__item {
+    font-family: var(--font-mono);
+    font-size: var(--text-small);
+    letter-spacing: 0.02em;
+    color: var(--fg1);
+    padding: 13px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
   /* Challenge */
   .cs-challenge {
     background: var(--surface);
@@ -3263,15 +3325,17 @@
     overflow: hidden;
     border: 1px solid var(--hairline);
     background: var(--surface);
-    aspect-ratio: var(--cs-shot-aspect, 16 / 10);
+    aspect-ratio: var(--cs-shot-aspect, 16 / 9);
     box-shadow: 0 40px 100px -48px rgba(0, 0, 0, 0.85);
   }
   .cs-shot__frame img {
     object-position: 50% top;
   }
+  /* Small parallax overscan: a taller inner crops the (wide) screenshots on the
+     sides under object-fit:cover, so keep it minimal to preserve proportion. */
   .cs-shot__inner {
     position: absolute;
-    inset: -8% 0;
+    inset: -2% 0;
     will-change: transform;
   }
   .cs-shot__inner > * {

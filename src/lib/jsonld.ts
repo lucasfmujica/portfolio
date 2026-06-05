@@ -20,7 +20,7 @@ const personEntity = {
   image: `${siteUrl}/assets/portrait.jpg`,
   jobTitle: "Senior Webflow & Front-End Developer",
   description:
-    "Senior Webflow & front-end developer, 5+ years deep — fast, scalable sites with motion that earns its place.",
+    "Senior Webflow & front-end developer, 5+ years deep — component-driven Webflow sites that marketing teams can own, scale and maintain.",
   knowsAbout: [
     "Webflow",
     "Front-end development",
