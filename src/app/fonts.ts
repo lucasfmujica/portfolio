@@ -36,6 +36,10 @@ export const generalSans = localFont({
 export const geistMono = localFont({
   variable: "--font-mono",
   display: "swap",
+  // Mono only drives small labels (eyebrow, fps, scroll). Don't preload it, so
+  // the display + body fonts behind the LCP heading win mobile bandwidth; the
+  // few mono captions swap in from the system mono fallback a beat later.
+  preload: false,
   src: [{ path: "../../public/fonts/GeistMono-Regular.woff2", weight: "400", style: "normal" }],
   fallback: ["ui-monospace", "SF Mono", "Menlo", "monospace"],
 });

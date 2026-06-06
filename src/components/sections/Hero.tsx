@@ -66,7 +66,10 @@ export function Hero() {
         defaults: { ease: "power3.out" },
         onComplete: startCycle,
       });
-      tl.from(split.lines, { yPercent: 110, duration: 0.95, stagger: 0.1 })
+      // Keep the masked reveal but make it snappy: the <h1> is the mobile LCP
+      // element, so a shorter reveal lets it settle sooner (better LCP) while
+      // still reading as a deliberate line-by-line entrance.
+      tl.from(split.lines, { yPercent: 110, duration: 0.62, stagger: 0.07 })
         .from(
           root.current.querySelectorAll<HTMLElement>("[data-hero-stagger]"),
           { opacity: 0, y: 24, duration: 0.7, stagger: 0.1 },
