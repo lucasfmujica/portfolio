@@ -21,6 +21,7 @@ const personEntity = {
   jobTitle: "Senior Webflow & Front-End Developer",
   description:
     "Senior Webflow & front-end developer, 5+ years deep — high-performing, component-driven Webflow sites marketing teams and small businesses can own, scale and maintain.",
+  sameAs: ["https://www.linkedin.com/in/lucasfmujica"],
   knowsAbout: [
     "Webflow",
     "Front-end development",
@@ -53,27 +54,40 @@ export function homeJsonLd() {
   };
 }
 
-/** CreativeWork graph for a case study, crediting the Person. */
+/** CreativeWork + BreadcrumbList graph for a case study, crediting the Person. */
 export function caseStudyJsonLd(project: Project) {
   const cs = project.caseStudy;
   const url = `${siteUrl}/work/${project.slug}`;
   return {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "@id": `${url}#work`,
-    name: project.name,
-    headline: `${project.name} — ${project.category}`,
-    description: cs ? `${cs.outcome.pre}${cs.outcome.ember}` : project.blurb.ember,
-    url,
-    inLanguage: "en",
-    dateCreated: project.year,
-    datePublished: project.year,
-    keywords: project.tags.join(", "),
-    genre: project.category,
-    ...(project.image ? { image: `${siteUrl}${project.image}` } : {}),
-    creator: { "@id": PERSON_ID },
-    author: { "@id": PERSON_ID },
-    ...(cs?.liveUrl ? { sameAs: cs.liveUrl } : {}),
-    isPartOf: { "@id": WEBSITE_ID },
+    "@graph": [
+      {
+        "@type": "CreativeWork",
+        "@id": `${url}#work`,
+        name: project.name,
+        headline: `${project.name} — ${project.category}`,
+        description: cs ? `${cs.outcome.pre}${cs.outcome.ember}` : project.blurb.ember,
+        url,
+        inLanguage: "en",
+        dateCreated: project.year,
+        datePublished: project.year,
+        keywords: project.tags.join(", "),
+        genre: project.category,
+        ...(project.image ? { image: `${siteUrl}${project.image}` } : {}),
+        creator: { "@id": PERSON_ID },
+        author: { "@id": PERSON_ID },
+        ...(cs?.liveUrl ? { sameAs: cs.liveUrl } : {}),
+        isPartOf: { "@id": WEBSITE_ID },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Work", item: `${siteUrl}/work` },
+          { "@type": "ListItem", position: 3, name: project.name, item: url },
+        ],
+      },
+    ],
   };
 }

@@ -42,9 +42,12 @@ const aspectFor = (src?: string): string | undefined => {
 export function CaseStudyGallery({
   shots,
   aspect,
+  projectName,
 }: {
   shots: CaseStudyShot[];
   aspect?: string;
+  /** Prefixes each screenshot's alt text so it reads in isolation. */
+  projectName?: string;
 }) {
   const root = useRef<HTMLDivElement>(null);
 
@@ -79,7 +82,7 @@ export function CaseStudyGallery({
               <div className="cs-shot__inner">
                 <ImageFill
                   src={shot.image}
-                  alt={shot.label}
+                  alt={projectName ? `${projectName} — ${shot.lead}` : shot.lead}
                   placeholder={shot.placeholder}
                   sizes="(max-width: 1280px) 100vw, 1200px"
                 />
