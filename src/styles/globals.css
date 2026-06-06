@@ -172,6 +172,24 @@
     background: var(--ember);
     color: var(--ink);
   }
+  /* The contact band is ember-flooded, so an ember selection reads as red-on-red.
+     Invert it there: ink highlight, ember text. */
+  .contact ::selection {
+    background: var(--ink);
+    color: var(--ember);
+  }
+  .contact ::-moz-selection {
+    background: var(--ink);
+    color: var(--ember);
+  }
+  /* GSAP SplitText masks each line in an `overflow: clip` wrapper, which crops
+     glyph descenders (the tail of "y", "g", etc). Give the mask a touch of
+     bottom room and pull it back with a matching negative margin so nothing
+     shifts. */
+  .mh__line-mask {
+    padding-bottom: 0.16em;
+    margin-bottom: -0.16em;
+  }
   a {
     color: inherit;
     text-decoration: none;
@@ -1514,6 +1532,11 @@
     overflow: hidden;
     background: var(--surface);
     box-shadow: 0 -12px 70px -28px rgba(0, 0, 0, 0.75);
+    /* Safari won't clip a composited child (the cover image) to the card's
+       rounded corners — the frame's hover repaint exposes the image poking past
+       the radius. Promoting the card to its own layer forces the clip to honor
+       the border-radius. (Chrome already clips correctly; this is a no-op there.) */
+    will-change: transform;
   }
   /* Ember frame that strokes on around the card on hover (dash draw — the
      DrawSVG/underline motif, here as a CSS perimeter draw). No viewBox so the
@@ -2927,10 +2950,11 @@
     }
   }
   @keyframes dragword-hint {
+    /* Dimmest frame stays at 0.85 so the ember hint clears 4.5:1 on --ink. */
     0%,
     100% {
       transform: translateX(0);
-      opacity: 0.65;
+      opacity: 0.85;
     }
     50% {
       transform: translateX(5px);
@@ -3024,7 +3048,8 @@
     margin-top: 24px;
     font-family: var(--font-mono);
     font-size: var(--text-small);
-    color: var(--fg3);
+    /* --fg3 (#6a6a66) on --ink only reaches ~3.6:1; --fg2 clears 4.5:1 (WCAG AA). */
+    color: var(--fg2);
     letter-spacing: 0.02em;
   }
 
