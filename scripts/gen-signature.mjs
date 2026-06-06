@@ -113,4 +113,23 @@ const monogramFilled = h(
 );
 await writeFile(join(outDir, "monogram-filled.png"), await render(monogramFilled, 104, 104));
 
+// ── 4. Circular portrait avatar with ember ring (alt to the monogram) ───────
+// Square crop centred on the face, masked to a circle, ringed in ember.
+const AV = 112; // 2× of the 56px display avatar
+const portraitSquare = await sharp(join(root, "public/assets/portrait.jpg"))
+  .extract({ left: 86, top: 262, width: 660, height: 660 })
+  .resize(AV, AV)
+  .toBuffer();
+const circleMask = Buffer.from(
+  `<svg width="${AV}" height="${AV}"><circle cx="${AV / 2}" cy="${AV / 2}" r="${AV / 2}" fill="#fff"/></svg>`,
+);
+const emberRing = Buffer.from(
+  `<svg width="${AV}" height="${AV}"><circle cx="${AV / 2}" cy="${AV / 2}" r="${AV / 2 - 2}" fill="none" stroke="${EMBER}" stroke-width="4"/></svg>`,
+);
+const circled = await sharp(portraitSquare)
+  .composite([{ input: circleMask, blend: "dest-in" }])
+  .png()
+  .toBuffer();
+await sharp(circled).composite([{ input: emberRing }]).png().toFile(join(outDir, "avatar.png"));
+
 console.log("signature assets → public/signature/ : wordmark.png, monogram.png, monogram-filled.png");
