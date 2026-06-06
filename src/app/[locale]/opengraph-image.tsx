@@ -8,69 +8,147 @@ export const contentType = "image/png";
 
 const INK = "#0b0b0d";
 const EMBER = "#ff4d2e";
-const MUTED = "#a1a1aa";
+const LIGHT = "#e7e7ea";
+const MUTED = "#9a9a94";
+
+const font = (file: string) => readFile(join(process.cwd(), "public/fonts", file));
 
 export default async function OgImage() {
-  const mono = await readFile(join(process.cwd(), "public/fonts/GeistMono-Regular.ttf"));
+  // Satori can't parse woff2, so the OG card reads .ttf builds of the brand
+  // faces (server-only — never shipped to the browser).
+  const [clashBold, clashSemi, mono] = await Promise.all([
+    font("ClashDisplay-Bold.ttf"),
+    font("ClashDisplay-Semibold.ttf"),
+    font("GeistMono-Regular.ttf"),
+  ]);
 
   return new ImageResponse(
     (
       <div
         style={{
+          position: "relative",
           width: "100%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
           background: INK,
-          padding: "72px 80px",
+          padding: "62px 76px",
           fontFamily: "Geist Mono",
-          // ember glow, top-right
-          backgroundImage: `radial-gradient(900px 520px at 100% 0%, rgba(255,77,46,0.18), rgba(255,77,46,0) 60%)`,
+          // ember bloom top-right, faint cool counter-glow bottom-left
+          backgroundImage:
+            "radial-gradient(820px 520px at 102% -8%, rgba(255,77,46,0.22), rgba(255,77,46,0) 58%), radial-gradient(680px 480px at -10% 116%, rgba(255,77,46,0.07), rgba(255,77,46,0) 60%)",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        {/* top hairline — echoes the site's scroll-progress bar */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: 520,
+            height: 5,
+            background: "linear-gradient(90deg, #ff4d2e, rgba(255,77,46,0))",
+          }}
+        />
+
+        {/* top band: brand mark + tech tag */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 58,
+                height: 58,
+                borderRadius: 15,
+                background: "#141416",
+                border: "1px solid #2a2a30",
+                color: "#fff",
+                fontFamily: "Clash Display",
+                fontWeight: 700,
+                fontSize: 27,
+              }}
+            >
+              LM<span style={{ color: EMBER }}>.</span>
+            </div>
+            <div style={{ display: "flex", color: MUTED, fontSize: 21, letterSpacing: 3 }}>
+              PORTFOLIO
+            </div>
+          </div>
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              width: 56,
-              height: 56,
-              borderRadius: 14,
-              background: "#141416",
-              border: "1px solid #26262b",
-              color: "#fff",
-              fontSize: 26,
-              fontWeight: 700,
+              gap: 12,
+              padding: "10px 18px",
+              borderRadius: 999,
+              border: "1px solid #2a2a30",
+              background: "rgba(20,20,22,0.6)",
+              color: MUTED,
+              fontSize: 19,
+              letterSpacing: 1,
             }}
           >
-            LM
-            <span style={{ color: EMBER }}>.</span>
+            <div style={{ display: "flex", width: 9, height: 9, borderRadius: 999, background: EMBER }} />
+            WEBFLOW · GSAP · NEXT.JS
           </div>
-          <div style={{ color: MUTED, fontSize: 22, letterSpacing: 2 }}>PORTFOLIO</div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-          <div style={{ display: "flex", color: "#fff", fontSize: 84, fontWeight: 700, letterSpacing: -2 }}>
+        {/* center: eyebrow, name, headline */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 22 }}>
+            <div style={{ display: "flex", width: 30, height: 2, background: EMBER }} />
+            <div style={{ display: "flex", color: EMBER, fontSize: 20, letterSpacing: 4 }}>
+              WEBFLOW &amp; FRONT-END DEVELOPER
+            </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "baseline",
+              color: "#fff",
+              fontFamily: "Clash Display",
+              fontWeight: 700,
+              fontSize: 112,
+              letterSpacing: -3,
+              lineHeight: 1,
+            }}
+          >
             Lucas Mujica<span style={{ color: EMBER }}>.</span>
           </div>
-          <div style={{ display: "flex", color: "#e7e7ea", fontSize: 40 }}>
-            I build websites that move.
+          <div
+            style={{
+              display: "flex",
+              marginTop: 22,
+              color: LIGHT,
+              fontFamily: "Clash Display",
+              fontWeight: 600,
+              fontSize: 46,
+              letterSpacing: -1,
+            }}
+          >
+            I build websites that&nbsp;<span style={{ color: EMBER }}>move.</span>
           </div>
         </div>
 
+        {/* bottom band: positioning + url */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-          <div style={{ display: "flex", color: MUTED, fontSize: 24 }}>
+          <div style={{ display: "flex", color: MUTED, fontSize: 23 }}>
             Senior Webflow &amp; Front-End Developer · 5+ yrs
           </div>
-          <div style={{ display: "flex", color: EMBER, fontSize: 24 }}>lucasmujica.dev</div>
+          <div style={{ display: "flex", color: EMBER, fontSize: 23 }}>lucasmujica.dev</div>
         </div>
       </div>
     ),
     {
       ...size,
-      fonts: [{ name: "Geist Mono", data: mono, style: "normal", weight: 400 }],
+      fonts: [
+        { name: "Clash Display", data: clashBold, style: "normal", weight: 700 },
+        { name: "Clash Display", data: clashSemi, style: "normal", weight: 600 },
+        { name: "Geist Mono", data: mono, style: "normal", weight: 400 },
+      ],
     },
   );
 }
