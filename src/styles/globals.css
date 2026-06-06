@@ -2027,16 +2027,6 @@
   .awcard:hover .mockup__screen img {
     transform: scale(1.045);
   }
-  .awcard__num {
-    position: absolute;
-    top: 14px;
-    left: 16px;
-    z-index: 1;
-    font-family: var(--font-mono);
-    font-size: var(--text-small);
-    color: var(--fg1);
-    opacity: 0.85;
-  }
   .awcard__info {
     display: flex;
     flex-direction: column;
@@ -3297,28 +3287,6 @@
   .cs-hero__media .mockup__screen {
     aspect-ratio: 16 / 9;
   }
-  .cs-hero__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% top;
-    display: block;
-  }
-  .cs-hero__media-badge {
-    position: absolute;
-    top: 18px;
-    left: 20px;
-    z-index: 2;
-    font-family: var(--font-mono);
-    font-size: var(--text-tiny);
-    letter-spacing: 0.06em;
-    color: var(--fg1);
-    background: var(--ink-70);
-    border: 1px solid var(--w-12);
-    border-radius: 100px;
-    padding: 6px 14px;
-    backdrop-filter: blur(6px);
-  }
 
   /* Case-study summary — highlights + services provided */
   .cs-summary__grid {
@@ -3528,39 +3496,6 @@
      the chrome bar sits above it, so the frame grows by the bar height. */
   .cs-shot__frame .mockup__screen {
     aspect-ratio: var(--cs-shot-aspect, 16 / 9);
-  }
-  /* Frame matches the screenshot's native ratio, so the image fills it exactly
-     (cover crops nothing). No overscan — proportion is preserved over parallax. */
-  .cs-shot__inner {
-    position: absolute;
-    inset: 0;
-  }
-  .cs-shot__inner > * {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .cs-shot__inner {
-      inset: 0;
-      transform: none !important;
-    }
-  }
-  .cs-shot__num {
-    position: absolute;
-    top: 18px;
-    left: 20px;
-    z-index: 2;
-    font-family: var(--font-mono);
-    font-size: var(--text-tiny);
-    letter-spacing: 0.08em;
-    color: var(--fg1);
-    background: var(--ink-70);
-    border: 1px solid var(--w-12);
-    border-radius: 100px;
-    padding: 6px 13px;
-    backdrop-filter: blur(6px);
   }
   .cs-shot__cap {
     display: flex;
