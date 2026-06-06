@@ -2,24 +2,34 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
+import { routing } from "@/i18n/routing";
+
 export const alt = "Lucas Mujica — senior Webflow & front-end developer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// Prerender the card at build time (where `public/` exists), like the
+// case-study OG route. Without this the [locale] segment renders the card
+// on-demand in a serverless function that doesn't bundle `public/`, so the
+// font reads ENOENT → 500 and no social preview renders.
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 const INK = "#0b0b0d";
 const EMBER = "#ff4d2e";
 const LIGHT = "#e7e7ea";
 const MUTED = "#9a9a94";
 
-const font = (file: string) => readFile(join(process.cwd(), "public/fonts", file));
-
 export default async function OgImage() {
   // Satori can't parse woff2, so the OG card reads .ttf builds of the brand
-  // faces (server-only — never shipped to the browser).
+  // faces (server-only — never shipped to the browser). Paths are inlined as
+  // string literals so Next's file tracer bundles them into the function even
+  // when it renders dynamically.
   const [clashBold, clashSemi, mono] = await Promise.all([
-    font("ClashDisplay-Bold.ttf"),
-    font("ClashDisplay-Semibold.ttf"),
-    font("GeistMono-Regular.ttf"),
+    readFile(join(process.cwd(), "public/fonts/ClashDisplay-Bold.ttf")),
+    readFile(join(process.cwd(), "public/fonts/ClashDisplay-Semibold.ttf")),
+    readFile(join(process.cwd(), "public/fonts/GeistMono-Regular.ttf")),
   ]);
 
   return new ImageResponse(
