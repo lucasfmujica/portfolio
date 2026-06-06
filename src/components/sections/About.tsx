@@ -3,9 +3,11 @@
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { Link } from "@/i18n/navigation";
 import { ImageFill } from "@/components/ui/ImageFill";
 import { RichText } from "@/components/ui/RichText";
 import { CertBadge } from "@/components/ui/CertBadge";
+import { Icon } from "@/components/ui/Icon";
 
 const STATS = [
   { target: 5, suffix: "+", labelKey: "statYears" as const },
@@ -118,12 +120,12 @@ export function About() {
           </div>
 
           <div className="about__actions" data-reveal data-reveal-delay="3">
-            <a href="/#contact" className="btn btn--primary">
+            <a href="#contact" className="btn btn--primary">
               {t("ctaPrimary")}
             </a>
-            <a href="/#work" className="btn btn--ghost">
-              {t("ctaGhost")}
-            </a>
+            <Link href="/about" className="btn btn--link">
+              {t("ctaMore")} <Icon name="arrow-right" />
+            </Link>
           </div>
         </div>
       </div>

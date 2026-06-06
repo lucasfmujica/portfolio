@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { caseStudies, getProject } from "@/data/projects";
 import { siteName, siteUrl } from "@/lib/site";
 import { CaseStudyView } from "@/components/case-study/CaseStudyView";
+import { Contact } from "@/components/sections/Contact";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { caseStudyJsonLd } from "@/lib/jsonld";
 
@@ -62,6 +63,7 @@ export default async function CaseStudyPage({
     <>
       <JsonLd data={caseStudyJsonLd(project)} />
       <CaseStudyView project={project as typeof project & { caseStudy: NonNullable<typeof project.caseStudy> }} />
+      <Contact />
     </>
   );
 }

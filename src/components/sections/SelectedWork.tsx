@@ -70,7 +70,7 @@ export function SelectedWork() {
                     {t("viewCase")} <Icon name="arrow-ur" />
                   </Link>
                 ) : (
-                  <a href="/#contact" className="wcard__link">
+                  <a href="#contact" className="wcard__link">
                     {t("viewCase")} <Icon name="arrow-ur" />
                   </a>
                 )}

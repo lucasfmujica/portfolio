@@ -9,6 +9,7 @@ import { Link } from "@/i18n/navigation";
 import { Mockup } from "@/components/ui/Mockup";
 import { Icon } from "@/components/ui/Icon";
 import { RichText } from "@/components/ui/RichText";
+import { Contact } from "@/components/sections/Contact";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -48,6 +49,7 @@ export default async function WorkIndexPage({
   const t = await getTranslations("Work");
 
   return (
+    <>
     <section className="section allwork">
       <div className="container">
         <div className="allwork__head" id="hero">
@@ -104,19 +106,16 @@ export default async function WorkIndexPage({
                 {inner}
               </Link>
             ) : (
-              <a key={p.slug} href="/#contact" className="awcard" data-cursor="View">
+              <a key={p.slug} href="#contact" className="awcard" data-cursor="View">
                 {inner}
               </a>
             );
           })}
         </div>
 
-        <div className="allwork__cta">
-          <a href="/#contact" className="btn btn--primary">
-            {t("startProject")} <Icon name="arrow-right" />
-          </a>
-        </div>
       </div>
     </section>
+    <Contact />
+    </>
   );
 }

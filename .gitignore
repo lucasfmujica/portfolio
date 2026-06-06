@@ -37,3 +37,6 @@ yarn-error.log*
 
 # planning chat logs (not app code)
 /chats
+
+# local photo originals (web-optimized copies live in public/assets/about)
+/design-source

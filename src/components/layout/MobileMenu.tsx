@@ -9,7 +9,7 @@ import { Wordmark } from "./Wordmark";
 
 const LINKS: { href: string; key: "work" | "about" | "stack" | "process" }[] = [
   { href: "/work", key: "work" },
-  { href: "/#about", key: "about" },
+  { href: "/about", key: "about" },
   { href: "/#stack", key: "stack" },
   { href: "/#process", key: "process" },
 ];
@@ -121,9 +121,9 @@ export function MobileMenu() {
 
             <div className="navmenu__foot">
               <a
-                href="/#contact"
+                href="#contact"
                 className="btn btn--primary navmenu__cta"
-                onClick={(e) => navTo(e, "/#contact")}
+                onClick={(e) => navTo(e, "#contact")}
               >
                 {t("talk")}
               </a>

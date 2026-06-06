@@ -116,7 +116,7 @@ export function Hero() {
             {t("sub")}
           </p>
           <div className="hero__cta" data-hero-stagger>
-            <a href="/#contact" className="btn btn--primary">
+            <a href="#contact" className="btn btn--primary">
               {t("ctaPrimary")} <Icon name="arrow-right" />
             </a>
             <a href="/#work" className="btn btn--ghost">

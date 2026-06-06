@@ -30,7 +30,7 @@ export function Footer() {
           <Wordmark className="footer__wordmark" dotClass="footer__dot" />
           <nav className="footer__nav" aria-label={t("navAria")}>
             <Link href="/work">Work</Link>
-            <a href="/#about">About</a>
+            <Link href="/about">About</Link>
             <a href="/#stack">Stack</a>
             <a href="/#process">Process</a>
           </nav>

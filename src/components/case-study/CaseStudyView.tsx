@@ -149,19 +149,6 @@ export function CaseStudyView({
         </RevealScope>
       )}
 
-      {/* Contact CTA — link to the project form */}
-      <RevealScope as="section" className="section cs-cta">
-        <div className="container cs-cta__inner" data-reveal>
-          <div>
-            <span className="eyebrow eyebrow--accent">{t("ctaEyebrow")}</span>
-            <h2 className="cs-cta__h"><RichText text={t("ctaHeading")} /></h2>
-          </div>
-          <a href="/#contact" className="btn btn--primary">
-            {t("ctaButton")} <Icon name="arrow-ur" />
-          </a>
-        </div>
-      </RevealScope>
-
       {/* Next project */}
       <RevealScope as="section" className="section cs-next">
         <div className="container">

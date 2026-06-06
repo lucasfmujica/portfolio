@@ -22,11 +22,11 @@ export function Nav() {
         </Link>
         <div className="nav__links">
           <Link href="/work">{t("work")}</Link>
-          <a href="/#about">{t("about")}</a>
+          <Link href="/about">{t("about")}</Link>
           <a href="/#stack">{t("stack")}</a>
         </div>
         <div className="nav__right">
-          <a href="/#contact" className="btn btn--primary">
+          <a href="#contact" className="btn btn--primary">
             {t("talk")}
           </a>
         </div>

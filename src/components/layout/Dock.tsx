@@ -2,8 +2,8 @@ import { useTranslations } from "next-intl";
 import { Icon, type IconName } from "@/components/ui/Icon";
 
 const ITEMS: { href: string; icon: IconName; key: "work" | "about" | "stack" }[] = [
-  { href: "/#work", icon: "work", key: "work" },
-  { href: "/#about", icon: "person", key: "about" },
+  { href: "/work", icon: "work", key: "work" },
+  { href: "/about", icon: "person", key: "about" },
   { href: "/#stack", icon: "stacks", key: "stack" },
 ];
 
@@ -24,7 +24,7 @@ export function Dock() {
         </a>
       ))}
       <span className="dock__div" />
-      <a href="/#contact" className="btn btn--primary dock__cta">
+      <a href="#contact" className="btn btn--primary dock__cta">
         {nav("talk")}
       </a>
     </nav>
