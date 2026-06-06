@@ -3,7 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { RevealScope } from "@/components/motion/RevealScope";
 import { MaskHeading } from "@/components/motion/MaskHeading";
 import { RichText } from "@/components/ui/RichText";
-import { ImageFill } from "@/components/ui/ImageFill";
+import { Mockup } from "@/components/ui/Mockup";
 import { Icon } from "@/components/ui/Icon";
 import { projects } from "@/data/projects";
 
@@ -40,10 +40,11 @@ export function SelectedWork() {
                 <rect x="1" y="1" rx="31" ry="31" pathLength={100} />
               </svg>
               <div className="wcard__media">
-                <span className="wcard__num">{p.index}</span>
-                <ImageFill
+                <Mockup
                   src={p.image}
                   alt={p.imageAlt ?? p.name}
+                  label={p.caseStudy?.liveUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                  badge={p.index}
                   placeholder={`${p.name} — drop screenshot`}
                 />
               </div>

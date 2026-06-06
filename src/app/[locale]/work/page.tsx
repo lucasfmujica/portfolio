@@ -6,7 +6,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import { siteName, siteUrl } from "@/lib/site";
 import { projects } from "@/data/projects";
 import { Link } from "@/i18n/navigation";
-import { ImageFill } from "@/components/ui/ImageFill";
+import { Mockup } from "@/components/ui/Mockup";
 import { Icon } from "@/components/ui/Icon";
 import { RichText } from "@/components/ui/RichText";
 
@@ -70,10 +70,11 @@ export default async function WorkIndexPage({
                   <rect pathLength={100} />
                 </svg>
                 <div className="awcard__media">
-                  <span className="awcard__num">{p.index}</span>
-                  <ImageFill
+                  <Mockup
                     src={p.image}
                     alt={p.imageAlt ?? p.name}
+                    label={p.caseStudy?.liveUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                    badge={p.index}
                     placeholder={`${p.name} — drop screenshot`}
                     sizes="(max-width: 680px) 100vw, (max-width: 1100px) 50vw, 33vw"
                   />

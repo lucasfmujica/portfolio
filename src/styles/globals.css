@@ -1604,17 +1604,75 @@
   /* Each featured card's media matches its hero screenshot's native ratio, so
      the image shows in full proportion (cover crops nothing). Order mirrors
      SelectedWork's FEATURED = projects[0..2]: True North · K2BTools · BIKE. */
-  .workstack .wcard:nth-child(1) .wcard__media {
+  /* The browser-mockup screen carries each featured card's native hero ratio so
+     the screenshot still shows in full proportion (cover crops nothing). The
+     chrome bar sits above it, so the card grows by the bar height. Order mirrors
+     SelectedWork's FEATURED = projects[0..2]: True North · K2BTools · BIKE. */
+  .workstack .wcard:nth-child(1) .mockup__screen {
     aspect-ratio: 1500 / 806;
   }
-  .workstack .wcard:nth-child(2) .wcard__media {
+  .workstack .wcard:nth-child(2) .mockup__screen {
     aspect-ratio: 1500 / 870;
   }
-  .workstack .wcard:nth-child(3) .wcard__media {
+  .workstack .wcard:nth-child(3) .mockup__screen {
     aspect-ratio: 1500 / 746;
   }
-  .wcard__media .imgslot,
-  .wcard__media img {
+
+  /* ---- Browser-window mockup (chrome bar + screenshot) ----
+     Shared by the home (.wcard) and /work (.awcard) cards. Pure markup + CSS:
+     the image is still a responsive next/image, so there's no perf cost. */
+  .mockup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .mockup__bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: 40px;
+    flex: none;
+    padding: 0 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .mockup__dots {
+    display: flex;
+    gap: 7px;
+  }
+  .mockup__dots i {
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+    background: var(--hairline-strong);
+  }
+  .mockup__url {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-tiny);
+    letter-spacing: 0.02em;
+    color: var(--fg2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mockup__lock {
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-radius: 100px;
+    background: var(--ember);
+  }
+  .mockup__screen {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+  }
+  .mockup__screen .imgslot,
+  .mockup__screen img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -1622,10 +1680,10 @@
     object-fit: cover;
     object-position: 50% top;
   }
-  .wcard__num {
+  .mockup__num {
     position: absolute;
-    top: 18px;
-    left: 20px;
+    top: 14px;
+    left: 16px;
     z-index: 2;
     font-family: var(--font-mono);
     font-size: var(--text-tiny);
@@ -1952,7 +2010,6 @@
   }
   .awcard__media {
     position: relative;
-    aspect-ratio: 16 / 10;
     background: radial-gradient(
         120% 90% at 85% 12%,
         color-mix(in srgb, var(--ember), transparent 82%),
@@ -1960,17 +2017,14 @@
       ),
       linear-gradient(150deg, var(--surface-2), var(--ink));
   }
-  .awcard__media .imgslot,
-  .awcard__media img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% top;
+  /* Smaller grid cards get a tighter chrome bar + the hover zoom on the shot. */
+  .awcard .mockup__bar {
+    height: 32px;
+  }
+  .awcard .mockup__screen img {
     transition: transform var(--dur-slow) var(--ease-out);
   }
-  .awcard:hover .awcard__media img {
+  .awcard:hover .mockup__screen img {
     transform: scale(1.045);
   }
   .awcard__num {
