@@ -39,7 +39,9 @@ export async function generateMetadata({
       title,
       description,
       url,
-      images: project.image ? [{ url: project.image, alt: project.imageAlt ?? project.name }] : undefined,
+      // og:image / twitter:image come from the colocated opengraph-image.tsx
+      // (a branded, generated card) — don't also set a raw hero here or it
+      // overrides the generated one.
     },
     twitter: { card: "summary_large_image", title, description },
   };
