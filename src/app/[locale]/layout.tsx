@@ -12,11 +12,9 @@ import { Dock } from "@/components/layout/Dock";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollChrome } from "@/components/layout/ScrollChrome";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
-import { Cursor } from "@/components/motion/Cursor";
-import { Magnetic } from "@/components/motion/Magnetic";
 import { ScrollFX } from "@/components/motion/ScrollFX";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
-import { ThemePicker } from "@/components/motion/ThemePicker";
+import { ClientFX } from "@/components/motion/ClientFX";
 
 import "@/styles/globals.css";
 
@@ -98,6 +96,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       className={`${clashDisplay.variable} ${generalSans.variable} ${geistMono.variable}`}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <head>
@@ -108,14 +107,12 @@ export default async function LocaleLayout({
           <SmoothScroll />
           <ScrollProgress />
           <ScrollFX />
-          <Cursor />
-          <Magnetic />
           <ScrollChrome />
           <Nav />
           <Dock />
           <main id="top">{children}</main>
           <Footer />
-          <ThemePicker />
+          <ClientFX />
           <div className="grain" aria-hidden="true" />
         </NextIntlClientProvider>
       </body>

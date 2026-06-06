@@ -38,18 +38,42 @@ export function Cursor() {
       let primed = false;
       let targetAngle = Math.PI / 2;
       let angle = Math.PI / 2;
-      const orbit = () => {
+
+      // The ring only resizes on hover-state transitions (is-active / is-label /
+      // is-down), each a ~300ms CSS tween. Reading offsetWidth every frame forces
+      // a layout sync 60×/s even while the pointer is dead still. Instead, cache
+      // the rim radius and only re-measure during a short window after a state
+      // change — `bumpMeasure()` opens it. Idle frames then do zero DOM reads.
+      const RING_TWEEN = 0.34; // seconds — covers the CSS grow/shrink
+      let cachedDotR = (dotEl?.offsetWidth || 4) / 2;
+      let cachedRingR = el ? Math.max(0, el.offsetWidth / 2 - 1.5 - cachedDotR - 0.5) : 0;
+      let measureUntil = gsap.ticker.time + RING_TWEEN; // measure the first paint in
+      const bumpMeasure = () => {
+        measureUntil = gsap.ticker.time + RING_TWEEN;
+      };
+
+      const orbit = (time: number) => {
         if (!dotEl) return;
         let diff = targetAngle - angle;
         diff = Math.atan2(Math.sin(diff), Math.cos(diff)); // shortest way round
+        const settling = Math.abs(diff) > 0.0005;
+        const measuring = time < measureUntil;
+        // Skip all DOM work once the orbit has settled and the ring is no longer
+        // mid-transition — nothing has moved, so there's nothing to repaint.
+        if (!settling && !measuring) return;
         angle += diff * 0.2;
-        const dotR = (dotEl.offsetWidth || 4) / 2;
-        // Pin the dot's outer edge just inside the ring's inner border so it
-        // hugs the rim at the ring's current size and can never escape.
-        const radius = Math.max(0, el.offsetWidth / 2 - 1.5 - dotR - 0.5);
-        gsap.set(dotEl, { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius });
+        if (measuring) {
+          cachedDotR = (dotEl.offsetWidth || 4) / 2;
+          // Pin the dot's outer edge just inside the ring's inner border so it
+          // hugs the rim at the ring's current size and can never escape.
+          cachedRingR = Math.max(0, el.offsetWidth / 2 - 1.5 - cachedDotR - 0.5);
+        }
+        gsap.set(dotEl, { x: Math.cos(angle) * cachedRingR, y: Math.sin(angle) * cachedRingR });
       };
       gsap.ticker.add(orbit);
+
+      const onResize = bumpMeasure;
+      window.addEventListener("resize", onResize, { passive: true });
 
       let shown = false;
       const move = (e: MouseEvent) => {
@@ -98,9 +122,18 @@ export function Cursor() {
         el.classList.toggle("is-active", !!interactive && !field);
         el.classList.toggle("is-invert", !!onEmber);
         el.classList.toggle("is-label", !!label && !field);
+        // A state flip resizes the ring — reopen the measure window so the dot
+        // tracks the new rim through its CSS transition.
+        bumpMeasure();
       };
-      const down = () => el.classList.add("is-down");
-      const up = () => el.classList.remove("is-down");
+      const down = () => {
+        el.classList.add("is-down");
+        bumpMeasure();
+      };
+      const up = () => {
+        el.classList.remove("is-down");
+        bumpMeasure();
+      };
 
       window.addEventListener("mousemove", move);
       window.addEventListener("mouseover", over);
@@ -114,6 +147,7 @@ export function Cursor() {
         window.removeEventListener("mouseover", over);
         window.removeEventListener("mousedown", down);
         window.removeEventListener("mouseup", up);
+        window.removeEventListener("resize", onResize);
       };
     },
     { scope: ref },

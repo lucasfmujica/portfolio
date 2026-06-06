@@ -4398,3 +4398,24 @@
     }
   }
 }
+
+/* ============================================================
+   MOBILE GPU BUDGET
+   backdrop-filter blur is one of the most expensive properties to
+   composite per scroll frame, and it's heaviest on phones. The frosted
+   chrome below already sits on a ~70% opaque ink background, so legibility
+   never depended on the blur — here we cut the radius right down on small
+   screens, which roughly quarters the per-frame cost while keeping the look.
+   ============================================================ */
+@layer components {
+  @media (max-width: 640px) {
+    .nav.scrolled,
+    .dock,
+    .navmenu__toggle,
+    .accent-toggle,
+    .accent-panel {
+      backdrop-filter: blur(7px) saturate(1.2);
+      -webkit-backdrop-filter: blur(7px) saturate(1.2);
+    }
+  }
+}
