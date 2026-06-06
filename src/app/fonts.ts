@@ -36,6 +36,6 @@ export const generalSans = localFont({
 export const geistMono = localFont({
   variable: "--font-mono",
   display: "swap",
-  src: [{ path: "../../public/fonts/GeistMono-Regular.ttf", weight: "400", style: "normal" }],
+  src: [{ path: "../../public/fonts/GeistMono-Regular.woff2", weight: "400", style: "normal" }],
   fallback: ["ui-monospace", "SF Mono", "Menlo", "monospace"],
 });

@@ -100,7 +100,13 @@ export function ThemePicker() {
 
   return (
     <div className="accent-picker" ref={rootRef} data-open={open || undefined}>
-      <div className="accent-panel" role="dialog" aria-label="Accent colour" aria-hidden={!open}>
+      <div
+        className="accent-panel"
+        role="dialog"
+        aria-label="Accent colour"
+        aria-hidden={!open}
+        inert={!open}
+      >
         <p className="accent-panel__title">Pick an accent</p>
         <div className="accent-swatches">
           {ACCENTS.map((a) => (
