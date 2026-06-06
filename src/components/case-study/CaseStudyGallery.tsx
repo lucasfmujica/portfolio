@@ -2,7 +2,7 @@
 
 import { useRef, type CSSProperties } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
-import { ImageFill } from "@/components/ui/ImageFill";
+import { Mockup } from "@/components/ui/Mockup";
 import type { CaseStudyShot } from "@/data/projects";
 
 /**
@@ -43,11 +43,14 @@ export function CaseStudyGallery({
   shots,
   aspect,
   projectName,
+  label,
 }: {
   shots: CaseStudyShot[];
   aspect?: string;
   /** Prefixes each screenshot's alt text so it reads in isolation. */
   projectName?: string;
+  /** Live domain shown in each shot's browser-mockup URL bar. */
+  label?: string;
 }) {
   const root = useRef<HTMLDivElement>(null);
 
@@ -78,15 +81,14 @@ export function CaseStudyGallery({
               className="cs-shot__frame"
               style={ratio ? ({ "--cs-shot-aspect": ratio } as CSSProperties) : undefined}
             >
-              <span className="cs-shot__num">{shot.n}</span>
-              <div className="cs-shot__inner">
-                <ImageFill
-                  src={shot.image}
-                  alt={projectName ? `${projectName} — ${shot.lead}` : shot.lead}
-                  placeholder={shot.placeholder}
-                  sizes="(max-width: 1280px) 100vw, 1200px"
-                />
-              </div>
+              <Mockup
+                src={shot.image}
+                alt={projectName ? `${projectName} — ${shot.lead}` : shot.lead}
+                label={label}
+                badge={shot.n}
+                placeholder={shot.placeholder}
+                sizes="(max-width: 1280px) 100vw, 1200px"
+              />
             </div>
             <figcaption className="cs-shot__cap">
               <span className="k">{shot.label}</span>

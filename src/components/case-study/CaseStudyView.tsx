@@ -93,7 +93,12 @@ export function CaseStudyView({
               <RichText text={cs.buildLead} />
             </p>
           </div>
-          <CaseStudyGallery shots={cs.shots} aspect={cs.shotAspect} projectName={project.name} />
+          <CaseStudyGallery
+            shots={cs.shots}
+            aspect={cs.shotAspect}
+            projectName={project.name}
+            label={cs.liveUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+          />
         </div>
       </RevealScope>
 

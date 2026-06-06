@@ -3290,10 +3290,12 @@
     border-radius: var(--r-card-lg);
     overflow: hidden;
     border: 1px solid var(--hairline);
-    aspect-ratio: 16 / 9;
     background: var(--surface);
     box-shadow: 0 50px 120px -50px rgba(0, 0, 0, 0.9);
     z-index: 1;
+  }
+  .cs-hero__media .mockup__screen {
+    aspect-ratio: 16 / 9;
   }
   .cs-hero__media img {
     width: 100%;
@@ -3520,11 +3522,12 @@
     overflow: hidden;
     border: 1px solid var(--hairline);
     background: var(--surface);
-    aspect-ratio: var(--cs-shot-aspect, 16 / 9);
     box-shadow: 0 40px 100px -48px rgba(0, 0, 0, 0.85);
   }
-  .cs-shot__frame img {
-    object-position: 50% top;
+  /* The mockup screen carries the shot's native ratio (cover crops nothing);
+     the chrome bar sits above it, so the frame grows by the bar height. */
+  .cs-shot__frame .mockup__screen {
+    aspect-ratio: var(--cs-shot-aspect, 16 / 9);
   }
   /* Frame matches the screenshot's native ratio, so the image fills it exactly
      (cover crops nothing). No overscan — proportion is preserved over parallax. */

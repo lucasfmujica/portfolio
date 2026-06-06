@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { Link } from "@/i18n/navigation";
 import { Icon } from "@/components/ui/Icon";
-import { ImageFill } from "@/components/ui/ImageFill";
+import { Mockup } from "@/components/ui/Mockup";
 import type { Project, CaseStudy } from "@/data/projects";
 
 export function CaseStudyHero({
@@ -79,10 +79,10 @@ export function CaseStudyHero({
         </div>
       </div>
       <div className="cs-hero__media">
-        <span className="cs-hero__media-badge">{cs.heroBadge}</span>
-        <ImageFill
+        <Mockup
           src={cs.heroImage}
           alt={cs.heroImageAlt ?? project.name}
+          label={cs.heroBadge ?? cs.liveUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "")}
           placeholder={`${project.name} — drop hero screenshot`}
           priority
           sizes="(max-width: 1280px) 100vw, 1280px"
