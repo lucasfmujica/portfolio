@@ -5,21 +5,11 @@ import { useTranslations } from "next-intl";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-const FORM_NAME = "contact";
-
-const encode = (data: Record<string, string>) =>
-  Object.keys(data)
-    .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(data[k]))
-    .join("&");
-
 /**
- * The conversational "madlib" contact form, wired to Netlify Forms.
- *
- * Netlify detects the form from the static `public/__forms.html` shell (the
- * App Router renders dynamically, so the bot can't parse this component) — the
- * `name` + field set there must stay in sync with what we POST here. Submission
- * is an AJAX urlencoded POST so we can show inline success / error states
- * without a full navigation. Includes a honeypot + client-side validation.
+ * The conversational "madlib" contact form, wired to the `/api/contact` route
+ * handler (Resend). Submission is an AJAX JSON POST so we can show inline
+ * success / error states without a full navigation. Includes a honeypot +
+ * client-side validation; the server re-validates and drops honeypot hits.
  */
 export function ContactForm() {
   const t = useTranslations("Contact");
@@ -45,10 +35,10 @@ export function ContactForm() {
     setStatus("submitting");
 
     try {
-      const res = await fetch("/__forms.html", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": FORM_NAME, ...data }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error(`Form submission failed: ${res.status}`);
       setStatus("success");
@@ -72,17 +62,9 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      ref={formRef}
-      name={FORM_NAME}
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      onSubmit={handleSubmit}
-      noValidate
-    >
-      {/* Netlify plumbing (also present in public/__forms.html for detection). */}
-      <input type="hidden" name="form-name" value={FORM_NAME} />
+    <form ref={formRef} method="POST" onSubmit={handleSubmit} noValidate>
+      {/* Honeypot — bots fill hidden fields; the server drops any submission
+          that has it set. */}
       <p hidden>
         <label>
           Don&apos;t fill this out: <input name="bot-field" />
