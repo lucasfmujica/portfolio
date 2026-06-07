@@ -20,7 +20,7 @@ const personEntity = {
   image: `${siteUrl}/assets/portrait.jpg`,
   jobTitle: "Senior Webflow & Front-End Developer",
   description:
-    "Senior Webflow & front-end developer, 5+ years deep — high-performing, component-driven Webflow sites marketing teams and small businesses can own, scale and maintain.",
+    "Senior Webflow & front-end developer with 5+ years deep building high-performing, component-driven Webflow sites marketing teams and small businesses can own, scale and maintain.",
   sameAs: ["https://www.linkedin.com/in/lucasfmujica"],
   knowsAbout: [
     "Webflow",
@@ -65,7 +65,7 @@ export function caseStudyJsonLd(project: Project) {
         "@type": "CreativeWork",
         "@id": `${url}#work`,
         name: project.name,
-        headline: `${project.name} — ${project.category}`,
+        headline: `${project.name} · ${project.category}`,
         description: cs ? `${cs.outcome.pre}${cs.outcome.ember}` : project.blurb.ember,
         url,
         inLanguage: "en",

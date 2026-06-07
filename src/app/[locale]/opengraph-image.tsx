@@ -4,7 +4,7 @@ import { join } from "node:path";
 
 import { routing } from "@/i18n/routing";
 
-export const alt = "Lucas Mujica — senior Webflow & front-end developer";
+export const alt = "Lucas Mujica, senior Webflow & front-end developer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -109,7 +109,7 @@ export default async function OgImage() {
         {/* center: eyebrow, name, headline */}
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 22 }}>
-            <div style={{ display: "flex", width: 30, height: 2, background: EMBER }} />
+            <div style={{ display: "flex", width: 10, height: 10, borderRadius: 999, background: EMBER }} />
             <div style={{ display: "flex", color: EMBER, fontSize: 20, letterSpacing: 4 }}>
               WEBFLOW &amp; FRONT-END DEVELOPER
             </div>

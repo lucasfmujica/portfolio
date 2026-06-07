@@ -1,20 +1,20 @@
 {
   "Meta": {
     "home": {
-      "title": "Lucas Mujica — I build websites that move.",
-      "description": "Senior Webflow & front-end developer, 5+ years deep — high-performing, component-driven Webflow sites marketing teams and small businesses can own, scale and maintain.",
-      "ogAlt": "Lucas Mujica — senior Webflow & front-end developer"
+      "title": "Lucas Mujica: I build websites that move.",
+      "description": "Senior Webflow & front-end developer with 5+ years deep building high-performing, component-driven Webflow sites marketing teams and small businesses can own, scale and maintain.",
+      "ogAlt": "Lucas Mujica, senior Webflow & front-end developer"
     },
     "caseStudy": {
-      "titleTemplate": "{title} — Case study · Lucas Mujica"
+      "titleTemplate": "{title} · Case study · Lucas Mujica"
     },
     "work": {
-      "title": "Work — Case studies & projects · Lucas Mujica",
-      "description": "Selected Webflow & front-end builds — case studies and projects by Lucas Mujica."
+      "title": "Work · Case studies & projects · Lucas Mujica",
+      "description": "Selected Webflow & front-end builds: case studies and projects by Lucas Mujica."
     },
     "about": {
-      "title": "About — Lucas Mujica",
-      "description": "The person behind the builds. Senior Webflow & front-end developer — and chess player, traveler, singer, and serial optimizer off the clock."
+      "title": "About · Lucas Mujica",
+      "description": "The person behind the builds. Senior Webflow & front-end developer, and chess player, traveler, singer, and serial optimizer off the clock."
     }
   },
   "Nav": {
@@ -24,7 +24,7 @@
     "stack": "Stack",
     "process": "Process",
     "talk": "Let's talk",
-    "brandAria": "Lucas Mujica — home"
+    "brandAria": "Lucas Mujica, home"
   },
   "Dock": {
     "aria": "Section navigation",
@@ -50,20 +50,20 @@
   "Work": {
     "eyebrow": "selected work",
     "heading": "Builds I'm *proud* to put my name on.",
-    "lede": "Each one is built to be owned — a component system the client's team can run, scale and maintain — no developer on call.",
+    "lede": "Each one is built to be owned: a component system the client's team can run, scale and maintain, with no developer on call.",
     "viewAll": "View all projects",
     "seeAll": "See all projects",
     "viewCase": "View case study",
     "allEyebrow": "all work",
     "allHeading": "Case studies & *projects*.",
-    "allLede": "Every build in one place — deep-dive case studies plus the rest of the shelf.",
+    "allLede": "Every build in one place: deep-dive case studies plus the rest of the shelf.",
     "startProject": "Start a project",
     "backHome": "Back home"
   },
   "About": {
     "eyebrow": "about",
     "heading": "A senior Webflow developer who *ships*.",
-    "lede": "Five-plus years and 100+ projects of production-grade Webflow — component-first builds with CMS architecture that marketing teams and small businesses actually enjoy running. Client-First certified, GSAP for the motion, and React / Next.js when a build calls for it. Fast on day one, still easy to edit a year later.",
+    "lede": "Five-plus years and 100+ projects of production-grade Webflow. Component-first builds with CMS architecture that marketing teams and small businesses actually enjoy running. Client-First certified, GSAP for the motion, and React / Next.js when a build calls for it. Fast on day one, still easy to edit a year later.",
     "statYears": "years shipping",
     "statProjects": "projects delivered",
     "cred": ["Webflow Certified Expert", "Remote, worldwide"],
@@ -75,10 +75,10 @@
   "AboutPage": {
     "eyebrow": "about",
     "heading": "The person *behind the builds*.",
-    "lede": "I'm Lucas — a senior Webflow & front-end developer. But there's more to the story than the work, so here's the rest of it.",
+    "lede": "I'm Lucas, a senior Webflow & front-end developer. But there's more to the story than the work, so here's the rest of it.",
     "intro": [
-      "I build websites for a living, but what I actually love is systems — the kind that turn something messy into something that just *works*. That instinct shows up everywhere: in a component library a client's team can run on their own, in the openings I study before a tournament, in how I plan a trip down to the last train.",
-      "Off the clock, I'm usually doing one of four things: pushing pawns, chasing a ball across the clay, hopping a flight somewhere new, or singing badly on purpose. None of it is unrelated — it's all the same curiosity, pointed in different directions."
+      "I build websites for a living, but what I actually love is systems, the kind that turn something messy into something that just *works*. That instinct shows up everywhere: in a component library a client's team can run on their own, in the openings I study before a tournament, in how I plan a trip down to the last train.",
+      "Off the clock, I'm usually doing one of four things: pushing pawns, chasing a ball across the clay, hopping a flight somewhere new, or singing badly on purpose. None of it is unrelated. It's all the same curiosity, pointed in different directions."
     ],
     "moreOnHome": "More about me",
     "journeyEyebrow": "experience",
@@ -90,36 +90,36 @@
         "role": "Webflow Developer & Project Manager",
         "period": "Mar 2021 – Jan 2022",
         "location": "Buenos Aires, Argentina · Hybrid",
-        "note": "Built scalable Webflow sites for global startups in a 4-person dev team — owning project timelines, client communication, QA, and reusable CMS structures."
+        "note": "Built scalable Webflow sites for global startups in a 4-person dev team, owning project timelines, client communication, QA, and reusable CMS structures."
       },
       {
         "company": "Vekstloop",
         "role": "Senior Webflow Developer",
         "period": "Jan 2022 – Oct 2025",
         "location": "Bergen, Norway · Remote",
-        "note": "Delivered 80+ production sites for international clients — standardizing Client-First, building reusable symbol/utility systems and advanced GSAP interactions, and automating reporting with Make & Zapier to save the marketing team 10+ hrs a week."
+        "note": "Delivered 80+ production sites for international clients: standardizing Client-First, building reusable symbol/utility systems and advanced GSAP interactions, and automating reporting with Make & Zapier to save the marketing team 10+ hrs a week."
       },
       {
         "company": "Clearframe Studio",
         "role": "CTO & Co-Founder",
         "period": "Jul 2025 – Present",
         "location": "Montevideo, Uruguay · Remote",
-        "note": "Co-founded a Webflow studio focused on high-complexity builds — end-to-end CMS architecture, reusable component libraries, and Make.com automation that lets content teams run their sites without a developer on call."
+        "note": "Co-founded a Webflow studio focused on high-complexity builds: end-to-end CMS architecture, reusable component libraries, and Make.com automation that lets content teams run their sites without a developer on call."
       },
       {
         "company": "Candid Leap",
         "role": "Senior Webflow Developer",
         "period": "Mar 2026 – Present",
         "location": "Webflow Enterprise Partner · Remote",
-        "note": "Building enterprise-grade Webflow sites for confidential tech clients — CMS architecture, custom animations, localization workflows, and front-end performance, alongside design and PM teams."
+        "note": "Building enterprise-grade Webflow sites for confidential tech clients: CMS architecture, custom animations, localization workflows, and front-end performance, alongside design and PM teams."
       }
     ],
     "facetsEyebrow": "off the clock",
     "facetsHeading": "Life *beyond the canvas*.",
-    "facetsLede": "The things that keep me curious — and quietly make me better at the work.",
+    "facetsLede": "The things that keep me curious, and quietly make me better at the work.",
     "chessLabel": "chess",
     "chessTitle": "Chess, since I was a kid",
-    "chessBody": "My oldest obsession — I was runner-up in the Buenos Aires City under-10 championship at age 8. I drifted for a while, then came back all-in in 2021. Now I play individual tournaments year-round and even travel to compete with a team. It's where I train the patience and pattern-reading the work runs on too.",
+    "chessBody": "My oldest obsession. I was runner-up in the Buenos Aires City under-10 championship at age 8. I drifted for a while, then came back all-in in 2021. Now I play individual tournaments year-round and even travel to compete with a team. It's where I train the patience and pattern-reading the work runs on too.",
     "chessImg": "/assets/about/chess.jpg",
     "chessPhotoAlt": "Lucas studying the board at a chess tournament",
     "chessStat": "City under-10 vice-champion · age 8",
@@ -130,12 +130,12 @@
     "travelPhotoAlt": "Lucas above the lakes and mountains of Bariloche, Argentina",
     "gotLabel": "off-script",
     "gotTitle": "Worth the detour",
-    "gotBody": "Split, Croatia — and yes, I claimed the throne.",
+    "gotBody": "Split, Croatia. And yes, I claimed the throne.",
     "gotImg": "/assets/about/got.jpg",
     "gotPhotoAlt": "Lucas on the Game of Thrones Iron Throne replica in Split",
     "singingLabel": "singing",
     "singingTitle": "Voice, off the clock",
-    "singingBody": "I took singing lessons and never really stopped — it lives on a little TikTok, just for the joy of it.",
+    "singingBody": "I took singing lessons and never really stopped. It lives on a little TikTok, just for the joy of it.",
     "singingCta": "@justlucassinging",
     "singingImg": "/assets/about/singing.jpg",
     "singingPhotoAlt": "Lucas at the keyboard with a mate",
@@ -153,14 +153,14 @@
     ],
     "ctaEyebrow": "let's talk",
     "ctaHeading": "Like how I think? Let's *build something*.",
-    "ctaLede": "Whether it's a site, a migration, or a system that needs untangling — I'd love to hear about it.",
+    "ctaLede": "Whether it's a site, a migration, or a system that needs untangling, I'd love to hear about it.",
     "ctaPrimary": "Start a project",
     "ctaGhost": "See the work",
     "backHome": "Back home"
   },
   "Stack": {
     "eyebrow": "stack",
-    "headingPre": "The right tool for the job — ",
+    "headingPre": "The right tool for the job, ",
     "headingEmber": "every time.",
     "lede": "Everything here is chosen for speed, maintainability, and shipping fast without cutting corners.",
     "tiers": {
@@ -174,7 +174,7 @@
   "Process": {
     "eyebrow": "process",
     "heading": "How I *work*.",
-    "lede": "No mystery, no bloated decks — just the three phases behind every site I ship.",
+    "lede": "No mystery, no bloated decks. Just the three phases behind every site I ship.",
     "steps": [
       {
         "n": "01",
@@ -186,13 +186,13 @@
         "n": "02",
         "icon": "design",
         "title": "Built to scale, not to impress",
-        "body": "Component-first, performance-first. Real motion where it earns its place — zero bloat, scalable from day one."
+        "body": "Component-first, performance-first. Real motion where it earns its place. Zero bloat, scalable from day one."
       },
       {
         "n": "03",
         "icon": "trending-up",
         "title": "Launch, then earn it",
-        "body": "Shipping is the start, not the finish. I tune against real data until the numbers move — opinions don't get a vote."
+        "body": "Shipping is the start, not the finish. I tune against real data until the numbers move. Opinions don't get a vote."
       }
     ]
   },
@@ -204,7 +204,7 @@
   "Contact": {
     "eyebrow": "start a project",
     "heading": "Ready to build.",
-    "lead": "A few quick details so I can scope it before we even talk — or just email me directly.",
+    "lead": "A few quick details so I can scope it before we even talk, or just email me directly.",
     "email": "hello@lucasmujica.dev",
     "available": "Replies within a day",
     "location": "Buenos Aires · Remote worldwide",
@@ -221,10 +221,10 @@
     "budgets": ["$2–5k", "$5–10k", "$10–25k", "$25k+", "TBD"],
     "send": "Send it",
     "replyNote": "Replies within a day",
-    "successHeading": "On its way — talk soon.",
+    "successHeading": "On its way. Talk soon.",
     "successBody": "I'll get back to you with next steps within a day.",
     "errorHeading": "That didn't send.",
-    "errorBody": "Something went wrong on my end — email me directly and I'll jump on it.",
+    "errorBody": "Something went wrong on my end. Email me directly and I'll jump on it.",
     "validationName": "Add your name.",
     "validationEmail": "Add a valid email."
   },

@@ -29,7 +29,7 @@ export const testimonials: Testimonial[] = [
     company: "Home Organizers Long Island",
     avatar: "/assets/avatars/carolinafreese.webp",
     quote:
-      "Our site has a complex custom-code setup, and Lucas understood it *without needing much guidance*. New pages, detailed layouts, advanced flows — always clear and professional. Highly recommended.",
+      "Our site has a complex custom-code setup, and Lucas understood it *without needing much guidance*. New pages, detailed layouts, advanced flows, always clear and professional. Highly recommended.",
   },
   {
     name: "Franco Caputo",
@@ -37,7 +37,7 @@ export const testimonials: Testimonial[] = [
     company: "WonderUp",
     avatar: "/assets/avatars/francocaputo.webp",
     quote:
-      "Worked with Lucas on multiple projects and would happily do a thousand more. Detail-oriented, tech-savvy, and an *incredible human* — above and beyond every time.",
+      "Worked with Lucas on multiple projects and would happily do a thousand more. Detail-oriented, tech-savvy, and an *incredible human*, above and beyond every time.",
   },
   {
     name: "Max Sher",
@@ -53,6 +53,6 @@ export const testimonials: Testimonial[] = [
     company: "Seilas Ship Supplies",
     avatar: "/assets/avatars/eugenia.webp",
     quote:
-      "Working with Lucas has been an absolute pleasure — his Webflow expertise is *unparalleled*. Proactive with solutions, transparent, and a joy to work with. Highly recommended.",
+      "Working with Lucas has been an absolute pleasure. His Webflow expertise is *unparalleled*. Proactive with solutions, transparent, and a joy to work with. Highly recommended.",
   },
 ];

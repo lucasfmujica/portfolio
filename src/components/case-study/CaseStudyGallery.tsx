@@ -83,7 +83,7 @@ export function CaseStudyGallery({
             >
               <Mockup
                 src={shot.image}
-                alt={projectName ? `${projectName} — ${shot.lead}` : shot.lead}
+                alt={projectName ? `${projectName}: ${shot.lead}` : shot.lead}
                 label={label}
                 badge={shot.n}
                 placeholder={shot.placeholder}

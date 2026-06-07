@@ -77,7 +77,7 @@ export default async function WorkIndexPage({
                     alt={p.imageAlt ?? p.name}
                     label={p.caseStudy?.liveUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "")}
                     badge={p.index}
-                    placeholder={`${p.name} — drop screenshot`}
+                    placeholder={`${p.name}: drop screenshot`}
                     sizes="(max-width: 680px) 100vw, (max-width: 1100px) 50vw, 33vw"
                   />
                 </div>

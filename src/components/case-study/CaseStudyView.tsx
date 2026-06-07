@@ -177,7 +177,7 @@ export function CaseStudyView({
                   <ImageFill
                     src={next.image}
                     alt={next.name}
-                    placeholder={`${next.name} — drop preview`}
+                    placeholder={`${next.name}: drop preview`}
                     sizes="(max-width: 900px) 100vw, 40vw"
                   />
                 </div>

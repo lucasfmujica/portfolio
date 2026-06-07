@@ -83,7 +83,7 @@ export function CaseStudyHero({
           src={cs.heroImage}
           alt={cs.heroImageAlt ?? project.name}
           label={cs.heroBadge ?? cs.liveUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "")}
-          placeholder={`${project.name} — drop hero screenshot`}
+          placeholder={`${project.name}: drop hero screenshot`}
           priority
           sizes="(max-width: 1280px) 100vw, 1280px"
         />

@@ -45,12 +45,12 @@ export function SelectedWork() {
                   alt={p.imageAlt ?? p.name}
                   label={p.caseStudy?.liveUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "")}
                   badge={p.index}
-                  placeholder={`${p.name} — drop screenshot`}
+                  placeholder={`${p.name}: drop screenshot`}
                 />
               </div>
               <div className="wcard__body">
                 <span className="wcard__eyebrow">
-                  {p.index} — {p.category} · {p.year}
+                  {p.index} / {p.category} · {p.year}
                 </span>
                 <h3 className="wcard__title">{p.name}</h3>
                 <p className="wcard__blurb">

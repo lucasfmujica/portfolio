@@ -27,7 +27,7 @@ export async function generateMetadata({
 
   const t = await getTranslations({ locale, namespace: "Meta" });
   const title = t("caseStudy.titleTemplate", { title: project.name });
-  const description = `${project.caseStudy.outcome.pre}${project.caseStudy.outcome.ember} — ${project.category}, ${project.year}.`;
+  const description = `${project.caseStudy.outcome.pre}${project.caseStudy.outcome.ember}. ${project.category}, ${project.year}.`;
   const url = `${siteUrl}/work/${slug}`;
 
   return {

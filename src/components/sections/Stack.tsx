@@ -71,7 +71,7 @@ export function Stack() {
           {TIERS.map((tier, i) => (
             <span className="smq__tier" key={tier.key} data-reveal data-reveal-delay={i}>
               <Icon name={tier.icon} />
-              <b>{t(`tiers.${tier.key}.label`)}</b> — {t(`tiers.${tier.key}.items`)}
+              <b>{t(`tiers.${tier.key}.label`)}</b>: {t(`tiers.${tier.key}.items`)}
             </span>
           ))}
         </div>

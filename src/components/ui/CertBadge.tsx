@@ -12,7 +12,7 @@ export function CertBadge({ className }: { className?: string }) {
       target="_blank"
       rel="noopener noreferrer"
       className={`cert-badge${className ? ` ${className}` : ""}`}
-      aria-label="Finsweet Client-First — Certified Expert (verify certification)"
+      aria-label="Finsweet Client-First, Certified Expert (verify certification)"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

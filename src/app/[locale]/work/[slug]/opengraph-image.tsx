@@ -5,7 +5,7 @@ import { join } from "node:path";
 import { routing } from "@/i18n/routing";
 import { caseStudies, getProject } from "@/data/projects";
 
-export const alt = "Case study — Lucas Mujica";
+export const alt = "Case study · Lucas Mujica";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -119,7 +119,7 @@ export default async function Image({
 
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-              <div style={{ display: "flex", width: 26, height: 2, background: EMBER }} />
+              <div style={{ display: "flex", width: 9, height: 9, borderRadius: 999, background: EMBER }} />
               <div
                 style={{
                   display: "flex",

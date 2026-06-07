@@ -60,7 +60,7 @@ export async function POST(req: Request) {
       from: FROM,
       to: TO,
       replyTo: email,
-      subject: `New project inquiry — ${name}`,
+      subject: `New project inquiry: ${name}`,
       text: lines.join("\n"),
       html: `<h2>New project inquiry</h2><p>${lines.map(esc).join("<br>")}</p>`,
     });

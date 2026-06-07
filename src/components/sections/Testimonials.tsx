@@ -193,7 +193,7 @@ export function Testimonials() {
                 className={`tst__dot-btn${i === current ? " is-active" : ""}`}
                 role="tab"
                 aria-selected={i === current}
-                aria-label={`${item.name} — ${item.company}`}
+                aria-label={`${item.name}, ${item.company}`}
                 onClick={() => show(i)}
               />
             ))}
