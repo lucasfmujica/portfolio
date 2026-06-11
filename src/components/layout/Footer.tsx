@@ -33,6 +33,7 @@ export function Footer() {
             <Link href="/about">About</Link>
             <a href="/#stack">Stack</a>
             <a href="/#process">Process</a>
+            <Link href="/privacy">Privacy</Link>
           </nav>
           <div className="footer__soc" aria-label={t("socialsAria")}>
             {SOCIALS.map((s) => (
