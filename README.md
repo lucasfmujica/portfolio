@@ -1,9 +1,11 @@
 # Lucas Mujica — Portfolio
 
 Production build of the portfolio for **Lucas Mujica**, senior Webflow &
-front-end developer. A motion-forward, dark one-pager plus a reusable case-study
-template. Built to be the proof of craft it advertises: fast, accessible, and
-animated with intent.
+front-end developer. A motion-forward, dark one-pager backed by a reusable
+case-study template. Built to be the proof of craft it advertises: fast,
+accessible, and animated with intent.
+
+**Live:** [lucasmujica.dev](https://lucasmujica.dev)
 
 > The original HTML/CSS/JS design export (from Claude Design) and the design
 > conversation transcripts are preserved in [`project/`](./project) and
@@ -12,14 +14,15 @@ animated with intent.
 
 ## Stack
 
-- **Next.js (App Router) + TypeScript**
+- **Next.js 15 (App Router) + React 19 + TypeScript**
 - **Tailwind CSS v4** — design tokens mapped into the theme as CSS variables
 - **GSAP + ScrollTrigger + SplitText** for motion, **Lenis** for smooth scroll
   (synced to ScrollTrigger), wrapped in `useGSAP` / `gsap.context` for cleanup
 - **next/font/local** — self-hosted Clash Display, General Sans, Geist Mono
   (zero Google Fonts requests)
 - **next-intl** — English only today, structured so adding `es` is a content task
-- **Netlify** target via `@netlify/plugin-nextjs`
+- **Resend** — contact form delivery via a Route Handler
+- **Vercel** — deploy target + Web Analytics
 
 ## Getting started
 
@@ -29,42 +32,51 @@ npm run dev          # http://localhost:3000
 npm run build        # production build
 npm run start        # serve the production build
 npm run typecheck    # tsc --noEmit
+npm run lint         # next lint
 ```
+
+Node version is pinned in [`.nvmrc`](./.nvmrc) (Node 22).
 
 ## Architecture
 
 ```
 src/
-  app/[locale]/            # locale-scoped routes (en today)
-    layout.tsx             # html shell, fonts, providers, nav/dock/footer, grain
-    template.tsx           # route-transition fade
-    page.tsx               # home one-pager (#work #about #stack #process #contact)
-    work/[slug]/page.tsx   # the single reusable case-study template
-    not-found.tsx          # styled 404 (in-layout)
-  app/not-found.tsx        # global 404 fallback
-  app/sitemap.ts           # sitemap.xml  ·  app/robots.ts → robots.txt
+  app/
+    layout.tsx             # root html shell, fonts, analytics
+    sitemap.ts             # sitemap.xml  ·  robots.ts → robots.txt  ·  manifest.ts
+    api/contact/route.ts   # contact form handler (Resend)
+    [locale]/              # locale-scoped routes (en today)
+      layout.tsx           # providers, nav/dock/footer, grain
+      template.tsx         # route-transition fade
+      page.tsx             # home one-pager (#work #about #stack #process #contact)
+      work/page.tsx        # the full work index
+      work/[slug]/page.tsx # the single reusable case-study template
+      about/page.tsx       # standalone about page
+      privacy/page.tsx     # privacy page
+      opengraph-image.tsx  # branded OG image (per route, incl. work/[slug])
+      not-found.tsx        # styled 404 (in-layout)
   components/
-    layout/                # Nav, Dock, Footer, Wordmark, ScrollChrome
+    layout/                # Nav, Dock, Footer, Wordmark, ScrollChrome, MobileMenu
     sections/              # Hero, SelectedWork, About, Stack, Process,
-                           #   Testimonials, Contact (+ ContactForm)
+                           #   Testimonials, Contact (+ ContactForm), about/
     case-study/            # Curtain, CaseStudyHero, CaseStudyGallery, CaseStudyView
-    motion/                # SmoothScroll (Lenis), RevealScope (scroll reveals)
-    ui/                    # Icon (inline SVG sprite), RichText, ImageFill
-  data/                    # projects.ts (6 projects + 4 case studies), testimonials.ts
+    motion/                # SmoothScroll (Lenis), RevealScope, MaskHeading, etc.
+    seo/                   # JsonLd (structured data)
+    ui/                    # Icon (inline SVG sprite), RichText, ImageFill, Metric…
+  data/                    # projects.ts (6 case studies), testimonials.ts
   i18n/                    # routing, navigation, request config
-  lib/                     # gsap setup, site constants
+  lib/                     # gsap setup, jsonld helpers, site constants
   styles/globals.css       # tokens + ported component styles (Tailwind layers)
 messages/en.json           # all UI + section copy
-public/                    # fonts, assets, __forms.html (Netlify form detection)
+public/                    # fonts, assets, og art, llms.txt
 ```
 
 ### Content is data
 
-The six projects and their case studies live in `src/data/projects.ts`. Four are
-full case studies (their own `/work/[slug]` route via `generateStaticParams`);
-two are compact (listed on the home stack, linking to contact). Reordering or
-adding work is a data edit. Rich copy marks its single ember-highlighted phrase
-with `*asterisks*`, rendered by `<RichText>`.
+The work lives in `src/data/projects.ts` as six full case studies, each with its
+own `/work/[slug]` route via `generateStaticParams`. Reordering or adding work is
+a data edit. Rich copy marks its single ember-highlighted phrase with
+`*asterisks*`, rendered by `<RichText>`.
 
 ### Motion
 
@@ -76,21 +88,33 @@ visible by default and `prefers-reduced-motion` disables transforms entirely.
 
 ### Contact form
 
-The conversational madlib posts to **Netlify Forms** via AJAX. Because the App
-Router renders dynamically, Netlify detects the form from the static
-`public/__forms.html` shell — keep its field names in sync with
-`components/sections/ContactForm.tsx`.
+The conversational "madlib" contact form posts JSON to the `/api/contact` Route
+Handler, which sends the inquiry via **Resend** with the visitor's address as
+`Reply-To`. A honeypot field drops bots silently. Configure it with:
+
+```bash
+RESEND_API_KEY=...        # required
+CONTACT_FROM=...          # optional; defaults to Resend's onboarding sender
+```
+
+### SEO
+
+Per-route `metadata` with canonical + hreflang `alternates`, a generated
+`sitemap.xml` and `robots.txt`, a PWA `manifest`, JSON-LD structured data, an
+`llms.txt`, and branded Open Graph images rendered at the edge (a global card
+plus one per case study).
 
 ## i18n
 
 Locales are configured in `src/i18n/routing.ts` with `localePrefix: "as-needed"`
 (default locale at the bare path, additional locales prefixed). hreflang-ready
 via per-route `alternates`. To add Spanish: add `"es"` to `locales`, drop in
-`messages/es.json`, and translate the data fields.
+`messages/es.json`, and translate the data fields in `src/data/`.
 
-## Deploy (Netlify)
+## Deploy
 
-`netlify.toml` is configured with the Next.js runtime plugin and
-`command = "next build"`. Set `NEXT_PUBLIC_SITE_URL` to the production origin
-(defaults to `https://lucasmujica.dev`) so canonicals, OG URLs, sitemap and
-robots resolve correctly.
+Deployed on **Vercel** (zero-config Next.js). Set `NEXT_PUBLIC_SITE_URL` to the
+production origin (defaults to `https://lucasmujica.dev`) so canonicals, OG URLs,
+sitemap and robots resolve correctly, plus the contact-form env vars above.
+A legacy `netlify.toml` remains in the repo from the project's earlier host and
+is unused.
