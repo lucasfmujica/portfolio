@@ -6,6 +6,7 @@
  * CreativeWork that credits the Person as creator.
  */
 import type { Project } from "@/data/projects";
+import { projects } from "@/data/projects";
 import { siteName, siteUrl } from "@/lib/site";
 
 const PERSON_ID = `${siteUrl}/#person`;
@@ -49,6 +50,78 @@ export function homeJsonLd() {
         inLanguage: "en",
         publisher: { "@id": PERSON_ID },
         author: { "@id": PERSON_ID },
+      },
+    ],
+  };
+}
+
+/** ProfilePage graph for the about page, with the Person as its main entity. */
+export function aboutJsonLd() {
+  const url = `${siteUrl}/about`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      personEntity,
+      {
+        "@type": "ProfilePage",
+        "@id": `${url}#profilepage`,
+        url,
+        name: `About · ${siteName}`,
+        inLanguage: "en",
+        isPartOf: { "@id": WEBSITE_ID },
+        mainEntity: { "@id": PERSON_ID },
+        about: { "@id": PERSON_ID },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "About", item: url },
+        ],
+      },
+    ],
+  };
+}
+
+/** CollectionPage + ItemList graph for the work index, listing the case studies. */
+export function workJsonLd() {
+  const url = `${siteUrl}/work`;
+  // Only "full" projects have their own indexable case-study page; compact
+  // entries route to the contact CTA and have no canonical URL to list.
+  const cases = projects.filter((p) => p.kind === "full");
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${url}#collectionpage`,
+        url,
+        name: `Work · ${siteName}`,
+        inLanguage: "en",
+        isPartOf: { "@id": WEBSITE_ID },
+        about: { "@id": PERSON_ID },
+        mainEntity: { "@id": `${url}#worklist` },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${url}#worklist`,
+        itemListOrder: "https://schema.org/ItemListOrderAscending",
+        numberOfItems: cases.length,
+        itemListElement: cases.map((p, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: p.name,
+          item: `${siteUrl}/work/${p.slug}`,
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Work", item: url },
+        ],
       },
     ],
   };

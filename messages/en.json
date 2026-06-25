@@ -217,6 +217,8 @@
     "madBudget": "with a budget around",
     "madReach": "Reach me at",
     "madEmail": "you@email.com",
+    "madMessageLead": "A bit about it (optional)",
+    "madMessage": "What you're building, timeline, and what you've already got — brand, content, an existing site…",
     "projectTypes": ["Webflow site", "Webflow migration", "web app", "automation"],
     "budgets": ["$2–5k", "$5–10k", "$10–25k", "$25k+", "TBD"],
     "send": "Send it",

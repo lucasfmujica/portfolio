@@ -108,6 +108,17 @@ export function ContactForm() {
         .
       </p>
 
+      <div className="mad__msg">
+        <span className="mad__msg-lead">{t("madMessageLead")}</span>
+        <textarea
+          className="mtext"
+          name="message"
+          placeholder={t("madMessage")}
+          rows={3}
+          aria-label={t("madMessageLead")}
+        />
+      </div>
+
       <div className="mad__foot">
         <button className="f-btn" type="submit" disabled={status === "submitting"}>
           {t("send")} <span className="arr">→</span>

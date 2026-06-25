@@ -10,6 +10,8 @@ import { Mockup } from "@/components/ui/Mockup";
 import { Icon } from "@/components/ui/Icon";
 import { RichText } from "@/components/ui/RichText";
 import { Contact } from "@/components/sections/Contact";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { workJsonLd } from "@/lib/jsonld";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -50,6 +52,7 @@ export default async function WorkIndexPage({
 
   return (
     <>
+    <JsonLd data={workJsonLd()} />
     <section className="section allwork">
       <div className="container">
         <div className="allwork__head" id="hero">

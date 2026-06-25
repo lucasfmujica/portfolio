@@ -34,6 +34,7 @@ export async function POST(req: Request) {
   const company = (data.company ?? "").trim();
   const type = (data.type ?? "").trim();
   const budget = (data.budget ?? "").trim();
+  const message = (data.message ?? "").trim();
 
   if (!name || !isEmail(email)) {
     return NextResponse.json(
@@ -55,14 +56,19 @@ export async function POST(req: Request) {
     budget && `Budget: ${budget}`,
   ].filter(Boolean) as string[];
 
+  const text = message ? `${lines.join("\n")}\n\nMessage:\n${message}` : lines.join("\n");
+  const html =
+    `<h2>New project inquiry</h2><p>${lines.map(esc).join("<br>")}</p>` +
+    (message ? `<p><strong>Message:</strong><br>${esc(message).replace(/\n/g, "<br>")}</p>` : "");
+
   try {
     const { error } = await new Resend(apiKey).emails.send({
       from: FROM,
       to: TO,
       replyTo: email,
       subject: `New project inquiry: ${name}`,
-      text: lines.join("\n"),
-      html: `<h2>New project inquiry</h2><p>${lines.map(esc).join("<br>")}</p>`,
+      text,
+      html,
     });
     if (error) return NextResponse.json({ error: "Send failed." }, { status: 502 });
     return NextResponse.json({ ok: true });

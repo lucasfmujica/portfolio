@@ -6,6 +6,8 @@ import { routing, type Locale } from "@/i18n/routing";
 import { siteName, siteUrl } from "@/lib/site";
 import { AboutPageContent } from "@/components/sections/about/AboutPageContent";
 import { Contact } from "@/components/sections/Contact";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { aboutJsonLd } from "@/lib/jsonld";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -44,6 +46,7 @@ export default async function AboutPage({
 
   return (
     <>
+      <JsonLd data={aboutJsonLd()} />
       <AboutPageContent />
       <Contact />
     </>
