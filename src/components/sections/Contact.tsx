@@ -6,6 +6,7 @@ import { ContactForm } from "./ContactForm";
 
 const SOCIALS = [
   { name: "in" as const, label: "LinkedIn", href: "https://www.linkedin.com/in/lucasfmujica" },
+  { name: "gh" as const, label: "GitHub", href: "https://github.com/lucasfmujica" },
 ];
 
 /**
