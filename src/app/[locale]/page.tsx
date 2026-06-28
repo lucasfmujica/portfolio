@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 
+import type { Locale } from "@/i18n/routing";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { homeJsonLd } from "@/lib/jsonld";
 
@@ -21,7 +22,7 @@ export default async function HomePage({
 
   return (
     <>
-      <JsonLd data={homeJsonLd()} />
+      <JsonLd data={homeJsonLd(locale as Locale)} />
       <Hero />
       <SelectedWork />
       <About />

@@ -1,29 +1,54 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { routing, type Locale } from "@/i18n/routing";
 import { siteName, siteUrl } from "@/lib/site";
 
-const LAST_UPDATED = "June 10, 2026";
+// Kept as a single source date; rendered in the visitor's locale below.
+const LAST_UPDATED: Record<Locale, string> = {
+  en: "June 10, 2026",
+  es: "10 de junio de 2026",
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  title: `Privacy · ${siteName}`,
-  description: "How lucasmujica.dev handles your data: no cookies, no trackers, anonymous analytics only.",
-  alternates: { canonical: "/privacy", languages: { en: "/privacy" } },
-  openGraph: {
-    type: "website",
-    siteName,
-    title: `Privacy · ${siteName}`,
-    description: "How lucasmujica.dev handles your data: no cookies, no trackers, anonymous analytics only.",
-    url: `${siteUrl}/privacy`,
-  },
-  robots: { index: true, follow: true },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Privacy" });
+  const title = t("metaTitle");
+  const description = t("metaDescription");
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: "/privacy",
+      languages: { en: "/privacy", es: "/es/privacy" },
+    },
+    openGraph: {
+      type: "website",
+      siteName,
+      title,
+      description,
+      url: `${siteUrl}${locale === "en" ? "" : `/${locale}`}/privacy`,
+    },
+    robots: { index: true, follow: true },
+  };
+}
+
+/** External link helper for the rich-text policy bodies. */
+const ext = (href: string) => (chunks: ReactNode) => (
+  <a href={href} target="_blank" rel="noopener noreferrer">
+    {chunks}
+  </a>
+);
 
 export default async function PrivacyPage({
   params,
@@ -34,63 +59,47 @@ export default async function PrivacyPage({
   if (!routing.locales.includes(locale as Locale)) notFound();
   setRequestLocale(locale);
 
+  const t = await getTranslations({ locale, namespace: "Privacy" });
+
   return (
     <section className="section legal">
       <div className="container legal__inner">
-        <p className="eyebrow eyebrow--accent">Privacy</p>
-        <h1 className="legal__title">Privacy policy</h1>
-        <p className="legal__updated">Last updated: {LAST_UPDATED}</p>
+        <p className="eyebrow eyebrow--accent">{t("eyebrow")}</p>
+        <h1 className="legal__title">{t("title")}</h1>
+        <p className="legal__updated">{t("updated", { date: LAST_UPDATED[locale as Locale] })}</p>
 
-        <h2>The short version</h2>
+        <h2>{t("shortHeading")}</h2>
+        <p>{t("shortBody")}</p>
+
+        <h2>{t("analyticsHeading")}</h2>
         <p>
-          This site doesn&apos;t use cookies, doesn&apos;t run ad trackers, and doesn&apos;t sell or share your
-          data with anyone. The only data it touches is anonymous visit statistics and whatever you choose to
-          send me when you get in touch.
+          {t.rich("analyticsBody", {
+            link: ext("https://vercel.com/docs/analytics/privacy-policy"),
+          })}
         </p>
 
-        <h2>Analytics</h2>
+        <h2>{t("contactHeading")}</h2>
         <p>
-          I use Vercel Web Analytics to understand how the site is used: page views, referrers, country, device
-          type. It is cookieless and doesn&apos;t identify individual visitors. Visits are recognized through a
-          temporary hash that is discarded after the visit ends, so you can&apos;t be tracked across sites or
-          over time. See{" "}
-          <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">
-            Vercel&apos;s analytics privacy documentation
-          </a>{" "}
-          for details.
+          {t.rich("contactBody", {
+            link: ext("https://resend.com/legal/privacy-policy"),
+          })}
         </p>
 
-        <h2>Contact</h2>
+        <h2>{t("prefsHeading")}</h2>
+        <p>{t("prefsBody")}</p>
+
+        <h2>{t("hostingHeading")}</h2>
         <p>
-          If you email me or use a contact form on this site, I receive the details you send (your name, email
-          address, and message) and use them only to reply to you. Form messages are delivered to my inbox via{" "}
-          <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
-            Resend
-          </a>
-          , an email delivery service. I don&apos;t add you to any mailing list.
+          {t.rich("hostingBody", {
+            link: ext("https://vercel.com/legal/privacy-policy"),
+          })}
         </p>
 
-        <h2>Local preferences</h2>
+        <h2>{t("rightsHeading")}</h2>
         <p>
-          If you customize the accent color, that choice is saved in your browser&apos;s local storage on your
-          device only. It never leaves your browser and you can clear it anytime through your browser settings.
-        </p>
-
-        <h2>Hosting</h2>
-        <p>
-          The site is hosted on{" "}
-          <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
-            Vercel
-          </a>
-          . Like any web host, Vercel processes standard request data (such as IP addresses) to serve the site
-          and protect it from abuse.
-        </p>
-
-        <h2>Your rights</h2>
-        <p>
-          Since the site stores no personal data about visitors, there&apos;s usually nothing to request, but if
-          you&apos;ve contacted me and want your messages deleted, just ask. Questions about any of this:{" "}
-          <a href="mailto:hello@lucasmujica.dev">hello@lucasmujica.dev</a>.
+          {t.rich("rightsBody", {
+            email: (chunks) => <a href="mailto:hello@lucasmujica.dev">{chunks}</a>,
+          })}
         </p>
       </div>
     </section>

@@ -518,6 +518,114 @@
     pointer-events: none;
   }
 
+  /* Locale switcher — a quiet "ES ▾" dropdown so it doesn't compete with the
+     nav CTA. Used in the top nav + mobile menu. */
+  .locale {
+    position: relative;
+    display: inline-flex;
+  }
+  .locale__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: var(--text-tiny);
+    letter-spacing: 0.06em;
+    color: var(--fg3);
+    background: transparent;
+    border: 0;
+    padding: 4px 2px;
+    cursor: pointer;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  .locale__toggle:hover:not(:disabled),
+  .locale__toggle[aria-expanded="true"] {
+    color: var(--fg1);
+  }
+  .locale__caret {
+    transition: transform var(--dur-fast) var(--ease-out);
+  }
+  .locale__toggle[aria-expanded="true"] .locale__caret {
+    transform: rotate(180deg);
+  }
+  .locale__menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 134px;
+    margin: 0;
+    padding: 4px;
+    list-style: none;
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition:
+      opacity var(--dur-fast) var(--ease-out),
+      transform var(--dur-fast) var(--ease-out),
+      visibility var(--dur-fast);
+    z-index: 60;
+  }
+  .locale__menu[data-open="true"] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .locale__opt {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    width: 100%;
+    padding: 8px 10px;
+    text-align: left;
+    color: var(--fg2);
+    background: transparent;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:
+      color var(--dur-fast) var(--ease-out),
+      background var(--dur-fast) var(--ease-out);
+  }
+  .locale__opt:hover {
+    color: var(--fg1);
+    background: var(--surface-2);
+  }
+  .locale__opt.is-active {
+    color: var(--fg1);
+  }
+  .locale__code {
+    font-family: var(--font-mono);
+    font-size: var(--text-tiny);
+    letter-spacing: 0.06em;
+    color: var(--fg3);
+  }
+  .locale__opt.is-active .locale__code {
+    color: var(--accent);
+  }
+  .locale__name {
+    font-size: var(--text-small);
+  }
+  /* In the mobile menu the dropdown opens upward (it sits near the bottom). */
+  .navmenu__locale {
+    margin-top: 22px;
+  }
+  .navmenu__locale .locale__menu {
+    top: auto;
+    bottom: calc(100% + 8px);
+    left: 0;
+    right: auto;
+    transform: translateY(6px);
+  }
+  .navmenu__locale .locale__menu[data-open="true"] {
+    transform: translateY(0);
+  }
+
   /* ============================================================
      BOTTOM DOCK
      ============================================================ */
@@ -4160,6 +4268,7 @@
     margin-top: 40px;
   }
   .cs-quote__av {
+    position: relative;
     width: 52px;
     height: 52px;
     border-radius: 100px;

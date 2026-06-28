@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-import { routing } from "@/i18n/routing";
+import { routing, type Locale } from "@/i18n/routing";
 import { caseStudies, getProject } from "@/data/projects";
 
 export const alt = "Case study · Lucas Mujica";
@@ -33,8 +33,8 @@ export default async function Image({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const project = getProject(slug);
+  const { locale, slug } = await params;
+  const project = getProject(slug, locale as Locale);
 
   const [clashBold, clashSemi, mono, shotBuf] = await Promise.all([
     asset("public/fonts", "ClashDisplay-Bold.ttf"),

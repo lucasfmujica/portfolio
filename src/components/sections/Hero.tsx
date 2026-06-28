@@ -15,6 +15,9 @@ export function Hero() {
   const t = useTranslations("Hero");
   const root = useRef<HTMLElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
+  // Cycle words come from the messages so they localize with the rest of the
+  // headline; the array resolves back onto line3 (the brand promise).
+  const cycleWords = t.raw("cycle") as string[];
 
   useGSAP(
     () => {
@@ -40,7 +43,7 @@ export function Hero() {
         const slot = heading.current?.querySelector<HTMLElement>(".hero__cycle");
         const inner = heading.current?.querySelector<HTMLElement>(".hero__cycle-inner");
         if (!slot || !inner) return;
-        const words = ["convert.", "scale.", "last.", "move."];
+        const words = cycleWords;
         cycle = gsap.timeline({ delay: 0.9 });
         words.forEach((word, i) => {
           cycle!

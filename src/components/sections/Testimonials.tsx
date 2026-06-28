@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState, type TouchEvent as ReactTouchEvent } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 import { RichText } from "@/components/ui/RichText";
 import { RevealScope } from "@/components/motion/RevealScope";
 import { MaskHeading } from "@/components/motion/MaskHeading";
-import { testimonials } from "@/data/testimonials";
+import { getTestimonials } from "@/data/testimonials";
+import type { Locale } from "@/i18n/routing";
 
 const ADVANCE_MS = 6000;
 const FADE_MS = 280;
@@ -19,6 +20,8 @@ const FADE_MS = 280;
  */
 export function Testimonials() {
   const t = useTranslations("Testimonials");
+  const locale = useLocale() as Locale;
+  const testimonials = getTestimonials(locale);
   const [current, setCurrent] = useState(0);
   const currentRef = useRef(0);
   const advanceTimer = useRef<number>(0);

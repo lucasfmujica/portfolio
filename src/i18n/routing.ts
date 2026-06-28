@@ -12,7 +12,7 @@ import { defineRouting } from "next-intl/routing";
  * (`/`, `/work/bike`) and only prefixes additional locales (`/es`, `/es/work/bike`).
  */
 export const routing = defineRouting({
-  locales: ["en"],
+  locales: ["en", "es"],
   defaultLocale: "en",
   localePrefix: "as-needed",
 });

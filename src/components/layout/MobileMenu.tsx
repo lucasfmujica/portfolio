@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { Wordmark } from "./Wordmark";
+import { LocaleSwitcher } from "./LocaleSwitcher";
 
 const LINKS: { href: string; key: "work" | "about" | "stack" | "process" }[] = [
   { href: "/work", key: "work" },
@@ -141,6 +142,7 @@ export function MobileMenu() {
                   </a>
                 ))}
               </div>
+              <LocaleSwitcher className="navmenu__locale" />
             </div>
           </div>,
           document.body,

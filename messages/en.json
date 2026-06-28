@@ -40,6 +40,7 @@
     "line1": "I build",
     "line2": "websites that",
     "line3": "move.",
+    "cycle": ["convert.", "scale.", "last.", "move."],
     "sub": "5+ years deep. I build high-performing, component-driven sites marketing teams and small businesses can own, scale and maintain long after launch.",
     "ctaPrimary": "Start a project",
     "ctaGhost": "View selected work",
@@ -236,7 +237,12 @@
     "email": "hello@lucasmujica.dev",
     "navAria": "Footer",
     "socialsAria": "Social links",
-    "copyright": "© {year} Lucas Mujica. All rights reserved."
+    "copyright": "© {year} Lucas Mujica. All rights reserved.",
+    "navWork": "Work",
+    "navAbout": "About",
+    "navStack": "Stack",
+    "navProcess": "Process",
+    "navPrivacy": "Privacy"
   },
   "CaseStudy": {
     "back": "Back to work",
@@ -265,5 +271,24 @@
     "body": "The link's broken or the page moved. Let's get you back to the work.",
     "home": "Back home",
     "work": "See the work"
+  },
+  "Privacy": {
+    "metaTitle": "Privacy · Lucas Mujica",
+    "metaDescription": "How lucasmujica.dev handles your data: no cookies, no trackers, anonymous analytics only.",
+    "eyebrow": "Privacy",
+    "title": "Privacy policy",
+    "updated": "Last updated: {date}",
+    "shortHeading": "The short version",
+    "shortBody": "This site doesn't use cookies, doesn't run ad trackers, and doesn't sell or share your data with anyone. The only data it touches is anonymous visit statistics and whatever you choose to send me when you get in touch.",
+    "analyticsHeading": "Analytics",
+    "analyticsBody": "I use Vercel Web Analytics to understand how the site is used: page views, referrers, country, device type. It is cookieless and doesn't identify individual visitors. Visits are recognized through a temporary hash that is discarded after the visit ends, so you can't be tracked across sites or over time. See <link>Vercel's analytics privacy documentation</link> for details.",
+    "contactHeading": "Contact",
+    "contactBody": "If you email me or use a contact form on this site, I receive the details you send (your name, email address, and message) and use them only to reply to you. Form messages are delivered to my inbox via <link>Resend</link>, an email delivery service. I don't add you to any mailing list.",
+    "prefsHeading": "Local preferences",
+    "prefsBody": "If you customize the accent color, that choice is saved in your browser's local storage on your device only. It never leaves your browser and you can clear it anytime through your browser settings.",
+    "hostingHeading": "Hosting",
+    "hostingBody": "The site is hosted on <link>Vercel</link>. Like any web host, Vercel processes standard request data (such as IP addresses) to serve the site and protect it from abuse.",
+    "rightsHeading": "Your rights",
+    "rightsBody": "Since the site stores no personal data about visitors, there's usually nothing to request, but if you've contacted me and want your messages deleted, just ask. Questions about any of this: <email>hello@lucasmujica.dev</email>."
   }
 }

@@ -1,0 +1,294 @@
+{
+  "Meta": {
+    "home": {
+      "title": "Lucas Mujica: construyo sitios web que se mueven.",
+      "description": "Desarrollador Webflow & front-end senior con más de 5 años construyendo sitios Webflow de alto rendimiento, basados en componentes, que los equipos de marketing y las pequeñas empresas pueden hacer propios, escalar y mantener.",
+      "ogAlt": "Lucas Mujica, desarrollador Webflow & front-end senior"
+    },
+    "caseStudy": {
+      "titleTemplate": "{title} · Caso de estudio · Lucas Mujica"
+    },
+    "work": {
+      "title": "Trabajo · Casos de estudio & proyectos · Lucas Mujica",
+      "description": "Proyectos Webflow & front-end seleccionados: casos de estudio y trabajos de Lucas Mujica."
+    },
+    "about": {
+      "title": "Sobre mí · Lucas Mujica",
+      "description": "La persona detrás de los proyectos. Desarrollador Webflow & front-end senior, y ajedrecista, viajero, cantante y optimizador serial fuera del horario."
+    }
+  },
+  "Nav": {
+    "home": "Inicio",
+    "work": "Trabajo",
+    "about": "Sobre mí",
+    "stack": "Stack",
+    "process": "Proceso",
+    "talk": "Hablemos",
+    "brandAria": "Lucas Mujica, inicio"
+  },
+  "Dock": {
+    "aria": "Navegación por secciones",
+    "work": "Trabajo",
+    "about": "Sobre mí",
+    "stack": "Stack",
+    "challenge": "Desafío",
+    "build": "Construcción",
+    "results": "Resultados"
+  },
+  "Hero": {
+    "eyebrow": "Desarrollador Webflow & front-end",
+    "line1": "Construyo",
+    "line2": "sitios web que",
+    "line3": "se mueven.",
+    "cycle": ["convierten.", "escalan.", "perduran.", "se mueven."],
+    "sub": "Más de 5 años de experiencia. Construyo sitios de alto rendimiento, basados en componentes, que los equipos de marketing y las pequeñas empresas pueden hacer propios, escalar y mantener mucho después del lanzamiento.",
+    "ctaPrimary": "Empezar un proyecto",
+    "ctaGhost": "Ver trabajos seleccionados",
+    "scroll": "Scroll",
+    "chip": "Webflow · GSAP",
+    "fps": "60 fps"
+  },
+  "Work": {
+    "eyebrow": "trabajos seleccionados",
+    "heading": "Proyectos que estoy *orgulloso* de firmar.",
+    "lede": "Cada uno está construido para ser propio: un sistema de componentes que el equipo del cliente puede manejar, escalar y mantener, sin un desarrollador de guardia.",
+    "viewAll": "Ver todos los proyectos",
+    "seeAll": "Ver todos los proyectos",
+    "viewCase": "Ver caso de estudio",
+    "allEyebrow": "todo el trabajo",
+    "allHeading": "Casos de estudio & *proyectos*.",
+    "allLede": "Todo en un solo lugar: casos de estudio en profundidad más el resto de los trabajos.",
+    "startProject": "Empezar un proyecto",
+    "backHome": "Volver al inicio"
+  },
+  "About": {
+    "eyebrow": "sobre mí",
+    "heading": "Un desarrollador Webflow senior que *entrega*.",
+    "lede": "Más de cinco años y más de 100 proyectos de Webflow de nivel producción. Builds que priorizan los componentes, con arquitectura de CMS que los equipos de marketing y las pequeñas empresas realmente disfrutan manejando. Certificado en Client-First, GSAP para el movimiento y React / Next.js cuando un proyecto lo pide. Rápido el día uno, todavía fácil de editar un año después.",
+    "statYears": "años construyendo",
+    "statProjects": "proyectos entregados",
+    "cred": ["Webflow Certified Expert", "Remoto, en todo el mundo"],
+    "ctaPrimary": "Hablemos",
+    "ctaGhost": "Ver el trabajo",
+    "ctaMore": "Más sobre mí",
+    "portraitPlaceholder": "Retrato de Lucas"
+  },
+  "AboutPage": {
+    "eyebrow": "sobre mí",
+    "heading": "La persona *detrás de los proyectos*.",
+    "lede": "Soy Lucas, desarrollador Webflow & front-end senior. Pero hay más en la historia que el trabajo, así que acá va el resto.",
+    "intro": [
+      "Construyo sitios web para vivir, pero lo que de verdad me gusta son los sistemas, esos que convierten algo desordenado en algo que simplemente *funciona*. Ese instinto aparece en todos lados: en una librería de componentes que el equipo de un cliente puede manejar solo, en las aperturas que estudio antes de un torneo, en cómo planifico un viaje hasta el último tren.",
+      "Fuera del horario, suelo estar haciendo una de cuatro cosas: moviendo peones, persiguiendo una pelota sobre el polvo de ladrillo, tomándome un vuelo a algún lugar nuevo, o cantando mal a propósito. Nada de eso está desconectado. Es toda la misma curiosidad, apuntada en direcciones distintas."
+    ],
+    "moreOnHome": "Más sobre mí",
+    "journeyEyebrow": "experiencia",
+    "journeyHeading": "Dónde *construí*.",
+    "journeyLede": "Los equipos y estudios con los que entregué trabajo.",
+    "journey": [
+      {
+        "company": "WonderUp",
+        "role": "Desarrollador Webflow & Project Manager",
+        "period": "Mar 2021 – Ene 2022",
+        "location": "Buenos Aires, Argentina · Híbrido",
+        "note": "Construí sitios Webflow escalables para startups globales en un equipo de desarrollo de 4 personas, llevando los tiempos de los proyectos, la comunicación con clientes, el QA y estructuras de CMS reutilizables."
+      },
+      {
+        "company": "Vekstloop",
+        "role": "Desarrollador Webflow Senior",
+        "period": "Ene 2022 – Oct 2025",
+        "location": "Bergen, Noruega · Remoto",
+        "note": "Entregué más de 80 sitios productivos para clientes internacionales: estandarizando Client-First, construyendo sistemas reutilizables de símbolos/utilidades e interacciones avanzadas con GSAP, y automatizando reportes con Make & Zapier para ahorrarle al equipo de marketing más de 10 hs por semana."
+      },
+      {
+        "company": "Clearframe Studio",
+        "role": "CTO & Cofundador",
+        "period": "Jul 2025 – Presente",
+        "location": "Montevideo, Uruguay · Remoto",
+        "note": "Cofundé un estudio Webflow enfocado en proyectos de alta complejidad: arquitectura de CMS de punta a punta, librerías de componentes reutilizables y automatización con Make.com que les permite a los equipos de contenido manejar sus sitios sin un desarrollador de guardia."
+      },
+      {
+        "company": "Candid Leap",
+        "role": "Desarrollador Webflow Senior",
+        "period": "Mar 2026 – Presente",
+        "location": "Webflow Enterprise Partner · Remoto",
+        "note": "Construyendo sitios Webflow de nivel enterprise para clientes tech confidenciales: arquitectura de CMS, animaciones a medida, flujos de localización y rendimiento de front-end, junto a los equipos de diseño y PM."
+      }
+    ],
+    "facetsEyebrow": "fuera del horario",
+    "facetsHeading": "La vida *más allá del lienzo*.",
+    "facetsLede": "Las cosas que me mantienen curioso y, sin hacer ruido, me hacen mejor en el trabajo.",
+    "chessLabel": "ajedrez",
+    "chessTitle": "Ajedrez, desde que era chico",
+    "chessBody": "Mi obsesión más vieja. Fui subcampeón del torneo Ciudad de Buenos Aires sub-10 a los 8 años. Me alejé un tiempo y volví con todo en 2021. Ahora juego torneos individuales todo el año e incluso viajo a competir con un equipo. Es donde entreno la paciencia y la lectura de patrones con las que también funciona el trabajo.",
+    "chessImg": "/assets/about/chess.jpg",
+    "chessPhotoAlt": "Lucas estudiando el tablero en un torneo de ajedrez",
+    "chessStat": "Subcampeón Ciudad sub-10 · 8 años",
+    "travelLabel": "viajes",
+    "travelTitle": "Siempre en algún lugar nuevo",
+    "travelBody": "Países nuevos, culturas nuevas y los pequeños detalles que hacen funcionar a cada lugar.",
+    "travelImg": "/assets/about/travel-bariloche.jpg",
+    "travelPhotoAlt": "Lucas sobre los lagos y montañas de Bariloche, Argentina",
+    "gotLabel": "fuera de libreto",
+    "gotTitle": "Vale el desvío",
+    "gotBody": "Split, Croacia. Y sí, reclamé el trono.",
+    "gotImg": "/assets/about/got.jpg",
+    "gotPhotoAlt": "Lucas en la réplica del Trono de Hierro de Game of Thrones en Split",
+    "singingLabel": "canto",
+    "singingTitle": "La voz, fuera del horario",
+    "singingBody": "Tomé clases de canto y nunca paré del todo. Vive en un pequeño TikTok, solo por el gusto de hacerlo.",
+    "singingCta": "@justlucassinging",
+    "singingImg": "/assets/about/singing.jpg",
+    "singingPhotoAlt": "Lucas al teclado con un mate",
+    "tennisLabel": "tenis",
+    "tennisTitle": "Fuera del tablero",
+    "tennisBody": "Cuando no estoy sobre un tablero de ajedrez, ando persiguiendo una pelota sobre el polvo de ladrillo.",
+    "tennisImg": "/assets/about/tennis.jpg",
+    "tennisPhotoAlt": "Lucas jugando al tenis en una cancha de polvo de ladrillo",
+    "galleryEyebrow": "en cuadros",
+    "galleryHeading": "Algunos *momentos*.",
+    "gallery": [
+      { "img": "/assets/about/travel-rome.jpg", "alt": "Lucas en el Coliseo de Roma", "caption": "Roma, Italia" },
+      { "img": "/assets/about/gallery-belgrado.jpg", "alt": "Lucas jugando al ajedrez en un parque de Belgrado", "caption": "Ajedrez en Belgrado" },
+      { "img": "/assets/about/frame-dubrovnik.jpg", "alt": "Lucas sobre los techos de Dubrovnik, Croacia", "caption": "Dubrovnik, Croacia" }
+    ],
+    "ctaEyebrow": "hablemos",
+    "ctaHeading": "¿Te gusta cómo pienso? *Construyamos algo*.",
+    "ctaLede": "Sea un sitio, una migración, o un sistema que hay que desenredar, me encantaría que me cuentes.",
+    "ctaPrimary": "Empezar un proyecto",
+    "ctaGhost": "Ver el trabajo",
+    "backHome": "Volver al inicio"
+  },
+  "Stack": {
+    "eyebrow": "stack",
+    "headingPre": "La herramienta justa para cada trabajo, ",
+    "headingEmber": "siempre.",
+    "lede": "Todo lo que está acá está elegido por velocidad, mantenibilidad y entregar rápido sin tomar atajos.",
+    "tiers": {
+      "build": { "label": "Construir", "items": "Webflow · Client-First · Lumos" },
+      "code": { "label": "Código", "items": "React · Next.js · TypeScript" },
+      "motion": { "label": "Movimiento", "items": "GSAP · ScrollTrigger · DrawSVG" },
+      "automation": { "label": "Automatización", "items": "n8n · Make · Zapier" },
+      "connect": { "label": "Conectar", "items": "HubSpot · Stripe · Notion" }
+    }
+  },
+  "Process": {
+    "eyebrow": "proceso",
+    "heading": "Cómo *trabajo*.",
+    "lede": "Sin misterio, sin presentaciones infladas. Solo las tres fases detrás de cada sitio que entrego.",
+    "steps": [
+      {
+        "n": "01",
+        "icon": "target",
+        "title": "Estrategia antes que píxeles",
+        "body": "Defino el objetivo y qué significa “terminado” antes de abrir el lienzo. Salteá esto y solo estás decorando suposiciones."
+      },
+      {
+        "n": "02",
+        "icon": "design",
+        "title": "Construido para escalar, no para impresionar",
+        "body": "Primero los componentes, primero el rendimiento. Movimiento real donde se lo gana. Cero relleno, escalable desde el día uno."
+      },
+      {
+        "n": "03",
+        "icon": "trending-up",
+        "title": "Lanzar, y después ganárselo",
+        "body": "Lanzar es el comienzo, no el final. Ajusto contra datos reales hasta que los números se mueven. Las opiniones no votan."
+      }
+    ]
+  },
+  "Testimonials": {
+    "eyebrow": "testimonios",
+    "heading": "No te fíes solo de mi *palabra*.",
+    "lede": "Resultados comprobados, de las personas que construyeron a mi lado."
+  },
+  "Contact": {
+    "eyebrow": "empezar un proyecto",
+    "heading": "Listos para construir.",
+    "lead": "Unos datos rápidos para que pueda dimensionarlo antes incluso de hablar, o escribime directo.",
+    "email": "hello@lucasmujica.dev",
+    "available": "Respondo en menos de un día",
+    "location": "Buenos Aires · Remoto en todo el mundo",
+    "socialsAria": "Redes sociales",
+    "madGreeting": "Hola Lucas, soy",
+    "madName": "tu nombre",
+    "madFrom": "de",
+    "madCompany": "empresa",
+    "madBuilding": "Tengo en mente un proyecto de",
+    "madBudget": "con un presupuesto de aproximadamente",
+    "madReach": "Escribime a",
+    "madEmail": "vos@email.com",
+    "madMessageLead": "Algo sobre el proyecto (opcional)",
+    "madMessage": "Qué estás construyendo, los tiempos y lo que ya tenés: marca, contenido, un sitio actual…",
+    "projectTypes": ["sitio Webflow", "migración Webflow", "web app", "automatización"],
+    "budgets": ["$2–5k", "$5–10k", "$10–25k", "$25k+", "A definir"],
+    "send": "Enviar",
+    "replyNote": "Respondo en menos de un día",
+    "successHeading": "En camino. Hablamos pronto.",
+    "successBody": "Te respondo con los próximos pasos en menos de un día.",
+    "errorHeading": "No se envió.",
+    "errorBody": "Algo falló de mi lado. Escribime directo y me ocupo enseguida.",
+    "validationName": "Agregá tu nombre.",
+    "validationEmail": "Agregá un email válido."
+  },
+  "Footer": {
+    "ctaPre": "Construyamos algo que ",
+    "ctaEmber": "se mueva.",
+    "email": "hello@lucasmujica.dev",
+    "navAria": "Pie de página",
+    "socialsAria": "Redes sociales",
+    "copyright": "© {year} Lucas Mujica. Todos los derechos reservados.",
+    "navWork": "Trabajo",
+    "navAbout": "Sobre mí",
+    "navStack": "Stack",
+    "navProcess": "Proceso",
+    "navPrivacy": "Privacidad"
+  },
+  "CaseStudy": {
+    "back": "Volver al trabajo",
+    "eyebrow": "caso de estudio",
+    "live": "En vivo",
+    "highlightsEyebrow": "destacados",
+    "servicesEyebrow": "servicios",
+    "challengeEyebrow": "el desafío",
+    "buildEyebrow": "lo que construí",
+    "resultsEyebrow": "lo que se entregó",
+    "quoteEyebrow": "qué dijeron",
+    "ctaEyebrow": "empezar un proyecto",
+    "ctaHeading": "¿Tenés un proyecto *como este*?",
+    "ctaButton": "Empezar un proyecto",
+    "nextEyebrow": "ver el próximo proyecto",
+    "specLabels": {
+      "role": "Rol",
+      "stack": "Stack",
+      "integration": "Integración",
+      "timeline": "Plazo"
+    }
+  },
+  "NotFound": {
+    "eyebrow": "404",
+    "heading": "Esta página tomó un *desvío*.",
+    "body": "El enlace está roto o la página se movió. Te llevo de vuelta al trabajo.",
+    "home": "Volver al inicio",
+    "work": "Ver el trabajo"
+  },
+  "Privacy": {
+    "metaTitle": "Privacidad · Lucas Mujica",
+    "metaDescription": "Cómo lucasmujica.dev maneja tus datos: sin cookies, sin rastreadores, solo analítica anónima.",
+    "eyebrow": "Privacidad",
+    "title": "Política de privacidad",
+    "updated": "Última actualización: {date}",
+    "shortHeading": "La versión corta",
+    "shortBody": "Este sitio no usa cookies, no corre rastreadores de publicidad y no vende ni comparte tus datos con nadie. Lo único que toca son estadísticas de visita anónimas y lo que vos elijas enviarme cuando te pongas en contacto.",
+    "analyticsHeading": "Analítica",
+    "analyticsBody": "Uso Vercel Web Analytics para entender cómo se usa el sitio: vistas de página, referrers, país, tipo de dispositivo. No usa cookies y no identifica a visitantes individuales. Las visitas se reconocen con un hash temporal que se descarta cuando la visita termina, así no se te puede rastrear entre sitios ni a lo largo del tiempo. Mirá <link>la documentación de privacidad de analytics de Vercel</link> para más detalle.",
+    "contactHeading": "Contacto",
+    "contactBody": "Si me escribís un email o usás un formulario de contacto del sitio, recibo los datos que mandás (tu nombre, dirección de email y mensaje) y los uso solo para responderte. Los mensajes del formulario llegan a mi casilla a través de <link>Resend</link>, un servicio de entrega de emails. No te sumo a ninguna lista de correo.",
+    "prefsHeading": "Preferencias locales",
+    "prefsBody": "Si personalizás el color de acento, esa elección se guarda en el local storage de tu navegador, solo en tu dispositivo. Nunca sale de tu navegador y podés borrarla cuando quieras desde la configuración del navegador.",
+    "hostingHeading": "Hosting",
+    "hostingBody": "El sitio está alojado en <link>Vercel</link>. Como cualquier hosting web, Vercel procesa datos estándar de las solicitudes (como direcciones IP) para servir el sitio y protegerlo de abusos.",
+    "rightsHeading": "Tus derechos",
+    "rightsBody": "Como el sitio no guarda datos personales de los visitantes, por lo general no hay nada que solicitar, pero si te pusiste en contacto conmigo y querés que borre tus mensajes, pedímelo y listo. Cualquier duda sobre todo esto: <email>hello@lucasmujica.dev</email>."
+  }
+}

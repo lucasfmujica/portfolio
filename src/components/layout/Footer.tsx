@@ -30,11 +30,11 @@ export function Footer() {
         <div className="footer__row">
           <Wordmark className="footer__wordmark" dotClass="footer__dot" />
           <nav className="footer__nav" aria-label={t("navAria")}>
-            <Link href="/work">Work</Link>
-            <Link href="/about">About</Link>
-            <a href="/#stack">Stack</a>
-            <a href="/#process">Process</a>
-            <Link href="/privacy">Privacy</Link>
+            <Link href="/work">{t("navWork")}</Link>
+            <Link href="/about">{t("navAbout")}</Link>
+            <a href="/#stack">{t("navStack")}</a>
+            <a href="/#process">{t("navProcess")}</a>
+            <Link href="/privacy">{t("navPrivacy")}</Link>
           </nav>
           <div className="footer__soc" aria-label={t("socialsAria")}>
             {SOCIALS.map((s) => (

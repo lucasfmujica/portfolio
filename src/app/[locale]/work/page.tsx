@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { routing, type Locale } from "@/i18n/routing";
 import { siteName, siteUrl } from "@/lib/site";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/data/projects";
 import { Link } from "@/i18n/navigation";
 import { Mockup } from "@/components/ui/Mockup";
 import { Icon } from "@/components/ui/Icon";
@@ -27,13 +27,16 @@ export async function generateMetadata({
   return {
     title: t("work.title"),
     description: t("work.description"),
-    alternates: { canonical: "/work", languages: { en: "/work" } },
+    alternates: {
+      canonical: "/work",
+      languages: { en: "/work", es: "/es/work" },
+    },
     openGraph: {
       type: "website",
       siteName,
       title: t("work.title"),
       description: t("work.description"),
-      url: `${siteUrl}/work`,
+      url: `${siteUrl}${locale === "en" ? "" : `/${locale}`}/work`,
     },
     twitter: { card: "summary_large_image", title: t("work.title"), description: t("work.description") },
   };
@@ -49,10 +52,11 @@ export default async function WorkIndexPage({
   setRequestLocale(locale);
 
   const t = await getTranslations("Work");
+  const projects = getProjects(locale as Locale);
 
   return (
     <>
-    <JsonLd data={workJsonLd()} />
+    <JsonLd data={workJsonLd(locale as Locale)} />
     <section className="section allwork">
       <div className="container">
         <div className="allwork__head" id="hero">

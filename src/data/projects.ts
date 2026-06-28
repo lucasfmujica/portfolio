@@ -19,6 +19,8 @@
  * the types and component contracts stay identical, so it's a content task.
  */
 
+import type { Locale } from "@/i18n/routing";
+
 export type IconName =
   | "target"
   | "design"
@@ -67,6 +69,8 @@ export interface CaseStudyQuote {
   quote: string;
   name: string;
   role: string;
+  /** Square avatar (normalized to 200×200); shown in the quote card when set. */
+  avatar?: string;
 }
 
 export interface CaseStudy {
@@ -455,6 +459,13 @@ export const projects: Project[] = [
         { value: "100", label: "Lighthouse best practices" },
         { value: "94", label: "Lighthouse accessibility" },
       ],
+      quote: {
+        quote:
+          "Our site has a complex custom-code setup, and Lucas understood it *without needing much guidance*. New pages, detailed layouts, advanced flows, always clear and professional. Highly recommended.",
+        name: "Carolina Freese",
+        role: "Founder, Home Organizers Long Island",
+        avatar: "/assets/avatars/carolinafreese.webp",
+      },
     },
   },
   {
@@ -611,21 +622,480 @@ export const projects: Project[] = [
         { value: "100", label: "Lighthouse best practices" },
         { value: "90", label: "Lighthouse accessibility" },
       ],
+      quote: {
+        quote:
+          "Working with Lucas has been an absolute pleasure. His Webflow expertise is *unparalleled*. Proactive with solutions, transparent, and a joy to work with. Highly recommended.",
+        name: "Eugenia Gallo",
+        role: "Business Development Manager, Seilas Ship Supplies",
+        avatar: "/assets/avatars/eugenia.webp",
+      },
     },
   },
 ];
 
-/** Projects with a dedicated case-study page, in display order. */
+/**
+ * Projects with a dedicated case-study page, in display order. Locale-independent
+ * (slugs/structure are shared) — use for `generateStaticParams` and the sitemap.
+ */
 export const caseStudies = projects.filter(
   (p): p is Project & { caseStudy: CaseStudy } => p.kind === "full" && !!p.caseStudy,
 );
 
-export function getProject(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
+/* ------------------------------------------------------------------ *
+ * Localization
+ *
+ * `projects` (above) is the canonical English source AND the single source for
+ * non-text structure (slugs, indexes, images, Lighthouse numbers, live URLs).
+ * Translations live in a per-locale *copy overlay* that carries only text and
+ * is deep-merged over the English project at read time, so numbers/images/slugs
+ * never drift. Consumers call the locale-aware accessors below.
+ * ------------------------------------------------------------------ */
+
+type DeepPartial<T> = T extends (infer U)[]
+  ? DeepPartial<U>[]
+  : T extends object
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : T;
+
+/** Translatable copy for one project. Omit any field to keep the English text. */
+export type ProjectCopy = DeepPartial<Project>;
+
+/**
+ * Element-wise deep merge: objects merge recursively, arrays merge by index
+ * (so a `shots`/`metrics` overlay can override only the text subfields of each
+ * entry and inherit `image`/`value` from English), primitives are replaced.
+ */
+function mergeCopy<T>(base: T, overlay: DeepPartial<T> | undefined): T {
+  if (overlay === undefined) return base;
+  if (Array.isArray(base)) {
+    const ov = overlay as unknown[];
+    return base.map((item, i) => mergeCopy(item, ov[i] as never)) as unknown as T;
+  }
+  if (base && typeof base === "object") {
+    const out = { ...(base as Record<string, unknown>) };
+    for (const k of Object.keys(overlay as object)) {
+      out[k] = mergeCopy(
+        (base as Record<string, unknown>)[k],
+        (overlay as Record<string, unknown>)[k] as never,
+      );
+    }
+    return out as T;
+  }
+  return overlay as unknown as T;
 }
 
-/** The next full case study after `slug`, wrapping around. */
-export function getNextCaseStudy(slug: string): Project & { caseStudy: CaseStudy } {
-  const i = caseStudies.findIndex((p) => p.slug === slug);
-  return caseStudies[(i + 1) % caseStudies.length];
+/**
+ * Spanish (rioplatense, "vos") copy overlay, keyed by slug. Only translatable
+ * text — numbers, images, slugs and live URLs stay in `projects`. Client pull
+ * quotes are intentionally omitted so they keep the speaker's original wording.
+ */
+export const projectsCopyEs: Record<string, ProjectCopy> = {
+  "true-north-jerseys": {
+    category: "Proyecto e-commerce",
+    blurb: {
+      pre: "Kits de hockey y béisbol a medida para una marca de BC. Una tienda Webflow, ",
+      ember: "construida distinta",
+      post: ", con reveals de producto atados al scroll.",
+    },
+    imageAlt: "True North Jerseys: tienda de indumentaria de hockey y béisbol a medida",
+    caseStudy: {
+      outcome: {
+        pre: "Una marca de kits a medida que vive del detalle. La tienda tenía que ",
+        ember: "mostrarlo.",
+      },
+      heroImageAlt: "True North Jerseys: tienda 'built different'",
+      heroBadge: "truenorthjerseys.com · tienda",
+      highlights: [
+        "Un catálogo manejado por CMS que el *equipo familiar maneja y hace crecer solo*.",
+        "Webflow Ecommerce nativo + flujo de cotización a medida, integrado con la marca.",
+        "Construido para escalar: las nuevas líneas entran como componentes, no como rehacer todo.",
+      ],
+      services: ["Estrategia", "Diseño web", "Desarrollo", "Webflow Ecommerce", "Webflow CMS"],
+      challengeHeading: "Un producto premium, hecho a pedido, en una góndola genérica.",
+      challengeBody:
+        "True North hace camisetas de hockey y béisbol a medida en BC: sublimadas, reversibles, bordadas; el oficio es todo el pitch. Pero ese detalle es justo lo que una plantilla genérica *aplana en una grilla*. La marca necesitaba una tienda que se sintiera tan pensada como el producto, que mantuviera el catálogo fácil de manejar, y que dejara el camino a la cotización a un toque de distancia.",
+      challengeVisualCaption: "truenorthjerseys.com · tienda",
+      specs: [
+        { value: "Build front-end, de punta a punta" },
+        { value: "Webflow · GSAP · CMS" },
+        { value: "Webflow Ecommerce" },
+      ],
+      buildHeading: "Una tienda que muestra el oficio antes de pedir la venta.",
+      buildLead:
+        "Construí la tienda de punta a punta en Webflow sobre Webflow Ecommerce nativo, con un catálogo manejado por CMS y *reveals atados al scroll con GSAP que dejan respirar a cada kit*. Las líneas de producto (hockey, béisbol, indumentaria de equipo) están estructuradas para que el equipo familiar agregue y edite todo solo, con el carrito y el flujo de cotización integrados sin salir de la marca.",
+      shots: [
+        {
+          label: "01 / Tienda",
+          lead: "Una marca audaz, “built different”, al frente",
+          body: ". Fotografía de acción y reveals atados al scroll que reflejan el oficio, no una grilla genérica.",
+          placeholder: "Tienda: poné screenshot",
+        },
+        {
+          label: "02 / Líneas de producto",
+          lead: "Hockey, béisbol e indumentaria de equipo, manejado por CMS",
+          body: ". Opciones sublimadas, reversibles y bordadas que el equipo maneja sin código.",
+          placeholder: "Línea de producto: poné screenshot",
+        },
+        {
+          label: "03 / Pedido & cotización",
+          lead: "Webflow Ecommerce integrado, con la marca de punta a punta",
+          body: ". El camino al pedido y la cotización queda a un toque en cuanto aparece la intención.",
+          placeholder: "Pedido: poné screenshot",
+        },
+      ],
+      resultsStatement: "La tienda por fin se siente como el producto: pensada, audaz y propia para manejar.",
+      resultsSub:
+        "Entregada en Webflow y traspasada prolija: el equipo agrega kits desde el CMS. Los números de abajo están medidos en la tienda en vivo.",
+      metrics: [
+        { label: "Lighthouse SEO" },
+        { label: "Lighthouse accesibilidad" },
+        { label: "Lighthouse rendimiento" },
+      ],
+    },
+  },
+  k2btools: {
+    category: "Sitio de marketing",
+    blurb: {
+      pre: "Herramientas de desarrollo para GeneXus. Un sitio Webflow trilingüe con movimiento Client-First ",
+      ember: "ajustado para rendimiento",
+      post: ".",
+    },
+    imageAlt: "K2BTools: sitio de herramientas de desarrollo para GeneXus",
+    caseStudy: {
+      outcome: {
+        pre: "Una empresa de developer tools cuyo sitio tenía que sentirse tan afilado como el ",
+        ember: "producto.",
+      },
+      heroImageAlt: "K2BTools: home 'Impulsamos el mundo GeneXus'",
+      heroBadge: "k2btools.com · inicio",
+      highlights: [
+        "Un sistema de componentes Client-First con el que el *equipo de marketing publica páginas solo*.",
+        "Trilingüe sobre Webflow Localization: es / en / pt desde un solo CMS.",
+        "Más de ocho productos hechos legibles sin enterrar al comprador.",
+      ],
+      services: ["Estrategia", "Desarrollo", "Sistema Client-First", "Webflow Localization"],
+      challengeHeading: "Toda una suite de productos, tres idiomas, un equipo para manejarlo.",
+      challengeBody:
+        "K2BTools construye herramientas que aceleran el desarrollo en GeneXus: más de ocho productos, desde generadores web y mobile hasta auditoría e IA. El sitio tenía que hacer ese abanico *legible sin enterrar al comprador*, salir en español, inglés y portugués, y quedar editable por el equipo de marketing. El movimiento tenía que señalar calidad de ingeniería sin frenar la página.",
+      challengeVisualCaption: "k2btools.com · inicio",
+      specs: [
+        { value: "Build front-end" },
+        { value: "Webflow · Client-First · GSAP" },
+        { value: "Webflow Localization · es / en / pt" },
+      ],
+      buildHeading: "Un sistema de componentes que el equipo publica en tres idiomas.",
+      buildLead:
+        "Construí el sitio de marketing en Webflow sobre Client-First, con GSAP haciendo el laburo pesado: *animaciones de scroll que se leen como oficio*, conscientes de reduced-motion. Todo corre sobre Webflow Localization en tres idiomas (español, inglés, portugués), componentizado y manejado por CMS, así el equipo publica páginas de solución, artículos y casos de éxito en cualquier idioma sin un desarrollador en el medio.",
+      shots: [
+        {
+          label: "01 / La suite",
+          lead: "Más de ocho herramientas, cada una con su página clara",
+          body: ". Un sistema de componentes Client-First, ajustado para mantenerse liviano bajo el movimiento de GSAP.",
+          placeholder: "Herramientas: poné screenshot",
+        },
+        {
+          label: "02 / Planes",
+          lead: "Un camino claro de la herramienta a la compra",
+          body: ". Precios y planes presentados para que el comprador nunca tenga que escarbar.",
+          placeholder: "Planes: poné screenshot",
+        },
+        {
+          label: "03 / Localización",
+          lead: "Tres idiomas sobre Webflow Localization",
+          body: ". Español, inglés y portugués desde un solo CMS; artículos y casos de éxito que el equipo publica solo.",
+          placeholder: "Localización: poné screenshot",
+        },
+      ],
+      resultsStatement: "Componentizado y trilingüe: el equipo de marketing publica en cualquier idioma, solo.",
+      resultsSub:
+        "Lanzado sobre Client-First y traspasado documentado: el equipo de marketing publica en cualquier idioma. Medido en el sitio en vivo, el build puntúa prolijo.",
+      metrics: [
+        { label: "Lighthouse SEO" },
+        { label: "Lighthouse buenas prácticas" },
+        { label: "Lighthouse accesibilidad" },
+      ],
+    },
+  },
+  bike: {
+    category: "Proyecto Webflow",
+    blurb: {
+      pre: "Una escuela de inglés de Montevideo que enseña hablando. Un build Webflow con un loader a medida y una ",
+      ember: "bici 3D en el 404",
+      post: ".",
+    },
+    imageAlt: "BIKE: home de bike.uy",
+    caseStudy: {
+      outcome: {
+        pre: "Una escuela de inglés que enseña hablando. El sitio tenía que sentirse igual de ",
+        ember: "vivo.",
+      },
+      heroImageAlt: "BIKE: home de bike.uy",
+      heroBadge: "bike.uy · inicio",
+      highlights: [
+        "Cursos, contenido y formularios que el *equipo maneja solo* desde el CMS.",
+        "Un preloader a medida y reveals pausados que marcan el tono de la marca.",
+        "Un 404 interactivo con una bici 3D que convierte un callejón sin salida en parte de la marca.",
+      ],
+      services: ["Desarrollo", "Construcción web", "Movimiento", "Webflow CMS"],
+      challengeHeading: "Un método construido sobre el movimiento, aplanado en una página estática.",
+      challengeBody:
+        "BIKE enseña inglés como se aprende a andar en bici: haciéndolo, desde el día uno. La marca se apoya entera en esa metáfora (pedalear como progreso), así que un sitio plano y convencional habría *socavado todo el pitch*. Necesitaba un movimiento que se sintiera lúdico y ganado, una estructura que el equipo pudiera seguir editando, y la personalidad para llevar los niveles de A1 a C2 sin sentirse nunca como un libro de texto.",
+      challengeVisualCaption: "bike.uy · inicio",
+      specs: [
+        { value: "Build front-end (diseño: Clearframe Studio)" },
+        { value: "Webflow · GSAP · Spline" },
+        { value: "Webflow CMS · Finsweet" },
+      ],
+      buildHeading: "Un sitio que se mueve como lo hace una conversación.",
+      buildLead:
+        "Construí BIKE en Webflow con GSAP llevando el movimiento: un *preloader a medida* que marca el tono antes del primer scroll, reveals que pausan la historia, y acordeones y formularios con Finsweet que el equipo maneja solo. El 404 es su propio pequeño momento: una bicicleta interactiva en Spline para cualquiera que pedalee hacia un lugar que todavía no existe.",
+      shots: [
+        {
+          label: "01 / Loader",
+          lead: "Un preloader a medida que marca el tono",
+          body: ". La marca de la bici se dibuja antes del primer scroll, con el movimiento pausado por GSAP.",
+          placeholder: "Loader: poné screenshot",
+        },
+        {
+          label: "02 / Cursos",
+          lead: "Roadmap, Talk y Career, estructurados de A1 a C2",
+          body: ". Manejado por CMS, así el equipo agrega y edita cursos sin tocar código.",
+          placeholder: "Cursos: poné screenshot",
+        },
+        {
+          label: "03 / 404",
+          lead: "Una bicicleta 3D interactiva para los perdidos",
+          body: ". Una escena en Spline que convierte un callejón sin salida en una pieza de la marca.",
+          placeholder: "404 / bici 3D: poné screenshot",
+        },
+      ],
+      resultsStatement: "Un sitio que se siente como una clase: rápido, lúdico, inconfundiblemente BIKE.",
+      resultsSub:
+        "Entregado en Webflow y traspasado prolijo: el equipo maneja cursos, contenido y formularios solo. Medido en el sitio en vivo, el build aguanta donde importa.",
+      metrics: [
+        { label: "Lighthouse SEO" },
+        { label: "Lighthouse accesibilidad" },
+        { label: "Lighthouse rendimiento" },
+      ],
+    },
+  },
+  "home-organizers": {
+    category: "Sitio a medida",
+    tags: ["Código a medida", "Vanilla JS", "GSAP"],
+    blurb: {
+      pre: "Un estudio de organización de Long Island, ",
+      ember: "codeado a mano de punta a punta",
+      post: ". Vanilla JS, GSAP y un slider de antes/después que construí desde cero.",
+    },
+    imageAlt: "Home Organizers Long Island: sitio a medida",
+    caseStudy: {
+      outcome: {
+        pre: "Un servicio premium y tranquilo que merecía un sitio a la altura, así que lo construí ",
+        ember: "desde cero.",
+      },
+      heroImageAlt: "Home Organizers Long Island: 'un hogar que por fin se siente en calma'",
+      heroBadge: "homeorganizersli.com · inicio",
+      highlights: [
+        "Tomado de punta a punta: *diseño, copy, SEO y código escrito a mano*.",
+        "Un slider de revelado antes/después construido desde cero en vanilla JS.",
+        "SEO deliberado, hasta el schema JSON-LD LocalBusiness.",
+      ],
+      services: ["Estrategia", "Diseño", "Copywriting", "Desarrollo", "SEO"],
+      challengeHeading: "Un servicio cálido y artesanal, sin un sitio que lo mostrara.",
+      challengeBody:
+        "Home Organizers ayuda a dueños de casa ocupados de Long Island a recuperar su espacio, y toda la promesa es *calma sin juzgar*. Esa sensación es difícil de fingir con una plantilla. Tomé el proyecto de punta a punta (diseño, copy, SEO y código) y elegí construirlo a mano: sin Webflow, sin framework, sin build step, así cada detalle de la sensación y el rendimiento quedaba mío para ajustar.",
+      challengeVisualCaption: "homeorganizersli.com · inicio",
+      specs: [
+        { value: "Diseño, build, copy & SEO" },
+        { value: "HTML · CSS · vanilla JS · GSAP" },
+        { value: "Netlify Forms · JSON-LD" },
+      ],
+      buildHeading: "Un build estático a medida, ajustado a mano.",
+      buildLead:
+        "HTML escrito a mano, custom properties de CSS y JavaScript vanilla: sin framework, con Sora y Overpass self-hosted para la velocidad, y GSAP + ScrollTrigger para el movimiento. La pieza central es un *slider de antes/después que escribí desde cero*: un carrusel con un handle de revelado arrastrable en mobile. El contacto corre sobre Netlify Forms, y el SEO es deliberado hasta el schema JSON-LD LocalBusiness.",
+      shots: [
+        {
+          label: "01 / Servicios",
+          lead: "Tres formas de aligerar la carga, antes/después al frente",
+          body: ". Paleta neutra y cálida, Sora + Overpass, reveals con GSAP que respiran.",
+          placeholder: "Servicios: poné screenshot",
+        },
+        {
+          label: "02 / Antes / Después",
+          lead: "Un slider de revelado hecho a mano en vanilla JS",
+          body: ". Arrastrá para comparar en mobile, carrusel navegado por puntos en desktop. Sin librería.",
+          placeholder: "Slider antes/después: poné screenshot",
+        },
+        {
+          label: "03 / El resultado",
+          lead: "Espacios en calma y organizados, el resultado que promete la marca",
+          body: ". Fotografía real de proyectos, enmarcada por un sistema construido para rendimiento y SEO.",
+          placeholder: "Resultado: poné screenshot",
+        },
+      ],
+      resultsStatement: "La prueba de que puedo llevar una marca de la página en blanco a producción: diseño, copy, código y SEO.",
+      resultsSub:
+        "Sin framework, sin page builder: un sitio estático rápido que tengo de punta a punta. Los números de abajo están medidos en el build en vivo.",
+      metrics: [
+        { label: "Lighthouse SEO" },
+        { label: "Lighthouse buenas prácticas" },
+        { label: "Lighthouse accesibilidad" },
+      ],
+    },
+  },
+  nextfense: {
+    category: "Proyecto Webflow",
+    tags: ["Webflow", "GSAP", "Ilustración"],
+    blurb: {
+      pre: "Una firma de ciberseguridad de Montevideo. Un build Webflow con ",
+      ember: "ilustración a medida",
+      post: " para su plataforma de seguridad gestionada.",
+    },
+    imageAlt: "Nextfense: sitio de ciberseguridad",
+    caseStudy: {
+      outcome: {
+        pre: "Una plataforma de seguridad es tan confiable como se ve. Esta tenía que leerse como ",
+        ember: "seria.",
+      },
+      heroImageAlt: "Nextfense: hero 'Construye un futuro digital más seguro'",
+      heroBadge: "nextfense.com · inicio",
+      highlights: [
+        "Un build bilingüe (es / en) que el *equipo extiende a medida que crece la oferta*.",
+        "Enfoque de seis pilares anclado por ilustración a medida hecha en Illustrator.",
+        "Un servicio de seguridad abstracto hecho concreto y creíble.",
+      ],
+      services: ["Estrategia", "Desarrollo", "Ilustración a medida", "Webflow Localization"],
+      challengeHeading: "Vender confianza en una categoría construida sobre ella.",
+      challengeBody:
+        "Nextfense centraliza la ciberseguridad gestionada (pentesting, escaneo de vulnerabilidades, CISO virtual) en una sola plataforma, Nextfense Core. El sitio tenía que hacer que un servicio complejo y abstracto se sintiera *concreto y creíble* para un comprador corporativo, aguantar en dos idiomas, y quedar fácil de extender por el equipo a medida que crece la oferta.",
+      challengeVisualCaption: "nextfense.com · inicio",
+      specs: [
+        { value: "Build front-end & ilustración a medida" },
+        { value: "Webflow · GSAP · Illustrator" },
+        { value: "Webflow Localization · es / en" },
+      ],
+      buildHeading: "Un sitio de plataforma que se gana la palabra “seguro”.",
+      buildLead:
+        "Construí Nextfense en Webflow con un *enfoque de seis pilares dispuesto alrededor de ilustración a medida en Illustrator*: iconografía de seguridad abstracta que le da a un servicio intangible algo para mirar. Todo es bilingüe (es/en) sobre Webflow Localization, manejado por CMS para casos y blog, con GSAP llevando un movimiento contenido y con la marca.",
+      shots: [
+        {
+          label: "01 / Nextfense Core",
+          lead: "La plataforma de seguridad gestionada, un diagrama claro",
+          body: ". Un servicio complejo hecho concreto con gráficos a medida y movimiento contenido.",
+          placeholder: "Plataforma Core: poné screenshot",
+        },
+        {
+          label: "02 / Enfoque",
+          lead: "Seis pilares, anclados por ilustración a medida en Illustrator",
+          body: ". Iconografía a medida que le da a un servicio abstracto algo para leer.",
+          placeholder: "Enfoque / ilustración: poné screenshot",
+        },
+        {
+          label: "03 / Servicios",
+          lead: "Seguridad ofensiva & pentesting, detallado y bilingüe",
+          body: ". Es/en sobre Webflow Localization, así el equipo publica trabajo nuevo sin un desarrollador.",
+          placeholder: "Servicios: poné screenshot",
+        },
+      ],
+      resultsStatement: "Un sitio que se lee tan creíble como el servicio que vende.",
+      resultsSub:
+        "Bilingüe, manejado por CMS y traspasado prolijo. Medido en el sitio en vivo, el build puntúa donde se decide la confianza.",
+      metrics: [
+        { label: "Lighthouse SEO" },
+        { label: "Lighthouse buenas prácticas" },
+        { label: "Lighthouse accesibilidad" },
+      ],
+    },
+  },
+  "seilas-ship-supplies": {
+    category: "Sitio B2B",
+    blurb: {
+      pre: "Un proveedor naval uruguayo centenario. Un sitio Webflow prolijo que abarca ",
+      ember: "más de 500 clientes",
+      post: " en más de 30 países.",
+    },
+    imageAlt: "Seilas Ship Supplies: 'Desde 1921, tu proveedor naval de confianza en Uruguay'",
+    caseStudy: {
+      outcome: {
+        pre: "Un proveedor naval que abastece los puertos de Uruguay hace un siglo. El sitio tenía que cargar ese ",
+        ember: "legado.",
+      },
+      heroImageAlt: "Seilas Ship Supplies: 'Desde 1921, tu proveedor naval de confianza en Uruguay'",
+      heroBadge: "nadetir.com · inicio",
+      highlights: [
+        "Un siglo de confianza, por fin *legible online* para compradores B2B.",
+        "Un mapa mundial de más de 500 clientes en más de 30 países, al frente.",
+        "Manejado por CMS donde cuenta, así el equipo lo mantiene al día.",
+      ],
+      services: ["Estrategia", "Diseño web", "Desarrollo", "Webflow CMS"],
+      challengeHeading: "Cien años de confianza, y nada online que lo mostrara.",
+      challengeBody:
+        "Seilas Ship Supplies (Nadetir S.A.) abastece embarcaciones en todos los puertos de Uruguay desde 1921: equipo de cubierta y seguridad, insumos de sala de máquinas, provisiones, pañol aduanero. Un siglo de reputación, pero una presencia web que *no cargaba el peso*. El brief: un sitio B2B creíble, con aire internacional, que diga “de confianza desde 1921” sin decir una palabra.",
+      challengeVisualCaption: "nadetir.com · inicio",
+      specs: [
+        { value: "Build front-end" },
+        { value: "Webflow · CMS" },
+        { value: "Webflow CMS" },
+      ],
+      buildHeading: "Un hogar global y prolijo para un proveedor centenario.",
+      buildLead:
+        "Construí el sitio en Webflow: sobrio, seguro y hecho para escalar. Un *mapa mundial de más de 500 clientes en más de 30 países* ancla la historia, todo el rango de servicios está presentado para compradores marítimos, y la herencia de 1921 de la marca atraviesa todo. Manejado por CMS donde cuenta, así el equipo lo mantiene al día.",
+      shots: [
+        {
+          label: "01 / Home",
+          lead: "“Manteniendo a las embarcaciones en movimiento, en todo el mundo”",
+          body: ". Un mapa mundial de más de 500 clientes en más de 30 países, al frente.",
+          placeholder: "Home / mapa: poné screenshot",
+        },
+        {
+          label: "02 / Herencia",
+          lead: "Cien años de historia, contados con intención",
+          body: ". La historia fundacional de 1921, enmarcada para una audiencia B2B.",
+          placeholder: "Sobre / historia: poné screenshot",
+        },
+      ],
+      resultsStatement: "Un sitio que por fin está a la altura: un siglo de confianza, online.",
+      resultsSub:
+        "Entregado en Webflow y traspasado prolijo. Los números de abajo están medidos en el sitio en vivo.",
+      metrics: [
+        { label: "Lighthouse SEO" },
+        { label: "Lighthouse buenas prácticas" },
+        { label: "Lighthouse accesibilidad" },
+      ],
+    },
+  },
+};
+
+const copyByLocale: Record<Locale, Record<string, ProjectCopy>> = {
+  en: {},
+  es: projectsCopyEs,
+};
+
+/** All projects, localized to `locale`. */
+export function getProjects(locale: Locale): Project[] {
+  if (locale === "en") return projects;
+  const overlay = copyByLocale[locale] ?? {};
+  return projects.map((p) => mergeCopy(p, overlay[p.slug]));
+}
+
+/** Full case studies, localized to `locale`. */
+export function getCaseStudies(locale: Locale): (Project & { caseStudy: CaseStudy })[] {
+  return getProjects(locale).filter(
+    (p): p is Project & { caseStudy: CaseStudy } => p.kind === "full" && !!p.caseStudy,
+  );
+}
+
+/** A single project by slug, localized to `locale`. */
+export function getProject(slug: string, locale: Locale): Project | undefined {
+  return getProjects(locale).find((p) => p.slug === slug);
+}
+
+/** The next full case study after `slug`, wrapping around, localized to `locale`. */
+export function getNextCaseStudy(
+  slug: string,
+  locale: Locale,
+): Project & { caseStudy: CaseStudy } {
+  const cs = getCaseStudies(locale);
+  const i = cs.findIndex((p) => p.slug === slug);
+  return cs[(i + 1) % cs.length];
 }

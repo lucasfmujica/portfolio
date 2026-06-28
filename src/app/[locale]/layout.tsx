@@ -61,15 +61,15 @@ export async function generateMetadata({
     appleWebApp: { capable: true, title: siteName, statusBarStyle: "black-translucent" },
     alternates: {
       canonical: "/",
-      languages: { en: "/" },
+      languages: { en: "/", es: "/es" },
     },
     openGraph: {
       type: "website",
       siteName,
       title: t("home.title"),
       description: t("home.description"),
-      url: siteUrl,
-      locale: "en_US",
+      url: locale === "en" ? siteUrl : `${siteUrl}/${locale}`,
+      locale: locale === "es" ? "es_ES" : "en_US",
     },
     twitter: {
       card: "summary_large_image",

@@ -23,13 +23,16 @@ export async function generateMetadata({
   return {
     title: t("about.title"),
     description: t("about.description"),
-    alternates: { canonical: "/about", languages: { en: "/about" } },
+    alternates: {
+      canonical: "/about",
+      languages: { en: "/about", es: "/es/about" },
+    },
     openGraph: {
       type: "profile",
       siteName,
       title: t("about.title"),
       description: t("about.description"),
-      url: `${siteUrl}/about`,
+      url: `${siteUrl}${locale === "en" ? "" : `/${locale}`}/about`,
     },
     twitter: { card: "summary_large_image", title: t("about.title"), description: t("about.description") },
   };
@@ -46,7 +49,7 @@ export default async function AboutPage({
 
   return (
     <>
-      <JsonLd data={aboutJsonLd()} />
+      <JsonLd data={aboutJsonLd(locale as Locale)} />
       <AboutPageContent />
       <Contact />
     </>

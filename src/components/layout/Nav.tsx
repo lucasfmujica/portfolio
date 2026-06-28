@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Wordmark } from "./Wordmark";
 import { MobileMenu } from "./MobileMenu";
+import { LocaleSwitcher } from "./LocaleSwitcher";
 
 /**
  * Sticky top bar. Centered links (Work / About / Stack), wordmark left,
@@ -26,6 +27,7 @@ export function Nav() {
           <a href="/#stack">{t("stack")}</a>
         </div>
         <div className="nav__right">
+          <LocaleSwitcher className="nav__locale" />
           <a href="#contact" className="btn btn--primary">
             {t("talk")}
           </a>

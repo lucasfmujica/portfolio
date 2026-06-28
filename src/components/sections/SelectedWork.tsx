@@ -1,20 +1,21 @@
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { RevealScope } from "@/components/motion/RevealScope";
 import { MaskHeading } from "@/components/motion/MaskHeading";
 import { RichText } from "@/components/ui/RichText";
 import { Mockup } from "@/components/ui/Mockup";
 import { Icon } from "@/components/ui/Icon";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/data/projects";
+import type { Locale } from "@/i18n/routing";
 
 /**
  * Selected work — the three lead case studies as alternating stacking cards.
  * The full set lives on /work; a primary CTA below sends people there.
  */
-const FEATURED = projects.slice(0, 3);
-
 export function SelectedWork() {
   const t = useTranslations("Work");
+  const locale = useLocale() as Locale;
+  const FEATURED = getProjects(locale).slice(0, 3);
   return (
     <RevealScope as="section" className="section" id="work">
       <div

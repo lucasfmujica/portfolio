@@ -2,7 +2,14 @@
  * Homepage testimonials. The featured card + client selector both render from
  * this array; auto-advance and the click-to-switch transition are driven in
  * <Testimonials>. The `quote` field marks its ember phrase with `*asterisks*`.
+ *
+ * Localized via `getTestimonials(locale)`: English is canonical; the Spanish
+ * (rioplatense) overlay translates only `quote` + `role` and inherits the rest
+ * (name, company, avatar). These are real client quotes the owner authorized
+ * translating, so wording is theirs in intent, in their language.
  */
+
+import type { Locale } from "@/i18n/routing";
 
 export interface Testimonial {
   name: string;
@@ -56,3 +63,38 @@ export const testimonials: Testimonial[] = [
       "Working with Lucas has been an absolute pleasure. His Webflow expertise is *unparalleled*. Proactive with solutions, transparent, and a joy to work with. Highly recommended.",
   },
 ];
+
+/** Spanish (rioplatense) overlay, keyed by name. Only `quote` + `role`. */
+const testimonialsEs: Record<string, Pick<Testimonial, "quote" | "role">> = {
+  "Artem Khomenko": {
+    role: "CTO",
+    quote:
+      "Un desarrollador sólido, con una atención al detalle afilada y la capacidad de entregar soluciones muy a medida *dentro de las limitaciones* de la plataforma. Muy recomendable.",
+  },
+  "Carolina Freese": {
+    role: "Fundadora",
+    quote:
+      "Nuestro sitio tiene un setup complejo de código a medida, y Lucas lo entendió *sin necesitar mucha guía*. Páginas nuevas, layouts detallados, flujos avanzados, siempre claro y profesional. Muy recomendable.",
+  },
+  "Franco Caputo": {
+    role: "CEO",
+    quote:
+      "Trabajé con Lucas en varios proyectos y haría mil más feliz de la vida. Detallista, con mucha capacidad técnica, y una *persona increíble*, siempre dando más de lo esperado.",
+  },
+  "Max Sher": {
+    role: "CEO",
+    quote:
+      "Un desarrollador Webflow talentoso que *nos sacó de una situación difícil* en muy poco tiempo. Muy recomendable y lo volvería a contratar. ¡Además, un placer trabajar con él!",
+  },
+  "Eugenia Gallo": {
+    role: "Desarrollo de Negocios",
+    quote:
+      "Trabajar con Lucas fue un placer absoluto. Su expertise en Webflow es *incomparable*. Proactivo con las soluciones, transparente, y un gusto trabajar con él. Muy recomendable.",
+  },
+};
+
+/** Testimonials localized to `locale`. */
+export function getTestimonials(locale: Locale): Testimonial[] {
+  if (locale === "en") return testimonials;
+  return testimonials.map((t) => ({ ...t, ...testimonialsEs[t.name] }));
+}

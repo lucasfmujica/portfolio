@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { routing } from "@/i18n/routing";
+import { routing, type Locale } from "@/i18n/routing";
 import { caseStudies, getProject } from "@/data/projects";
 import { siteName, siteUrl } from "@/lib/site";
 import { CaseStudyView } from "@/components/case-study/CaseStudyView";
@@ -22,18 +22,21 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const project = getProject(slug);
+  const project = getProject(slug, locale as Locale);
   if (!project?.caseStudy) return {};
 
   const t = await getTranslations({ locale, namespace: "Meta" });
   const title = t("caseStudy.titleTemplate", { title: project.name });
   const description = `${project.caseStudy.outcome.pre}${project.caseStudy.outcome.ember}. ${project.category}, ${project.year}.`;
-  const url = `${siteUrl}/work/${slug}`;
+  const url = `${siteUrl}${locale === "en" ? "" : `/${locale}`}/work/${slug}`;
 
   return {
     title,
     description,
-    alternates: { canonical: `/work/${slug}`, languages: { en: `/work/${slug}` } },
+    alternates: {
+      canonical: `/work/${slug}`,
+      languages: { en: `/work/${slug}`, es: `/es/work/${slug}` },
+    },
     openGraph: {
       type: "article",
       siteName,
@@ -56,12 +59,12 @@ export default async function CaseStudyPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const project = getProject(slug);
+  const project = getProject(slug, locale as Locale);
   if (!project || project.kind !== "full" || !project.caseStudy) notFound();
 
   return (
     <>
-      <JsonLd data={caseStudyJsonLd(project)} />
+      <JsonLd data={caseStudyJsonLd(project, locale as Locale)} />
       <CaseStudyView project={project as typeof project & { caseStudy: NonNullable<typeof project.caseStudy> }} />
       <Contact />
     </>

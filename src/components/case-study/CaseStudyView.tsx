@@ -1,5 +1,6 @@
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
 import { RevealScope } from "@/components/motion/RevealScope";
 import { RichText } from "@/components/ui/RichText";
 import { ImageFill } from "@/components/ui/ImageFill";
@@ -20,8 +21,9 @@ export function CaseStudyView({
   project: Project & { caseStudy: CaseStudy };
 }) {
   const t = useTranslations("CaseStudy");
+  const locale = useLocale() as Locale;
   const cs = project.caseStudy;
-  const next = getNextCaseStudy(project.slug);
+  const next = getNextCaseStudy(project.slug, locale);
 
   return (
     <>
@@ -138,7 +140,11 @@ export function CaseStudyView({
                 <RichText text={cs.quote.quote} />
               </blockquote>
               <figcaption className="cs-quote__by">
-                <span className="cs-quote__av" />
+                <span className="cs-quote__av">
+                  {cs.quote.avatar && (
+                    <ImageFill src={cs.quote.avatar} alt={cs.quote.name} sizes="52px" />
+                  )}
+                </span>
                 <div>
                   <div className="cs-quote__name">{cs.quote.name}</div>
                   <div className="cs-quote__role">{cs.quote.role}</div>
