@@ -745,7 +745,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       ],
       resultsStatement: "La tienda por fin se siente como el producto: pensada, audaz y suya.",
       resultsSub:
-        "Entregada en Webflow y traspasada prolija: el equipo agrega kits desde el CMS. Los números de abajo están medidos en la tienda en vivo.",
+        "Entregada en Webflow y traspasada prolija: el equipo agrega kits desde el CMS. Los números de abajo están medidos en la tienda online.",
       metrics: [
         { label: "Lighthouse SEO" },
         { label: "Lighthouse accesibilidad" },
@@ -790,7 +790,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
         {
           label: "01 / La suite",
           lead: "Más de ocho herramientas, cada una con su página clara",
-          body: ". Un sistema de componentes Client-First, ajustado para mantenerse liviano bajo el movimiento de GSAP.",
+          body: ". Un sistema de componentes Client-First, ajustado para mantenerse liviano aun con el movimiento de GSAP.",
           placeholder: "Herramientas: poné screenshot",
         },
         {
@@ -808,7 +808,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       ],
       resultsStatement: "Componentizado y trilingüe: el equipo de marketing publica en cualquier idioma, solo.",
       resultsSub:
-        "Lanzado sobre Client-First y traspasado documentado: el equipo de marketing publica en cualquier idioma. Medido en el sitio en vivo, el build puntúa prolijo.",
+        "Lanzado sobre Client-First y traspasado documentado: el equipo de marketing publica en cualquier idioma. Medido en el sitio online, el build puntúa prolijo.",
       metrics: [
         { label: "Lighthouse SEO" },
         { label: "Lighthouse buenas prácticas" },
@@ -871,7 +871,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       ],
       resultsStatement: "Un sitio que se siente como una clase: rápido, lúdico, inconfundiblemente BIKE.",
       resultsSub:
-        "Entregado en Webflow y traspasado prolijo: el equipo maneja cursos, contenido y formularios solo. Medido en el sitio en vivo, el build aguanta donde importa.",
+        "Entregado en Webflow y traspasado prolijo: el equipo maneja cursos, contenido y formularios solo. Medido en el sitio online, el build aguanta donde importa.",
       metrics: [
         { label: "Lighthouse SEO" },
         { label: "Lighthouse accesibilidad" },
@@ -935,7 +935,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       ],
       resultsStatement: "La prueba de que puedo llevar una marca de la página en blanco a producción: diseño, copy, código y SEO.",
       resultsSub:
-        "Sin framework, sin page builder: un sitio estático rápido que tengo de punta a punta. Los números de abajo están medidos en el build en vivo.",
+        "Sin framework, sin page builder: un sitio estático rápido que tengo de punta a punta. Los números de abajo están medidos en el build online.",
       metrics: [
         { label: "Lighthouse SEO" },
         { label: "Lighthouse buenas prácticas" },
@@ -974,7 +974,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
         { value: "Webflow · GSAP · Illustrator" },
         { value: "Webflow Localization · es / en" },
       ],
-      buildHeading: "Un sitio de plataforma que se gana la palabra “seguro”.",
+      buildHeading: "Un sitio que se gana la palabra “seguro”.",
       buildLead:
         "Construí Nextfense en Webflow con un *enfoque de seis pilares armado alrededor de ilustración a medida en Illustrator*: iconografía de seguridad abstracta que le da a un servicio intangible algo para mirar. Todo es bilingüe (es/en) sobre Webflow Localization, manejado por CMS para casos y blog, con GSAP llevando un movimiento contenido y con la marca.",
       shots: [
@@ -999,7 +999,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       ],
       resultsStatement: "Un sitio que se lee tan creíble como el servicio que vende.",
       resultsSub:
-        "Bilingüe, manejado por CMS y traspasado prolijo. Medido en el sitio en vivo, el build puntúa donde se decide la confianza.",
+        "Bilingüe, manejado por CMS y traspasado prolijo. Medido en el sitio online, el build puntúa donde se decide la confianza.",
       metrics: [
         { label: "Lighthouse SEO" },
         { label: "Lighthouse buenas prácticas" },
@@ -1056,7 +1056,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       ],
       resultsStatement: "Un sitio que por fin luce como debe: un siglo de confianza, online.",
       resultsSub:
-        "Entregado en Webflow y traspasado prolijo. Los números de abajo están medidos en el sitio en vivo.",
+        "Entregado en Webflow y traspasado prolijo. Los números de abajo están medidos en el sitio online.",
       metrics: [
         { label: "Lighthouse SEO" },
         { label: "Lighthouse buenas prácticas" },
