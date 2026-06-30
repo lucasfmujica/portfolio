@@ -79,7 +79,7 @@
     "lede": "Soy Lucas, desarrollador Webflow & front-end senior. Pero hay más que el trabajo, así que acá va el resto.",
     "intro": [
       "Construyo sitios web para vivir, pero lo que de verdad me gusta son los sistemas, esos que convierten algo desordenado en algo que simplemente *funciona*. Ese instinto aparece en todos lados: en una librería de componentes que el equipo de un cliente puede manejar solo, en las aperturas que estudio antes de un torneo, en cómo planifico un viaje hasta el último tren.",
-      "Fuera del horario, suelo estar haciendo una de cuatro cosas: moviendo peones, persiguiendo una pelota sobre el polvo de ladrillo, tomándome un vuelo a algún lugar nuevo, o cantando mal a propósito. Nada de eso está desconectado. Es toda la misma curiosidad, apuntada en direcciones distintas."
+      "Fuera del horario, suelo estar haciendo una de cuatro cosas: moviendo peones, persiguiendo una pelota sobre el polvo de ladrillo, tomándome un vuelo a algún lugar nuevo, o cantando mal a propósito. Nada de eso va por separado. Es toda la misma curiosidad, apuntada en direcciones distintas."
     ],
     "moreOnHome": "Más sobre mí",
     "journeyEyebrow": "experiencia",
@@ -98,7 +98,7 @@
         "role": "Desarrollador Webflow Senior",
         "period": "Ene 2022 – Oct 2025",
         "location": "Bergen, Noruega · Remoto",
-        "note": "Entregué más de 80 sitios productivos para clientes internacionales: estandarizando Client-First, construyendo sistemas reutilizables de símbolos/utilidades e interacciones avanzadas con GSAP, y automatizando reportes con Make & Zapier para ahorrarle al equipo de marketing más de 10 hs por semana."
+        "note": "Entregué más de 80 sitios en producción para clientes internacionales: estandarizando Client-First, construyendo sistemas reutilizables de símbolos/utilidades e interacciones avanzadas con GSAP, y automatizando reportes con Make & Zapier para ahorrarle al equipo de marketing más de 10 hs por semana."
       },
       {
         "company": "Clearframe Studio",
@@ -120,7 +120,7 @@
     "facetsLede": "Las cosas que me mantienen curioso y, sin hacer ruido, me hacen mejor en el trabajo.",
     "chessLabel": "ajedrez",
     "chessTitle": "Ajedrez, desde que era chico",
-    "chessBody": "Mi obsesión más vieja. Fui subcampeón del torneo Ciudad de Buenos Aires sub-10 a los 8 años. Me alejé un tiempo y volví con todo en 2021. Ahora juego torneos individuales todo el año e incluso viajo a competir con un equipo. Es donde entreno la paciencia y la lectura de patrones con las que también funciona el trabajo.",
+    "chessBody": "Mi obsesión más vieja. Fui subcampeón del torneo Ciudad de Buenos Aires sub-10 a los 8 años. Me alejé un tiempo y volví con todo en 2021. Ahora juego torneos individuales todo el año e incluso viajo a competir con un equipo. Es donde entreno la paciencia y la lectura de patrones que el trabajo también necesita.",
     "chessImg": "/assets/about/chess.jpg",
     "chessPhotoAlt": "Lucas estudiando el tablero en un torneo de ajedrez",
     "chessStat": "Subcampeón Ciudad sub-10 · 8 años",
@@ -136,7 +136,7 @@
     "gotPhotoAlt": "Lucas en la réplica del Trono de Hierro de Game of Thrones en Split",
     "singingLabel": "canto",
     "singingTitle": "La voz, fuera del horario",
-    "singingBody": "Tomé clases de canto y nunca paré del todo. Vive en un pequeño TikTok, solo por el gusto de hacerlo.",
+    "singingBody": "Tomé clases de canto y nunca paré del todo. Vive en un TikTok chiquito, solo por el gusto de hacerlo.",
     "singingCta": "@justlucassinging",
     "singingImg": "/assets/about/singing.jpg",
     "singingPhotoAlt": "Lucas al teclado con un mate",
