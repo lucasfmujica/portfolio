@@ -69,7 +69,7 @@ const testimonialsEs: Record<string, Pick<Testimonial, "quote" | "role">> = {
   "Artem Khomenko": {
     role: "CTO",
     quote:
-      "Un desarrollador sólido, con una atención al detalle afilada y la capacidad de entregar soluciones muy a medida *dentro de las limitaciones* de la plataforma. Muy recomendable.",
+      "Un desarrollador sólido, con una atención al detalle aguda y la capacidad de entregar soluciones muy a medida *dentro de las limitaciones* de la plataforma. Muy recomendable.",
   },
   "Carolina Freese": {
     role: "Fundadora",

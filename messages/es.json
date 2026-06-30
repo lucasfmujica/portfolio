@@ -63,8 +63,8 @@
   },
   "About": {
     "eyebrow": "sobre mí",
-    "heading": "Un desarrollador Webflow senior que *entrega*.",
-    "lede": "Más de cinco años y más de 100 proyectos de Webflow de nivel producción. Builds que priorizan los componentes, con arquitectura de CMS que los equipos de marketing y las pequeñas empresas realmente disfrutan manejando. Certificado en Client-First, GSAP para el movimiento y React / Next.js cuando un proyecto lo pide. Rápido el día uno, todavía fácil de editar un año después.",
+    "heading": "Un desarrollador Webflow senior que *cumple*.",
+    "lede": "Más de cinco años y más de 100 proyectos de Webflow de nivel producción. Builds que priorizan los componentes, con arquitectura de CMS que los equipos de marketing y las pequeñas empresas de verdad disfrutan manejar. Certificado en Client-First, GSAP para el movimiento y React / Next.js cuando un proyecto lo pide. Rápido el día uno, todavía fácil de editar un año después.",
     "statYears": "años construyendo",
     "statProjects": "proyectos entregados",
     "cred": ["Webflow Certified Expert", "Remoto, en todo el mundo"],
@@ -192,7 +192,7 @@
       {
         "n": "03",
         "icon": "trending-up",
-        "title": "Lanzar, y después ganárselo",
+        "title": "Lanzá, y después ganátelo",
         "body": "Lanzar es el comienzo, no el final. Ajusto contra datos reales hasta que los números se mueven. Las opiniones no votan."
       }
     ]
@@ -200,7 +200,7 @@
   "Testimonials": {
     "eyebrow": "testimonios",
     "heading": "No te fíes solo de mi *palabra*.",
-    "lede": "Resultados comprobados, de las personas que construyeron a mi lado."
+    "lede": "Resultados comprobados, de la gente que construyó conmigo."
   },
   "Contact": {
     "eyebrow": "empezar un proyecto",

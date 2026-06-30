@@ -743,7 +743,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
           placeholder: "Pedido: poné screenshot",
         },
       ],
-      resultsStatement: "La tienda por fin se siente como el producto: pensada, audaz y propia para manejar.",
+      resultsStatement: "La tienda por fin se siente como el producto: pensada, audaz y suya para manejar.",
       resultsSub:
         "Entregada en Webflow y traspasada prolija: el equipo agrega kits desde el CMS. Los números de abajo están medidos en la tienda en vivo.",
       metrics: [
@@ -839,7 +839,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       services: ["Desarrollo", "Construcción web", "Movimiento", "Webflow CMS"],
       challengeHeading: "Un método construido sobre el movimiento, aplanado en una página estática.",
       challengeBody:
-        "BIKE enseña inglés como se aprende a andar en bici: haciéndolo, desde el día uno. La marca se apoya entera en esa metáfora (pedalear como progreso), así que un sitio plano y convencional habría *socavado todo el pitch*. Necesitaba un movimiento que se sintiera lúdico y ganado, una estructura que el equipo pudiera seguir editando, y la personalidad para llevar los niveles de A1 a C2 sin sentirse nunca como un libro de texto.",
+        "BIKE enseña inglés como se aprende a andar en bici: haciéndolo, desde el día uno. La marca se apoya entera en esa metáfora (pedalear como progreso), así que un sitio plano y convencional habría *tirado abajo todo el pitch*. Necesitaba un movimiento que se sintiera lúdico y que se ganara su lugar, una estructura que el equipo pudiera seguir editando, y la personalidad para llevar los niveles de A1 a C2 sin sentirse nunca como un libro de texto.",
       challengeVisualCaption: "bike.uy · inicio",
       specs: [
         { value: "Build front-end (diseño: Clearframe Studio)" },
@@ -903,7 +903,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       services: ["Estrategia", "Diseño", "Copywriting", "Desarrollo", "SEO"],
       challengeHeading: "Un servicio cálido y artesanal, sin un sitio que lo mostrara.",
       challengeBody:
-        "Home Organizers ayuda a dueños de casa ocupados de Long Island a recuperar su espacio, y toda la promesa es *calma sin juzgar*. Esa sensación es difícil de fingir con una plantilla. Tomé el proyecto de punta a punta (diseño, copy, SEO y código) y elegí construirlo a mano: sin Webflow, sin framework, sin build step, así cada detalle de la sensación y el rendimiento quedaba mío para ajustar.",
+        "Home Organizers ayuda a dueños de casa ocupados de Long Island a recuperar su espacio, y toda la promesa es *calma sin juzgar*. Esa sensación es difícil de fingir con una plantilla. Tomé el proyecto de punta a punta (diseño, copy, SEO y código) y elegí construirlo a mano: sin Webflow, sin framework, sin build step, así cada detalle de la sensación y el rendimiento quedaba en mis manos para ajustar.",
       challengeVisualCaption: "homeorganizersli.com · inicio",
       specs: [
         { value: "Diseño, build, copy & SEO" },
@@ -1017,7 +1017,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
     imageAlt: "Seilas Ship Supplies: 'Desde 1921, tu proveedor naval de confianza en Uruguay'",
     caseStudy: {
       outcome: {
-        pre: "Un proveedor naval que abastece los puertos de Uruguay hace un siglo. El sitio tenía que cargar ese ",
+        pre: "Un proveedor naval que abastece los puertos de Uruguay hace un siglo. El sitio tenía que estar a la altura de ese ",
         ember: "legado.",
       },
       heroImageAlt: "Seilas Ship Supplies: 'Desde 1921, tu proveedor naval de confianza en Uruguay'",
@@ -1030,7 +1030,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       services: ["Estrategia", "Diseño web", "Desarrollo", "Webflow CMS"],
       challengeHeading: "Cien años de confianza, y nada online que lo mostrara.",
       challengeBody:
-        "Seilas Ship Supplies (Nadetir S.A.) abastece embarcaciones en todos los puertos de Uruguay desde 1921: equipo de cubierta y seguridad, insumos de sala de máquinas, provisiones, pañol aduanero. Un siglo de reputación, pero una presencia web que *no cargaba el peso*. El brief: un sitio B2B creíble, con aire internacional, que diga “de confianza desde 1921” sin decir una palabra.",
+        "Seilas Ship Supplies (Nadetir S.A.) abastece embarcaciones en todos los puertos de Uruguay desde 1921: equipo de cubierta y seguridad, insumos de sala de máquinas, provisiones, pañol aduanero. Un siglo de reputación, pero una presencia web que *no estaba a la altura*. El brief: un sitio B2B creíble, con aire internacional, que diga “de confianza desde 1921” sin decir una palabra.",
       challengeVisualCaption: "nadetir.com · inicio",
       specs: [
         { value: "Build front-end" },
@@ -1054,7 +1054,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
           placeholder: "Sobre / historia: poné screenshot",
         },
       ],
-      resultsStatement: "Un sitio que por fin está a la altura: un siglo de confianza, online.",
+      resultsStatement: "Un sitio que por fin luce como debe: un siglo de confianza, online.",
       resultsSub:
         "Entregado en Webflow y traspasado prolijo. Los números de abajo están medidos en el sitio en vivo.",
       metrics: [
