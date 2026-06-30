@@ -15,9 +15,14 @@ let firstPaint = true;
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
-  // `firstPaint` is module-scoped, so it stays false after the initial load and
-  // the curtain only plays on subsequent client navigations.
-  const showCurtain = useRef(!firstPaint);
+  // The curtain must NEVER land in server-rendered HTML. `firstPaint` is
+  // module-scoped and shared across SSR requests, so on a warm server it leaks
+  // `false` and renders the curtain server-side — but the freshly-loaded client
+  // always starts at `firstPaint === true` and renders nothing, so the two
+  // disagree (hydration mismatch + a curtain flash on initial load). Gating on
+  // `window` keeps both SSR and the hydration render deterministically
+  // curtain-less; the curtain only ever shows on later client navigations.
+  const showCurtain = useRef(typeof window !== "undefined" && !firstPaint);
   firstPaint = false;
 
   useGSAP(
