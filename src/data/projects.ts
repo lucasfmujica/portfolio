@@ -708,7 +708,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       highlights: [
         "Un catálogo manejado por CMS que el *equipo familiar maneja y hace crecer solo*.",
         "Webflow Ecommerce nativo + flujo de cotización a medida, integrado con la marca.",
-        "Construido para escalar: las nuevas líneas entran como componentes, no como rehacer todo.",
+        "Construido para escalar: las nuevas líneas entran como componentes, sin rehacer nada.",
       ],
       services: ["Estrategia", "Diseño web", "Desarrollo", "Webflow Ecommerce", "Webflow CMS"],
       challengeHeading: "Un producto premium, hecho a pedido, en una góndola genérica.",
@@ -743,7 +743,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
           placeholder: "Pedido: poné screenshot",
         },
       ],
-      resultsStatement: "La tienda por fin se siente como el producto: pensada, audaz y suya para manejar.",
+      resultsStatement: "La tienda por fin se siente como el producto: pensada, audaz y suya.",
       resultsSub:
         "Entregada en Webflow y traspasada prolija: el equipo agrega kits desde el CMS. Los números de abajo están medidos en la tienda en vivo.",
       metrics: [
@@ -763,7 +763,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
     imageAlt: "K2BTools: sitio de herramientas de desarrollo para GeneXus",
     caseStudy: {
       outcome: {
-        pre: "Una empresa de developer tools cuyo sitio tenía que sentirse tan afilado como el ",
+        pre: "Una empresa de developer tools cuyo sitio tenía que sentirse tan pulido como el ",
         ember: "producto.",
       },
       heroImageAlt: "K2BTools: home 'Impulsamos el mundo GeneXus'",
@@ -771,12 +771,12 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       highlights: [
         "Un sistema de componentes Client-First con el que el *equipo de marketing publica páginas solo*.",
         "Trilingüe sobre Webflow Localization: es / en / pt desde un solo CMS.",
-        "Más de ocho productos hechos legibles sin enterrar al comprador.",
+        "Más de ocho productos que se entienden sin enterrar al comprador.",
       ],
       services: ["Estrategia", "Desarrollo", "Sistema Client-First", "Webflow Localization"],
       challengeHeading: "Toda una suite de productos, tres idiomas, un equipo para manejarlo.",
       challengeBody:
-        "K2BTools construye herramientas que aceleran el desarrollo en GeneXus: más de ocho productos, desde generadores web y mobile hasta auditoría e IA. El sitio tenía que hacer ese abanico *legible sin enterrar al comprador*, salir en español, inglés y portugués, y quedar editable por el equipo de marketing. El movimiento tenía que señalar calidad de ingeniería sin frenar la página.",
+        "K2BTools construye herramientas que aceleran el desarrollo en GeneXus: más de ocho productos, desde generadores web y mobile hasta auditoría e IA. El sitio tenía que hacer que ese abanico se *entendiera sin enterrar al comprador*, salir en español, inglés y portugués, y quedar editable por el equipo de marketing. El movimiento tenía que señalar calidad de ingeniería sin frenar la página.",
       challengeVisualCaption: "k2btools.com · inicio",
       specs: [
         { value: "Build front-end" },
@@ -833,7 +833,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       heroBadge: "bike.uy · inicio",
       highlights: [
         "Cursos, contenido y formularios que el *equipo maneja solo* desde el CMS.",
-        "Un preloader a medida y reveals pausados que marcan el tono de la marca.",
+        "Un preloader a medida y reveals bien acompasados que marcan el tono de la marca.",
         "Un 404 interactivo con una bici 3D que convierte un callejón sin salida en parte de la marca.",
       ],
       services: ["Desarrollo", "Construcción web", "Movimiento", "Webflow CMS"],
@@ -848,7 +848,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       ],
       buildHeading: "Un sitio que se mueve como lo hace una conversación.",
       buildLead:
-        "Construí BIKE en Webflow con GSAP llevando el movimiento: un *preloader a medida* que marca el tono antes del primer scroll, reveals que pausan la historia, y acordeones y formularios con Finsweet que el equipo maneja solo. El 404 es su propio pequeño momento: una bicicleta interactiva en Spline para cualquiera que pedalee hacia un lugar que todavía no existe.",
+        "Construí BIKE en Webflow con GSAP llevando el movimiento: un *preloader a medida* que marca el tono antes del primer scroll, reveals que le dan ritmo a la historia, y acordeones y formularios con Finsweet que el equipo maneja solo. El 404 tiene su propio momentito: una bicicleta interactiva en Spline para cualquiera que pedalee hacia un lugar que todavía no existe.",
       shots: [
         {
           label: "01 / Loader",
@@ -896,14 +896,14 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       heroImageAlt: "Home Organizers Long Island: 'un hogar que por fin se siente en calma'",
       heroBadge: "homeorganizersli.com · inicio",
       highlights: [
-        "Tomado de punta a punta: *diseño, copy, SEO y código escrito a mano*.",
+        "Hecho de punta a punta: *diseño, copy, SEO y código escrito a mano*.",
         "Un slider de revelado antes/después construido desde cero en vanilla JS.",
         "SEO deliberado, hasta el schema JSON-LD LocalBusiness.",
       ],
       services: ["Estrategia", "Diseño", "Copywriting", "Desarrollo", "SEO"],
       challengeHeading: "Un servicio cálido y artesanal, sin un sitio que lo mostrara.",
       challengeBody:
-        "Home Organizers ayuda a dueños de casa ocupados de Long Island a recuperar su espacio, y toda la promesa es *calma sin juzgar*. Esa sensación es difícil de fingir con una plantilla. Tomé el proyecto de punta a punta (diseño, copy, SEO y código) y elegí construirlo a mano: sin Webflow, sin framework, sin build step, así cada detalle de la sensación y el rendimiento quedaba en mis manos para ajustar.",
+        "Home Organizers ayuda a dueños de casa ocupados de Long Island a recuperar su espacio, y toda la promesa es *calma sin juzgar*. Esa sensación es difícil de fingir con una plantilla. Agarré el proyecto entero (diseño, copy, SEO y código) y elegí construirlo a mano: sin Webflow, sin framework, sin build step, así cada detalle de la sensación y el rendimiento quedaba en mis manos para ajustar.",
       challengeVisualCaption: "homeorganizersli.com · inicio",
       specs: [
         { value: "Diseño, build, copy & SEO" },
@@ -976,7 +976,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       ],
       buildHeading: "Un sitio de plataforma que se gana la palabra “seguro”.",
       buildLead:
-        "Construí Nextfense en Webflow con un *enfoque de seis pilares dispuesto alrededor de ilustración a medida en Illustrator*: iconografía de seguridad abstracta que le da a un servicio intangible algo para mirar. Todo es bilingüe (es/en) sobre Webflow Localization, manejado por CMS para casos y blog, con GSAP llevando un movimiento contenido y con la marca.",
+        "Construí Nextfense en Webflow con un *enfoque de seis pilares armado alrededor de ilustración a medida en Illustrator*: iconografía de seguridad abstracta que le da a un servicio intangible algo para mirar. Todo es bilingüe (es/en) sobre Webflow Localization, manejado por CMS para casos y blog, con GSAP llevando un movimiento contenido y con la marca.",
       shots: [
         {
           label: "01 / Nextfense Core",
@@ -1037,9 +1037,9 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
         { value: "Webflow · CMS" },
         { value: "Webflow CMS" },
       ],
-      buildHeading: "Un hogar global y prolijo para un proveedor centenario.",
+      buildHeading: "Una presencia global y prolija para un proveedor centenario.",
       buildLead:
-        "Construí el sitio en Webflow: sobrio, seguro y hecho para escalar. Un *mapa mundial de más de 500 clientes en más de 30 países* ancla la historia, todo el rango de servicios está presentado para compradores marítimos, y la herencia de 1921 de la marca atraviesa todo. Manejado por CMS donde cuenta, así el equipo lo mantiene al día.",
+        "Construí el sitio en Webflow: sobrio, seguro y hecho para escalar. Un *mapa mundial de más de 500 clientes en más de 30 países* ancla la historia, toda la gama de servicios está presentada para compradores marítimos, y la herencia de 1921 de la marca atraviesa todo. Manejado por CMS donde cuenta, así el equipo lo mantiene al día.",
       shots: [
         {
           label: "01 / Home",
