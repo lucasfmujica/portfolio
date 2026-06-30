@@ -50,8 +50,8 @@
   },
   "Work": {
     "eyebrow": "trabajos seleccionados",
-    "heading": "Proyectos que estoy *orgulloso* de firmar.",
-    "lede": "Cada uno está construido para ser propio: un sistema de componentes que el equipo del cliente puede manejar, escalar y mantener, sin un desarrollador de guardia.",
+    "heading": "Proyectos que firmo con *orgullo*.",
+    "lede": "Cada uno está hecho para ser suyo: un sistema de componentes que el equipo del cliente puede manejar, escalar y mantener, sin un desarrollador de guardia.",
     "viewAll": "Ver todos los proyectos",
     "seeAll": "Ver todos los proyectos",
     "viewCase": "Ver caso de estudio",
@@ -76,7 +76,7 @@
   "AboutPage": {
     "eyebrow": "sobre mí",
     "heading": "La persona *detrás de los proyectos*.",
-    "lede": "Soy Lucas, desarrollador Webflow & front-end senior. Pero hay más en la historia que el trabajo, así que acá va el resto.",
+    "lede": "Soy Lucas, desarrollador Webflow & front-end senior. Pero hay más que el trabajo, así que acá va el resto.",
     "intro": [
       "Construyo sitios web para vivir, pero lo que de verdad me gusta son los sistemas, esos que convierten algo desordenado en algo que simplemente *funciona*. Ese instinto aparece en todos lados: en una librería de componentes que el equipo de un cliente puede manejar solo, en las aperturas que estudio antes de un torneo, en cómo planifico un viaje hasta el último tren.",
       "Fuera del horario, suelo estar haciendo una de cuatro cosas: moviendo peones, persiguiendo una pelota sobre el polvo de ladrillo, tomándome un vuelo a algún lugar nuevo, o cantando mal a propósito. Nada de eso está desconectado. Es toda la misma curiosidad, apuntada en direcciones distintas."
@@ -84,7 +84,7 @@
     "moreOnHome": "Más sobre mí",
     "journeyEyebrow": "experiencia",
     "journeyHeading": "Dónde *construí*.",
-    "journeyLede": "Los equipos y estudios con los que entregué trabajo.",
+    "journeyLede": "Los equipos y estudios con los que saqué proyectos adelante.",
     "journey": [
       {
         "company": "WonderUp",
@@ -154,7 +154,7 @@
     ],
     "ctaEyebrow": "hablemos",
     "ctaHeading": "¿Te gusta cómo pienso? *Construyamos algo*.",
-    "ctaLede": "Sea un sitio, una migración, o un sistema que hay que desenredar, me encantaría que me cuentes.",
+    "ctaLede": "Ya sea un sitio, una migración o un sistema que hay que desenredar, me encantaría que me cuentes.",
     "ctaPrimary": "Empezar un proyecto",
     "ctaGhost": "Ver el trabajo",
     "backHome": "Volver al inicio"
@@ -199,13 +199,13 @@
   },
   "Testimonials": {
     "eyebrow": "testimonios",
-    "heading": "No te fíes solo de mi *palabra*.",
+    "heading": "No te quedes solo con mi *palabra*.",
     "lede": "Resultados comprobados, de la gente que construyó conmigo."
   },
   "Contact": {
     "eyebrow": "empezar un proyecto",
-    "heading": "Listos para construir.",
-    "lead": "Unos datos rápidos para que pueda dimensionarlo antes incluso de hablar, o escribime directo.",
+    "heading": "Listo para construir.",
+    "lead": "Unos datos rápidos para que pueda dimensionarlo antes de hablar siquiera, o escribime directo.",
     "email": "hello@lucasmujica.dev",
     "available": "Respondo en menos de un día",
     "location": "Buenos Aires · Remoto en todo el mundo",
@@ -279,7 +279,7 @@
     "title": "Política de privacidad",
     "updated": "Última actualización: {date}",
     "shortHeading": "La versión corta",
-    "shortBody": "Este sitio no usa cookies, no corre rastreadores de publicidad y no vende ni comparte tus datos con nadie. Lo único que toca son estadísticas de visita anónimas y lo que vos elijas enviarme cuando te pongas en contacto.",
+    "shortBody": "Este sitio no usa cookies, no corre rastreadores de publicidad y no vende ni comparte tus datos con nadie. Lo único que maneja son estadísticas de visita anónimas y lo que vos elijas mandarme cuando me escribas.",
     "analyticsHeading": "Analítica",
     "analyticsBody": "Uso Vercel Web Analytics para entender cómo se usa el sitio: vistas de página, referrers, país, tipo de dispositivo. No usa cookies y no identifica a visitantes individuales. Las visitas se reconocen con un hash temporal que se descarta cuando la visita termina, así no se te puede rastrear entre sitios ni a lo largo del tiempo. Mirá <link>la documentación de privacidad de analytics de Vercel</link> para más detalle.",
     "contactHeading": "Contacto",
