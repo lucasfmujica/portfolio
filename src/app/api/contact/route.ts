@@ -35,6 +35,7 @@ export async function POST(req: Request) {
   const type = (data.type ?? "").trim();
   const budget = (data.budget ?? "").trim();
   const message = (data.message ?? "").trim();
+  const source = (data.source ?? "").trim() || "direct";
 
   if (!name || !isEmail(email)) {
     return NextResponse.json(
@@ -54,6 +55,7 @@ export async function POST(req: Request) {
     company && `Company: ${company}`,
     type && `Project: ${type}`,
     budget && `Budget: ${budget}`,
+    `Source: ${source}`,
   ].filter(Boolean) as string[];
 
   const text = message ? `${lines.join("\n")}\n\nMessage:\n${message}` : lines.join("\n");
@@ -66,7 +68,7 @@ export async function POST(req: Request) {
       from: FROM,
       to: TO,
       replyTo: email,
-      subject: `New project inquiry: ${name}`,
+      subject: `New inquiry from ${source} — ${name}`,
       text,
       html,
     });

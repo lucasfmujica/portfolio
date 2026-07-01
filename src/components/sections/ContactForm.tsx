@@ -2,6 +2,8 @@
 
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { track } from "@vercel/analytics";
+import { getLeadSource } from "@/lib/leadSource";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -34,13 +36,16 @@ export function ContactForm() {
     setInvalid({});
     setStatus("submitting");
 
+    const source = getLeadSource();
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, source }),
       });
       if (!res.ok) throw new Error(`Form submission failed: ${res.status}`);
+      track("lead_submitted", { source });
       setStatus("success");
     } catch {
       setStatus("error");
