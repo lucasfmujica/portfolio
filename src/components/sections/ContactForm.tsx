@@ -21,6 +21,15 @@ export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [invalid, setInvalid] = useState<{ name?: boolean; email?: boolean }>({});
   const formRef = useRef<HTMLFormElement>(null);
+  const startedRef = useRef(false);
+
+  // Fire once when the visitor first touches the form — lets us measure the
+  // started-vs-submitted drop-off (form friction) in Vercel Analytics.
+  const handleStart = () => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    track("contact_started", {});
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,7 +76,7 @@ export function ContactForm() {
   }
 
   return (
-    <form ref={formRef} method="POST" onSubmit={handleSubmit} noValidate>
+    <form ref={formRef} method="POST" onSubmit={handleSubmit} onInput={handleStart} noValidate>
       {/* Honeypot — bots fill hidden fields; the server drops any submission
           that has it set. */}
       <p hidden>

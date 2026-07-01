@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
+import { track } from "@vercel/analytics";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
@@ -43,6 +44,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
   const select = (loc: Locale) => {
     setOpen(false);
     if (loc === active) return;
+    track("language_switch", { from: active, to: loc });
     startTransition(() => router.replace(pathname, { locale: loc }));
   };
 

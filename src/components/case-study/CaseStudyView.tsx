@@ -7,6 +7,7 @@ import { ImageFill } from "@/components/ui/ImageFill";
 import { Icon } from "@/components/ui/Icon";
 import { CaseStudyHero } from "./CaseStudyHero";
 import { CaseStudyGallery } from "./CaseStudyGallery";
+import { CaseStudyReadTracker } from "./CaseStudyReadTracker";
 import { Metric } from "@/components/ui/Metric";
 import { getNextCaseStudy, type Project, type CaseStudy } from "@/data/projects";
 
@@ -154,6 +155,10 @@ export function CaseStudyView({
           </div>
         </RevealScope>
       )}
+
+      {/* End of the case-study content — read tracking sentinel sits here, before
+          the "next project" upsell, so `case_study_read` means they finished it. */}
+      <CaseStudyReadTracker slug={project.slug} />
 
       {/* Next project */}
       <RevealScope as="section" className="section cs-next">

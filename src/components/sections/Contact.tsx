@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { RevealScope } from "@/components/motion/RevealScope";
 import { RichText } from "@/components/ui/RichText";
 import { Icon } from "@/components/ui/Icon";
+import { TrackedAnchor } from "@/components/TrackedAnchor";
 import { ContactForm } from "./ContactForm";
 
 const SOCIALS = [
@@ -33,9 +34,14 @@ export function Contact() {
             {t("lead")}
           </p>
           <div className="contact__meta" data-reveal data-reveal-delay="2">
-            <a href={`mailto:${t("email")}`} className="contact__mail">
+            <TrackedAnchor
+              href={`mailto:${t("email")}`}
+              className="contact__mail"
+              event="email_click"
+              data={{ location: "contact" }}
+            >
               {t("email")} <Icon name="arrow-ur" />
-            </a>
+            </TrackedAnchor>
             <div className="contact__avail">
               <span className="contact__pulse" /> {t("available")}
             </div>
@@ -43,9 +49,17 @@ export function Contact() {
           </div>
           <div className="contact__socials" aria-label={t("socialsAria")} data-reveal data-reveal-delay="3">
             {SOCIALS.map((s) => (
-              <a key={s.name} href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer">
+              <TrackedAnchor
+                key={s.name}
+                href={s.href}
+                aria-label={s.label}
+                target="_blank"
+                rel="noopener noreferrer"
+                event="social_click"
+                data={{ network: s.label, location: "contact" }}
+              >
                 <Icon name={s.name} />
-              </a>
+              </TrackedAnchor>
             ))}
           </div>
         </div>

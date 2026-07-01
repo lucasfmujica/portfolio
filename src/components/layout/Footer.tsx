@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Icon } from "@/components/ui/Icon";
+import { TrackedAnchor } from "@/components/TrackedAnchor";
 import { CertBadge } from "@/components/ui/CertBadge";
 import { DraggableWord } from "@/components/motion/DraggableWord";
 import { Wordmark } from "./Wordmark";
@@ -24,9 +25,14 @@ export function Footer() {
           {t("ctaPre")}
           <DraggableWord className="ember-word">{t("ctaEmber")}</DraggableWord>
         </h2>
-        <a href={`mailto:${t("email")}`} className="footer__mail">
+        <TrackedAnchor
+          href={`mailto:${t("email")}`}
+          className="footer__mail"
+          event="email_click"
+          data={{ location: "footer" }}
+        >
           {t("email")} <span className="ember-word">↗</span>
-        </a>
+        </TrackedAnchor>
         <div className="footer__row">
           <Wordmark className="footer__wordmark" dotClass="footer__dot" />
           <nav className="footer__nav" aria-label={t("navAria")}>
@@ -38,9 +44,17 @@ export function Footer() {
           </nav>
           <div className="footer__soc" aria-label={t("socialsAria")}>
             {SOCIALS.map((s) => (
-              <a key={s.name} href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer">
+              <TrackedAnchor
+                key={s.name}
+                href={s.href}
+                aria-label={s.label}
+                target="_blank"
+                rel="noopener noreferrer"
+                event="social_click"
+                data={{ network: s.label, location: "footer" }}
+              >
                 <Icon name={s.name} />
-              </a>
+              </TrackedAnchor>
             ))}
           </div>
         </div>
