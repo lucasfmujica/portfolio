@@ -3,7 +3,7 @@
 import { useEffect, useState, type CSSProperties, type MouseEvent as ReactMouseEvent } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
-import { track } from "@vercel/analytics";
+import { trackEvent } from "@/lib/analytics";
 import { Link } from "@/i18n/navigation";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { Wordmark } from "./Wordmark";
@@ -138,7 +138,7 @@ export function MobileMenu() {
                     aria-label={s.label}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => track("social_click", { network: s.label, location: "menu" })}
+                    onClick={() => trackEvent("social_click", { network: s.label, location: "menu" })}
                   >
                     <Icon name={s.name} />
                   </a>

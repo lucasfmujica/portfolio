@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { track } from "@vercel/analytics";
+import { trackEvent } from "@/lib/analytics";
 import { getLeadSource } from "@/lib/leadSource";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -28,7 +28,7 @@ export function ContactForm() {
   const handleStart = () => {
     if (startedRef.current) return;
     startedRef.current = true;
-    track("contact_started", {});
+    trackEvent("contact_started", {});
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -54,7 +54,7 @@ export function ContactForm() {
         body: JSON.stringify({ ...data, source }),
       });
       if (!res.ok) throw new Error(`Form submission failed: ${res.status}`);
-      track("lead_submitted", { source });
+      trackEvent("lead_submitted", { source });
       setStatus("success");
     } catch {
       setStatus("error");

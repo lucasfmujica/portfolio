@@ -4,6 +4,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { LeadSourceTracker } from "@/components/LeadSourceTracker";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { ConsentBanner } from "@/components/ConsentBanner";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 
 import { routing, type Locale } from "@/i18n/routing";
@@ -94,6 +96,7 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   const messages = await getMessages();
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
     <html
@@ -117,8 +120,11 @@ export default async function LocaleLayout({
           <Footer />
           <ClientFX />
           <div className="grain" aria-hidden="true" />
+          {/* Inside the intl provider — ConsentBanner reads translations. */}
+          <ConsentBanner enabled={Boolean(gaId)} />
         </NextIntlClientProvider>
         <LeadSourceTracker />
+        {gaId && <GoogleAnalytics gaId={gaId} />}
         <Analytics />
         <SpeedInsights />
       </body>

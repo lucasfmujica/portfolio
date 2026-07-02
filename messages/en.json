@@ -40,7 +40,12 @@
     "line1": "I build",
     "line2": "websites that",
     "line3": "move.",
-    "cycle": ["convert.", "scale.", "last.", "move."],
+    "cycle": [
+      "convert.",
+      "scale.",
+      "last.",
+      "move."
+    ],
     "sub": "5+ years deep. I build high-performing, component-driven sites marketing teams and small businesses can own, scale and maintain long after launch.",
     "ctaPrimary": "Start a project",
     "ctaGhost": "View selected work",
@@ -67,7 +72,10 @@
     "lede": "Five-plus years and 100+ projects of production-grade Webflow. Component-first builds with CMS architecture that marketing teams and small businesses actually enjoy running. Client-First certified, GSAP for the motion, and React / Next.js when a build calls for it. Fast on day one, still easy to edit a year later.",
     "statYears": "years shipping",
     "statProjects": "projects delivered",
-    "cred": ["Webflow Certified Expert", "Remote, worldwide"],
+    "cred": [
+      "Webflow Certified Expert",
+      "Remote, worldwide"
+    ],
     "ctaPrimary": "Let's talk",
     "ctaGhost": "See the work",
     "ctaMore": "More about me",
@@ -148,9 +156,21 @@
     "galleryEyebrow": "in frames",
     "galleryHeading": "A few *moments*.",
     "gallery": [
-      { "img": "/assets/about/travel-rome.jpg", "alt": "Lucas at the Colosseum in Rome", "caption": "Rome, Italy" },
-      { "img": "/assets/about/gallery-belgrado.jpg", "alt": "Lucas playing chess in a park in Belgrade", "caption": "Chess in Belgrade" },
-      { "img": "/assets/about/frame-dubrovnik.jpg", "alt": "Lucas above the rooftops of Dubrovnik, Croatia", "caption": "Dubrovnik, Croatia" }
+      {
+        "img": "/assets/about/travel-rome.jpg",
+        "alt": "Lucas at the Colosseum in Rome",
+        "caption": "Rome, Italy"
+      },
+      {
+        "img": "/assets/about/gallery-belgrado.jpg",
+        "alt": "Lucas playing chess in a park in Belgrade",
+        "caption": "Chess in Belgrade"
+      },
+      {
+        "img": "/assets/about/frame-dubrovnik.jpg",
+        "alt": "Lucas above the rooftops of Dubrovnik, Croatia",
+        "caption": "Dubrovnik, Croatia"
+      }
     ],
     "ctaEyebrow": "let's talk",
     "ctaHeading": "Like how I think? Let's *build something*.",
@@ -165,11 +185,26 @@
     "headingEmber": "every time.",
     "lede": "Everything here is chosen for speed, maintainability, and shipping fast without cutting corners.",
     "tiers": {
-      "build": { "label": "Build", "items": "Webflow · Client-First · Lumos" },
-      "code": { "label": "Code", "items": "React · Next.js · TypeScript" },
-      "motion": { "label": "Motion", "items": "GSAP · ScrollTrigger · DrawSVG" },
-      "automation": { "label": "Automation", "items": "n8n · Make · Zapier" },
-      "connect": { "label": "Connect", "items": "HubSpot · Stripe · Notion" }
+      "build": {
+        "label": "Build",
+        "items": "Webflow · Client-First · Lumos"
+      },
+      "code": {
+        "label": "Code",
+        "items": "React · Next.js · TypeScript"
+      },
+      "motion": {
+        "label": "Motion",
+        "items": "GSAP · ScrollTrigger · DrawSVG"
+      },
+      "automation": {
+        "label": "Automation",
+        "items": "n8n · Make · Zapier"
+      },
+      "connect": {
+        "label": "Connect",
+        "items": "HubSpot · Stripe · Notion"
+      }
     }
   },
   "Process": {
@@ -220,8 +255,19 @@
     "madEmail": "you@email.com",
     "madMessageLead": "A bit about it (optional)",
     "madMessage": "What you're building, timeline, and what you've already got — brand, content, an existing site…",
-    "projectTypes": ["Webflow site", "Webflow migration", "web app", "automation"],
-    "budgets": ["$2–5k", "$5–10k", "$10–25k", "$25k+", "TBD"],
+    "projectTypes": [
+      "Webflow site",
+      "Webflow migration",
+      "web app",
+      "automation"
+    ],
+    "budgets": [
+      "$2–5k",
+      "$5–10k",
+      "$10–25k",
+      "$25k+",
+      "TBD"
+    ],
     "send": "Send it",
     "replyNote": "Replies within a day",
     "successHeading": "On its way. Talk soon.",
@@ -274,14 +320,16 @@
   },
   "Privacy": {
     "metaTitle": "Privacy · Lucas Mujica",
-    "metaDescription": "How lucasmujica.dev handles your data: no cookies, no trackers, anonymous analytics only.",
+    "metaDescription": "How lucasmujica.dev handles your data: privacy-first analytics, cookies only with your consent, and nothing sold or shared.",
     "eyebrow": "Privacy",
     "title": "Privacy policy",
     "updated": "Last updated: {date}",
     "shortHeading": "The short version",
-    "shortBody": "This site doesn't use cookies, doesn't run ad trackers, and doesn't sell or share your data with anyone. The only data it touches is anonymous visit statistics and whatever you choose to send me when you get in touch.",
+    "shortBody": "This site keeps data collection to a minimum. It only sets analytics cookies if you accept them, doesn't run ad trackers, and never sells or shares your data. The main data it touches is whatever you choose to send me when you get in touch.",
     "analyticsHeading": "Analytics",
-    "analyticsBody": "I use Vercel Web Analytics to understand how the site is used: page views, referrers, country, device type. It is cookieless and doesn't identify individual visitors. Visits are recognized through a temporary hash that is discarded after the visit ends, so you can't be tracked across sites or over time. See <link>Vercel's analytics privacy documentation</link> for details.",
+    "analyticsBody": "I use analytics to understand how the site is used — page views, referrers, country, device type, and which projects get read. Vercel Web Analytics runs by default and is cookieless: it never identifies individual visitors. Google Analytics 4 gives me more detail on engagement, and only runs after you accept it in the cookie banner. See <vlink>Vercel's</vlink> and <glink>Google's</glink> privacy documentation for details.",
+    "cookiesHeading": "Cookies",
+    "cookiesBody": "The site sets no analytics cookies unless you accept them in the banner. If you accept, Google Analytics stores a couple of cookies (such as _ga) to measure visits over time. If you decline, no analytics cookies are set and the site works exactly the same. Your accept-or-decline choice is remembered in your browser's local storage, and you can change it anytime by clearing your site data.",
     "contactHeading": "Contact",
     "contactBody": "If you email me or use a contact form on this site, I receive the details you send (your name, email address, and message) and use them only to reply to you. Form messages are delivered to my inbox via <link>Resend</link>, an email delivery service. I don't add you to any mailing list.",
     "prefsHeading": "Local preferences",
@@ -289,6 +337,13 @@
     "hostingHeading": "Hosting",
     "hostingBody": "The site is hosted on <link>Vercel</link>. Like any web host, Vercel processes standard request data (such as IP addresses) to serve the site and protect it from abuse.",
     "rightsHeading": "Your rights",
-    "rightsBody": "Since the site stores no personal data about visitors, there's usually nothing to request, but if you've contacted me and want your messages deleted, just ask. Questions about any of this: <email>hello@lucasmujica.dev</email>."
+    "rightsBody": "The site keeps no personal profile about you beyond anonymous analytics. If you've contacted me and want your messages deleted, or you want to withdraw analytics consent, just ask or clear your cookies. Questions about any of this: <email>hello@lucasmujica.dev</email>."
+  },
+  "Consent": {
+    "aria": "Cookie consent",
+    "body": "This site uses Google Analytics cookies to understand how it's used. Analytics stay off until you accept.",
+    "policy": "Privacy policy",
+    "accept": "Accept",
+    "decline": "Decline"
   }
 }

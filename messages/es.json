@@ -40,7 +40,12 @@
     "line1": "Construyo",
     "line2": "sitios web que",
     "line3": "se mueven.",
-    "cycle": ["convierten.", "escalan.", "perduran.", "se mueven."],
+    "cycle": [
+      "convierten.",
+      "escalan.",
+      "perduran.",
+      "se mueven."
+    ],
     "sub": "Más de 5 años de experiencia. Construyo sitios de alto rendimiento, basados en componentes, que los equipos de marketing y las pequeñas empresas pueden hacer propios, escalar y mantener mucho después del lanzamiento.",
     "ctaPrimary": "Empezar un proyecto",
     "ctaGhost": "Ver trabajos seleccionados",
@@ -67,7 +72,10 @@
     "lede": "Más de cinco años y más de 100 proyectos de Webflow de nivel producción. Builds que priorizan los componentes, con arquitectura de CMS que los equipos de marketing y las pequeñas empresas de verdad disfrutan manejar. Certificado en Client-First, GSAP para el movimiento y React / Next.js cuando un proyecto lo pide. Rápido el día uno, todavía fácil de editar un año después.",
     "statYears": "años construyendo",
     "statProjects": "proyectos entregados",
-    "cred": ["Webflow Certified Expert", "Remoto, en todo el mundo"],
+    "cred": [
+      "Webflow Certified Expert",
+      "Remoto, en todo el mundo"
+    ],
     "ctaPrimary": "Hablemos",
     "ctaGhost": "Ver el trabajo",
     "ctaMore": "Más sobre mí",
@@ -148,9 +156,21 @@
     "galleryEyebrow": "en cuadros",
     "galleryHeading": "Algunos *momentos*.",
     "gallery": [
-      { "img": "/assets/about/travel-rome.jpg", "alt": "Lucas en el Coliseo de Roma", "caption": "Roma, Italia" },
-      { "img": "/assets/about/gallery-belgrado.jpg", "alt": "Lucas jugando al ajedrez en un parque de Belgrado", "caption": "Ajedrez en Belgrado" },
-      { "img": "/assets/about/frame-dubrovnik.jpg", "alt": "Lucas sobre los techos de Dubrovnik, Croacia", "caption": "Dubrovnik, Croacia" }
+      {
+        "img": "/assets/about/travel-rome.jpg",
+        "alt": "Lucas en el Coliseo de Roma",
+        "caption": "Roma, Italia"
+      },
+      {
+        "img": "/assets/about/gallery-belgrado.jpg",
+        "alt": "Lucas jugando al ajedrez en un parque de Belgrado",
+        "caption": "Ajedrez en Belgrado"
+      },
+      {
+        "img": "/assets/about/frame-dubrovnik.jpg",
+        "alt": "Lucas sobre los techos de Dubrovnik, Croacia",
+        "caption": "Dubrovnik, Croacia"
+      }
     ],
     "ctaEyebrow": "hablemos",
     "ctaHeading": "¿Te gusta cómo pienso? *Construyamos algo*.",
@@ -165,11 +185,26 @@
     "headingEmber": "siempre.",
     "lede": "Todo lo que está acá está elegido por velocidad, mantenibilidad y entregar rápido sin tomar atajos.",
     "tiers": {
-      "build": { "label": "Construir", "items": "Webflow · Client-First · Lumos" },
-      "code": { "label": "Código", "items": "React · Next.js · TypeScript" },
-      "motion": { "label": "Movimiento", "items": "GSAP · ScrollTrigger · DrawSVG" },
-      "automation": { "label": "Automatización", "items": "n8n · Make · Zapier" },
-      "connect": { "label": "Conectar", "items": "HubSpot · Stripe · Notion" }
+      "build": {
+        "label": "Construir",
+        "items": "Webflow · Client-First · Lumos"
+      },
+      "code": {
+        "label": "Código",
+        "items": "React · Next.js · TypeScript"
+      },
+      "motion": {
+        "label": "Movimiento",
+        "items": "GSAP · ScrollTrigger · DrawSVG"
+      },
+      "automation": {
+        "label": "Automatización",
+        "items": "n8n · Make · Zapier"
+      },
+      "connect": {
+        "label": "Conectar",
+        "items": "HubSpot · Stripe · Notion"
+      }
     }
   },
   "Process": {
@@ -220,8 +255,19 @@
     "madEmail": "vos@email.com",
     "madMessageLead": "Algo sobre el proyecto (opcional)",
     "madMessage": "Qué estás construyendo, los tiempos y lo que ya tenés: marca, contenido, un sitio actual…",
-    "projectTypes": ["sitio Webflow", "migración Webflow", "web app", "automatización"],
-    "budgets": ["$2–5k", "$5–10k", "$10–25k", "$25k+", "A definir"],
+    "projectTypes": [
+      "sitio Webflow",
+      "migración Webflow",
+      "web app",
+      "automatización"
+    ],
+    "budgets": [
+      "$2–5k",
+      "$5–10k",
+      "$10–25k",
+      "$25k+",
+      "A definir"
+    ],
     "send": "Enviar",
     "replyNote": "Respondo en menos de un día",
     "successHeading": "En camino. Hablamos pronto.",
@@ -274,21 +320,30 @@
   },
   "Privacy": {
     "metaTitle": "Privacidad · Lucas Mujica",
-    "metaDescription": "Cómo lucasmujica.dev maneja tus datos: sin cookies, sin rastreadores, solo analítica anónima.",
+    "metaDescription": "Cómo lucasmujica.dev trata tus datos: analítica respetuosa con la privacidad, cookies solo con tu consentimiento y nada que se venda ni comparta.",
     "eyebrow": "Privacidad",
     "title": "Política de privacidad",
     "updated": "Última actualización: {date}",
     "shortHeading": "La versión corta",
-    "shortBody": "Este sitio no usa cookies, no corre rastreadores de publicidad y no vende ni comparte tus datos con nadie. Lo único que maneja son estadísticas de visita anónimas y lo que vos elijas mandarme cuando me escribas.",
+    "shortBody": "Este sitio recopila los datos mínimos. Solo instala cookies de analítica si las aceptás, no usa rastreadores publicitarios y nunca vende ni comparte tus datos. Lo principal que maneja es lo que decidas enviarme cuando me escribís.",
     "analyticsHeading": "Analítica",
-    "analyticsBody": "Uso Vercel Web Analytics para entender cómo se usa el sitio: vistas de página, referrers, país, tipo de dispositivo. No usa cookies y no identifica a visitantes individuales. Las visitas se reconocen con un hash temporal que se descarta cuando la visita termina, así no se te puede rastrear entre sitios ni a lo largo del tiempo. Mirá <link>la documentación de privacidad de analytics de Vercel</link> para más detalle.",
+    "analyticsBody": "Uso analítica para entender cómo se usa el sitio: vistas de página, referencias, país, tipo de dispositivo y qué proyectos se leen. Vercel Web Analytics funciona por defecto y no usa cookies: nunca identifica a visitantes individuales. Google Analytics 4 me da más detalle sobre la interacción, y solo se activa después de que lo aceptes en el aviso de cookies. Mirá la documentación de privacidad de <vlink>Vercel</vlink> y de <glink>Google</glink> para más detalle.",
+    "cookiesHeading": "Cookies",
+    "cookiesBody": "El sitio no instala cookies de analítica salvo que las aceptes en el aviso. Si aceptás, Google Analytics guarda un par de cookies (como _ga) para medir las visitas en el tiempo. Si rechazás, no se instala ninguna cookie de analítica y el sitio funciona exactamente igual. Tu decisión de aceptar o rechazar queda guardada en el almacenamiento local de tu navegador, y podés cambiarla cuando quieras borrando los datos del sitio.",
     "contactHeading": "Contacto",
-    "contactBody": "Si me escribís un email o usás un formulario de contacto del sitio, recibo los datos que mandás (tu nombre, dirección de email y mensaje) y los uso solo para responderte. Los mensajes del formulario llegan a mi casilla a través de <link>Resend</link>, un servicio de entrega de emails. No te sumo a ninguna lista de correo.",
+    "contactBody": "Si me escribís por email o usás un formulario de contacto, recibo los datos que envías (tu nombre, email y mensaje) y los uso solo para responderte. Los mensajes del formulario llegan a mi bandeja mediante <link>Resend</link>, un servicio de envío de emails. No te agrego a ninguna lista de correo.",
     "prefsHeading": "Preferencias locales",
-    "prefsBody": "Si personalizás el color de acento, esa elección se guarda en el local storage de tu navegador, solo en tu dispositivo. Nunca sale de tu navegador y podés borrarla cuando quieras desde la configuración del navegador.",
+    "prefsBody": "Si personalizás el color de acento, esa elección se guarda en el almacenamiento local de tu navegador, solo en tu dispositivo. Nunca sale de tu navegador y podés borrarla cuando quieras desde la configuración del navegador.",
     "hostingHeading": "Hosting",
-    "hostingBody": "El sitio está alojado en <link>Vercel</link>. Como cualquier hosting web, Vercel procesa datos estándar de las solicitudes (como direcciones IP) para servir el sitio y protegerlo de abusos.",
+    "hostingBody": "El sitio está alojado en <link>Vercel</link>. Como cualquier hosting, Vercel procesa datos estándar de las solicitudes (como direcciones IP) para servir el sitio y protegerlo de abusos.",
     "rightsHeading": "Tus derechos",
-    "rightsBody": "Como el sitio no guarda datos personales de los visitantes, por lo general no hay nada que solicitar, pero si te pusiste en contacto conmigo y querés que borre tus mensajes, pedímelo y listo. Cualquier duda sobre todo esto: <email>hello@lucasmujica.dev</email>."
+    "rightsBody": "El sitio no guarda ningún perfil personal tuyo más allá de la analítica anónima. Si me contactaste y querés que borre tus mensajes, o querés retirar el consentimiento de analítica, solo pedímelo o borrá tus cookies. Consultas sobre todo esto: <email>hello@lucasmujica.dev</email>."
+  },
+  "Consent": {
+    "aria": "Consentimiento de cookies",
+    "body": "Este sitio usa cookies de Google Analytics para entender cómo se usa. La analítica queda apagada hasta que aceptes.",
+    "policy": "Política de privacidad",
+    "accept": "Aceptar",
+    "decline": "Rechazar"
   }
 }

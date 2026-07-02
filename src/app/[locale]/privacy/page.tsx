@@ -8,8 +8,8 @@ import { siteName, siteUrl } from "@/lib/site";
 
 // Kept as a single source date; rendered in the visitor's locale below.
 const LAST_UPDATED: Record<Locale, string> = {
-  en: "June 10, 2026",
-  es: "10 de junio de 2026",
+  en: "July 1, 2026",
+  es: "1 de julio de 2026",
 };
 
 export function generateStaticParams() {
@@ -74,9 +74,13 @@ export default async function PrivacyPage({
         <h2>{t("analyticsHeading")}</h2>
         <p>
           {t.rich("analyticsBody", {
-            link: ext("https://vercel.com/docs/analytics/privacy-policy"),
+            vlink: ext("https://vercel.com/docs/analytics/privacy-policy"),
+            glink: ext("https://policies.google.com/privacy"),
           })}
         </p>
+
+        <h2>{t("cookiesHeading")}</h2>
+        <p>{t("cookiesBody")}</p>
 
         <h2>{t("contactHeading")}</h2>
         <p>

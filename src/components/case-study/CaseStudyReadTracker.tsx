@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { track } from "@vercel/analytics";
+import { trackEvent } from "@/lib/analytics";
 
 /**
  * Case-study engagement tracking. Fires two Vercel Analytics events:
@@ -17,7 +17,7 @@ export function CaseStudyReadTracker({ slug }: { slug: string }) {
   const sentinel = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    track("case_study_view", { slug });
+    trackEvent("case_study_view", { slug });
 
     const el = sentinel.current;
     if (!el) return;
@@ -26,7 +26,7 @@ export function CaseStudyReadTracker({ slug }: { slug: string }) {
     const obs = new IntersectionObserver((entries) => {
       if (done || !entries.some((e) => e.isIntersecting)) return;
       done = true;
-      track("case_study_read", { slug });
+      trackEvent("case_study_read", { slug });
       obs.disconnect();
     });
     obs.observe(el);
