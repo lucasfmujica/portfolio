@@ -54,7 +54,10 @@ export function ContactForm() {
         body: JSON.stringify({ ...data, source }),
       });
       if (!res.ok) throw new Error(`Form submission failed: ${res.status}`);
-      trackEvent("lead_submitted", { source });
+      // Param is `lead_source`, not `source`: GA4 already owns "source" as a
+      // session dimension, so a same-named event param reads as ambiguous in
+      // reports. Registered as the "Lead source" custom dimension.
+      trackEvent("lead_submitted", { lead_source: source });
       setStatus("success");
     } catch {
       setStatus("error");

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { trackEvent } from "@/lib/analytics";
 
 const KEY = "consent";
 
@@ -38,6 +39,11 @@ export function ConsentBanner({ enabled }: { enabled: boolean }) {
     if (choice === "granted" && typeof window.gtag === "function") {
       window.gtag("consent", "update", { analytics_storage: "granted" });
     }
+    // Fired after the consent update so an "accept" is measured with storage
+    // already granted. A "decline" still reaches GA4 as a cookieless ping, so
+    // both outcomes are countable — without this we can't tell "nobody accepts"
+    // apart from "the banner is broken".
+    trackEvent("consent_decision", { choice });
     setShow(false);
   };
 
