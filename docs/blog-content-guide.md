@@ -11,14 +11,38 @@ writing a third: `src/data/posts.ts`.
 ## 1. Who this is for
 
 Lucas is a senior Webflow developer in Buenos Aires, Client-First Certified,
-5+ years and 100+ production sites. He works remotely and is targeting **direct
-clients: small business owners and founders in the USA and Europe**, not
-agencies and not other developers.
+5+ years and 100+ production sites, working remotely.
 
-That audience decision drives everything below. The reader is a person deciding
-whether to hire someone, not a developer looking for a tutorial. They are
-technical enough to have heard of Webflow and not technical enough to care how a
-Webflow interaction is wired.
+**Write for the buyer who already has a budget and a complexity problem.** In
+practice that is:
+
+- Someone who found him through the **Finsweet Client-First certified experts
+  directory**, which is the strongest referral channel the site has.
+- **Agency referrals**, and agencies subcontracting a build they need done
+  properly.
+- **Marketing leads and founders at technology companies** with a job a
+  generalist would rather not take: multilingual, deep CMS, a rebuild of
+  something tangled, a site that has to survive real editorial load.
+
+**Who this is explicitly not for.** Not the small business owner googling what a
+website costs. `/services` publishes a USD 3k floor, and that reader is shopping
+for a template at a tenth of it. Writing toward them fills the contact form with
+the bottom budget tier, which is precisely where the risk of underpricing lives.
+It is not a question of being unfriendly to small clients, it is that a post
+written to win that search wins the wrong search.
+
+**On how technical to be.** The reader is not a developer, but do not assume they
+are unsophisticated. The buyer on a build like K2BTools or Nextfense is a
+marketing lead or a technical founder, and writing down to them costs authority.
+
+The rule is not "keep it non-technical", it is:
+
+> **The unit of explanation is a decision with a consequence, never an
+> implementation.**
+
+Be as technical as the argument requires. Explain what breaks, what it costs and
+what you would choose instead. Do not walk through how the thing was wired unless
+the wiring is the reason the decision went one way.
 
 **Write in English.** Spanish is a translation layer, added second (see §6).
 
@@ -26,22 +50,33 @@ Webflow interaction is wired.
 
 ## 2. What makes a good topic
 
-The bar: **a question a potential client has actually asked, or would type into
-Google before hiring someone.**
+The bar: **a question someone with a real budget asks when the job is hard
+enough that they are worried about getting it wrong.**
 
-Good topics look like objections and decisions:
+Two filters, and a topic has to pass both:
 
-- "Does animation make a Webflow site slow?" (an objection)
-- "Can Webflow Ecommerce handle made-to-order products?" (a feasibility question)
-- "Webflow vs WordPress for a small business" (a decision)
-- "What does a Webflow site actually cost?" (a decision)
-- "How long does a Webflow build take?" (a decision)
-- "What happens to my site after launch?" (a fear)
+1. **Does the person searching this already have money allocated?** A search that
+   attracts researchers rather than buyers is a bad search even if the volume
+   looks good.
+2. **Does answering it well demonstrate something a generalist could not?** If
+   any competent Webflow freelancer could have written the post, it does not
+   differentiate.
+
+Good topics look like feasibility questions and risk:
+
+- "Does animation make a Webflow site slow?" (an objection, published)
+- "Can Webflow Ecommerce handle made-to-order products?" (feasibility, published)
+- Running a site in three languages: what it actually involves
+- What "the client can run it themselves" has to mean structurally
+- Inheriting a Webflow site nobody can edit: rebuild or repair
+- What a site in a high-trust industry has to prove before it can sell
 
 Bad topics, and why:
 
 | Topic | Why not |
 |---|---|
+| "What does a Webflow site cost?" | Attracts the template-budget reader. Wins a search that fills the form with the bottom tier. |
+| "Webflow vs WordPress for a small business" | Same problem, and the framing invites the cheapest possible buyer. |
 | "10 best Webflow templates" | Listicle. No buying intent, infinite competition. |
 | "How to add a GSAP scroll trigger" | Developer audience. They are not hiring anyone. |
 | "Webflow just launched X" | News, dated in a month, and Webflow's own blog wins it. |
@@ -49,17 +84,41 @@ Bad topics, and why:
 
 **The strongest source of topics is the case studies themselves.** Every build in
 `src/data/projects.ts` solved a problem someone else also has. Pull the problem
-out, answer it generally, link back to the case study as evidence. Unmined
-material still sitting there:
+out, answer it generally, link back to the case study as evidence. Note the
+evidence ceiling in §5b before planning a run of posts.
 
-- **Home Organizers** — a before/after slider built from scratch in vanilla JS,
-  plus JSON-LD LocalBusiness markup. Topic: local SEO for a service business.
-- **K2BTools** — a trilingual site (es/en/pt) using Webflow Localization. Topic:
-  what running a multilingual site actually involves.
-- **Nextfense** — bilingual build for a cybersecurity firm. Topic: what a site
-  has to do to look trustworthy in a high-trust industry.
+### The queue, in order
+
+**1. Running a site in three languages.** Evidence: **K2BTools** (es/en/pt,
+Webflow Localization), supported by **Nextfense** (bilingual). This goes first
+because multilingual is the sharpest differentiator on the list: competition for
+the topic is low, most Webflow freelancers avoid the work, and **anyone
+searching for it already has the budget**. Cover what changes in CMS structure,
+what breaks at scale, and what it costs in maintenance rather than how to click
+through the Localization panel.
+
+**2. What "the client can run it themselves" actually requires.** Evidence:
+**True North** (family-run team running the catalogue) and **BIKE** (team runs
+courses and forms). This maps directly to migrations and rebuilds, which is the
+USD 5 to 8k band. The angle is the handoff and the CMS structure behind it: what
+has to be true at build time for a marketing team to still be shipping a year
+later without a developer.
+
+**3. Trust in a high-stakes industry.**
+> Third topic was cut off mid-sentence when this feedback was given. The
+> inference is Nextfense and what a site has to prove before a buyer in a
+> high-trust sector (cybersecurity, finance, health) will act. **Confirm the
+> intended angle with Lucas before drafting this one.**
+
+### Still unmined after that
+
+- **Home Organizers** — before/after slider built from scratch in vanilla JS,
+  plus JSON-LD LocalBusiness markup. Careful: the obvious angle is local SEO for
+  a small service business, which is exactly the reader §1 rules out. If it gets
+  written, the angle has to be the custom-build decision, not the local-SEO
+  audience.
 - **Seilas Ship Supplies** — a century-old B2B chandler, 500+ clients across
-  30+ countries. Topic: what a B2B site needs that a consumer site does not.
+  30+ countries. Angle: what a B2B site needs that a consumer site does not.
 
 ---
 
@@ -153,6 +212,25 @@ If an argument needs a number that does not exist, **rewrite the argument**. A
 qualitative claim that is true beats a quantitative one that is invented, and
 this is a portfolio where a single fabricated stat destroys the credibility of
 everything around it.
+
+### 5b. Candid Leap work is off limits
+
+**No post may use Candid Leap work as evidence. It is under NDA.** Not the
+client names, not the build details, not an anonymised "a recent enterprise
+client" version of the same story. If it came from that engagement it does not
+appear.
+
+This has a consequence worth planning around: **the blog runs entirely on the
+six public case studies in `src/data/projects.ts`.** That is roughly six to eight
+posts before evidence starts repeating.
+
+Two implications:
+
+- **Do not burn two posts on the same case study** unless they genuinely draw on
+  different parts of it. Spend the evidence deliberately.
+- Once the six are used, the next posts have to either come from **new public
+  work**, or drop the case-study spine and run on argument alone. The second is
+  harder to make credible and should be the exception.
 
 ---
 
