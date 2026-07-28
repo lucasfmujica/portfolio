@@ -8,6 +8,7 @@ import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 
+import { gaInitScript } from "@/lib/gaInit";
 import { routing, type Locale } from "@/i18n/routing";
 import { siteName, siteUrl, twitterHandle } from "@/lib/site";
 import { clashDisplay, generalSans, geistMono } from "../fonts";
@@ -107,6 +108,7 @@ export default async function LocaleLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: accentInitScript }} />
+        {gaId && <script dangerouslySetInnerHTML={{ __html: gaInitScript(gaId) }} />}
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>

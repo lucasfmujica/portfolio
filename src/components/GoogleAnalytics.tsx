@@ -3,43 +3,22 @@
 import Script from "next/script";
 
 /**
- * Loads Google Analytics 4 with Consent Mode v2. Analytics storage defaults to
- * "denied" so no analytics cookies are set until the visitor opts in via the
- * consent banner (see ConsentBanner, which flips it to "granted"). GA4 still
- * receives cookieless pings while denied, so aggregate traffic is modelled
- * without tracking cookies — compliant by default.
+ * Loads the remote GA4 library. The bootstrap that defines `window.gtag`, sets
+ * Consent Mode v2 defaults and calls `config` is NOT here — it ships inline in
+ * <head> via `gaInitScript`, because it has to run before hydration or mount
+ * effects fire events into a `gtag` that doesn't exist yet (see lib/gaInit.ts).
+ *
+ * This script only needs to arrive eventually: gtag.js replays whatever the
+ * inline bootstrap already queued on the dataLayer.
  *
  * Rendered only when NEXT_PUBLIC_GA_ID is set, so local dev / preview without
  * the env var stays analytics-free.
  */
 export function GoogleAnalytics({ gaId }: { gaId: string }) {
   return (
-    <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-        strategy="afterInteractive"
-      />
-      <Script id="ga-init" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          window.gtag = gtag;
-          gtag('js', new Date());
-          gtag('consent', 'default', {
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
-            analytics_storage: 'denied',
-          });
-          // Honour a prior choice stored this device.
-          try {
-            if (localStorage.getItem('consent') === 'granted') {
-              gtag('consent', 'update', { analytics_storage: 'granted' });
-            }
-          } catch (e) {}
-          gtag('config', '${gaId}');
-        `}
-      </Script>
-    </>
+    <Script
+      src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+      strategy="afterInteractive"
+    />
   );
 }
