@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { caseStudies } from "@/data/projects";
+import { posts } from "@/data/posts";
 import { routing } from "@/i18n/routing";
 import { siteUrl } from "@/lib/site";
 
@@ -19,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const entry = (
     path: string,
-    changeFrequency: "monthly" | "yearly",
+    changeFrequency: "weekly" | "monthly" | "yearly",
     priority: number,
   ): MetadataRoute.Sitemap[number] => ({
     url: localizedUrl(path, routing.defaultLocale),
@@ -36,7 +37,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // and organic is 100% brand queries today.
     entry("/services", "monthly", 0.9),
     entry("/about", "monthly", 0.7),
+    // Weekly: the index changes whenever a post lands.
+    entry("/blog", "weekly", 0.8),
     entry("/privacy", "yearly", 0.2),
     ...caseStudies.map((p) => entry(`/work/${p.slug}`, "yearly", 0.8)),
+    ...posts.map((p) => entry(`/blog/${p.slug}`, "yearly", 0.7)),
   ];
 }

@@ -19,6 +19,10 @@
     "services": {
       "title": "Services · Webflow development · Lucas Mujica",
       "description": "Webflow builds and migrations by a Client-First Certified developer. Component-first, structured so your team can run the site without a developer. Projects from USD 3k."
+    },
+    "blog": {
+      "title": "Blog · Webflow notes · Lucas Mujica",
+      "description": "Notes on building Webflow sites that last: performance, CMS architecture, ecommerce and motion. Written from real builds."
     }
   },
   "Nav": {
@@ -291,6 +295,7 @@
     "copyright": "© {year} Lucas Mujica. All rights reserved.",
     "navWork": "Work",
     "navServices": "Services",
+    "navBlog": "Blog",
     "navAbout": "About",
     "navStack": "Stack",
     "navProcess": "Process",
@@ -357,6 +362,15 @@
     "ctaHeading": "Have something in mind?",
     "ctaBody": "Tell me what you're building and roughly where the budget sits. I'll tell you straight if I'm the right fit.",
     "cta": "Start a project"
+  },
+  "Blog": {
+    "eyebrow": "blog",
+    "heading": "Notes from *real builds*.",
+    "lede": "Questions clients actually ask, answered from work that shipped. No hot takes, no fabricated numbers.",
+    "readPost": "Read the post",
+    "backToBlog": "All posts",
+    "relatedLabel": "from this build",
+    "readCaseStudy": "Read the case study"
   },
   "Privacy": {
     "metaTitle": "Privacy · Lucas Mujica",

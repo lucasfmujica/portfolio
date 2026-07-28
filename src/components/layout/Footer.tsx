@@ -38,6 +38,7 @@ export function Footer() {
           <nav className="footer__nav" aria-label={t("navAria")}>
             <Link href="/work">{t("navWork")}</Link>
             <Link href="/services">{t("navServices")}</Link>
+            <Link href="/blog">{t("navBlog")}</Link>
             <Link href="/about">{t("navAbout")}</Link>
             <a href="/#stack">{t("navStack")}</a>
             <a href="/#process">{t("navProcess")}</a>

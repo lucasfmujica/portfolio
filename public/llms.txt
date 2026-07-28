@@ -9,7 +9,12 @@ Lucas Mujica builds production-grade Webflow sites and custom-coded front-ends. 
 - [Work](https://lucasmujica.dev/work): All case studies and projects.
 - [Services](https://lucasmujica.dev/services): What Lucas can be hired for, what he needs from a client, and pricing. Webflow site builds and migrations; projects start at USD 3k.
 - [About](https://lucasmujica.dev/about): Background, experience and how Lucas works.
+- [Blog](https://lucasmujica.dev/blog): Notes on Webflow performance, CMS architecture, ecommerce and motion, written from real builds.
 - [Privacy](https://lucasmujica.dev/privacy): Privacy policy and data handling.
+
+## Posts
+- [Does animation make a Webflow site slow?](https://lucasmujica.dev/blog/webflow-animation-performance): What actually costs you performance in a Webflow build, and how to decide where motion is worth it. (2026)
+- [Can Webflow Ecommerce handle made-to-order products?](https://lucasmujica.dev/blog/webflow-ecommerce-made-to-order): Building a store for custom, quoted products, and where Webflow stops being the right answer. (2026)
 
 ## Case studies
 - [True North Jerseys](https://lucasmujica.dev/work/true-north-jerseys): Custom hockey & baseball kits for a BC brand — a Webflow store, built different, with scroll-tied product reveals. (E-commerce build, 2026)

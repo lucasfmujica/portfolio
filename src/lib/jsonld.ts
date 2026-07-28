@@ -64,6 +64,80 @@ export function homeJsonLd(locale: Locale) {
   };
 }
 
+/** Blog index graph. */
+export function blogJsonLd(locale: Locale) {
+  const url = localeUrl(locale, "/blog");
+  const en = locale === "en";
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      personEntity,
+      {
+        "@type": "Blog",
+        "@id": `${url}#blog`,
+        url,
+        name: en ? `Notes · ${siteName}` : `Notas · ${siteName}`,
+        inLanguage: locale,
+        isPartOf: { "@id": WEBSITE_ID },
+        author: { "@id": PERSON_ID },
+        publisher: { "@id": PERSON_ID },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: localeUrl(locale) },
+          { "@type": "ListItem", position: 2, name: en ? "Blog" : "Blog", item: url },
+        ],
+      },
+    ],
+  };
+}
+
+/**
+ * BlogPosting graph for a single post.
+ *
+ * `dateModified` mirrors `datePublished` because posts carry one date. If
+ * substantive edits start happening, add a `updated` field to the Post record
+ * and read it here rather than letting the two silently drift.
+ */
+export function postJsonLd(
+  post: { slug: string; title: string; description: string; date: string; tags: string[] },
+  locale: Locale,
+) {
+  const url = localeUrl(locale, `/blog/${post.slug}`);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      personEntity,
+      {
+        "@type": "BlogPosting",
+        "@id": `${url}#post`,
+        url,
+        mainEntityOfPage: url,
+        headline: post.title,
+        description: post.description,
+        datePublished: post.date,
+        dateModified: post.date,
+        inLanguage: locale,
+        keywords: post.tags.join(", "),
+        author: { "@id": PERSON_ID },
+        publisher: { "@id": PERSON_ID },
+        isPartOf: { "@id": `${localeUrl(locale, "/blog")}#blog` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: localeUrl(locale) },
+          { "@type": "ListItem", position: 2, name: "Blog", item: localeUrl(locale, "/blog") },
+          { "@type": "ListItem", position: 3, name: post.title, item: url },
+        ],
+      },
+    ],
+  };
+}
+
 /**
  * Service graph for /services, with the Person as provider.
  *

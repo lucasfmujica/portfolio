@@ -19,6 +19,10 @@
     "services": {
       "title": "Servicios · Desarrollo Webflow · Lucas Mujica",
       "description": "Sitios y migraciones en Webflow por un desarrollador certificado en Client-First. Pensado por componentes, armado para que tu equipo maneje el sitio sin un desarrollador. Proyectos desde USD 3k."
+    },
+    "blog": {
+      "title": "Blog · Notas sobre Webflow · Lucas Mujica",
+      "description": "Notas sobre construir sitios en Webflow que duran: rendimiento, arquitectura de CMS, ecommerce y movimiento. Escritas desde proyectos reales."
     }
   },
   "Nav": {
@@ -291,6 +295,7 @@
     "copyright": "© {year} Lucas Mujica. Todos los derechos reservados.",
     "navWork": "Trabajo",
     "navServices": "Servicios",
+    "navBlog": "Blog",
     "navAbout": "Sobre mí",
     "navStack": "Stack",
     "navProcess": "Proceso",
@@ -357,6 +362,15 @@
     "ctaHeading": "¿Tenés algo en mente?",
     "ctaBody": "Contame qué estás armando y más o menos dónde está el presupuesto. Te digo derecho si soy la persona indicada.",
     "cta": "Empezar un proyecto"
+  },
+  "Blog": {
+    "eyebrow": "blog",
+    "heading": "Notas desde *proyectos reales*.",
+    "lede": "Preguntas que los clientes hacen de verdad, respondidas desde trabajo que salió a producción. Sin opiniones de cartón ni números inventados.",
+    "readPost": "Leer la nota",
+    "backToBlog": "Todas las notas",
+    "relatedLabel": "de este proyecto",
+    "readCaseStudy": "Ver el caso de estudio"
   },
   "Privacy": {
     "metaTitle": "Privacidad · Lucas Mujica",
