@@ -25,8 +25,9 @@ practice that is:
   something tangled, a site that has to survive real editorial load.
 
 **Who this is explicitly not for.** Not the small business owner googling what a
-website costs. `/services` publishes a USD 3k floor, and that reader is shopping
-for a template at a tenth of it. Writing toward them fills the contact form with
+website costs. `/services` anchors on a typical USD 5k–15k range (with a 3k
+floor stated as a disqualifier), and that reader is shopping for a template at a
+tenth of it. Writing toward them fills the contact form with
 the bottom budget tier, which is precisely where the risk of underpricing lives.
 It is not a question of being unfriendly to small clients, it is that a post
 written to win that search wins the wrong search.

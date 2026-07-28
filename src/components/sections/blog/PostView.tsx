@@ -2,6 +2,8 @@ import { useTranslations, useLocale } from "next-intl";
 import { RevealScope } from "@/components/motion/RevealScope";
 import { Icon } from "@/components/ui/Icon";
 import { Link } from "@/i18n/navigation";
+import { ReadTracker } from "@/components/ReadTracker";
+import { TrackedLink } from "@/components/TrackedLink";
 import type { Post } from "@/data/posts";
 import { getProject } from "@/data/projects";
 import type { Locale } from "@/i18n/routing";
@@ -67,13 +69,23 @@ export function PostView({ post }: { post: Post }) {
             ))}
           </div>
 
+          {/* End of the post — same placement rule as the case-study template:
+              the sentinel sits before the related-work upsell, so `post_read`
+              means they finished the post itself. */}
+          <ReadTracker viewEvent="post_view" readEvent="post_read" data={{ slug: post.slug }} />
+
           {related && (
             <aside className="post__related" data-reveal>
               <span className="blog__tag">{t("relatedLabel")}</span>
               <h2>{related.name}</h2>
-              <Link href={`/work/${related.slug}`} className="btn btn--ghost">
+              <TrackedLink
+                href={`/work/${related.slug}`}
+                className="btn btn--ghost"
+                event="post_case_click"
+                data={{ slug: post.slug, case_slug: related.slug }}
+              >
                 {t("readCaseStudy")} <Icon name="arrow-right" />
-              </Link>
+              </TrackedLink>
             </aside>
           )}
         </div>

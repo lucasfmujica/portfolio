@@ -8,6 +8,15 @@ import { getLeadSource } from "@/lib/leadSource";
 type Status = "idle" | "submitting" | "success" | "error";
 
 /**
+ * Canonical keys for the two select fields, by position. The options
+ * themselves are translated, so sending their labels would split every report
+ * in two ("$5–10k" vs "$5–10k" is fine, "TBD" vs "A definir" is not). The
+ * emailed inquiry keeps the visible label; only the event is normalized.
+ */
+const BUDGET_KEYS = ["3-5k", "5-10k", "10-25k", "25k-plus", "tbd"];
+const TYPE_KEYS = ["webflow-site", "webflow-migration", "web-app", "automation"];
+
+/**
  * The conversational "madlib" contact form, wired to the `/api/contact` route
  * handler (Resend). Submission is an AJAX JSON POST so we can show inline
  * success / error states without a full navigation. Includes a honeypot +
@@ -67,7 +76,18 @@ export function ContactForm() {
       // Param is `lead_source`, not `source`: GA4 already owns "source" as a
       // session dimension, so a same-named event param reads as ambiguous in
       // reports. Registered as the "Lead source" custom dimension.
-      trackEvent("lead_submitted", { lead_source: source });
+      //
+      // `budget` and `project_type` ride along because a raw lead count can't
+      // answer the only question that matters here — whether the page pulls in
+      // projects worth quoting or fills the inbox with the bottom tier.
+      trackEvent("lead_submitted", {
+        lead_source: source,
+        budget: BUDGET_KEYS[budgets.indexOf(data.budget)] ?? "unknown",
+        project_type: TYPE_KEYS[projectTypes.indexOf(data.type)] ?? "unknown",
+        // Whether the scoping questions actually get answered — the field is no
+        // longer labelled optional, so this measures if that changed anything.
+        has_details: data.message?.trim() ? "yes" : "no",
+      });
       setStatus("success");
     } catch {
       // fetch itself rejected — offline, DNS, connection dropped. status 0

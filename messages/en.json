@@ -18,7 +18,7 @@
     },
     "services": {
       "title": "Services · Webflow development · Lucas Mujica",
-      "description": "Webflow builds and migrations by a Client-First Certified developer. Component-first, structured so your team can run the site without a developer. Projects from USD 3k."
+      "description": "Webflow builds and migrations by a Client-First Certified developer with 100+ sites shipped. Component-first, structured so your team can run the site without a developer. Most projects land between USD 5k and 15k."
     },
     "blog": {
       "title": "Blog · Webflow notes · Lucas Mujica",
@@ -251,7 +251,7 @@
     "heading": "Ready to build.",
     "lead": "A few quick details so I can scope it before we even talk, or just email me directly.",
     "email": "hello@lucasmujica.dev",
-    "available": "Replies within a day",
+    "available": "Taking on new projects",
     "location": "Buenos Aires · Remote worldwide",
     "socialsAria": "Social links",
     "madGreeting": "Hi Lucas, I'm",
@@ -262,8 +262,8 @@
     "madBudget": "with a budget around",
     "madReach": "Reach me at",
     "madEmail": "you@email.com",
-    "madMessageLead": "A bit about it (optional)",
-    "madMessage": "What you're building, timeline, and what you've already got — brand, content, an existing site…",
+    "madMessageLead": "The details that decide the price",
+    "madMessage": "Roughly how many pages? How many languages? How much of it comes out of the CMS? What do you already have — design, content, a site you're replacing?",
     "projectTypes": [
       "Webflow site",
       "Webflow migration",
@@ -271,7 +271,7 @@
       "automation"
     ],
     "budgets": [
-      "$2–5k",
+      "$3–5k",
       "$5–10k",
       "$10–25k",
       "$25k+",
@@ -334,35 +334,44 @@
     "eyebrow": "services",
     "heading": "What you can *hire me for*.",
     "lede": "Webflow, done properly. Component-first builds your marketing team can run without calling a developer every time a word changes.",
-    "price": "Projects start at USD 3k.",
-    "priceNote": "Where yours lands depends on page count, how deep the CMS goes, and how much motion the design asks for. Tell me what you're building and I'll give you a real number, not a range.",
+    "price": "Most projects land between USD 5k and 15k.",
+    "priceNote": "Where yours falls depends on page count, how deep the CMS goes, how many languages it ships in, and how much motion the design asks for. Below USD 3k I'm not the right call. Tell me what you're building and I'll give you a real number, not a range.",
+    "credLabel": "Credentials",
+    "cred": [
+      {
+        "label": "Webflow Certified Expert",
+        "note": "Client-First · CF-00607",
+        "href": "https://finsweet.com/client-first/certification/certified-experts/cf-00607"
+      },
+      { "label": "100+ production sites", "note": "5+ years, agency and in-house" },
+      { "label": "Client-First, Lumos or MAST", "note": "I build in the system your team runs" }
+    ],
     "coreLabel": "Core work",
     "core": [
       {
         "icon": "build",
         "title": "Webflow site build",
-        "body": "From an approved Figma file to a live site. Client-First naming, reusable components, and CMS architecture that still makes sense after you've added fifty pages. GSAP motion where it earns its place, never where it costs you load time.",
-        "fit": "Right fit if you have a design ready and need it built to last."
+        "body": "From an approved Figma file to a live site. Named in Client-First, Lumos or MAST — whichever system your team already runs — with reusable components and a CMS your marketing team ships pages from on their own, in one language or in four on Webflow Localization. GSAP motion where it earns its place, never where it costs you load time.",
+        "fit": "Right fit if you have a design ready and need it built to last.",
+        "caseSlug": "k2btools",
+        "caseLabel": "See it on K2BTools: 8+ products, 3 languages, one marketing team running it"
       },
       {
         "icon": "launch",
-        "title": "Webflow migration and rebuild",
-        "body": "An existing site moved into Webflow, or an existing Webflow site untangled. Same rules either way: clean classes, scalable collections, and localization workflows that hold up across languages and large page counts.",
-        "fit": "Right fit if your site is slow, nobody can edit it, or you outgrew the builder it was made in."
+        "title": "Migration and rebuild",
+        "body": "A site moved into Webflow from WordPress, Wix, Squarespace or a custom build — or a Webflow project that got away from you: a class list nobody can navigate, edits that break other pages. I audit what's there, rebuild the structure, and carry the URLs and redirects across so you keep the SEO you already have.",
+        "fit": "Right fit if your site is slow, nobody but a developer can touch it, or you outgrew the tool it was built in."
       }
     ],
-    "alsoLabel": "Also on the table",
-    "also": "Web apps and Make.com or Zapier automations, usually alongside a build rather than on their own. Webflow is the specialty. These are what I reach for when a project needs more than a site.",
+    "alsoLabel": "When Webflow isn't enough",
+    "also": "Every Webflow project eventually hits something the platform won't do: a calculator or tool that needs real logic, a section of the product that belongs in React or Next.js, a handoff between systems that someone is currently doing by hand. I build those too, and wire them into the same site with Make.com or Zapier. It's usually the part other Webflow developers hand back to you.",
     "readyLabel": "What I need from you",
     "ready": [
-      "An approved design. I'm a developer, not a designer, so I build from a Figma file that's already signed off.",
+      "An approved design. I'm a developer, not a designer, so I build from a Figma file that's already signed off. Don't have one yet? Say so — I can bring in a designer I work with, and we sort that out before the build starts.",
       "Content, or a clear plan to get it. Real copy beats placeholder every time.",
       "One person who can make decisions. Builds stall on committees, not on code."
     ],
-    "processLink": "See how I work",
-    "ctaHeading": "Have something in mind?",
-    "ctaBody": "Tell me what you're building and roughly where the budget sits. I'll tell you straight if I'm the right fit.",
-    "cta": "Start a project"
+    "processLink": "See how I work"
   },
   "Blog": {
     "eyebrow": "blog",

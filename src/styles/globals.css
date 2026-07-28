@@ -5164,6 +5164,78 @@
     color: var(--fg1);
     font-weight: 600;
   }
+  /* Credential strip: the page's only proof above the fold, so it sits between
+     the price and the cards, where the "why should I believe you" beat lands. */
+  .svc__cred {
+    list-style: none;
+    margin: 34px 0 0;
+    padding: 20px 0 0;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 34px;
+  }
+  .svc__cred li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: var(--fg1);
+    font-size: var(--text-small);
+  }
+  .svc__cred li > svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+    color: var(--ember);
+  }
+  .svc__cred li > span {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .svc__cred a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .svc__cred a:hover {
+    color: var(--ember);
+    border-bottom-color: var(--ember);
+  }
+  .svc__cred a svg {
+    width: 12px;
+    height: 12px;
+  }
+  .svc__cred-note {
+    font-family: var(--font-mono, monospace);
+    font-size: var(--text-tiny);
+    letter-spacing: 0.06em;
+    color: var(--fg2);
+  }
+  /* Inline rather than inline-flex: the label is a full sentence and wraps to
+     two or three lines on a narrow card, where a flex-centred arrow would float
+     beside the block instead of trailing the last word. */
+  .svc__case {
+    display: inline;
+    color: var(--ember);
+    font-size: var(--text-small);
+    line-height: 1.5;
+    text-decoration: none;
+  }
+  .svc__case:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .svc__case svg {
+    width: 16px;
+    height: 16px;
+    margin-left: 6px;
+    vertical-align: -3px;
+  }
   .svc__label {
     margin: 72px 0 22px;
     font-family: var(--font-mono, monospace);
@@ -5249,28 +5321,6 @@
   .svc__process {
     margin-top: 26px;
   }
-  .svc__cta {
-    margin-top: 80px;
-    padding-top: 42px;
-    border-top: 1px solid var(--hairline);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-  }
-  .svc__cta h2 {
-    margin: 0;
-    font-size: var(--text-large);
-  }
-  .svc__cta p {
-    margin: 0;
-    max-width: 40rem;
-    color: var(--fg2);
-    line-height: 1.6;
-  }
-  .svc__cta .btn {
-    margin-top: 8px;
-  }
   @media (max-width: 780px) {
     .svc__grid {
       grid-template-columns: 1fr;
@@ -5278,8 +5328,8 @@
     .svc__label {
       margin-top: 56px;
     }
-    .svc__cta {
-      margin-top: 60px;
+    .svc__cred {
+      gap: 14px 24px;
     }
   }
 }

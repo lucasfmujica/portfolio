@@ -2,7 +2,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { RevealScope } from "@/components/motion/RevealScope";
 import { RichText } from "@/components/ui/RichText";
 import { Icon } from "@/components/ui/Icon";
-import { Link } from "@/i18n/navigation";
+import { TrackedLink } from "@/components/TrackedLink";
 import { getPosts } from "@/data/posts";
 import type { Locale } from "@/i18n/routing";
 import { formatPostDate } from "@/lib/postDate";
@@ -31,7 +31,12 @@ export function BlogIndex() {
         <ul className="blog__list">
           {all.map((p) => (
             <li key={p.slug} data-reveal>
-              <Link href={`/blog/${p.slug}`} className="blog__item">
+              <TrackedLink
+                href={`/blog/${p.slug}`}
+                className="blog__item"
+                event="post_click"
+                data={{ slug: p.slug }}
+              >
                 <div className="blog__meta">
                   <time dateTime={p.date}>{formatPostDate(p.date, locale)}</time>
                   {p.tags.map((tag) => (
@@ -45,7 +50,7 @@ export function BlogIndex() {
                 <span className="blog__more">
                   {t("readPost")} <Icon name="arrow-right" />
                 </span>
-              </Link>
+              </TrackedLink>
             </li>
           ))}
         </ul>

@@ -7,7 +7,7 @@ import { trackEvent } from "@/lib/analytics";
  * Fires `event` once, the first time an invisible 1px sentinel scrolls into
  * view. Lets a Server Component section report that it was actually reached,
  * without turning the whole section into a client component (same trick as
- * CaseStudyReadTracker).
+ * ReadTracker).
  *
  * Why this exists: the contact section lives on the home page under `#contact`,
  * so reaching it produces no `page_view`. Without this the funnel jumps

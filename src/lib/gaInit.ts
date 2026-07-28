@@ -4,7 +4,7 @@
  *
  * This used to live in the GoogleAnalytics client component under
  * `strategy="afterInteractive"`, which created a silent race: mount effects
- * (notably CaseStudyReadTracker's `case_study_view`) ran before `window.gtag`
+ * (notably ReadTracker's `case_study_view`) ran before `window.gtag`
  * existed, and `trackEvent` drops events when it's missing. Verified in
  * production 2026-07-27 — a hard load of /work/<slug> never recorded
  * `case_study_view`, while a client-side navigation to the same page did. That

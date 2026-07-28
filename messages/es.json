@@ -18,7 +18,7 @@
     },
     "services": {
       "title": "Servicios · Desarrollo Webflow · Lucas Mujica",
-      "description": "Sitios y migraciones en Webflow por un desarrollador certificado en Client-First. Pensado por componentes, armado para que tu equipo maneje el sitio sin un desarrollador. Proyectos desde USD 3k."
+      "description": "Sitios y migraciones en Webflow por un desarrollador certificado en Client-First con 100+ sitios entregados. Pensado por componentes, armado para que tu equipo maneje el sitio sin un desarrollador. La mayoría de los proyectos cae entre USD 5k y 15k."
     },
     "blog": {
       "title": "Blog · Notas sobre Webflow · Lucas Mujica",
@@ -251,7 +251,7 @@
     "heading": "Listo para construir.",
     "lead": "Unos datos rápidos para que pueda dimensionarlo antes de hablar siquiera, o escribime directo.",
     "email": "hello@lucasmujica.dev",
-    "available": "Respondo en menos de un día",
+    "available": "Tomando proyectos nuevos",
     "location": "Buenos Aires · Remoto en todo el mundo",
     "socialsAria": "Redes sociales",
     "madGreeting": "Hola Lucas, soy",
@@ -262,8 +262,8 @@
     "madBudget": "con un presupuesto de aproximadamente",
     "madReach": "Escribime a",
     "madEmail": "vos@email.com",
-    "madMessageLead": "Algo sobre el proyecto (opcional)",
-    "madMessage": "Qué estás construyendo, los tiempos y lo que ya tenés: marca, contenido, un sitio actual…",
+    "madMessageLead": "Los detalles que definen el precio",
+    "madMessage": "¿Más o menos cuántas páginas? ¿Cuántos idiomas? ¿Qué parte sale del CMS? ¿Qué tenés ya: diseño, contenido, un sitio que estás reemplazando?",
     "projectTypes": [
       "sitio Webflow",
       "migración Webflow",
@@ -271,7 +271,7 @@
       "automatización"
     ],
     "budgets": [
-      "$2–5k",
+      "$3–5k",
       "$5–10k",
       "$10–25k",
       "$25k+",
@@ -334,35 +334,44 @@
     "eyebrow": "servicios",
     "heading": "Para qué *podés contratarme*.",
     "lede": "Webflow, bien hecho. Builds pensados por componentes, para que tu equipo de marketing maneje el sitio sin llamar a un desarrollador cada vez que cambia una palabra.",
-    "price": "Los proyectos arrancan en USD 3k.",
-    "priceNote": "Dónde cae el tuyo depende de cuántas páginas son, qué tan profundo va el CMS y cuánto movimiento pide el diseño. Contame qué estás armando y te doy un número real, no un rango.",
+    "price": "La mayoría de los proyectos cae entre USD 5k y 15k.",
+    "priceNote": "Dónde cae el tuyo depende de cuántas páginas son, qué tan profundo va el CMS, en cuántos idiomas sale y cuánto movimiento pide el diseño. Por debajo de USD 3k no soy la persona indicada. Contame qué estás armando y te doy un número real, no un rango.",
+    "credLabel": "Credenciales",
+    "cred": [
+      {
+        "label": "Webflow Certified Expert",
+        "note": "Client-First · CF-00607",
+        "href": "https://finsweet.com/client-first/certification/certified-experts/cf-00607"
+      },
+      { "label": "100+ sitios en producción", "note": "5+ años, en agencia y in-house" },
+      { "label": "Client-First, Lumos o MAST", "note": "construyo en el sistema que usa tu equipo" }
+    ],
     "coreLabel": "Trabajo principal",
     "core": [
       {
         "icon": "build",
         "title": "Sitio en Webflow",
-        "body": "De un Figma aprobado a un sitio online. Nomenclatura Client-First, componentes reutilizables y una arquitectura de CMS que sigue teniendo sentido después de que agregaste cincuenta páginas. Movimiento con GSAP donde suma, nunca donde te cuesta tiempo de carga.",
-        "fit": "Te sirve si ya tenés el diseño listo y necesitás que lo construyan para que dure."
+        "body": "De un Figma aprobado a un sitio online. Nomenclatura en Client-First, Lumos o MAST, el sistema que ya use tu equipo, con componentes reutilizables y un CMS desde el que marketing publica páginas solo, en un idioma o en cuatro sobre Webflow Localization. Movimiento con GSAP donde suma, nunca donde te cuesta tiempo de carga.",
+        "fit": "Te sirve si ya tenés el diseño listo y necesitás que lo construyan para que dure.",
+        "caseSlug": "k2btools",
+        "caseLabel": "Miralo en K2BTools: 8+ productos, 3 idiomas, un equipo de marketing manejándolo"
       },
       {
         "icon": "launch",
-        "title": "Migración y rebuild en Webflow",
-        "body": "Un sitio que ya existe, pasado a Webflow. O un Webflow existente, desenredado. Las reglas son las mismas: clases limpias, colecciones que escalan y flujos de localización que aguantan varios idiomas y muchas páginas.",
-        "fit": "Te sirve si tu sitio va lento, nadie lo puede editar, o te quedó chica la herramienta con la que lo hicieron."
+        "title": "Migración y rebuild",
+        "body": "Un sitio pasado a Webflow desde WordPress, Wix, Squarespace o un desarrollo a medida. O un Webflow que se te fue de las manos: una lista de clases que nadie entiende, ediciones que rompen otras páginas. Audito lo que hay, reconstruyo la estructura y me llevo las URLs y los redirects para que no pierdas el SEO que ya tenés.",
+        "fit": "Te sirve si tu sitio va lento, nadie que no sea desarrollador lo puede tocar, o te quedó chica la herramienta con la que lo hicieron."
       }
     ],
-    "alsoLabel": "También entra",
-    "also": "Web apps y automatizaciones con Make.com o Zapier, normalmente junto a un build y no por separado. La especialidad es Webflow. Esto es a lo que recurro cuando un proyecto necesita algo más que un sitio.",
+    "alsoLabel": "Cuando Webflow no alcanza",
+    "also": "Todo proyecto en Webflow llega en algún momento a algo que la plataforma no hace: una calculadora o una herramienta que necesita lógica de verdad, una parte del producto que va en React o Next.js, un pase de datos entre sistemas que hoy alguien hace a mano. Eso también lo construyo, y lo conecto al mismo sitio con Make.com o Zapier. Suele ser justo la parte que el resto de los desarrolladores Webflow te devuelve.",
     "readyLabel": "Qué necesito de vos",
     "ready": [
-      "Un diseño aprobado. Soy desarrollador, no diseñador, así que construyo a partir de un Figma que ya está cerrado.",
+      "Un diseño aprobado. Soy desarrollador, no diseñador, así que construyo a partir de un Figma que ya está cerrado. ¿Todavía no lo tenés? Decímelo: puedo sumar a un diseñador con el que trabajo, y lo resolvemos antes de arrancar el build.",
       "Contenido, o un plan claro para tenerlo. El texto real le gana al placeholder siempre.",
       "Una persona que pueda decidir. Los proyectos se frenan en los comités, no en el código."
     ],
-    "processLink": "Mirá cómo trabajo",
-    "ctaHeading": "¿Tenés algo en mente?",
-    "ctaBody": "Contame qué estás armando y más o menos dónde está el presupuesto. Te digo derecho si soy la persona indicada.",
-    "cta": "Empezar un proyecto"
+    "processLink": "Mirá cómo trabajo"
   },
   "Blog": {
     "eyebrow": "blog",
