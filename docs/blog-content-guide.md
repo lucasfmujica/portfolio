@@ -89,36 +89,48 @@ evidence ceiling in §5b before planning a run of posts.
 
 ### The queue, in order
 
-**1. Running a site in three languages.** Evidence: **K2BTools** (es/en/pt,
-Webflow Localization), supported by **Nextfense** (bilingual). This goes first
-because multilingual is the sharpest differentiator on the list: competition for
-the topic is low, most Webflow freelancers avoid the work, and **anyone
-searching for it already has the budget**. Cover what changes in CMS structure,
-what breaks at scale, and what it costs in maintenance rather than how to click
-through the Localization panel.
+**1. Running a site in three languages.** Evidence: **K2BTools** only (es/en/pt,
+Webflow Localization). This goes first because multilingual is the sharpest
+differentiator on the list: competition for the topic is low, most Webflow
+freelancers avoid the work, and **anyone searching for it already has the
+budget**. Cover what changes in CMS structure, what breaks at scale, and what it
+costs in maintenance rather than how to click through the Localization panel.
 
 **2. What "the client can run it themselves" actually requires.** Evidence:
-**True North** (family-run team running the catalogue) and **BIKE** (team runs
-courses and forms). This maps directly to migrations and rebuilds, which is the
-USD 5 to 8k band. The angle is the handoff and the CMS structure behind it: what
-has to be true at build time for a marketing team to still be shipping a year
-later without a developer.
+**Seilas Ship Supplies**. The useful phrase in that build is "CMS-driven where it
+counts": not everything went into the CMS, and deciding which parts do is the
+whole argument. A century-old B2B supplier whose team keeps the site current is
+better evidence for a handoff post than a small catalogue would be. This maps to
+migrations and rebuilds, the USD 5 to 8k band. The angle is what has to be true
+at build time for a team to still be shipping a year later without a developer.
 
-**3. Trust in a high-stakes industry.**
-> Third topic was cut off mid-sentence when this feedback was given. The
-> inference is Nextfense and what a site has to prove before a buyer in a
-> high-trust sector (cybersecurity, finance, health) will act. **Confirm the
-> intended angle with Lucas before drafting this one.**
+**3. When Webflow is the wrong tool.** Evidence: **Home Organizers**, which was
+hand-coded end to end in vanilla JS rather than built in Webflow, including a
+before/after slider written from scratch. A Webflow specialist arguing honestly
+about the limits of Webflow is more credible than one who never concedes any,
+and it pairs with the "wrong answer" section already in the ecommerce post.
 
-### Still unmined after that
+> Priority note: if a public case study is ever added that was a **rebuild of an
+> existing site**, that topic outranks this one. Checked on 2026-07-28 against
+> `src/data/projects.ts` and no such build exists yet, so this stands. Re-check
+> before drafting.
 
-- **Home Organizers** — before/after slider built from scratch in vanilla JS,
-  plus JSON-LD LocalBusiness markup. Careful: the obvious angle is local SEO for
-  a small service business, which is exactly the reader §1 rules out. If it gets
-  written, the angle has to be the custom-build decision, not the local-SEO
-  audience.
-- **Seilas Ship Supplies** — a century-old B2B chandler, 500+ clients across
-  30+ countries. Angle: what a B2B site needs that a consumer site does not.
+### Evidence ledger
+
+Six public case studies, and §5b means that is the whole budget. Current state:
+
+| Case study | Status |
+|---|---|
+| BIKE | **Spent** — animation and performance post |
+| True North Jerseys | **Spent** — ecommerce made-to-order post |
+| K2BTools | Reserved for queue post 1 (multilingual) |
+| Seilas Ship Supplies | Reserved for queue post 2 (handoff and CMS) |
+| Home Organizers | Reserved for queue post 3 (when Webflow is wrong) |
+| Nextfense | **Held back entirely.** Not to be used as supporting evidence in another post. |
+
+Once the queue ships, every public case study is used. Anything after that needs
+new public work or has to run on argument alone. Do not quietly reuse a spent
+one.
 
 ---
 
@@ -213,6 +225,26 @@ qualitative claim that is true beats a quantitative one that is invented, and
 this is a portfolio where a single fabricated stat destroys the credibility of
 everything around it.
 
+### The one exception: published third-party facts
+
+A fact published by an **identifiable third party** may be used. Webflow's own
+plan pricing is the obvious case, and a post about multilingual or ecommerce is
+hard to write well without one.
+
+Three conditions, all required:
+
+1. **The source is named in the body text**, not just known to the writer.
+   "Webflow's published Localization pricing" is fine; a bare number is not.
+2. **It is re-verified immediately before publishing.** Platform pricing and
+   limits change, and a stale figure in a post about cost is worse than no
+   figure. Re-check on every substantive edit too.
+3. **It is genuinely published and checkable**, not something heard on a call,
+   read in a forum thread, or recalled from a sales conversation.
+
+The exception is narrow on purpose. It **does not** extend to results, client
+metrics, performance claims, or any industry statistic without a named source.
+Those remain banned outright regardless of how confident the source seems.
+
 ### 5b. Candid Leap work is off limits
 
 **No post may use Candid Leap work as evidence. It is under NDA.** Not the
@@ -221,14 +253,15 @@ client" version of the same story. If it came from that engagement it does not
 appear.
 
 This has a consequence worth planning around: **the blog runs entirely on the
-six public case studies in `src/data/projects.ts`.** That is roughly six to eight
-posts before evidence starts repeating.
+six public case studies in `src/data/projects.ts`.** Nextfense is held back on
+top of that, so the working budget is **five posts**: two published, three
+queued. See the evidence ledger in §2.
 
 Two implications:
 
 - **Do not burn two posts on the same case study** unless they genuinely draw on
   different parts of it. Spend the evidence deliberately.
-- Once the six are used, the next posts have to either come from **new public
+- After the queue ships, the next posts have to either come from **new public
   work**, or drop the case-study spine and run on argument alone. The second is
   harder to make credible and should be the exception.
 
@@ -252,12 +285,18 @@ not translate the words.
 
 1. Add the record to `posts` in `src/data/posts.ts`. Spanish goes in
    `postsCopyEs`.
-2. Add the post to the `## Posts` list in `public/llms.txt`.
-3. `npx tsc --noEmit` then `npm run build`. Sitemap, JSON-LD, the index and both
+2. **Give the post its own date, and space it from the last one.** The two
+   launch posts both carry `2026-07-28`. A third sharing that date makes the
+   whole blog read as one batch dumped in an afternoon, which undercuts a blog
+   whose premise is notes from real builds. A week or two apart is enough, and
+   the gaps do not need to be even. The date is display-only and drives ordering
+   plus `datePublished`, so it costs nothing to set deliberately.
+3. Add the post to the `## Posts` list in `public/llms.txt`.
+4. `npx tsc --noEmit` then `npm run build`. Sitemap, JSON-LD, the index and both
    locale routes are generated automatically. Nothing else to wire.
-4. If the build fails with `Cannot find module for page: /robots.txt`, delete
+5. If the build fails with `Cannot find module for page: /robots.txt`, delete
    `.next` and rebuild. It is a stale cache, not your change.
-5. After deploy, request indexing in Search Console (URL inspection, paste the
+6. After deploy, request indexing in Search Console (URL inspection, paste the
    URL, Request indexing). Do not wait for Google to find it.
 
 **Do not** hand-write HTML, add a CMS, install an MDX pipeline, or create a
