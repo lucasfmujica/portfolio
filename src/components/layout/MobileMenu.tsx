@@ -9,8 +9,9 @@ import { Icon, type IconName } from "@/components/ui/Icon";
 import { Wordmark } from "./Wordmark";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 
-const LINKS: { href: string; key: "work" | "about" | "stack" | "process" }[] = [
+const LINKS: { href: string; key: "work" | "services" | "about" | "stack" | "process" }[] = [
   { href: "/work", key: "work" },
+  { href: "/services", key: "services" },
   { href: "/about", key: "about" },
   { href: "/#stack", key: "stack" },
   { href: "/#process", key: "process" },

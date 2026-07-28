@@ -15,11 +15,16 @@
     "about": {
       "title": "About · Lucas Mujica",
       "description": "The person behind the builds. Senior Webflow & front-end developer, and chess player, traveler, singer, and serial optimizer off the clock."
+    },
+    "services": {
+      "title": "Services · Webflow development · Lucas Mujica",
+      "description": "Webflow builds and migrations by a Client-First Certified developer. Component-first, structured so your team can run the site without a developer. Projects from USD 3k."
     }
   },
   "Nav": {
     "home": "Home",
     "work": "Work",
+    "services": "Services",
     "about": "About",
     "stack": "Stack",
     "process": "Process",
@@ -285,6 +290,7 @@
     "socialsAria": "Social links",
     "copyright": "© {year} Lucas Mujica. All rights reserved.",
     "navWork": "Work",
+    "navServices": "Services",
     "navAbout": "About",
     "navStack": "Stack",
     "navProcess": "Process",
@@ -317,6 +323,40 @@
     "body": "The link's broken or the page moved. Let's get you back to the work.",
     "home": "Back home",
     "work": "See the work"
+  },
+  "Services": {
+    "eyebrow": "services",
+    "heading": "What you can *hire me for*.",
+    "lede": "Webflow, done properly. Component-first builds your marketing team can run without calling a developer every time a word changes.",
+    "price": "Projects start at USD 3k.",
+    "priceNote": "Where yours lands depends on page count, how deep the CMS goes, and how much motion the design asks for. Tell me what you're building and I'll give you a real number, not a range.",
+    "coreLabel": "Core work",
+    "core": [
+      {
+        "icon": "build",
+        "title": "Webflow site build",
+        "body": "From an approved Figma file to a live site. Client-First naming, reusable components, and CMS architecture that still makes sense after you've added fifty pages. GSAP motion where it earns its place, never where it costs you load time.",
+        "fit": "Right fit if you have a design ready and need it built to last."
+      },
+      {
+        "icon": "launch",
+        "title": "Webflow migration and rebuild",
+        "body": "An existing site moved into Webflow, or an existing Webflow site untangled. Same rules either way: clean classes, scalable collections, and localization workflows that hold up across languages and large page counts.",
+        "fit": "Right fit if your site is slow, nobody can edit it, or you outgrew the builder it was made in."
+      }
+    ],
+    "alsoLabel": "Also on the table",
+    "also": "Web apps and Make.com or Zapier automations, usually alongside a build rather than on their own. Webflow is the specialty. These are what I reach for when a project needs more than a site.",
+    "readyLabel": "What I need from you",
+    "ready": [
+      "An approved design. I'm a developer, not a designer, so I build from a Figma file that's already signed off.",
+      "Content, or a clear plan to get it. Real copy beats placeholder every time.",
+      "One person who can make decisions. Builds stall on committees, not on code."
+    ],
+    "processLink": "See how I work",
+    "ctaHeading": "Have something in mind?",
+    "ctaBody": "Tell me what you're building and roughly where the budget sits. I'll tell you straight if I'm the right fit.",
+    "cta": "Start a project"
   },
   "Privacy": {
     "metaTitle": "Privacy · Lucas Mujica",

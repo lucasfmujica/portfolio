@@ -15,11 +15,16 @@
     "about": {
       "title": "Sobre mí · Lucas Mujica",
       "description": "La persona detrás de los proyectos. Desarrollador Webflow & front-end senior, y ajedrecista, viajero, cantante y optimizador serial fuera del horario."
+    },
+    "services": {
+      "title": "Servicios · Desarrollo Webflow · Lucas Mujica",
+      "description": "Sitios y migraciones en Webflow por un desarrollador certificado en Client-First. Pensado por componentes, armado para que tu equipo maneje el sitio sin un desarrollador. Proyectos desde USD 3k."
     }
   },
   "Nav": {
     "home": "Inicio",
     "work": "Trabajo",
+    "services": "Servicios",
     "about": "Sobre mí",
     "stack": "Stack",
     "process": "Proceso",
@@ -285,6 +290,7 @@
     "socialsAria": "Redes sociales",
     "copyright": "© {year} Lucas Mujica. Todos los derechos reservados.",
     "navWork": "Trabajo",
+    "navServices": "Servicios",
     "navAbout": "Sobre mí",
     "navStack": "Stack",
     "navProcess": "Proceso",
@@ -317,6 +323,40 @@
     "body": "El enlace está roto o la página se movió. Te llevo de vuelta al trabajo.",
     "home": "Volver al inicio",
     "work": "Ver el trabajo"
+  },
+  "Services": {
+    "eyebrow": "servicios",
+    "heading": "Para qué *podés contratarme*.",
+    "lede": "Webflow, bien hecho. Builds pensados por componentes, para que tu equipo de marketing maneje el sitio sin llamar a un desarrollador cada vez que cambia una palabra.",
+    "price": "Los proyectos arrancan en USD 3k.",
+    "priceNote": "Dónde cae el tuyo depende de cuántas páginas son, qué tan profundo va el CMS y cuánto movimiento pide el diseño. Contame qué estás armando y te doy un número real, no un rango.",
+    "coreLabel": "Trabajo principal",
+    "core": [
+      {
+        "icon": "build",
+        "title": "Sitio en Webflow",
+        "body": "De un Figma aprobado a un sitio online. Nomenclatura Client-First, componentes reutilizables y una arquitectura de CMS que sigue teniendo sentido después de que agregaste cincuenta páginas. Movimiento con GSAP donde suma, nunca donde te cuesta tiempo de carga.",
+        "fit": "Te sirve si ya tenés el diseño listo y necesitás que lo construyan para que dure."
+      },
+      {
+        "icon": "launch",
+        "title": "Migración y rebuild en Webflow",
+        "body": "Un sitio que ya existe, pasado a Webflow. O un Webflow existente, desenredado. Las reglas son las mismas: clases limpias, colecciones que escalan y flujos de localización que aguantan varios idiomas y muchas páginas.",
+        "fit": "Te sirve si tu sitio va lento, nadie lo puede editar, o te quedó chica la herramienta con la que lo hicieron."
+      }
+    ],
+    "alsoLabel": "También entra",
+    "also": "Web apps y automatizaciones con Make.com o Zapier, normalmente junto a un build y no por separado. La especialidad es Webflow. Esto es a lo que recurro cuando un proyecto necesita algo más que un sitio.",
+    "readyLabel": "Qué necesito de vos",
+    "ready": [
+      "Un diseño aprobado. Soy desarrollador, no diseñador, así que construyo a partir de un Figma que ya está cerrado.",
+      "Contenido, o un plan claro para tenerlo. El texto real le gana al placeholder siempre.",
+      "Una persona que pueda decidir. Los proyectos se frenan en los comités, no en el código."
+    ],
+    "processLink": "Mirá cómo trabajo",
+    "ctaHeading": "¿Tenés algo en mente?",
+    "ctaBody": "Contame qué estás armando y más o menos dónde está el presupuesto. Te digo derecho si soy la persona indicada.",
+    "cta": "Empezar un proyecto"
   },
   "Privacy": {
     "metaTitle": "Privacidad · Lucas Mujica",

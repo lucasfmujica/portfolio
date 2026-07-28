@@ -7,6 +7,7 @@ Lucas Mujica builds production-grade Webflow sites and custom-coded front-ends. 
 ## Pages
 - [Home](https://lucasmujica.dev/): Overview, selected work, about, stack, process and contact.
 - [Work](https://lucasmujica.dev/work): All case studies and projects.
+- [Services](https://lucasmujica.dev/services): What Lucas can be hired for, what he needs from a client, and pricing. Webflow site builds and migrations; projects start at USD 3k.
 - [About](https://lucasmujica.dev/about): Background, experience and how Lucas works.
 - [Privacy](https://lucasmujica.dev/privacy): Privacy policy and data handling.
 

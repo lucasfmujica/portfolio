@@ -32,6 +32,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     entry("/", "monthly", 1),
     entry("/work", "monthly", 0.9),
+    // Level with /work: it's the only page targeting commercial search intent,
+    // and organic is 100% brand queries today.
+    entry("/services", "monthly", 0.9),
     entry("/about", "monthly", 0.7),
     entry("/privacy", "yearly", 0.2),
     ...caseStudies.map((p) => entry(`/work/${p.slug}`, "yearly", 0.8)),

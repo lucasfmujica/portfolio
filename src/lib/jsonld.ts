@@ -64,6 +64,70 @@ export function homeJsonLd(locale: Locale) {
   };
 }
 
+/**
+ * Service graph for /services, with the Person as provider.
+ *
+ * Carries the published floor as a real `PriceSpecification` (minPrice, no
+ * maxPrice) rather than prose, so the commercial offer is machine-readable. The
+ * ladder above the floor stays out on purpose: it filters below-minimum
+ * enquiries without capping a quote.
+ */
+export function servicesJsonLd(locale: Locale) {
+  const url = localeUrl(locale, "/services");
+  const en = locale === "en";
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      personEntity,
+      {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name: en ? `Services · ${siteName}` : `Servicios · ${siteName}`,
+        inLanguage: locale,
+        isPartOf: { "@id": WEBSITE_ID },
+      },
+      {
+        "@type": "Service",
+        "@id": `${url}#service`,
+        name: en ? "Webflow development" : "Desarrollo Webflow",
+        serviceType: "Webflow development",
+        provider: { "@id": PERSON_ID },
+        areaServed: "Worldwide",
+        availableLanguage: ["en", "es"],
+        url,
+        offers: {
+          "@type": "Offer",
+          priceSpecification: {
+            "@type": "PriceSpecification",
+            priceCurrency: "USD",
+            minPrice: 3000,
+          },
+        },
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: en ? "Webflow services" : "Servicios de Webflow",
+          itemListElement: (en
+            ? ["Webflow site build", "Webflow migration and rebuild"]
+            : ["Sitio en Webflow", "Migración y rebuild en Webflow"]
+          ).map((name) => ({
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name },
+          })),
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: localeUrl(locale) },
+          { "@type": "ListItem", position: 2, name: en ? "Services" : "Servicios", item: url },
+        ],
+      },
+    ],
+  };
+}
+
 /** ProfilePage graph for the about page, with the Person as its main entity. */
 export function aboutJsonLd(locale: Locale) {
   const url = localeUrl(locale, "/about");

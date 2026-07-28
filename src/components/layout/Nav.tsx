@@ -23,6 +23,7 @@ export function Nav() {
         </Link>
         <div className="nav__links">
           <Link href="/work">{t("work")}</Link>
+          <Link href="/services">{t("services")}</Link>
           <Link href="/about">{t("about")}</Link>
           <a href="/#stack">{t("stack")}</a>
         </div>
