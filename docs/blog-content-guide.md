@@ -121,16 +121,26 @@ Six public case studies, and §5b means that is the whole budget. Current state:
 
 | Case study | Status |
 |---|---|
-| BIKE | **Spent** — animation and performance post |
-| True North Jerseys | **Spent** — ecommerce made-to-order post |
-| K2BTools | Reserved for queue post 1 (multilingual) |
-| Seilas Ship Supplies | Reserved for queue post 2 (handoff and CMS) |
-| Home Organizers | Reserved for queue post 3 (when Webflow is wrong) |
+| BIKE | **Spent** — animation and performance post (published) |
+| True North Jerseys | **Spent twice** — ecommerce post (published) and the handoff post queued for 25 Aug. See the warning below. |
+| K2BTools | Queued, 11 Aug (multilingual) |
+| Home Organizers | Queued, 8 Sep (when Webflow is wrong) |
+| Seilas Ship Supplies | **Unused.** Freed when the handoff post moved to True North. |
 | Nextfense | **Held back entirely.** Not to be used as supporting evidence in another post. |
 
-Once the queue ships, every public case study is used. Anything after that needs
-new public work or has to run on argument alone. Do not quietly reuse a spent
-one.
+> **Open issue on the handoff post.** It was moved to True North because the
+> Seilas case study does not publish enough detail about its CMS split to
+> source the argument. But the resulting section repeats the published
+> ecommerce post almost verbatim: both state that the team is family run, that
+> they run the catalogue themselves, and that product lines drop in as
+> components rather than rebuilds. That is the same evidence, not a different
+> part of the build, so it does not meet the §5b exemption. Resolve before
+> 25 Aug, either by rewriting the section against True North material the first
+> post did not touch, or by moving it back to Seilas once the real CMS split is
+> confirmed.
+
+After the queue, only Seilas is left unspent. Anything beyond that needs new
+public work or has to run on argument alone. Do not quietly reuse a spent one.
 
 ---
 

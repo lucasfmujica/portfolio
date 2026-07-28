@@ -13,6 +13,9 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+/** Hourly, so a scheduled post joins the index on its date without a deploy. */
+export const revalidate = 3600;
+
 export async function generateMetadata({
   params,
 }: {

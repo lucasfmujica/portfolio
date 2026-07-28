@@ -3620,6 +3620,15 @@
     text-underline-offset: 6px;
     text-decoration-thickness: 2px;
   }
+  .footer__brand {
+    display: inline-flex;
+    align-items: baseline;
+    color: var(--fg1);
+    transition: opacity var(--dur-fast) var(--ease-out);
+  }
+  .footer__brand:hover {
+    opacity: 0.72;
+  }
   .footer__wordmark {
     font-family: var(--font-display);
     font-weight: 600;

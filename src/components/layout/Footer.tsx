@@ -34,7 +34,9 @@ export function Footer() {
           {t("email")} <span className="ember-word">↗</span>
         </TrackedAnchor>
         <div className="footer__row">
-          <Wordmark className="footer__wordmark" dotClass="footer__dot" />
+          <Link className="footer__brand" href="/" aria-label={t("brandAria")}>
+            <Wordmark className="footer__wordmark" dotClass="footer__dot" />
+          </Link>
           <nav className="footer__nav" aria-label={t("navAria")}>
             <Link href="/work">{t("navWork")}</Link>
             <Link href="/services">{t("navServices")}</Link>

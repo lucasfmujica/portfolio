@@ -165,6 +165,246 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "webflow-multilingual-site-what-it-takes",
+    title: "What does it actually take to run a site in three languages?",
+    description:
+      "Webflow makes adding a locale close to trivial. The part nobody quotes is what happens to your content operation for the next three years.",
+    date: "2026-08-11",
+    tags: ["Webflow", "Localization", "CMS"],
+    relatedSlug: "k2btools",
+    lead: "It always arrives the same way. We are opening in Brazil and Spain, can we just add the languages? Yes. Webflow does this natively now and the build is genuinely not the hard part. The hard part is that you have just tripled the size of every content decision you will make for the next three years, and that never shows up in a quote.",
+    sections: [
+      {
+        heading: "The honest version",
+        paras: [
+          "Adding a locale is cheap. Webflow sells localization as a per locale add-on, roughly ten dollars a month per locale at the entry tier and around three times that at the tier which unlocks localized URLs, with the exact figures depending on whether you pay annually or monthly. Take those from Webflow's pricing page rather than from this post. Platform pricing moves, and that number is the least durable thing on this page.",
+          "It is also the smallest. Everything after it is people. Every landing page you launch is now three landing pages. Every pricing change is three changes. Every blog post has a translation request stapled to it. The platform fee is the cheapest line in a multilingual site and it is the only one anyone budgets for.",
+        ],
+      },
+      {
+        heading: "Three things worth knowing before you decide",
+        paras: [
+          "Most of what you will read about Webflow's localization is a tour of the panel. Three details actually change how you plan the project.",
+        ],
+        list: [
+          "Hreflang tags and the localized sitemap are generated for you. This is the part teams get wrong on other platforms, and getting it wrong means search engines serve the wrong language to the wrong market for months. Webflow handling it removes a real category of risk, so do not spend budget solving it.",
+          "Locales publish independently. English can ship while Portuguese is still in draft. A late translation never blocks a launch, which changes how you sequence a rollout.",
+          "Localized URL slugs sit on the Advanced tier. If a product URL stays in English on your French site, you are competing for French search with an English address. If organic search in the second language is part of the business case, the cheaper tier is not the cheaper option.",
+        ],
+      },
+      {
+        heading: "What Webflow will not do for you",
+        paras: [
+          "It will not tell you that your Spanish pricing page is three revisions behind the English one. There is no drift alert, no staleness flag, nothing that surfaces the gap. The product assumes somebody is watching.",
+          "And machine translation gives you a draft, not a page a buyer trusts. Auto translated meta titles and descriptions get indexed and served to real people, and the version they read is the one nobody on your team ever looked at.",
+        ],
+      },
+      {
+        heading: "What this looked like on K2BTools",
+        paras: [
+          "K2BTools sells developer tooling for GeneXus, and its market is actually split across Spanish, English and Portuguese. Not aspirationally split. Actually split, with buyers in each.",
+          "The decision that made the site survivable was structural rather than linguistic. Build it component first. When a feature card is a component, changing it is one change that lands in all three locales, and the only per locale work left is the words inside it. When it is not a component, the same change is three edits, and eventually somebody does two of them and the third sits wrong for a year.",
+          "That is the whole trade. You spend more at build time defining components than a single language site would need, and you get it back every time the content changes, which on a marketing site is constantly.",
+        ],
+      },
+      {
+        heading: "Three questions before you add a second language",
+        paras: [
+          "Answer these before anyone quotes you. None of them is a technical question and they decide more than any technical answer I could give.",
+        ],
+        list: [
+          "Who owns the second locale, by name? If the answer is marketing, it has no owner.",
+          "How often does the content change? Weekly content across three locales is a role, not a setting.",
+          "Is the market real or aspirational? A locale with no sales motion behind it is a monthly bill attached to a page that slowly stops being true.",
+        ],
+      },
+      {
+        heading: "Where multilingual sites actually rot",
+        paras: [
+          "Not in translation quality. In the gap that opens after launch. English gets a new pricing page in March. Portuguese still shows the old one in September. Someone in Sao Paulo lands on the stale version precisely because hreflang worked and sent them to their own language.",
+          "That is a process problem, so it needs a process answer. One named owner per locale, and a rule that the primary locale does not publish a structural change until the others are queued. Neither of those is something you buy.",
+        ],
+      },
+      {
+        heading: "When the answer is no",
+        paras: [
+          "If one market is most of your revenue and nobody will own the second locale, do not localize the site. Localize one page, the one that market actually converts on, and leave the rest in English. A single maintained page in someone's language beats a whole site that stopped being true a year ago.",
+          "And if the plan is machine translation with no native reviewer, English only is the better product. A buyer reading obviously machine translated copy concludes you did not take their market seriously, which is worse than concluding you have not got there yet.",
+        ],
+      },
+      {
+        heading: "So what does it take",
+        paras: [
+          "Webflow makes the mechanics close to boring, which is what you want from infrastructure. What it cannot do is make the difficulty disappear. It moves the difficulty back to where it always was: having something to say in each language, and someone whose job it is to keep saying it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "webflow-site-team-can-run",
+    title: "Why does my team still need a developer to change the site?",
+    description:
+      "Running your own site is not a platform feature. It is a set of decisions made at build time about which parts are allowed to change.",
+    date: "2026-08-25",
+    tags: ["Webflow", "CMS", "Client-First"],
+    relatedSlug: "true-north-jerseys",
+    lead: "You were told the site would be easy to update, and for the first month it was. Then someone needed a seventh person added to the team page, or a heading that ran two lines instead of one, and the answer came back that it needs a developer. Nobody lied to you. The site was built to hold the content that existed the week it launched, and being able to run it yourself is not a feature of the platform. It is a set of decisions somebody made months before you noticed.",
+    sections: [
+      {
+        heading: "The honest version",
+        paras: [
+          "Building for content that has not been written yet costs more than building for content that has. A site built to look exactly like the design file is faster and cheaper than one built to survive a fifth card, a heading twice as long as the mockup, and a photo uploaded portrait when the layout assumed landscape.",
+          "When a build quote comes in surprisingly low, this is usually what got cut. You do not find out at handover. You find out eight months later, when the site that was going to save you a retainer turns out to need one.",
+        ],
+      },
+      {
+        heading: "CMS driven where it counts",
+        paras: [
+          "The instinct, once someone has been burned, is to put everything in the CMS. That is the opposite mistake and it is expensive in its own way.",
+          "A collection is a contract. Every field is something a person has to understand before they can safely edit anything, and a CMS built for scale you do not have is its own kind of unusable. A five item collection with fourteen fields will sit untouched for a year because nobody wants to be the one who breaks it.",
+          "So the question at build time is not how much can go into the CMS. It is which parts of this site will change without me. Those get structured. Everything else gets built directly, because it is not going to move, and structuring it would only add fields for somebody to navigate around.",
+        ],
+      },
+      {
+        heading: "How to tell which parts those are",
+        paras: [
+          "Three tests, worth running against every section of the site before anybody builds anything.",
+        ],
+        list: [
+          "Does it change on someone else's schedule? A catalogue, a team page, a list of certifications, anything tied to the business rather than to the design. That belongs in the CMS.",
+          "Does it repeat? If there are three of something today there will be seven eventually, and a repeating structure that is not a collection is a developer ticket with a delay on it.",
+          "Would changing it require a design decision? A hero layout, a navigation structure, the shape of a pricing table. That is not editing, that is design.",
+        ],
+      },
+      {
+        heading: "The third test is the one people fail",
+        paras: [
+          "Handing a team the ability to change anything is not the same as handing them the ability to run the site. It is usually how sites get broken, and it comes from a good instinct: nobody wants to be the bottleneck, so everything gets exposed.",
+          "What a team actually wants is a small number of things they can change with total confidence, and a clear edge where the answer is that this one needs a developer. A narrow surface people trust beats a wide one they are scared of.",
+        ],
+      },
+      {
+        heading: "What this looked like on True North",
+        paras: [
+          "True North Jerseys makes custom hockey and baseball jerseys in British Columbia. Sublimated, reversible, embroidered: the craft is the entire sales argument, and the catalogue moves as the product lines do.",
+          "The team is family run and they add and grow the catalogue themselves. New kits go in from the CMS, and new product lines drop in as components rather than as rebuilds. That second part is the one that matters a year later, because the first time a business adds a whole product category is when it finds out whether the site was built for one shape of catalogue or for a catalogue.",
+          "The reason that works is not that Webflow has a CMS. It is that the catalogue was identified up front as the thing that would change without me, and structured for it. Sublimated, reversible and embroidered are options the team manages without code because somebody decided at build time that they were options rather than design.",
+        ],
+      },
+      {
+        heading: "The test to run before you accept a site",
+        paras: ["Give yourself an hour before launch and do four things."],
+        list: [
+          "Add one more item to every list. A fourth card in a three across grid, an eleventh person on the team page.",
+          "Double the length of the longest heading.",
+          "Leave an optional field empty on one item and look at what renders.",
+          "Upload an image in the wrong aspect ratio.",
+        ],
+      },
+      {
+        heading: "What that hour tells you",
+        paras: [
+          "If any of the four needs a developer, the build is not finished. You do not need me to run this and it is the most useful hour you can spend before going live.",
+          "If you are commissioning a site right now, put those four checks into the acceptance criteria before you sign anything. It costs you nothing and it changes the conversation, because it moves the definition of done from how the site looks on launch day to whether it survives being used.",
+        ],
+      },
+      {
+        heading: "The half nobody sells you",
+        paras: [
+          "The other half of running your own site is naming. I build with Client-First, a convention for naming classes and structuring a project so the next person can read it.",
+          "You will never look at a class name. But the developer you hire in two years will, and whether that person can make a change in an afternoon or has to rebuild the site is decided now, by someone you are paying today. Ownership is not a feeling about your site. It is whether the next person can find what they need without asking the last one.",
+        ],
+      },
+      {
+        heading: "When this is the wrong answer",
+        paras: [
+          "If your site is five pages, changes twice a year and one person edits it, heavy structure is money badly spent. Build it simple, keep it cheap, and put the difference into the content.",
+          "And if nobody on your team wants the job, no amount of structure fixes it. A site that can be run by a team which has not assigned anyone to run it still goes stale. That is not a build problem and I cannot solve it for you.",
+        ],
+      },
+      {
+        heading: "The short answer",
+        paras: [
+          "Your team does not need a developer because the platform is limited. They need one because somebody decided, at build time, which parts of the site were allowed to change. Make that decision on purpose and most of the tickets never get written.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "when-webflow-is-the-wrong-tool",
+    title: "When is Webflow the wrong tool for the job?",
+    description:
+      "I build in Webflow most of the time. Here are the cases where I do not, and what the alternative actually costs you.",
+    date: "2026-09-08",
+    tags: ["Webflow", "Custom code", "Process"],
+    relatedSlug: "home-organizers",
+    lead: "It is a fair thing to ask someone whose whole business is one platform, so here is the straight answer. Webflow is the right call for most marketing sites, most B2B sites and most builds with content that changes, which is why I spend most of my time in it. It is also the wrong call more often than anyone selling it will tell you, and the cases are specific enough that you can check them yourself before you commission anything.",
+    sections: [
+      {
+        heading: "The honest version",
+        paras: [
+          "A specialist arguing that their specialty fits every job is telling you about their invoicing, not about your project. I have built in Webflow for years and I still talk people out of it several times a year.",
+          "The reason is not that Webflow is weak. It is that Webflow is a platform with a shape, and a project either fits that shape or spends its whole budget fighting it. Noticing that in week one is cheap. Noticing it in month four is not.",
+        ],
+      },
+      {
+        heading: "The cases where I say no",
+        paras: ["Four, and they are narrower than the internet suggests."],
+        list: [
+          "The interface is the product. If you are building something people log into and use, rather than a site people read, you want an application framework. Webflow can hold a marketing site in front of that product beautifully. It should not be the product.",
+          "The feel is the product, and the site is small. When how a page moves and how fast it responds are the actual sales argument, a platform sets a ceiling on how far you can tune them. On a large site that ceiling is worth accepting for everything else you get. On a small one you are paying for a CMS you will not use in exchange for a limit on the only thing that matters.",
+          "Nobody will ever log in to edit it. The CMS and the Designer are most of what the monthly fee buys. A site whose content changes twice a year is paying rent on a feature it does not use.",
+          "The output has to live somewhere else. If the pages have to be embedded in an existing application, served from infrastructure you control, or handed to a team that works in a repository, you will spend the project exporting your way out of the platform.",
+        ],
+      },
+      {
+        heading: "What happened on Home Organizers",
+        paras: [
+          "Home Organizers Long Island is a small service business, and its site is not built in Webflow. I took that project end to end, design, copy, SEO and code, and chose to hand build it. No Webflow, no framework, no build step, so every detail of the feel and the performance was mine to tune.",
+          "That is the second case on the list, and it is worth being precise about why it applied. A home organising business sells a transformation. The centerpiece of the site is a before and after slider, written from scratch with no library, where you drag to see the room change. How that drag feels, how immediately it responds, whether it stutters on a phone: that is not decoration on the sales argument, it is the sales argument. GSAP and ScrollTrigger carry the rest of the motion. The one piece that had to feel exactly right got written by hand.",
+          "Everything else followed from the same fact. It is a handful of pages that change rarely, with LocalBusiness structured data so search engines read the business correctly. No editorial team, no collection to maintain, no monthly platform fee, and nothing a CMS would have made easier.",
+        ],
+      },
+      {
+        heading: "The bill for going custom",
+        paras: [
+          "This is not a free choice and I would be selling you something if I pretended otherwise.",
+          "A hand built site has no Designer behind it. Changing a paragraph means changing code, which means it goes through whoever writes code, which usually means me. If you later want to hand it to a marketing team, that is a rebuild and not a migration. And the person who maintains it has to be a developer, which narrows the field considerably next to a Webflow project that any competent Webflow freelancer can pick up.",
+          "You are trading platform cost and editing convenience for control and precision. That is a good trade on a small site that does not change. It is a bad trade on almost everything else.",
+        ],
+      },
+      {
+        heading: "How to tell which side you are on",
+        paras: ["Two questions, and they settle it most of the time."],
+        list: [
+          "Who edits this in eighteen months, and are they a developer? If the honest answer is a marketing person or the owner, build it in Webflow and stop reading here.",
+          "Is there one thing this site has to do that the platform does not do? Not three things. One.",
+        ],
+      },
+      {
+        heading: "The option people forget",
+        paras: [
+          "If the answer to the second question is three things, the project is fighting the platform everywhere and the platform is probably wrong. If it is one thing and everything else is ordinary, the answer is almost never a rewrite. It is Webflow with custom code inside it.",
+          "Most sites that feel like they need to leave Webflow need somebody to write the one piece the builder cannot do, and then leave the rest alone. That is a much smaller project than a rebuild and it keeps every reason you chose the platform in the first place.",
+        ],
+      },
+      {
+        heading: "When Webflow is right, which is most of the time",
+        paras: [
+          "A post like this is easy to over read, so let me be clear about where it lands.",
+          "If your site has content that changes, a team that has to change it, more than a handful of pages, or a plan to grow into more languages and more markets, Webflow is the right tool and it is not close. The CMS, the localization, the fact that any competent developer can pick the project up after me: all of that is worth the monthly fee several times over.",
+          "The four cases above are the exception. Almost everything that reaches me is a Webflow project, and saying so is only worth anything because I am willing to tell you when it is not.",
+        ],
+      },
+      {
+        heading: "The short answer",
+        paras: [
+          "Webflow is the wrong tool when the thing you are building is an application, when the feel of a small site is the product, when nobody will ever edit it, or when the output has to live somewhere you control. Everywhere else the platform is doing work you would otherwise pay a developer to build and maintain, and renting it is cheaper than owning it.",
+        ],
+      },
+    ],
+  },
 ];
 
 /** Spanish overlay. Same keying as `projectsCopyEs`: slug to partial copy. */
@@ -298,10 +538,23 @@ const copyByLocale: Record<Locale, Record<string, Partial<Post>>> = {
   es: postsCopyEs,
 };
 
-/** All posts, newest first, localized to `locale`. */
+/**
+ * A post is live once its `date` has arrived. Comparing ISO strings is enough
+ * here and avoids timezone drift: both sides are `YYYY-MM-DD` in UTC.
+ *
+ * This exists so the queue can be committed ahead of time. Posts are dated on a
+ * schedule (see the guide, section 7) and committing them early would otherwise
+ * publish everything at once and sort the future ones above the real ones.
+ */
+export function isPublished(post: Pick<Post, "date">, now = new Date()): boolean {
+  return post.date <= now.toISOString().slice(0, 10);
+}
+
+/** Published posts, newest first, localized to `locale`. */
 export function getPosts(locale: Locale): Post[] {
   const overlay = copyByLocale[locale] ?? {};
   return posts
+    .filter((p) => isPublished(p))
     .map((p) => ({ ...p, ...(overlay[p.slug] ?? {}) }))
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }

@@ -4,17 +4,26 @@ import { setRequestLocale } from "next-intl/server";
 
 import { routing, type Locale } from "@/i18n/routing";
 import { siteName, siteUrl } from "@/lib/site";
-import { posts, getPost } from "@/data/posts";
+import { posts, getPost, isPublished } from "@/data/posts";
 import { PostView } from "@/components/sections/blog/PostView";
 import { Contact } from "@/components/sections/Contact";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { postJsonLd } from "@/lib/jsonld";
 
+/**
+ * Only published posts are prerendered. A queued post is not in this list, so
+ * Next renders it on demand the first time it is requested after its date, and
+ * `revalidate` means that happens without a redeploy. Committing the queue
+ * ahead of time therefore costs nothing until each date arrives.
+ */
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    posts.map((p) => ({ locale, slug: p.slug })),
+    posts.filter((p) => isPublished(p)).map((p) => ({ locale, slug: p.slug })),
   );
 }
+
+/** Hourly, so a scheduled post appears on its date without a manual deploy. */
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
