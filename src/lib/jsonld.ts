@@ -27,7 +27,11 @@ const personEntity = {
   jobTitle: "Senior Webflow & Front-End Developer",
   description:
     "Senior Webflow & front-end developer with 5+ years deep building high-performing, component-driven Webflow sites marketing teams and small businesses can own, scale and maintain.",
-  sameAs: ["https://www.linkedin.com/in/lucasfmujica"],
+  // Every profile Lucas controls, so Google can collapse them into one entity.
+  // Worth keeping complete: Search Console (Jul 2026) shows 100% of search
+  // impressions are brand queries, and "lucas mujica" only averages position
+  // 4.3 — the brand SERP is the entire organic channel right now.
+  sameAs: ["https://www.linkedin.com/in/lucasfmujica", "https://github.com/lucasfmujica"],
   knowsAbout: [
     "Webflow",
     "Front-end development",
