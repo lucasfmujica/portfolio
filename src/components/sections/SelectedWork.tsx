@@ -9,13 +9,33 @@ import { getProjects } from "@/data/projects";
 import type { Locale } from "@/i18n/routing";
 
 /**
+ * The three cards that lead the home page. Named explicitly instead of
+ * `.slice(0, 3)`, which just took whatever happened to sit at the top of the
+ * `caseStudies` array.
+ *
+ * Ordered by what actually pulls visitors (analytics, 30 days to 2026-07-27):
+ * bike 6 and true-north-jerseys 5 lead clearly, so they go first. The remaining
+ * four tie at 2–3 visitors, which is noise at this volume — k2btools stays as
+ * the third simply because it was already featured. Revisit once
+ * `case_study_view` has real numbers behind it (the event was being dropped on
+ * direct loads until 2026-07-27, so anything older undercounts).
+ *
+ * Deliberately does NOT reorder the `caseStudies` array itself — /work renders
+ * from that and has its own curation.
+ */
+const FEATURED_SLUGS = ["bike", "true-north-jerseys", "k2btools"];
+
+/**
  * Selected work — the three lead case studies as alternating stacking cards.
  * The full set lives on /work; a primary CTA below sends people there.
  */
 export function SelectedWork() {
   const t = useTranslations("Work");
   const locale = useLocale() as Locale;
-  const FEATURED = getProjects(locale).slice(0, 3);
+  const all = getProjects(locale);
+  const FEATURED = FEATURED_SLUGS.map((slug) => all.find((p) => p.slug === slug)).filter(
+    (p): p is NonNullable<typeof p> => Boolean(p),
+  );
   return (
     <RevealScope as="section" className="section" id="work">
       <div

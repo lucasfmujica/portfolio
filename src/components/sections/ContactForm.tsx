@@ -40,6 +40,9 @@ export function ContactForm() {
     const emailBad = !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email ?? "");
     if (nameBad || emailBad) {
       setInvalid({ name: nameBad, email: emailBad });
+      // Without this the visitor shows up as contact_started with no
+      // lead_submitted, indistinguishable from someone who simply gave up.
+      trackEvent("form_error", { reason: "validation" });
       return;
     }
     setInvalid({});
@@ -53,13 +56,23 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...data, source }),
       });
-      if (!res.ok) throw new Error(`Form submission failed: ${res.status}`);
+      // Handled inline rather than thrown so the HTTP status survives into the
+      // event — this is the only conversion path on the site, and a broken
+      // Resend/API used to fail completely silently.
+      if (!res.ok) {
+        trackEvent("form_error", { reason: "network", status: res.status });
+        setStatus("error");
+        return;
+      }
       // Param is `lead_source`, not `source`: GA4 already owns "source" as a
       // session dimension, so a same-named event param reads as ambiguous in
       // reports. Registered as the "Lead source" custom dimension.
       trackEvent("lead_submitted", { lead_source: source });
       setStatus("success");
     } catch {
+      // fetch itself rejected — offline, DNS, connection dropped. status 0
+      // means "never got an HTTP response at all".
+      trackEvent("form_error", { reason: "network", status: 0 });
       setStatus("error");
     }
   };

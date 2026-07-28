@@ -7,6 +7,8 @@ Lucas Mujica builds production-grade Webflow sites and custom-coded front-ends. 
 ## Pages
 - [Home](https://lucasmujica.dev/): Overview, selected work, about, stack, process and contact.
 - [Work](https://lucasmujica.dev/work): All case studies and projects.
+- [About](https://lucasmujica.dev/about): Background, experience and how Lucas works.
+- [Privacy](https://lucasmujica.dev/privacy): Privacy policy and data handling.
 
 ## Case studies
 - [True North Jerseys](https://lucasmujica.dev/work/true-north-jerseys): Custom hockey & baseball kits for a BC brand — a Webflow store, built different, with scroll-tied product reveals. (E-commerce build, 2026)

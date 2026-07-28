@@ -123,7 +123,10 @@ export function About() {
             <a href="#contact" className="btn btn--primary">
               {t("ctaPrimary")}
             </a>
-            <Link href="/about" className="btn btn--link">
+            {/* btn--ghost, not btn--link: /about holds visitors ~1m35s against
+                the home page's ~9s, but almost nobody found it as a bare text
+                link. Given weight without demoting the contact CTA beside it. */}
+            <Link href="/about" className="btn btn--ghost">
               {t("ctaMore")} <Icon name="arrow-right" />
             </Link>
           </div>

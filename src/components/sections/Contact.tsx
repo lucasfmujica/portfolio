@@ -3,6 +3,7 @@ import { RevealScope } from "@/components/motion/RevealScope";
 import { RichText } from "@/components/ui/RichText";
 import { Icon } from "@/components/ui/Icon";
 import { TrackedAnchor } from "@/components/TrackedAnchor";
+import { SectionViewTracker } from "@/components/SectionViewTracker";
 import { ContactForm } from "./ContactForm";
 
 const SOCIALS = [
@@ -19,6 +20,7 @@ export function Contact() {
   const t = useTranslations("Contact");
   return (
     <RevealScope as="section" className="section contact scheme-ember" id="contact">
+      <SectionViewTracker event="contact_section_view" />
       <div className="contact__ghost" aria-hidden="true">
         LM<span className="e">.</span>
       </div>
