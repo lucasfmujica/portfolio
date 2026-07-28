@@ -161,10 +161,10 @@ export const projects: Project[] = [
       heroBadge: "truenorthjerseys.com · shop",
       highlights: [
         "A CMS-driven catalog the *family-run team runs and grows themselves*.",
-        "Native Webflow Ecommerce + custom-quote flow, wired in on-brand.",
+        "A CartGenie storefront + custom-quote flow, wired in on-brand.",
         "Built to scale: new product lines drop in as components, not rebuilds.",
       ],
-      services: ["Strategy", "Web Design", "Development", "Webflow Ecommerce", "Webflow CMS"],
+      services: ["Strategy", "Web Design", "Development", "CartGenie", "Webflow CMS"],
       challengeHeading: "A premium, made-to-order product on a generic shelf.",
       challengeBody:
         "True North makes custom hockey and baseball jerseys in BC: sublimated, reversible, embroidered, the craft is the whole pitch. But that detail is exactly what a stock template *flattens into a grid*. The brand needed a store that felt as considered as the product, kept the catalog easy to run, and put the path to a quote one tap away.",
@@ -172,11 +172,11 @@ export const projects: Project[] = [
       specs: [
         { key: "role", value: "Front-end build, end to end" },
         { key: "stack", value: "Webflow · GSAP · CMS" },
-        { key: "integration", value: "Webflow Ecommerce" },
+        { key: "integration", value: "CartGenie" },
       ],
       buildHeading: "A store that shows the craft before it asks for the sale.",
       buildLead:
-        "I built the storefront end to end in Webflow on native Webflow Ecommerce, with a CMS-driven catalog and *GSAP scroll-tied reveals that let each kit breathe*. Product lines (hockey, baseball, team apparel) are structured so the family-run team adds and edits everything itself, with the cart and quote flow wired in without leaving the brand.",
+        "I built the storefront end to end in Webflow with CartGenie as the store engine, with a CMS-driven catalog and *GSAP scroll-tied reveals that let each kit breathe*. Product lines (hockey, baseball, team apparel) are structured so the family-run team adds and edits everything itself, with the cart and quote flow wired in without leaving the brand.",
       shots: [
         {
           n: "01",
@@ -197,7 +197,7 @@ export const projects: Project[] = [
         {
           n: "03",
           label: "03 / Order & quote",
-          lead: "Webflow Ecommerce wired in, on-brand throughout",
+          lead: "CartGenie wired in, on-brand throughout",
           body: ". The order and quote path stays one tap away the moment intent lands.",
           placeholder: "Order: drop screenshot",
           image: "/assets/truenorth-shot3.webp",
@@ -707,10 +707,10 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       heroBadge: "truenorthjerseys.com · tienda",
       highlights: [
         "Un catálogo manejado por CMS que el *equipo familiar maneja y hace crecer solo*.",
-        "Webflow Ecommerce nativo + flujo de cotización a medida, integrado con la marca.",
+        "Tienda con CartGenie + flujo de cotización a medida, integrado con la marca.",
         "Construido para escalar: las nuevas líneas entran como componentes, sin rehacer nada.",
       ],
-      services: ["Estrategia", "Diseño web", "Desarrollo", "Webflow Ecommerce", "Webflow CMS"],
+      services: ["Estrategia", "Diseño web", "Desarrollo", "CartGenie", "Webflow CMS"],
       challengeHeading: "Un producto premium, hecho a pedido, en una góndola genérica.",
       challengeBody:
         "True North hace camisetas de hockey y béisbol a medida en BC: sublimadas, reversibles, bordadas; el oficio es todo el pitch. Pero ese detalle es justo lo que una plantilla genérica *aplana en una grilla*. La marca necesitaba una tienda que se sintiera tan pensada como el producto, que mantuviera el catálogo fácil de manejar, y que dejara el camino a la cotización a un toque de distancia.",
@@ -718,11 +718,11 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       specs: [
         { value: "Build front-end, de punta a punta" },
         { value: "Webflow · GSAP · CMS" },
-        { value: "Webflow Ecommerce" },
+        { value: "CartGenie" },
       ],
       buildHeading: "Una tienda que muestra el oficio antes de pedir la venta.",
       buildLead:
-        "Construí la tienda de punta a punta en Webflow sobre Webflow Ecommerce nativo, con un catálogo manejado por CMS y *reveals atados al scroll con GSAP que dejan respirar a cada kit*. Las líneas de producto (hockey, béisbol, indumentaria de equipo) están estructuradas para que el equipo familiar agregue y edite todo solo, con el carrito y el flujo de cotización integrados sin salir de la marca.",
+        "Construí la tienda de punta a punta en Webflow con CartGenie como motor de la tienda, con un catálogo manejado por CMS y *reveals atados al scroll con GSAP que dejan respirar a cada kit*. Las líneas de producto (hockey, béisbol, indumentaria de equipo) están estructuradas para que el equipo familiar agregue y edite todo solo, con el carrito y el flujo de cotización integrados sin salir de la marca.",
       shots: [
         {
           label: "01 / Tienda",
@@ -738,7 +738,7 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
         },
         {
           label: "03 / Pedido & cotización",
-          lead: "Webflow Ecommerce integrado, con la marca de punta a punta",
+          lead: "CartGenie integrado, con la marca de punta a punta",
           body: ". El camino al pedido y la cotización queda a un toque en cuanto aparece la intención.",
           placeholder: "Pedido: poné screenshot",
         },

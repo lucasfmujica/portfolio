@@ -42,7 +42,7 @@ export const posts: Post[] = [
     title: "Does animation make a Webflow site slow?",
     description:
       "Motion is not free, but it is not the reason most Webflow sites are slow either. What actually costs you, and how to decide where to spend it.",
-    date: "2026-07-28",
+    date: "2026-07-21",
     tags: ["Webflow", "GSAP", "Performance"],
     relatedSlug: "bike",
     lead:
@@ -52,8 +52,8 @@ export const posts: Post[] = [
         heading: "The honest version",
         paras: [
           "A site with real motion will almost always score lower than the same site with none. Anyone who tells you otherwise is selling something. The question worth asking is not whether motion costs anything, it is whether what you get back is worth what you paid.",
-          "BIKE is a good test case because it is not a restrained build. It has a custom preloader that draws before the first scroll, GSAP reveals pacing the whole page, and an interactive 3D bicycle sitting on the 404. It scores 81 on Lighthouse performance, 100 on SEO and 90 on accessibility.",
-          "81 is a fine score. It is not a 98, and pretending otherwise would be dishonest. But that number buys a brand whose entire pitch is movement, on a site that would have undercut itself by sitting still.",
+          "BIKE is an English language institute in Uruguay, and it is a good test case because it is not a restrained build. It has a custom preloader that draws before the first scroll, GSAP reveals pacing the whole page, and an interactive 3D bicycle sitting on the 404. It scores 81 on Lighthouse performance, 100 on SEO and 90 on accessibility.",
+          "81 is a fine score. It is not a 98, and pretending otherwise would be dishonest. But that number buys a site that feels like it is going somewhere, for a business whose whole promise is that you will get better at something over time. A static page would have undersold that.",
         ],
       },
       {
@@ -112,12 +112,12 @@ export const posts: Post[] = [
     slug: "webflow-ecommerce-made-to-order",
     title: "Can Webflow Ecommerce handle made-to-order products?",
     description:
-      "Webflow Ecommerce assumes a product with a price and a stock count. Custom and made-to-order products break both assumptions. Here is how to build it anyway.",
+      "If your product is quoted rather than priced, the answer is yes, but probably not on Webflow Ecommerce itself. What to use instead and why.",
     date: "2026-07-28",
     tags: ["Webflow", "Ecommerce", "CMS"],
     relatedSlug: "true-north-jerseys",
     lead:
-      "Webflow Ecommerce is built around a product with a fixed price and a stock count. That covers a great deal of retail and almost none of what a custom manufacturer sells. If your product is quoted rather than priced, the honest answer is: yes, but not the way the tutorials show you.",
+      "Webflow Ecommerce is built around a product with a fixed price and a stock count. That covers a great deal of retail and almost none of what a custom manufacturer sells. If your product is quoted rather than priced, the honest answer is yes, Webflow can carry that store, but probably not on Webflow Ecommerce itself.",
     sections: [
       {
         heading: "Where the default model runs out",
@@ -136,10 +136,11 @@ export const posts: Post[] = [
         ],
       },
       {
-        heading: "Use native Ecommerce where it earns its place",
+        heading: "Where I stopped using Webflow Ecommerce",
         paras: [
-          "This is not an argument for skipping Webflow Ecommerce. On True North it is wired in natively, because some of what they sell genuinely does have a price and a count. Stock apparel behaves like stock apparel.",
-          "The mistake is the all-or-nothing framing. A store can have a real cart for the items that fit a cart, and a quote path for the items that do not, without either feeling bolted on. What matters is that the visitor never has to work out which one they are in.",
+          "Some of what True North sells does behave like retail. Stock apparel has a price and a count. So the store needed a real cart alongside the quote path, and the question became which cart.",
+          "It is not Webflow Ecommerce. The store runs on CartGenie, an ecommerce app built by the team behind Monto and listed in Webflow's app marketplace, and the reasons are specific to this kind of product rather than to any general complaint about Webflow. CartGenie's published comparison puts it at 200 variants per product against 50 on Webflow Ecommerce, which stops mattering the moment sizes multiply by colours multiply by finishes. It adds personalization fields on the product and custom fields at checkout, which is where a made-to-order order actually gets specified. And it runs on a Webflow CMS plan rather than an Ecommerce one.",
+          "That last point is the one worth understanding, because it is not really about ecommerce. The products live in Webflow CMS collections. The store engine sits behind them.",
         ],
       },
       {
@@ -147,6 +148,7 @@ export const posts: Post[] = [
         paras: [
           "The most common failure I see on custom-product sites is burying the quote behind a contact page. Intent is perishable. Someone looking at a reversible jersey and thinking about their team's colours is as close to buying as they will ever be, and sending them to a generic contact form is a good way to lose them.",
           "On True North the order and quote path stays reachable from wherever intent lands, and it stays inside the brand. No jarring hop to a third-party form that looks like it belongs to a different company.",
+          "The same applies to the cart. A visitor should never have to work out which of the two paths they are in. One of them ends in a checkout and the other ends in a conversation, and neither should announce that it is a different system.",
         ],
       },
       {
@@ -159,7 +161,8 @@ export const posts: Post[] = [
       {
         heading: "When Webflow is the wrong answer",
         paras: [
-          "Worth saying plainly, because the alternative is selling you something that will hurt later. If your product needs a live configurator that prices itself as the buyer changes options, or per-customer pricing tiers, or inventory syncing against a warehouse system, you are past what Webflow Ecommerce does comfortably. At that point you are looking at a headless setup or a different platform, and anyone who tells you it is a quick Webflow build has not thought it through.",
+          "Worth saying plainly, because the alternative is selling you something that will hurt later. If your product needs a live configurator that prices itself as the buyer changes options, or per-customer pricing tiers, or inventory syncing against a warehouse system, you are past what this setup does comfortably. At that point you are looking at a headless build or a different platform, and anyone who tells you it is a quick Webflow project has not thought it through.",
+          "Note where that line sits now. A few years ago it sat much closer, and plenty of stores left Webflow over variant limits and checkout fields that the app layer has since solved. It is worth checking what the platform and its apps do today before you accept a quote to migrate away from it.",
           "The made-to-order case sits below that line. Catalogue, craft, and a clean path to a quote. Webflow handles that well, as long as you stop trying to make it a supermarket.",
         ],
       },
@@ -285,11 +288,12 @@ export const posts: Post[] = [
         ],
       },
       {
-        heading: "What this looked like on True North",
+        heading: "Where your team edits is a build decision",
         paras: [
-          "True North Jerseys makes custom hockey and baseball jerseys in British Columbia. Sublimated, reversible, embroidered: the craft is the entire sales argument, and the catalogue moves as the product lines do.",
-          "The team is family run and they add and grow the catalogue themselves. New kits go in from the CMS, and new product lines drop in as components rather than as rebuilds. That second part is the one that matters a year later, because the first time a business adds a whole product category is when it finds out whether the site was built for one shape of catalogue or for a catalogue.",
-          "The reason that works is not that Webflow has a CMS. It is that the catalogue was identified up front as the thing that would change without me, and structured for it. Sublimated, reversible and embroidered are options the team manages without code because somebody decided at build time that they were options rather than design.",
+          "There is a second question underneath all of this and almost nobody asks it before signing: not what can your team change, but how many places do they have to go to change it.",
+          "On True North Jerseys the store does not run on Webflow's own ecommerce. It runs on a third-party app. That kind of decision usually comes with a separate dashboard, a second login, and a team that now maintains its catalogue in one place and its content in another. Six months in, that is how a site quietly stops being maintained: not because anyone found it hard, but because keeping two systems in step was nobody's job.",
+          "So the catalogue lives in Webflow CMS collections and the family-run team edits it in Webflow, in the same place they edit everything else. The store engine sits behind that and they never have to think about it. The tool was chosen for what it could do, and then wired so the choice never reached the people using the site.",
+          "That is what I mean by a build decision. Nothing about it is visible on the finished site. All of it decides whether the site is still current in two years.",
         ],
       },
       {
@@ -326,7 +330,7 @@ export const posts: Post[] = [
       {
         heading: "The short answer",
         paras: [
-          "Your team does not need a developer because the platform is limited. They need one because somebody decided, at build time, which parts of the site were allowed to change. Make that decision on purpose and most of the tickets never get written.",
+          "Your team does not need a developer because the platform is limited. They need one because somebody decided, at build time, which parts of the site were allowed to change, and how many places they would have to go to change them. Make those decisions on purpose and most of the tickets never get written.",
         ],
       },
     ],
@@ -421,8 +425,8 @@ export const postsCopyEs: Record<string, Partial<Post>> = {
         heading: "La versión honesta",
         paras: [
           "Un sitio con movimiento real casi siempre va a puntuar más bajo que el mismo sitio sin nada. El que te diga lo contrario te está vendiendo algo. La pregunta que vale no es si el movimiento cuesta, es si lo que recibís a cambio vale lo que pagaste.",
-          "BIKE sirve como caso de prueba porque no es un build contenido. Tiene un preloader a medida que se dibuja antes del primer scroll, reveals con GSAP que marcan el ritmo de toda la página, y una bicicleta 3D interactiva en el 404. Saca 81 en rendimiento de Lighthouse, 100 en SEO y 90 en accesibilidad.",
-          "81 es un buen número. No es 98, y decir lo contrario sería deshonesto. Pero ese número compra una marca cuyo pitch entero es el movimiento, en un sitio que se habría contradicho a sí mismo quedándose quieto.",
+          "BIKE es un instituto de inglés en Uruguay, y sirve como caso de prueba porque no es un build contenido. Tiene un preloader a medida que se dibuja antes del primer scroll, reveals con GSAP que marcan el ritmo de toda la página, y una bicicleta 3D interactiva en el 404. Saca 81 en rendimiento de Lighthouse, 100 en SEO y 90 en accesibilidad.",
+          "81 es un buen número. No es 98, y decir lo contrario sería deshonesto. Pero ese número compra un sitio que se siente yendo a algún lado, para un negocio cuya promesa entera es que vas a mejorar en algo con el tiempo. Una página estática habría vendido eso de menos.",
         ],
       },
       {
@@ -480,10 +484,10 @@ export const postsCopyEs: Record<string, Partial<Post>> = {
   "webflow-ecommerce-made-to-order": {
     title: "¿Webflow Ecommerce sirve para productos a medida?",
     description:
-      "Webflow Ecommerce asume un producto con precio y stock. Los productos a medida rompen las dos cosas. Cómo construirlo igual.",
+      "Si tu producto se cotiza en vez de tener precio, la respuesta es sí, pero probablemente no sobre Webflow Ecommerce. Qué usar en su lugar y por qué.",
     tags: ["Webflow", "Ecommerce", "CMS"],
     lead:
-      "Webflow Ecommerce está pensado alrededor de un producto con precio fijo y stock. Eso cubre buena parte del retail y casi nada de lo que vende un fabricante a medida. Si tu producto se cotiza en vez de tener precio, la respuesta honesta es: sí, pero no como lo muestran los tutoriales.",
+      "Webflow Ecommerce está pensado alrededor de un producto con precio fijo y stock. Eso cubre buena parte del retail y casi nada de lo que vende un fabricante a medida. Si tu producto se cotiza en vez de tener precio, la respuesta honesta es sí, Webflow puede sostener esa tienda, pero probablemente no sobre Webflow Ecommerce.",
     sections: [
       {
         heading: "Dónde se queda corto el modelo por defecto",
@@ -502,10 +506,11 @@ export const postsCopyEs: Record<string, Partial<Post>> = {
         ],
       },
       {
-        heading: "Usá el Ecommerce nativo donde se lo gana",
+        heading: "Dónde dejé de usar Webflow Ecommerce",
         paras: [
-          "Esto no es un argumento para saltearse Webflow Ecommerce. En True North está integrado de forma nativa, porque parte de lo que venden sí tiene precio y stock. La indumentaria de catálogo se comporta como indumentaria de catálogo.",
-          "El error es el planteo de todo o nada. Una tienda puede tener un carrito real para lo que entra en un carrito, y un camino de cotización para lo que no, sin que ninguno de los dos se sienta pegado con cinta. Lo que importa es que el visitante nunca tenga que darse cuenta en cuál de los dos está.",
+          "Parte de lo que vende True North sí se comporta como retail. La indumentaria de catálogo tiene precio y stock. Así que la tienda necesitaba un carrito real además del camino de cotización, y la pregunta pasó a ser cuál carrito.",
+          "No es Webflow Ecommerce. La tienda corre sobre CartGenie, una app de ecommerce hecha por el equipo detrás de Monto y listada en el marketplace de apps de Webflow, y las razones son específicas de este tipo de producto, no una queja general contra Webflow. La comparación publicada por CartGenie la pone en 200 variantes por producto contra 50 de Webflow Ecommerce, algo que deja de ser un detalle en cuanto los talles se multiplican por colores y por terminaciones. Agrega campos de personalización en el producto y campos a medida en el checkout, que es justo donde se especifica un pedido a medida. Y funciona sobre un plan CMS de Webflow, no sobre uno de Ecommerce.",
+          "Ese último punto es el que conviene entender, porque en realidad no es sobre ecommerce. Los productos viven en colecciones del CMS de Webflow. El motor de la tienda va detrás.",
         ],
       },
       {
@@ -513,6 +518,7 @@ export const postsCopyEs: Record<string, Partial<Post>> = {
         paras: [
           "La falla más común que veo en sitios de producto a medida es enterrar la cotización detrás de una página de contacto. La intención es perecedera. Alguien mirando una camiseta reversible y pensando en los colores de su equipo está lo más cerca de comprar que va a estar nunca, y mandarlo a un formulario de contacto genérico es una buena forma de perderlo.",
           "En True North el camino de pedido y cotización queda alcanzable desde donde aparezca la intención, y se queda adentro de la marca. Sin saltos raros a un formulario de terceros que parece de otra empresa.",
+          "Lo mismo vale para el carrito. El visitante nunca debería tener que darse cuenta en cuál de los dos caminos está. Uno termina en un checkout y el otro en una conversación, y ninguno debería anunciar que es otro sistema.",
         ],
       },
       {
@@ -525,7 +531,8 @@ export const postsCopyEs: Record<string, Partial<Post>> = {
       {
         heading: "Cuándo Webflow es la respuesta equivocada",
         paras: [
-          "Vale decirlo derecho, porque la alternativa es venderte algo que después duele. Si tu producto necesita un configurador en vivo que se recotice mientras el comprador cambia opciones, o precios por cliente, o sincronizar inventario contra un sistema de depósito, ya estás más allá de lo que Webflow Ecommerce hace cómodo. Ahí estás mirando un setup headless u otra plataforma, y el que te diga que es un build rápido de Webflow no lo pensó bien.",
+          "Vale decirlo derecho, porque la alternativa es venderte algo que después duele. Si tu producto necesita un configurador en vivo que se recotice mientras el comprador cambia opciones, o precios por cliente, o sincronizar inventario contra un sistema de depósito, ya estás más allá de lo que este setup hace cómodo. Ahí estás mirando un build headless u otra plataforma, y el que te diga que es un proyecto rápido de Webflow no lo pensó bien.",
+          "Mirá dónde está esa línea hoy. Hace unos años estaba mucho más cerca, y un montón de tiendas se fueron de Webflow por límites de variantes y campos de checkout que la capa de apps ya resolvió. Vale chequear qué hacen hoy la plataforma y sus apps antes de aceptar un presupuesto para migrar afuera.",
           "El caso a medida está por debajo de esa línea. Catálogo, oficio, y un camino limpio a la cotización. Webflow lo resuelve bien, siempre que dejes de tratar de convertirlo en un supermercado.",
         ],
       },

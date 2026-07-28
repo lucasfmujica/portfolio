@@ -14,7 +14,7 @@ Lucas Mujica builds production-grade Webflow sites and custom-coded front-ends. 
 
 ## Posts
 - [Does animation make a Webflow site slow?](https://lucasmujica.dev/blog/webflow-animation-performance): What actually costs you performance in a Webflow build, and how to decide where motion is worth it. (2026)
-- [Can Webflow Ecommerce handle made-to-order products?](https://lucasmujica.dev/blog/webflow-ecommerce-made-to-order): Building a store for custom, quoted products, and where Webflow stops being the right answer. (2026)
+- [Can Webflow Ecommerce handle made-to-order products?](https://lucasmujica.dev/blog/webflow-ecommerce-made-to-order): Building a store for custom, quoted products, why the True North store runs on CartGenie rather than Webflow Ecommerce, and where Webflow stops being the right answer. (2026)
 
 ## Case studies
 - [True North Jerseys](https://lucasmujica.dev/work/true-north-jerseys): Custom hockey & baseball kits for a BC brand — a Webflow store, built different, with scroll-tied product reveals. (E-commerce build, 2026)
