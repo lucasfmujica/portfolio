@@ -69,6 +69,7 @@
     "viewAll": "View all projects",
     "seeAll": "See all projects",
     "viewCase": "View case study",
+    "visitSite": "Visit live site",
     "allEyebrow": "all work",
     "allHeading": "Case studies & *projects*.",
     "allLede": "Every build in one place: deep-dive case studies plus the rest of the shelf.",
@@ -130,6 +131,13 @@
         "period": "Mar 2026 – Present",
         "location": "Webflow Enterprise Partner · Remote",
         "note": "Building enterprise-grade Webflow sites for confidential tech clients: CMS architecture, custom animations, localization workflows, and front-end performance, alongside design and PM teams."
+      },
+      {
+        "company": "Félix",
+        "role": "Website Developer",
+        "period": "Sep 2026 – Present",
+        "location": "Buenos Aires, Argentina",
+        "note": "Building scalable Webflow experiences with design, growth and product teams: Figma-to-Webflow implementation, API and backend integrations, and front-end optimization for performance, accessibility, SEO and conversion."
       }
     ],
     "facetsEyebrow": "off the clock",
@@ -251,7 +259,6 @@
     "heading": "Ready to build.",
     "lead": "A few quick details so I can scope it before we even talk, or just email me directly.",
     "email": "hello@lucasmujica.dev",
-    "available": "Taking on new projects",
     "location": "Buenos Aires · Remote worldwide",
     "socialsAria": "Social links",
     "madGreeting": "Hi Lucas, I'm",

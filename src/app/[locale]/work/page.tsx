@@ -82,7 +82,7 @@ export default async function WorkIndexPage({
                   <Mockup
                     src={p.image}
                     alt={p.imageAlt ?? p.name}
-                    label={p.caseStudy?.liveUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                    label={(p.caseStudy?.liveUrl ?? p.liveUrl)?.replace(/^https?:\/\//, "").replace(/\/$/, "")}
                     badge={p.index}
                     placeholder={`${p.name}: drop screenshot`}
                     sizes="(max-width: 680px) 100vw, (max-width: 1100px) 50vw, 33vw"
@@ -101,7 +101,7 @@ export default async function WorkIndexPage({
                     ))}
                   </div>
                   <span className="awcard__cta">
-                    {isCase ? t("viewCase") : t("startProject")}{" "}
+                    {isCase ? t("viewCase") : p.liveUrl ? t("visitSite") : t("startProject")}{" "}
                     <Icon name="arrow-ur" />
                   </span>
                 </div>
@@ -113,7 +113,7 @@ export default async function WorkIndexPage({
                 {inner}
               </Link>
             ) : (
-              <a key={p.slug} href="#contact" className="awcard" data-cursor="View">
+              <a key={p.slug} href={p.liveUrl ?? "#contact"} className="awcard" data-cursor="View">
                 {inner}
               </a>
             );

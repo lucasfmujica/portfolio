@@ -127,10 +127,29 @@ export interface Project {
   imageAlt?: string;
   /** "full" → dedicated /work/[slug] case study; "compact" → listed only. */
   kind: "full" | "compact";
+  /** Published site for projects without a dedicated case study. */
+  liveUrl?: string;
   caseStudy?: CaseStudy;
 }
 
 export const projects: Project[] = [
+  {
+    slug: "fully-dialed",
+    index: "07",
+    name: "Fully Dialed",
+    category: "Marketing site",
+    year: "2026",
+    tags: ["Webflow"],
+    blurb: {
+      pre: "A Canadian ADAS calibration and glass-services brand, ",
+      ember: "now live",
+      post: ".",
+    },
+    image: "/assets/fullydialed-hero.webp",
+    imageAlt: "Fully Dialed: ADAS calibration and glass-services homepage",
+    kind: "compact",
+    liveUrl: "https://fullydialed.ca/",
+  },
   {
     slug: "true-north-jerseys",
     index: "01",
@@ -690,6 +709,15 @@ function mergeCopy<T>(base: T, overlay: DeepPartial<T> | undefined): T {
  * quotes are intentionally omitted so they keep the speaker's original wording.
  */
 export const projectsCopyEs: Record<string, ProjectCopy> = {
+  "fully-dialed": {
+    category: "Sitio de marketing",
+    blurb: {
+      pre: "Una marca canadiense de calibración ADAS y servicios de cristales, ",
+      ember: "ya online",
+      post: ".",
+    },
+    imageAlt: "Fully Dialed: sitio de calibración ADAS y servicios de cristales",
+  },
   "true-north-jerseys": {
     category: "Proyecto e-commerce",
     blurb: {

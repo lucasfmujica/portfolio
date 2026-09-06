@@ -13,7 +13,7 @@ const SOCIALS = [
 
 /**
  * Contact — the single ember-flooded band. Info column on the left (direct
- * email, availability, location, socials) with the giant "LM." watermark
+ * email, location, socials) with the giant "LM." watermark
  * behind; the conversational madlib form on the right.
  */
 export function Contact() {
@@ -44,9 +44,6 @@ export function Contact() {
             >
               {t("email")} <Icon name="arrow-ur" />
             </TrackedAnchor>
-            <div className="contact__avail">
-              <span className="contact__pulse" /> {t("available")}
-            </div>
             <div className="contact__loc">{t("location")}</div>
           </div>
           <div className="contact__socials" aria-label={t("socialsAria")} data-reveal data-reveal-delay="3">
