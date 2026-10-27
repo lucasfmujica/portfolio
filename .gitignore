@@ -43,3 +43,6 @@ yarn-error.log*
 
 # ShipStudio metadata
 .shipstudio/
+
+# compiled by scripts/capture/clip.mjs
+scripts/capture/encode
