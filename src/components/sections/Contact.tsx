@@ -13,7 +13,7 @@ const SOCIALS = [
 
 /**
  * Contact — the single ember-flooded band. Info column on the left (direct
- * email, availability, location, socials) with the giant "LM." watermark
+ * email, location, socials) with the giant "LM." watermark
  * behind; the conversational madlib form on the right.
  */
 export function Contact() {

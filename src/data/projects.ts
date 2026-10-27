@@ -129,10 +129,98 @@ export interface Project {
   imageAlt?: string;
   /** "full" → dedicated /work/[slug] case study; "compact" → listed only. */
   kind: "full" | "compact";
+  /** Published site for projects without a dedicated case study. */
+  liveUrl?: string;
   caseStudy?: CaseStudy;
 }
 
 export const projects: Project[] = [
+  {
+    slug: "fully-dialed",
+    index: "07",
+    name: "Fully Dialed",
+    category: "Landing page",
+    year: "2026",
+    tags: ["Webflow", "GSAP", "Custom code"],
+    blurb: {
+      pre: "Mobile ADAS calibration for BC body shops. A 15-section Webflow one-pager, ",
+      ember: "13 KB of motion",
+      post: ", readable even when the JavaScript isn't.",
+    },
+    image: "/assets/fullydialed-hero.webp",
+    imageAlt: "Fully Dialed: mobile ADAS calibration for BC body shops",
+    kind: "full",
+    caseStudy: {
+      platform: "Webflow",
+      year: "2026",
+      liveUrl: "https://fullydialed.ca",
+      liveLabel: "fullydialed.ca",
+      outcome: {
+        pre: "The site had one thing to prove: repaired doesn't mean safe. My job was to ",
+        ember: "make it land.",
+      },
+      tags: ["Webflow", "Mast", "GSAP", "ScrollTrigger", "SplitText"],
+      heroImage: "/assets/fullydialed-hero.webp",
+      heroImageAlt:
+        "Fully Dialed: 'Your customers aren't truly safe until their ADAS is fully dialed'",
+      heroBadge: "fullydialed.ca · home",
+      highlights: [
+        "One versioned motion layer, *~13 KB of JavaScript*, driving all fifteen sections.",
+        "Text that survives a JavaScript failure: a watchdog *releases the copy after six seconds*.",
+        "*prefers-reduced-motion* is honoured end to end, preloader and rotating ticker included.",
+      ],
+      services: ["Development", "Motion", "Performance", "Accessibility", "Technical SEO"],
+      challengeHeading: "A safety problem that leaves no warning light, sold to shops.",
+      challengeBody:
+        "Modern cars steer and brake using cameras and radar. After a collision, a service or a windshield swap, those sensors drift out of alignment and *no warning light comes on*. Fully Dialed calibrates them at the shop, so nobody loses days sending a car to the dealership. The design and motion direction came from the client in Figma: fifteen sections, one page.",
+      challengeVisualCaption: "fullydialed.ca · ADAS",
+      specs: [
+        { key: "role", value: "Front-end build (design supplied by client)" },
+        { key: "stack", value: "Webflow · Mast · custom JS" },
+        { key: "integration", value: "GSAP ScrollTrigger · SplitText · JSON-LD" },
+      ],
+      buildHeading: "One motion system instead of fifty Webflow interactions.",
+      buildLead:
+        "Instead of hand-building interactions in the Designer, I wrote *one motion layer driven by data attributes*. It splits text by line, word or letter depending on the block, opens photo masks from circle to rounded rectangle, ties radar patterns to the scroll, and runs the hero parallax, the ticker and the preloader. One file, versioned, consistent across fifteen sections.",
+      shots: [
+        {
+          n: "01",
+          label: "01 / Motion system",
+          lead: "Masks that open from circle to rounded rectangle",
+          body: ". One attribute drives the same reveal across every feature card on the page.",
+          placeholder: "Motion: drop screenshot",
+          image: "/assets/fullydialed-shot1.webp",
+          video: "/assets/fullydialed-shot1.mp4",
+        },
+        {
+          n: "02",
+          label: "02 / Scroll-tied motion",
+          lead: "Radar patterns that rotate with the scroll",
+          body: ". Scroll position drives the rotation, on the section that carries the site's whole argument.",
+          placeholder: "Radar: drop screenshot",
+          image: "/assets/fullydialed-shot2.webp",
+        },
+        {
+          n: "03",
+          label: "03 / Mobile",
+          lead: "Measured in the DOM, not by eye",
+          body: ". The hero went from 139% of the viewport to 116% once duplicated padding was found.",
+          placeholder: "Mobile: drop screenshot",
+          image: "/assets/fullydialed-shot3.webp",
+        },
+      ],
+      resultsStatement: "A motion-heavy page that still reads perfectly with the JavaScript switched off.",
+      // Lighthouse 12.8 desktop on fullydialed.ca, median of three runs, 2026-10-27.
+      // Performance (78–94, median 79) was left out: too unstable run to run to quote.
+      resultsSub:
+        "Fifteen sections, one versioned motion layer, and copy that never depends on it. The numbers below are measured on the live site.",
+      metrics: [
+        { value: "100", label: "Lighthouse SEO" },
+        { value: "100", label: "Lighthouse best practices" },
+        { value: "90", label: "Lighthouse accessibility" },
+      ],
+    },
+  },
   {
     slug: "true-north-jerseys",
     index: "01",
@@ -637,92 +725,6 @@ export const projects: Project[] = [
         role: "Business Development Manager, Seilas Ship Supplies",
         avatar: "/assets/avatars/eugenia.webp",
       },
-    },
-  },
-  {
-    slug: "fully-dialed",
-    index: "07",
-    name: "Fully Dialed",
-    category: "Landing page",
-    year: "2026",
-    tags: ["Webflow", "GSAP", "Custom code"],
-    blurb: {
-      pre: "Mobile ADAS calibration for BC body shops. A 15-section Webflow one-pager, ",
-      ember: "13 KB of motion",
-      post: ", readable even when the JavaScript isn't.",
-    },
-    image: "/assets/fullydialed-hero.webp",
-    imageAlt: "Fully Dialed: mobile ADAS calibration for BC body shops",
-    kind: "full",
-    caseStudy: {
-      platform: "Webflow",
-      year: "2026",
-      liveUrl: "https://fullydialed.ca",
-      liveLabel: "fullydialed.ca",
-      outcome: {
-        pre: "The site had one thing to prove: repaired doesn't mean safe. My job was to ",
-        ember: "make it land.",
-      },
-      tags: ["Webflow", "Mast", "GSAP", "ScrollTrigger", "SplitText"],
-      heroImage: "/assets/fullydialed-hero.webp",
-      heroImageAlt:
-        "Fully Dialed: 'Your customers aren't truly safe until their ADAS is fully dialed'",
-      heroBadge: "fullydialed.ca · home",
-      highlights: [
-        "One versioned motion layer, *~13 KB of JavaScript*, driving all fifteen sections.",
-        "Text that survives a JavaScript failure: a watchdog *releases the copy after six seconds*.",
-        "*prefers-reduced-motion* is honoured end to end, preloader and rotating ticker included.",
-      ],
-      services: ["Development", "Motion", "Performance", "Accessibility", "Technical SEO"],
-      challengeHeading: "A safety problem that leaves no warning light, sold to shops.",
-      challengeBody:
-        "Modern cars steer and brake using cameras and radar. After a collision, a service or a windshield swap, those sensors drift out of alignment and *no warning light comes on*. Fully Dialed calibrates them at the shop, so nobody loses days sending a car to the dealership. The design and motion direction came from the client in Figma: fifteen sections, one page.",
-      challengeVisualCaption: "fullydialed.ca · ADAS",
-      specs: [
-        { key: "role", value: "Front-end build (design supplied by client)" },
-        { key: "stack", value: "Webflow · Mast · custom JS" },
-        { key: "integration", value: "GSAP ScrollTrigger · SplitText · JSON-LD" },
-      ],
-      buildHeading: "One motion system instead of fifty Webflow interactions.",
-      buildLead:
-        "Instead of hand-building interactions in the Designer, I wrote *one motion layer driven by data attributes*. It splits text by line, word or letter depending on the block, opens photo masks from circle to rounded rectangle, ties radar patterns to the scroll, and runs the hero parallax, the ticker and the preloader. One file, versioned, consistent across fifteen sections.",
-      shots: [
-        {
-          n: "01",
-          label: "01 / Motion system",
-          lead: "Masks that open from circle to rounded rectangle",
-          body: ". One attribute drives the same reveal across every feature card on the page.",
-          placeholder: "Motion: drop screenshot",
-          image: "/assets/fullydialed-shot1.webp",
-          video: "/assets/fullydialed-shot1.mp4",
-        },
-        {
-          n: "02",
-          label: "02 / Scroll-tied motion",
-          lead: "Radar patterns that rotate with the scroll",
-          body: ". Scroll position drives the rotation, on the section that carries the site's whole argument.",
-          placeholder: "Radar: drop screenshot",
-          image: "/assets/fullydialed-shot2.webp",
-        },
-        {
-          n: "03",
-          label: "03 / Mobile",
-          lead: "Measured in the DOM, not by eye",
-          body: ". The hero went from 139% of the viewport to 116% once duplicated padding was found.",
-          placeholder: "Mobile: drop screenshot",
-          image: "/assets/fullydialed-shot3.webp",
-        },
-      ],
-      resultsStatement: "A motion-heavy page that still reads perfectly with the JavaScript switched off.",
-      // Lighthouse 12.8 desktop on fullydialed.ca, median of three runs, 2026-10-27.
-      // Performance (78–94, median 79) was left out: too unstable run to run to quote.
-      resultsSub:
-        "Fifteen sections, one versioned motion layer, and copy that never depends on it. The numbers below are measured on the live site.",
-      metrics: [
-        { value: "100", label: "Lighthouse SEO" },
-        { value: "100", label: "Lighthouse best practices" },
-        { value: "90", label: "Lighthouse accessibility" },
-      ],
     },
   },
 ];
