@@ -54,8 +54,10 @@ export interface CaseStudyShot {
   body: string;
   /** Placeholder text for the (swappable) screenshot. */
   placeholder: string;
-  /** Optional real image. */
+  /** Optional real image. Doubles as the poster when `video` is set. */
   image?: string;
+  /** Optional looping screen capture. Falls back to `image` under reduced motion. */
+  video?: string;
 }
 
 export interface CaseStudyMetric {
@@ -115,7 +117,7 @@ export interface CaseStudy {
 
 export interface Project {
   slug: string;
-  /** "01"–"06", drives the numbered badge + card eyebrow. */
+  /** "01"–"07", drives the numbered badge + card eyebrow. */
   index: string;
   name: string;
   category: string;
@@ -193,6 +195,7 @@ export const projects: Project[] = [
           body: ". Sublimated, reversible and embroidered options the team manages without code.",
           placeholder: "Product line: drop screenshot",
           image: "/assets/truenorth-shot2.webp",
+          video: "/assets/truenorth-shot2.mp4",
         },
         {
           n: "03",
@@ -267,6 +270,7 @@ export const projects: Project[] = [
           body: ". A Client-First component system, tuned to stay light under GSAP motion.",
           placeholder: "Tools: drop screenshot",
           image: "/assets/k2btools-shot1.webp",
+          video: "/assets/k2btools-shot1.mp4",
         },
         {
           n: "02",
@@ -350,6 +354,7 @@ export const projects: Project[] = [
           body: ". The bike mark draws in before the first scroll, motion paced by GSAP.",
           placeholder: "Loader: drop screenshot",
           image: "/assets/bike-shot1.webp",
+          video: "/assets/bike-shot1.mp4",
         },
         {
           n: "02",
@@ -433,6 +438,7 @@ export const projects: Project[] = [
           body: ". Warm neutral palette, Sora + Overpass, GSAP reveals that breathe.",
           placeholder: "Services: drop screenshot",
           image: "/assets/homeorganizers-shot1.webp",
+          video: "/assets/homeorganizers-shot1.mp4",
         },
         {
           n: "02",
@@ -530,6 +536,7 @@ export const projects: Project[] = [
           body: ". Bespoke iconography that gives an abstract service something to read.",
           placeholder: "Approach / illustration: drop screenshot",
           image: "/assets/nextfense-shot2.webp",
+          video: "/assets/nextfense-shot2.mp4",
         },
         {
           n: "03",
@@ -603,6 +610,7 @@ export const projects: Project[] = [
           lead: "“Keeping vessels moving, worldwide”",
           body: ". A world map of 500+ clients across 30+ countries, front and center.",
           image: "/assets/seilas-card.webp",
+          video: "/assets/seilas-card.mp4",
           placeholder: "Home / map: drop screenshot",
         },
         {
@@ -629,6 +637,92 @@ export const projects: Project[] = [
         role: "Business Development Manager, Seilas Ship Supplies",
         avatar: "/assets/avatars/eugenia.webp",
       },
+    },
+  },
+  {
+    slug: "fully-dialed",
+    index: "07",
+    name: "Fully Dialed",
+    category: "Landing page",
+    year: "2026",
+    tags: ["Webflow", "GSAP", "Custom code"],
+    blurb: {
+      pre: "Mobile ADAS calibration for BC body shops. A 15-section Webflow one-pager, ",
+      ember: "13 KB of motion",
+      post: ", readable even when the JavaScript isn't.",
+    },
+    image: "/assets/fullydialed-hero.webp",
+    imageAlt: "Fully Dialed: mobile ADAS calibration for BC body shops",
+    kind: "full",
+    caseStudy: {
+      platform: "Webflow",
+      year: "2026",
+      liveUrl: "https://fullydialed.ca",
+      liveLabel: "fullydialed.ca",
+      outcome: {
+        pre: "The site had one thing to prove: repaired doesn't mean safe. My job was to ",
+        ember: "make it land.",
+      },
+      tags: ["Webflow", "Mast", "GSAP", "ScrollTrigger", "SplitText"],
+      heroImage: "/assets/fullydialed-hero.webp",
+      heroImageAlt:
+        "Fully Dialed: 'Your customers aren't truly safe until their ADAS is fully dialed'",
+      heroBadge: "fullydialed.ca · home",
+      highlights: [
+        "One versioned motion layer, *~13 KB of JavaScript*, driving all fifteen sections.",
+        "Text that survives a JavaScript failure: a watchdog *releases the copy after six seconds*.",
+        "*prefers-reduced-motion* is honoured end to end, preloader and rotating ticker included.",
+      ],
+      services: ["Development", "Motion", "Performance", "Accessibility", "Technical SEO"],
+      challengeHeading: "A safety problem that leaves no warning light, sold to shops.",
+      challengeBody:
+        "Modern cars steer and brake using cameras and radar. After a collision, a service or a windshield swap, those sensors drift out of alignment and *no warning light comes on*. Fully Dialed calibrates them at the shop, so nobody loses days sending a car to the dealership. The design and motion direction came from the client in Figma: fifteen sections, one page.",
+      challengeVisualCaption: "fullydialed.ca · ADAS",
+      specs: [
+        { key: "role", value: "Front-end build (design supplied by client)" },
+        { key: "stack", value: "Webflow · Mast · custom JS" },
+        { key: "integration", value: "GSAP ScrollTrigger · SplitText · JSON-LD" },
+      ],
+      buildHeading: "One motion system instead of fifty Webflow interactions.",
+      buildLead:
+        "Instead of hand-building interactions in the Designer, I wrote *one motion layer driven by data attributes*. It splits text by line, word or letter depending on the block, opens photo masks from circle to rounded rectangle, ties radar patterns to the scroll, and runs the hero parallax, the ticker and the preloader. One file, versioned, consistent across fifteen sections.",
+      shots: [
+        {
+          n: "01",
+          label: "01 / Motion system",
+          lead: "Masks that open from circle to rounded rectangle",
+          body: ". One attribute drives the same reveal across every feature card on the page.",
+          placeholder: "Motion: drop screenshot",
+          image: "/assets/fullydialed-shot1.webp",
+          video: "/assets/fullydialed-shot1.mp4",
+        },
+        {
+          n: "02",
+          label: "02 / Scroll-tied motion",
+          lead: "Radar patterns that rotate with the scroll",
+          body: ". Scroll position drives the rotation, on the section that carries the site's whole argument.",
+          placeholder: "Radar: drop screenshot",
+          image: "/assets/fullydialed-shot2.webp",
+        },
+        {
+          n: "03",
+          label: "03 / Mobile",
+          lead: "Measured in the DOM, not by eye",
+          body: ". The hero went from 139% of the viewport to 116% once duplicated padding was found.",
+          placeholder: "Mobile: drop screenshot",
+          image: "/assets/fullydialed-shot3.webp",
+        },
+      ],
+      resultsStatement: "A motion-heavy page that still reads perfectly with the JavaScript switched off.",
+      // Lighthouse 12.8 desktop on fullydialed.ca, median of three runs, 2026-10-27.
+      // Performance (78–94, median 79) was left out: too unstable run to run to quote.
+      resultsSub:
+        "Fifteen sections, one versioned motion layer, and copy that never depends on it. The numbers below are measured on the live site.",
+      metrics: [
+        { value: "100", label: "Lighthouse SEO" },
+        { value: "100", label: "Lighthouse best practices" },
+        { value: "90", label: "Lighthouse accessibility" },
+      ],
     },
   },
 ];
@@ -1057,6 +1151,70 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
       resultsStatement: "Un sitio que por fin luce como debe: un siglo de confianza, online.",
       resultsSub:
         "Entregado en Webflow y traspasado prolijo. Los números de abajo están medidos en el sitio online.",
+      metrics: [
+        { label: "Lighthouse SEO" },
+        { label: "Lighthouse buenas prácticas" },
+        { label: "Lighthouse accesibilidad" },
+      ],
+    },
+  },
+  "fully-dialed": {
+    category: "Landing page",
+    blurb: {
+      pre: "Calibración ADAS móvil para talleres de BC. Una one-pager de 15 secciones en Webflow, ",
+      ember: "13 KB de movimiento",
+      post: ", que se lee aunque el JS falle.",
+    },
+    imageAlt: "Fully Dialed: calibración ADAS móvil para talleres de BC",
+    caseStudy: {
+      outcome: {
+        pre: "El sitio tenía una sola cosa que probar: reparado no es lo mismo que seguro. Todo el build está para ",
+        ember: "que eso pegue.",
+      },
+      heroImageAlt:
+        "Fully Dialed: hero 'Your customers aren't truly safe until their ADAS is fully dialed'",
+      heroBadge: "fullydialed.ca · inicio",
+      highlights: [
+        "Una sola capa de movimiento versionada, *~13 KB de JavaScript*, para las quince secciones.",
+        "Texto que sobrevive a una falla de JavaScript: un watchdog *lo libera a los seis segundos*.",
+        "*prefers-reduced-motion* está cubierto de punta a punta, con preloader y ticker rotativo incluidos.",
+      ],
+      services: ["Desarrollo", "Motion", "Performance", "Accesibilidad", "SEO técnico"],
+      challengeHeading: "Un problema de seguridad que no enciende ninguna luz, vendido a talleres.",
+      challengeBody:
+        "Los autos modernos frenan y mantienen el carril con cámaras y radar. Después de un choque, un service o un cambio de parabrisas, esos sensores se desalinean y *no se enciende ninguna luz de alerta*. Fully Dialed los recalibra en el taller, así nadie pierde días mandando el auto a la concesionaria. El diseño y la dirección de animación llegaron del cliente en Figma: quince secciones, una sola página.",
+      challengeVisualCaption: "fullydialed.ca · ADAS",
+      specs: [
+        { value: "Build front-end (diseño provisto por el cliente)" },
+        { value: "Webflow · Mast · JS propio" },
+        { value: "GSAP ScrollTrigger · SplitText · JSON-LD" },
+      ],
+      buildHeading: "Un sistema de movimiento en vez de cincuenta interacciones de Webflow.",
+      buildLead:
+        "En vez de armar interacciones a mano en el Designer, escribí *una sola capa de movimiento manejada por atributos*. Revela texto por línea, palabra o letra según el bloque, abre las máscaras de las fotos de círculo a rectángulo redondeado, ata los patrones de radar al scroll y corre el parallax del hero, el ticker y el preloader. Un solo archivo, versionado, consistente en las quince secciones.",
+      shots: [
+        {
+          label: "01 / Sistema de movimiento",
+          lead: "Máscaras que abren de círculo a rectángulo redondeado",
+          body: ". Un atributo maneja el mismo reveal en todas las feature cards de la página.",
+          placeholder: "Movimiento: poné screenshot",
+        },
+        {
+          label: "02 / Movimiento atado al scroll",
+          lead: "Patrones de radar que giran con el scroll",
+          body: ". La posición del scroll maneja la rotación, en la sección que carga todo el argumento del sitio.",
+          placeholder: "Radar: poné screenshot",
+        },
+        {
+          label: "03 / Mobile",
+          lead: "Medido en el DOM, no a ojo",
+          body: ". El hero pasó de 139% del viewport a 116% al encontrar un padding duplicado.",
+          placeholder: "Mobile: poné screenshot",
+        },
+      ],
+      resultsStatement: "Una página cargada de movimiento que se lee perfecta con el JavaScript apagado.",
+      resultsSub:
+        "Quince secciones, una capa de movimiento versionada y un copy que nunca depende de ella. Los números de abajo están medidos en el sitio online.",
       metrics: [
         { label: "Lighthouse SEO" },
         { label: "Lighthouse buenas prácticas" },

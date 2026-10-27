@@ -9,6 +9,11 @@ import { siteUrl } from "@/lib/site";
  * engines see the en/es pair. The default locale lives at the bare path; others
  * are prefixed (`/es/...`), matching `localePrefix: "as-needed"`.
  */
+
+// Same cadence as the blog pages. Posts go live by date through ISR, so a
+// sitemap built once at deploy time would leave every later post out of it.
+export const revalidate = 3600;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 

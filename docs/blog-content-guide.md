@@ -118,16 +118,17 @@ and it pairs with the "wrong answer" section already in the ecommerce post.
 
 ### Evidence ledger
 
-Six public case studies, and §5b means that is the whole budget. Current state:
+Seven public case studies, and §5b means that is the whole budget. Current state:
 
 | Case study | Status |
 |---|---|
 | BIKE | **Spent** — animation and performance post (published) |
 | True North Jerseys | **Spent twice**, deliberately. The ecommerce post uses the made-to-order feasibility question; the handoff post queued for 25 Aug uses where the team edits. Different parts of the build, so §5b is satisfied. |
-| K2BTools | Queued, 11 Aug (multilingual) |
-| Home Organizers | Queued, 8 Sep (when Webflow is wrong) |
+| K2BTools | **Spent** — multilingual post, 11 Aug |
+| Home Organizers | **Spent** — when Webflow is wrong, 8 Sep |
 | Seilas Ship Supplies | **Unused.** Freed when the handoff post moved to True North. |
 | Nextfense | **Held back entirely.** Not to be used as supporting evidence in another post. |
+| Fully Dialed | **Spent** — what happens when the JavaScript fails, 10 Nov. Also safe to cite: the six-second watchdog and the ~13 KB motion layer, both published in the case study. |
 
 > **Resolved 28 Jul.** The handoff post first repeated the ecommerce post
 > almost verbatim, both saying the team is family run, runs the catalogue
@@ -218,6 +219,7 @@ elsewhere on this site, which in practice means the Lighthouse scores in
 |---|---|---|---|
 | True North Jerseys | 100 | 92 | 87 |
 | BIKE | 100 | 90 | 81 |
+| Fully Dialed | 100 | 90 | not published (unstable, 78 to 94) |
 
 Also verifiable and safe to state: 5+ years, 100+ projects, Client-First
 Certified Expert, project counts and locations already written into

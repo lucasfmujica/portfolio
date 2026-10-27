@@ -1,7 +1,10 @@
 import { ImageFill } from "./ImageFill";
+import { VideoFill } from "./VideoFill";
 
 interface MockupProps {
   src?: string;
+  /** Optional looping clip. `src` becomes its poster and reduced-motion fallback. */
+  video?: string;
   alt?: string;
   /** Browser-bar URL label. Omit to show the chrome dots only. */
   label?: string;
@@ -24,6 +27,7 @@ interface MockupProps {
  */
 export function Mockup({
   src,
+  video,
   alt,
   label,
   badge,
@@ -49,7 +53,11 @@ export function Mockup({
       </div>
       <div className="mockup__screen">
         {badge ? <span className="mockup__num">{badge}</span> : null}
-        <ImageFill src={src} alt={alt} placeholder={placeholder} sizes={sizes} priority={priority} />
+        {video ? (
+          <VideoFill src={video} poster={src} alt={alt} placeholder={placeholder} sizes={sizes} />
+        ) : (
+          <ImageFill src={src} alt={alt} placeholder={placeholder} sizes={sizes} priority={priority} />
+        )}
       </div>
     </div>
   );

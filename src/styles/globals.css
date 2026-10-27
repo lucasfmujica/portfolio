@@ -1694,13 +1694,13 @@
      chrome bar sits above it, so the card grows by the bar height. Order mirrors
      SelectedWork's FEATURED = projects[0..2]: True North · K2BTools · BIKE. */
   .workstack .wcard:nth-child(1) .mockup__screen {
-    aspect-ratio: 1500 / 806;
+    aspect-ratio: 1600 / 900;
   }
   .workstack .wcard:nth-child(2) .mockup__screen {
-    aspect-ratio: 1500 / 870;
+    aspect-ratio: 1600 / 900;
   }
   .workstack .wcard:nth-child(3) .mockup__screen {
-    aspect-ratio: 1500 / 746;
+    aspect-ratio: 1600 / 900;
   }
 
   /* ---- Browser-window mockup (chrome bar + screenshot) ----
@@ -1757,6 +1757,7 @@
     aspect-ratio: 16 / 10;
   }
   .mockup__screen .imgslot,
+  .mockup__screen video,
   .mockup__screen img {
     position: absolute;
     inset: 0;

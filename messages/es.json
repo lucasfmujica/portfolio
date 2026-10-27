@@ -130,6 +130,13 @@
         "period": "Mar 2026 – Presente",
         "location": "Webflow Enterprise Partner · Remoto",
         "note": "Construyendo sitios Webflow de nivel enterprise para clientes tech confidenciales: arquitectura de CMS, animaciones a medida, flujos de localización y rendimiento de front-end, junto a los equipos de diseño y PM."
+      },
+      {
+        "company": "Félix",
+        "role": "Website Developer",
+        "period": "Sep 2026 – Actualidad",
+        "location": "Buenos Aires, Argentina",
+        "note": "Desarrollo experiencias escalables en Webflow junto a diseño, growth y producto: implementación de Figma a Webflow, integraciones con APIs y backend, y optimización del front-end para performance, accesibilidad, SEO y conversión."
       }
     ],
     "facetsEyebrow": "fuera del horario",
@@ -251,7 +258,6 @@
     "heading": "Listo para construir.",
     "lead": "Unos datos rápidos para que pueda dimensionarlo antes de hablar siquiera, o escribime directo.",
     "email": "hello@lucasmujica.dev",
-    "available": "Tomando proyectos nuevos",
     "location": "Buenos Aires · Remoto en todo el mundo",
     "socialsAria": "Redes sociales",
     "madGreeting": "Hola Lucas, soy",

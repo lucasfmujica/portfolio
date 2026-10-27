@@ -28,6 +28,9 @@ const SHOT_ASPECT: Record<string, string> = {
   "nextfense-shot3": "1400 / 782",
   "seilas-card": "1400 / 878",
   "seilas-history": "1710 / 948",
+  "fullydialed-shot1": "1400 / 900",
+  "fullydialed-shot2": "1400 / 900",
+  "fullydialed-shot3": "1400 / 900",
 };
 
 const aspectFor = (src?: string): string | undefined => {
@@ -83,6 +86,7 @@ export function CaseStudyGallery({
             >
               <Mockup
                 src={shot.image}
+                video={shot.video}
                 alt={projectName ? `${projectName}: ${shot.lead}` : shot.lead}
                 label={label}
                 badge={shot.n}

@@ -15,6 +15,9 @@ Lucas Mujica builds production-grade Webflow sites and custom-coded front-ends. 
 ## Posts
 - [Does animation make a Webflow site slow?](https://lucasmujica.dev/blog/webflow-animation-performance): What actually costs you performance in a Webflow build, and how to decide where motion is worth it. (2026)
 - [Can Webflow Ecommerce handle made-to-order products?](https://lucasmujica.dev/blog/webflow-ecommerce-made-to-order): Building a store for custom, quoted products, why the True North store runs on CartGenie rather than Webflow Ecommerce, and where Webflow stops being the right answer. (2026)
+- [What does it actually take to run a site in three languages?](https://lucasmujica.dev/blog/webflow-multilingual-site-what-it-takes): Webflow makes adding a locale close to trivial; the part nobody quotes is what happens to your content operation for the next three years, from the K2BTools build. (2026)
+- [Why does my team still need a developer to change the site?](https://lucasmujica.dev/blog/webflow-site-team-can-run): Running your own site is not a platform feature. It is a set of decisions made at build time about which parts are allowed to change. (2026)
+- [When is Webflow the wrong tool for the job?](https://lucasmujica.dev/blog/when-webflow-is-the-wrong-tool): The cases where I do not build in Webflow, from the hand-coded Home Organizers site, and what the alternative actually costs. (2026)
 
 ## Case studies
 - [True North Jerseys](https://lucasmujica.dev/work/true-north-jerseys): Custom hockey & baseball kits for a BC brand — a Webflow store, built different, with scroll-tied product reveals. (E-commerce build, 2026)
@@ -23,6 +26,7 @@ Lucas Mujica builds production-grade Webflow sites and custom-coded front-ends. 
 - [Home Organizers LI](https://lucasmujica.dev/work/home-organizers): A Long Island organizing studio, hand-coded end to end — vanilla JS, GSAP, and a before/after slider built from scratch, down to JSON-LD LocalBusiness SEO. (Custom-coded site, 2026)
 - [Nextfense](https://lucasmujica.dev/work/nextfense): A Montevideo cybersecurity firm — a bilingual (es/en) Webflow build with custom illustration for its managed-security platform. (Webflow build, 2025)
 - [Seilas Ship Supplies](https://lucasmujica.dev/work/seilas-ship-supplies): A century-old Uruguayan ship chandler — a clean B2B Webflow site spanning 500+ clients across 30+ countries. (B2B site, 2024)
+- [Fully Dialed](https://lucasmujica.dev/work/fully-dialed): Mobile ADAS calibration for BC body shops — a 15-section Webflow one-pager, 13 KB of motion, readable even when the JavaScript isn't. (Landing page, 2026)
 
 ## Contact
 - Email: hello@lucasmujica.dev

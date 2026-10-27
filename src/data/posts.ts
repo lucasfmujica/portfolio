@@ -409,6 +409,73 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "animated-site-when-javascript-fails",
+    title: "What happens to an animated site when the JavaScript fails?",
+    description:
+      "Most scroll animation hides content until a script runs. How to build motion so a failed script costs you the effect, not the page.",
+    date: "2026-11-10",
+    tags: ["Webflow", "GSAP", "Accessibility"],
+    relatedSlug: "fully-dialed",
+    lead: "It is the right thing to worry about before you sign off on a site that moves. Most scroll animation works by hiding text and images first and revealing them when a script runs, so if that script never runs, the content stays hidden and the page looks empty. The honest answer is that it depends entirely on how the motion was built, and you can find out which kind you are buying before it ships.",
+    sections: [
+      {
+        heading: "The honest version",
+        paras: [
+          "Animation is a dependency. Every reveal on a page is a moment where the page asks a script for permission to show something it already has. When that script loads late, gets blocked by a browser extension, or breaks after an unrelated edit, the visitor does not see a simpler version of your site. On a badly built one they see nothing.",
+          "That failure is quiet. Nobody files a ticket for a blank section. The visitor leaves, and your analytics record a bounce you will never connect to the animation.",
+        ],
+      },
+      {
+        heading: "Three ways motion goes wrong",
+        paras: ["Most conversations only cover the first one."],
+        list: [
+          "It never starts. A script fails to load or errors before it runs, and everything that was hidden waiting for it stays hidden.",
+          "The visitor asked for it not to run. People can tell their operating system to reduce motion, for vestibular reasons or simple preference. A site that ignores the setting is being rude. A site that honours it by switching animation off halfway through a sequence leaves things frozen in their starting state, which is worse.",
+          "The platform cuts it off. Builders control some states themselves. Webflow's mobile menu hides its panel the instant it closes, so a closing animation has nothing left on screen to animate, and the menu snaps shut.",
+        ],
+      },
+      {
+        heading: "What I did on Fully Dialed",
+        paras: [
+          "Fully Dialed calibrates the cameras and radar in modern cars for repair shops in British Columbia. The design and motion direction came from their side in Figma, and the page moves a lot: text revealed line by line, photo masks that open, radar patterns tied to the scroll. My job was to build it so none of that could cost them a visitor. For a business whose entire message is about safety, a page that fails silently is the wrong kind of irony.",
+          "Three decisions did most of the work. The copy is in the HTML from the start, so search engines and screen readers get the whole page whether or not a script runs. The hiding only switches on once the animation code has actually started, so a script that never loads never hides anything. And there is a watchdog: if the motion layer has not reported in within six seconds, it gives up and shows everything, unanimated.",
+          "Reduced motion is handled by showing the finished state, not by switching animation off. The rotating ticker is where the difference shows. Stopped mid-rotation it would sit on half a word, so under reduced motion it renders its final position instead. The menu was the platform case: I catch the moment Webflow closes it, keep the panel on screen just long enough to play the curtain in reverse, then let it go.",
+          "All of the motion lives in one file of roughly 13 KB, driven by attributes on the page, rather than dozens of interactions configured by hand. That is what makes the rules above hold on every section instead of most of them.",
+        ],
+      },
+      {
+        heading: "The cost I have not removed",
+        paras: [
+          "Accessibility on the live site measures 90 in Lighthouse, not 100, and the points it loses come from the motion layer itself. Splitting a sentence into animated lines means describing the original sentence to assistive technology separately, and the way that description is attached is something the audit flags.",
+          "It is fixable, and it is also the honest price of the effect. Every line that slides in is extra markup that has to be explained to a screen reader. I would rather show you the 90 and tell you where it comes from than pretend the motion is free.",
+        ],
+      },
+      {
+        heading: "How to check what you are buying",
+        paras: ["You can do all of this on a staging link before launch, without me."],
+        list: [
+          "Turn JavaScript off in your browser and load the page. Everything you need to read should still be there, just still. Empty sections mean the motion owns your content.",
+          "Turn on reduced motion (on a Mac: System Settings, Accessibility, Display, Reduce motion) and reload. Things should land in their finished state, not freeze mid-move.",
+          "Ask what happens if the animation script fails to load. “It won't” is not an answer.",
+          "Ask where the motion lives. One file can be reviewed and fixed in one place. Fifty interactions configured by hand are fifty places for one of them to drift.",
+        ],
+      },
+      {
+        heading: "When this is the wrong answer",
+        paras: [
+          "If your team needs to change the animations themselves, a motion layer written in code is the wrong choice, because nobody but a developer can touch it. Webflow's own interactions are harder to keep consistent across a large site, but your team can open and edit them, and on many sites that matters more.",
+          "And if the motion is decoration on a tight budget, the cheapest safe answer is less of it. Everything described here exists because the design called for a lot of movement. With a little movement, most of it is unnecessary.",
+        ],
+      },
+      {
+        heading: "The short answer",
+        paras: [
+          "An animated site fails exactly as badly as it was built to. Built carefully, a failed script costs you the animation and nothing else. Built carelessly, it costs you the page, and nobody tells you.",
+        ],
+      },
+    ],
+  },
 ];
 
 /** Spanish overlay. Same keying as `projectsCopyEs`: slug to partial copy. */
