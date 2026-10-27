@@ -126,7 +126,7 @@ Seven public case studies, and §5b means that is the whole budget. Current stat
 | True North Jerseys | **Spent twice**, deliberately. The ecommerce post uses the made-to-order feasibility question; the handoff post queued for 25 Aug uses where the team edits. Different parts of the build, so §5b is satisfied. |
 | K2BTools | **Spent** — multilingual post, 11 Aug |
 | Home Organizers | **Spent** — when Webflow is wrong, 8 Sep |
-| Seilas Ship Supplies | **Unused.** Freed when the handoff post moved to True North. |
+| Seilas Ship Supplies | **Spent** — what a B2B site has to prove, 24 Nov. Also safe to cite: since 1921, 500+ clients across 30+ countries, every port in Uruguay. Not the handoff angle: that post exists (25 Aug, True North). |
 | Nextfense | **Held back entirely.** Not to be used as supporting evidence in another post. |
 | Fully Dialed | **Spent** — what happens when the JavaScript fails, 10 Nov. Also safe to cite: the six-second watchdog and the ~13 KB motion layer, both published in the case study. |
 
@@ -220,6 +220,7 @@ elsewhere on this site, which in practice means the Lighthouse scores in
 | True North Jerseys | 100 | 92 | 87 |
 | BIKE | 100 | 90 | 81 |
 | Fully Dialed | 100 | 90 | not published (unstable, 78 to 94) |
+| Seilas Ship Supplies | 100 | 90 | not published (best practices 100) |
 
 Also verifiable and safe to state: 5+ years, 100+ projects, Client-First
 Certified Expert, project counts and locations already written into

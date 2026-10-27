@@ -476,6 +476,82 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "b2b-website-what-it-has-to-prove",
+    title: "What does a B2B website have to prove before a buyer gets in touch?",
+    description:
+      "Business buyers come to check, not to be persuaded. The four things a B2B site has to prove, and how to show each one instead of claiming it.",
+    date: "2026-11-24",
+    tags: ["Webflow", "CMS", "B2B"],
+    relatedSlug: "seilas-ship-supplies",
+    lead: "Very little that it says, and a great deal that it shows. A business buyer who lands on your site has usually heard your name somewhere else first: a referral, an agent, a supplier list. They are not there to be persuaded. They are there to check, and the site either survives the check or quietly ends the conversation before it starts.",
+    sections: [
+      {
+        heading: "The honest version",
+        paras: [
+          "A website rarely wins a B2B deal. In most industries the relationship, the price and the referral do that. What a website can do is lose one, by making an established company look smaller, newer or less certain than it really is.",
+          "That makes the job narrower than most briefs admit. You are not building a pitch. You are building something that holds up to a purchasing manager with ten minutes to spare and three other suppliers open in other tabs.",
+        ],
+      },
+      {
+        heading: "What a buyer is actually checking",
+        paras: ["Strip away the design vocabulary and it comes down to four questions, asked in roughly this order."],
+        list: [
+          "Are you real? A legal entity, an address, a phone number, a person to write to. Boring, and the first thing a careful buyer looks for.",
+          "How long have you been doing this? Age stands in for survival, and survival stands in for reliability.",
+          "Have you done it for people like me? Scale, geography and the specific kind of work, in that order.",
+          "What exactly do you sell? A buyer comparing suppliers needs the range laid out plainly, in their vocabulary rather than yours.",
+        ],
+      },
+      {
+        heading: "Why adjectives fail the check",
+        paras: [
+          "“Trusted”, “leading” and “world-class” answer none of those questions. They are also on every competitor's homepage, which is exactly why a buyer's eye slides past them.",
+          "The useful test for any sentence on a B2B site is whether a stranger could verify it. A founding year can be verified. A client count, a list of countries, a named port, a legal entity: all checkable. “Your trusted partner” is not, and a buyer knows that at a glance.",
+        ],
+      },
+      {
+        heading: "What I did on Seilas",
+        paras: [
+          "Seilas Ship Supplies (Nadetir S.A.) has supplied vessels at every port in Uruguay since 1921: deck and safety gear, engine-room supplies, provisions, bonded stores. A century of reputation, and a website that carried almost none of it. The brief was a credible, international site that says “trusted since 1921” without having to use the word.",
+          "Every decision went back to the four questions. The founding year is not a tagline. It runs through the site, and the history gets its own section, framed for a buyer rather than as a family album. The clients section puts the claim and its shape side by side: more than 500 clients across more than 30 countries, on a world map that shows at a glance whether the reach is regional or genuinely global.",
+          "The services are laid out the way a ship's purchasing officer thinks about them, by category, from loading to dry dock assistance, so a buyer can confirm in seconds that what they need is something Seilas does. And the design stays restrained on purpose. A century-old supplier that looks like a startup has spent its credibility on the wrong signal.",
+          "In Lighthouse the site measures 100 for SEO and best practices and 90 for accessibility. Those numbers sell nothing on their own, but a slow or broken page is evidence too, and buyers read it.",
+        ],
+      },
+      {
+        heading: "The cost of proof",
+        paras: [
+          "Proof has to stay true. A client count is a promise to keep counting, and a figure that was accurate when the site launched becomes a liability the day nobody updates it. That is why the site is CMS-driven where things change: the team keeps it current without calling a developer, and the parts that should never move are built into the page.",
+          "The other cost is the restraint itself. A quiet, confident site does less to grab attention than a loud one. For a supplier whose buyers already arrive with the name in hand, that is the right trade. For a company that needs its website to generate demand on its own, it may not be.",
+        ],
+      },
+      {
+        heading: "How to check your own site",
+        paras: ["Open it the way a stranger would, on a phone, and give yourself thirty seconds."],
+        list: [
+          "Can you find the company's legal name, its address and a direct contact without hunting for them?",
+          "Is the company's age on the first screen, or buried on an About page nobody opens?",
+          "Count the adjectives in your hero section. Replace each one with a fact, a number or a place, or delete it.",
+          "Take your three largest claims and ask how a buyer could verify each one. If they cannot, the claim is costing you more than it earns.",
+          "Ask someone outside the company to tell you, in one sentence, what you sell. If their sentence is not yours, the services page was written for you, not for them.",
+        ],
+      },
+      {
+        heading: "When this is the wrong approach",
+        paras: [
+          "If the company is new, a site built around proof advertises exactly what you do not have yet. Lead with the work and the people instead, and let the proof accumulate. Inflating age or scale is the one move a buyer reliably punishes.",
+          "And if your buyers purchase through tenders, marketplaces or a procurement portal, the website is a footnote. Put the effort into the documents they will actually read.",
+        ],
+      },
+      {
+        heading: "The short answer",
+        paras: [
+          "A B2B site has to prove four things: that you are real, that you have lasted, that you have done this for people like the buyer, and what exactly you sell. Show each one with something a stranger can check, keep it true, and the site stops losing the deals the rest of your business already earned.",
+        ],
+      },
+    ],
+  },
 ];
 
 /** Spanish overlay. Same keying as `projectsCopyEs`: slug to partial copy. */
