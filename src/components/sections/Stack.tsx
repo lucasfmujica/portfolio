@@ -4,16 +4,17 @@ import { DrawUnderline } from "@/components/motion/DrawUnderline";
 import { Icon, type IconName } from "@/components/ui/Icon";
 
 const TECHS = [
-  "Webflow", "Client-First", "Lumos", "React", "Next.js", "TypeScript", "GSAP",
-  "ScrollTrigger", "DrawSVG", "n8n", "Make", "Zapier", "Airtable", "HubSpot",
-  "Stripe", "Notion", "Slack", "Figma",
+  "Webflow", "Client-First", "Lumos", "MAST", "React", "Next.js", "TypeScript", "GSAP",
+  "ScrollTrigger", "DrawSVG", "Amplitude", "Segment", "n8n", "Make", "Zapier", "Airtable",
+  "HubSpot", "Stripe", "Notion", "Slack", "Figma",
 ];
 const HOT = new Set(["Webflow", "GSAP", "Next.js", "n8n", "HubSpot"]);
 
-const TIERS: { key: "build" | "code" | "motion" | "automation" | "connect"; icon: IconName }[] = [
+const TIERS: { key: "build" | "code" | "motion" | "growth" | "automation" | "connect"; icon: IconName }[] = [
   { key: "build", icon: "build" },
   { key: "code", icon: "code" },
   { key: "motion", icon: "spark" },
+  { key: "growth", icon: "trending-up" },
   { key: "automation", icon: "bolt" },
   { key: "connect", icon: "hub" },
 ];
@@ -24,7 +25,7 @@ function Chip({ label }: { label: string }) {
 
 /**
  * Stack — two kinetic marquee rows scrolling opposite directions (CSS, pause on
- * hover), with ember dots on the headline techs, over four capability tiers.
+ * hover), with ember dots on the headline techs, over six capability tiers.
  * Rows are duplicated so the infinite scroll loops seamlessly.
  */
 export function Stack() {

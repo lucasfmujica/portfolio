@@ -2707,11 +2707,19 @@
   .smqchip.on::before {
     background: var(--ember);
   }
+  /* Six tiers: a fixed 3-column grid keeps them in two even rows instead of
+     letting flex-wrap strand the last one on a row of its own. */
   .smq__tiers {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: space-between;
     gap: 16px 32px;
     margin-top: 40px;
+  }
+  @media (max-width: 1100px) {
+    .smq__tiers {
+      grid-template-columns: repeat(2, max-content);
+    }
   }
   .smq__tier {
     display: inline-flex;
@@ -2736,7 +2744,7 @@
   }
   @media (max-width: 560px) {
     .smq__tiers {
-      flex-direction: column;
+      grid-template-columns: 1fr;
       gap: 14px;
     }
     .smq__tier {

@@ -137,7 +137,7 @@
         "role": "Website Developer",
         "period": "Sep 2026 – Actualidad",
         "location": "Buenos Aires, Argentina",
-        "note": "Desarrollo experiencias escalables en Webflow junto a diseño, growth y producto: implementación de Figma a Webflow, integraciones con APIs y backend, y optimización del front-end para performance, accesibilidad, SEO y conversión."
+        "note": "En el equipo de Growth Product: migro páginas a un framework de Webflow basado en MAST y alineado al design system de la empresa, corro tests A/B de punta a punta con Amplitude y Segment, y construyo y testeo componentes de conversión nuevos."
       }
     ],
     "facetsEyebrow": "fuera del horario",
@@ -204,7 +204,7 @@
     "tiers": {
       "build": {
         "label": "Construir",
-        "items": "Webflow · Client-First · Lumos"
+        "items": "Webflow · Client-First · Lumos · MAST"
       },
       "code": {
         "label": "Código",
@@ -213,6 +213,10 @@
       "motion": {
         "label": "Movimiento",
         "items": "GSAP · ScrollTrigger · DrawSVG"
+      },
+      "growth": {
+        "label": "Growth",
+        "items": "Amplitude · Segment · tests A/B"
       },
       "automation": {
         "label": "Automatización",

@@ -42,6 +42,11 @@ const personEntity = {
     "Web performance",
     "Web animation",
     "Client-First",
+    "Lumos",
+    "MAST",
+    "Amplitude",
+    "Segment",
+    "A/B testing",
   ],
 };
 
