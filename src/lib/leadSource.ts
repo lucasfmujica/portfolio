@@ -9,15 +9,22 @@
  *
  * Consumed by the contact form: reported to Vercel Analytics as a
  * `lead_submitted` event and included in the Resend inquiry email.
+ *
+ * The landing path and `utm_campaign` are captured on the same first touch and
+ * only go into the email: GA4 sees a fraction of visitors, the inbox sees every
+ * lead.
  */
 const KEY = "lead_source";
+const KEY_LANDING = "lead_landing";
+const KEY_CAMPAIGN = "lead_campaign";
 
 export function captureLeadSource(): void {
   if (typeof window === "undefined") return;
   // First-touch: never overwrite a source already captured this session.
   if (sessionStorage.getItem(KEY)) return;
 
-  const utm = new URLSearchParams(window.location.search).get("utm_source");
+  const params = new URLSearchParams(window.location.search);
+  const utm = params.get("utm_source");
   let source = "direct";
 
   if (utm) {
@@ -32,9 +39,21 @@ export function captureLeadSource(): void {
   }
 
   sessionStorage.setItem(KEY, source);
+  sessionStorage.setItem(KEY_LANDING, window.location.pathname);
+  const campaign = params.get("utm_campaign")?.trim().toLowerCase();
+  if (campaign) sessionStorage.setItem(KEY_CAMPAIGN, campaign);
 }
 
 export function getLeadSource(): string {
   if (typeof window === "undefined") return "direct";
   return sessionStorage.getItem(KEY) ?? "direct";
+}
+
+/** First page of the session and its `utm_campaign`, for the inquiry email. */
+export function getLeadContext(): { landing: string; campaign: string } {
+  if (typeof window === "undefined") return { landing: "", campaign: "" };
+  return {
+    landing: sessionStorage.getItem(KEY_LANDING) ?? "",
+    campaign: sessionStorage.getItem(KEY_CAMPAIGN) ?? "",
+  };
 }

@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { trackEvent } from "@/lib/analytics";
-import { getLeadSource } from "@/lib/leadSource";
+import { getLeadContext, getLeadSource } from "@/lib/leadSource";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -63,7 +63,7 @@ export function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, source }),
+        body: JSON.stringify({ ...data, source, ...getLeadContext() }),
       });
       // Handled inline rather than thrown so the HTTP status survives into the
       // event — this is the only conversion path on the site, and a broken

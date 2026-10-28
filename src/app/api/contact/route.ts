@@ -36,6 +36,8 @@ export async function POST(req: Request) {
   const budget = (data.budget ?? "").trim();
   const message = (data.message ?? "").trim();
   const source = (data.source ?? "").trim() || "direct";
+  const landing = (data.landing ?? "").trim();
+  const campaign = (data.campaign ?? "").trim();
 
   if (!name || !isEmail(email)) {
     return NextResponse.json(
@@ -56,6 +58,8 @@ export async function POST(req: Request) {
     type && `Project: ${type}`,
     budget && `Budget: ${budget}`,
     `Source: ${source}`,
+    campaign && `Campaign: ${campaign}`,
+    landing && `Landed on: ${landing}`,
   ].filter(Boolean) as string[];
 
   const text = message ? `${lines.join("\n")}\n\nMessage:\n${message}` : lines.join("\n");

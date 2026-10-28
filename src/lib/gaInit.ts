@@ -18,7 +18,13 @@
  *
  * Consent storage defaults to "denied"; a prior opt-in stored on the device is
  * replayed as an update before config.
+ *
+ * Internal traffic is marked per device, not by IP: the home connection's IP
+ * is dynamic, so the GA4 IP rule went stale. Opening any page with
+ * `?internal=1` stores a flag (`?internal=0` clears it) and every hit from that
+ * browser then carries `traffic_type: internal`, which the GA4 "Internal
+ * Traffic" data filter excludes.
  */
 export function gaInitScript(gaId: string): string {
-  return `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});try{if(localStorage.getItem('consent')==='granted'){gtag('consent','update',{analytics_storage:'granted'});}}catch(e){}gtag('config','${gaId}');`;
+  return `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});try{if(localStorage.getItem('consent')==='granted'){gtag('consent','update',{analytics_storage:'granted'});}}catch(e){}var cfg={};try{var q=new URLSearchParams(location.search).get('internal');if(q==='1')localStorage.setItem('ga_internal','1');if(q==='0')localStorage.removeItem('ga_internal');if(localStorage.getItem('ga_internal')==='1')cfg.traffic_type='internal';}catch(e){}gtag('config','${gaId}',cfg);`;
 }
