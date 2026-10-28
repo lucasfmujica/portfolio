@@ -5,3 +5,4 @@ chats
 .env
 .env.local
 tsconfig.tsbuildinfo
+.shipstudio
