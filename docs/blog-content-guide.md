@@ -182,25 +182,31 @@ buyers.
 
 ## 3. Voice
 
-Lucas's voice is already established across the site. Match it. Read `Process`
-and `About` in `messages/en.json` for the clearest samples.
+**The voice model is `animated-site-when-javascript-fails` in `src/data/posts.ts`.**
+Lucas read it and confirmed it sounds like him (27 Oct 2026). All seven posts
+were rewritten to match it the same day. The rules below come from his own
+meeting transcripts, not from the earlier drafts, which read as templated.
 
-**The rules:**
+**How he sounds:**
 
-1. **Direct. Short sentences.** "Shipping is the start, not the finish."
-2. **First person, no hedging.** "I build", "I ask", not "one might consider".
-3. **Concede the real cost.** The credibility comes from admitting what a thing
-   costs before explaining why it is worth it. The animation post says outright
-   that 81 is not a 98. Do that.
-4. **Say when the answer is no.** Every post should be willing to name the case
-   where Lucas is the wrong hire. The ecommerce post has a "When Webflow is the
-   wrong answer" section. This sells better than pretending, and it is honest.
-5. **No hype vocabulary.** No "game-changing", "seamless", "leverage",
-   "supercharge", "in today's digital landscape", "unlock the power of".
-6. **No em dashes.** A previous commit stripped every em dash from the site's
-   copy. Use a full stop, a comma, or a colon.
-7. **No rhetorical throat-clearing.** Start with the substance.
-8. **Second person for the reader.** "your team", "you", not "the client".
+1. **An opinion starts with "I think"**, or a light hedge ("probably", "a bit",
+   "I'm not sure it fits every case"). Never grandiose, no absolutes.
+2. **The concrete cause first, then what he did and why.** Name the actual
+   element, setting or field. "I did it on purpose because..." is his phrase.
+3. **"For example" to get into specifics.** Past vs now is natural to him when
+   the facts support it.
+4. **Says no by naming the constraint**, then offers the alternative.
+5. **Paragraphs end on what he did, what he'd do next, or a caveat.** Never on a
+   polished one-liner.
+6. **Plain verbs, short-to-medium sentences, contractions are fine.** First
+   person, second person for the reader ("your team").
+7. **Concede the real cost**, with the real number when one exists ("90, not
+   100"), and **say when the answer is no**.
+
+**Never:** "The honest version", "The short answer", "So: ...?", "here's the
+thing", metaphors, aphoristic closers ("X stands in for Y"), rule-of-three for
+rhythm, hype words (leverage, seamless, unlock, elevate, supercharge, "in
+today's digital landscape"), em dashes, "honest/honestly" more than once a post.
 
 **Length:** 800 to 1,200 words. Six to eight sections. If a section is one
 sentence it should be merged into the one above it.
@@ -224,20 +230,21 @@ The data shape is in `src/data/posts.ts`. A post is:
 }
 ```
 
-**The shape of the argument**, which both existing posts follow:
+**The moves of the argument.** A post usually contains these, but they are
+ingredients, **not headings and not a fixed order**. The first drafts used
+them as headings and every post came out the same shape; vary it per post.
 
-1. **Lead** — state the question the way a client asks it. Give the honest
-   one-line answer immediately. Do not make them scroll for it.
-2. **The honest version** — concede the real cost or limitation up front.
-3. **What is actually going on** — the substance. Where the common belief is
-   wrong.
-4. **Evidence from a real build** — name the project, describe what was done and
-   why. Real numbers only (§5).
-5. **A usable heuristic** — questions to ask, or a rule of thumb the reader can
-   apply without hiring anyone. Give something away.
-6. **When this is the wrong answer** — the disqualifying case, stated plainly.
-7. **Close** — restate the answer in one or two sentences. No call to action in
-   the body; the page already ends with a contact section.
+- Answer the question early, in the lead.
+- Concede the real cost or limitation.
+- The substance: where the common belief is wrong.
+- Evidence from a real build, real numbers only (§5).
+- Something the reader can check or apply without hiring anyone.
+- The case where this is the wrong answer, worded for that post (or folded
+  into another section).
+
+Headings say what that section is about ("How I built it on Fully Dialed"), not
+a recurring label. A closing summary section is optional; no call to action in
+the body, the page already ends with a contact section.
 
 Use `list` for anything genuinely enumerable. Do not fake a list to break up
 text.
@@ -359,7 +366,10 @@ not translate the words.
 ## 7. Publishing checklist
 
 1. Add the record to `posts` in `src/data/posts.ts`. Spanish goes in
-   `postsCopyEs`.
+   `postsCopyEs`, ideally before the post's date. Without it the post still
+   renders under `/es`, in English, so it canonicalizes to the English URL and
+   leaves `es` out of hreflang and the sitemap (`postLocales`). Adding the
+   overlay later switches that on by itself.
 2. **Give the post its own date, and space it from the last one.** The two
    launch posts both carry `2026-07-28`. A third sharing that date makes the
    whole blog read as one batch dumped in an afternoon, which undercuts a blog
