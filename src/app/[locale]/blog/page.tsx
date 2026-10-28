@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { routing, type Locale } from "@/i18n/routing";
 import { siteName, siteUrl } from "@/lib/site";
+import { alternatesFor } from "@/lib/alternates";
 import { BlogIndex } from "@/components/sections/blog/BlogIndex";
 import { Contact } from "@/components/sections/Contact";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -26,10 +27,7 @@ export async function generateMetadata({
   return {
     title: t("blog.title"),
     description: t("blog.description"),
-    alternates: {
-      canonical: "/blog",
-      languages: { en: "/blog", es: "/es/blog" },
-    },
+    alternates: alternatesFor("/blog", locale),
     openGraph: {
       type: "website",
       siteName,

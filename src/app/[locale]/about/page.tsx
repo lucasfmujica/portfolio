@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { routing, type Locale } from "@/i18n/routing";
 import { siteName, siteUrl } from "@/lib/site";
+import { alternatesFor } from "@/lib/alternates";
 import { AboutPageContent } from "@/components/sections/about/AboutPageContent";
 import { Contact } from "@/components/sections/Contact";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -23,10 +24,7 @@ export async function generateMetadata({
   return {
     title: t("about.title"),
     description: t("about.description"),
-    alternates: {
-      canonical: "/about",
-      languages: { en: "/about", es: "/es/about" },
-    },
+    alternates: alternatesFor("/about", locale),
     openGraph: {
       type: "profile",
       siteName,

@@ -3,6 +3,7 @@ import { caseStudies } from "@/data/projects";
 import { posts, isPublished } from "@/data/posts";
 import { routing } from "@/i18n/routing";
 import { siteUrl } from "@/lib/site";
+import { languagesFor, localizedPath } from "@/lib/alternates";
 
 /**
  * One entry per page, with `alternates.languages` listing every locale so search
@@ -17,22 +18,18 @@ export const revalidate = 3600;
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  const localizedUrl = (path: string, locale: string) =>
-    `${siteUrl}${locale === routing.defaultLocale ? "" : `/${locale}`}${path}`;
-
-  const languagesFor = (path: string) =>
-    Object.fromEntries(routing.locales.map((l) => [l, localizedUrl(path, l)]));
+  const toUrl = (path: string) => `${siteUrl}${path}`;
 
   const entry = (
     path: string,
     changeFrequency: "weekly" | "monthly" | "yearly",
     priority: number,
   ): MetadataRoute.Sitemap[number] => ({
-    url: localizedUrl(path, routing.defaultLocale),
+    url: toUrl(localizedPath(path, routing.defaultLocale)),
     lastModified: now,
     changeFrequency,
     priority,
-    alternates: { languages: languagesFor(path) },
+    alternates: { languages: languagesFor(path, toUrl) },
   });
 
   return [

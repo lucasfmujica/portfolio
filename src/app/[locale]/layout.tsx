@@ -11,6 +11,7 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { gaInitScript } from "@/lib/gaInit";
 import { routing, type Locale } from "@/i18n/routing";
 import { siteName, siteUrl, twitterHandle } from "@/lib/site";
+import { alternatesFor } from "@/lib/alternates";
 import { clashDisplay, generalSans, geistMono } from "../fonts";
 
 import { Nav } from "@/components/layout/Nav";
@@ -63,10 +64,7 @@ export async function generateMetadata({
     ],
     formatDetection: { telephone: false },
     appleWebApp: { capable: true, title: siteName, statusBarStyle: "black-translucent" },
-    alternates: {
-      canonical: "/",
-      languages: { en: "/", es: "/es" },
-    },
+    alternates: alternatesFor("/", locale),
     openGraph: {
       type: "website",
       siteName,

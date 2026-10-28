@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { routing, type Locale } from "@/i18n/routing";
 import { siteName, siteUrl } from "@/lib/site";
+import { alternatesFor } from "@/lib/alternates";
 
 // Kept as a single source date; rendered in the visitor's locale below.
 const LAST_UPDATED: Record<Locale, string> = {
@@ -28,10 +29,7 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: {
-      canonical: "/privacy",
-      languages: { en: "/privacy", es: "/es/privacy" },
-    },
+    alternates: alternatesFor("/privacy", locale),
     openGraph: {
       type: "website",
       siteName,

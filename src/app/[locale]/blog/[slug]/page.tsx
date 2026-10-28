@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 
 import { routing, type Locale } from "@/i18n/routing";
 import { siteName, siteUrl } from "@/lib/site";
+import { alternatesFor } from "@/lib/alternates";
 import { posts, getPost, isPublished } from "@/data/posts";
 import { PostView } from "@/components/sections/blog/PostView";
 import { Contact } from "@/components/sections/Contact";
@@ -38,10 +39,7 @@ export async function generateMetadata({
   return {
     title: `${post.title} · ${siteName}`,
     description: post.description,
-    alternates: {
-      canonical: path,
-      languages: { en: path, es: `/es${path}` },
-    },
+    alternates: alternatesFor(path, locale),
     openGraph: {
       type: "article",
       siteName,
