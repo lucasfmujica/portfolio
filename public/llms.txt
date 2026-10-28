@@ -18,6 +18,7 @@ Lucas Mujica builds production-grade Webflow sites and custom-coded front-ends. 
 - [What does it actually take to run a site in three languages?](https://lucasmujica.dev/blog/webflow-multilingual-site-what-it-takes): Webflow makes adding a locale close to trivial; the part nobody quotes is what happens to your content operation for the next three years, from the K2BTools build. (2026)
 - [Why does my team still need a developer to change the site?](https://lucasmujica.dev/blog/webflow-site-team-can-run): Running your own site is not a platform feature. It is a set of decisions made at build time about which parts are allowed to change. (2026)
 - [When is Webflow the wrong tool for the job?](https://lucasmujica.dev/blog/when-webflow-is-the-wrong-tool): The cases where I do not build in Webflow, from the hand-coded Home Organizers site, and what the alternative actually costs. (2026)
+- [What happens to an animated site when the JavaScript fails?](https://lucasmujica.dev/blog/animated-site-when-javascript-fails): Most scroll animation hides content until a script runs. How to build motion so a failed script costs you the effect, not the page, from the Fully Dialed build. (2026)
 
 ## Case studies
 - [True North Jerseys](https://lucasmujica.dev/work/true-north-jerseys): Custom hockey & baseball kits for a BC brand — a Webflow store, built different, with scroll-tied product reveals. (E-commerce build, 2026)

@@ -126,9 +126,9 @@ Seven public case studies, and §5b means that is the whole budget. Current stat
 | True North Jerseys | **Spent twice**, deliberately. The ecommerce post uses the made-to-order feasibility question; the handoff post queued for 25 Aug uses where the team edits. Different parts of the build, so §5b is satisfied. |
 | K2BTools | **Spent** — multilingual post, 11 Aug |
 | Home Organizers | **Spent** — when Webflow is wrong, 8 Sep |
-| Seilas Ship Supplies | **Spent** — what a B2B site has to prove, 24 Nov. Also safe to cite: since 1921, 500+ clients across 30+ countries, every port in Uruguay. Not the handoff angle: that post exists (25 Aug, True North). |
+| Seilas Ship Supplies | **Spent** — what a B2B site has to prove, 10 Nov. Also safe to cite: since 1921, 500+ clients across 30+ countries, every port in Uruguay. Not the handoff angle: that post exists (25 Aug, True North). |
 | Nextfense | **Held back entirely.** Not to be used as supporting evidence in another post. |
-| Fully Dialed | **Spent** — what happens when the JavaScript fails, 10 Nov. Also safe to cite: the six-second watchdog and the ~13 KB motion layer, both published in the case study. |
+| Fully Dialed | **Spent** — what happens when the JavaScript fails, 29 Oct. Also safe to cite: the six-second watchdog and the ~13 KB motion layer, both published in the case study. |
 
 > **Resolved 28 Jul.** The handoff post first repeated the ecommerce post
 > almost verbatim, both saying the team is family run, runs the catalogue
@@ -143,9 +143,9 @@ public work or has to run on argument alone. Do not quietly reuse a spent one.
 
 ### The next queue: argument posts (added 27 Oct 2026)
 
-The case-study evidence runs out with the 24 Nov post. These run on argument
+The case-study evidence runs out with the 10 Nov post. These run on argument
 plus verified platform behaviour, under the rule in §5b. English first: the US
-buyer is where the site already ranks (position ~5). Next free slot is 8 Dec.
+buyer is where the site already ranks (position ~5). The first one goes out 24 Nov, then one every two weeks (8 Dec, 22 Dec, …).
 **No more ecommerce topics**: Lucas doesn't want that work, and the Spanish
 ecommerce post already pulls the wrong buyer.
 

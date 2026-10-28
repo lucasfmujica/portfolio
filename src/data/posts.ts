@@ -414,7 +414,7 @@ export const posts: Post[] = [
     title: "What happens to an animated site when the JavaScript fails?",
     description:
       "Most scroll animation hides content until a script runs. How to build motion so a failed script costs you the effect, not the page.",
-    date: "2026-11-10",
+    date: "2026-10-29",
     tags: ["Webflow", "GSAP", "Accessibility"],
     relatedSlug: "fully-dialed",
     lead: "It is the right thing to worry about before you sign off on a site that moves. Most scroll animation works by hiding text and images first and revealing them when a script runs, so if that script never runs, the content stays hidden and the page looks empty. The honest answer is that it depends entirely on how the motion was built, and you can find out which kind you are buying before it ships.",
@@ -481,7 +481,7 @@ export const posts: Post[] = [
     title: "What does a B2B website have to prove before a buyer gets in touch?",
     description:
       "Business buyers come to check, not to be persuaded. The four things a B2B site has to prove, and how to show each one instead of claiming it.",
-    date: "2026-11-24",
+    date: "2026-11-10",
     tags: ["Webflow", "CMS", "B2B"],
     relatedSlug: "seilas-ship-supplies",
     lead: "Very little that it says, and a great deal that it shows. A business buyer who lands on your site has usually heard your name somewhere else first: a referral, an agent, a supplier list. They are not there to be persuaded. They are there to check, and the site either survives the check or quietly ends the conversation before it starts.",
