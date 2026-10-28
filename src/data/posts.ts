@@ -417,61 +417,62 @@ export const posts: Post[] = [
     date: "2026-10-29",
     tags: ["Webflow", "GSAP", "Accessibility"],
     relatedSlug: "fully-dialed",
-    lead: "It is the right thing to worry about before you sign off on a site that moves. Most scroll animation works by hiding text and images first and revealing them when a script runs, so if that script never runs, the content stays hidden and the page looks empty. The honest answer is that it depends entirely on how the motion was built, and you can find out which kind you are buying before it ships.",
+    lead:
+      "Short answer: it depends on how the motion was built. A lot of scroll animation works by hiding the text and images first and showing them when a script runs. If that script never runs, the content stays hidden and the page looks empty. You can check which kind of build you have before launch, and I explain how near the end.",
     sections: [
       {
-        heading: "The honest version",
+        heading: "Why this happens",
         paras: [
-          "Animation is a dependency. Every reveal on a page is a moment where the page asks a script for permission to show something it already has. When that script loads late, gets blocked by a browser extension, or breaks after an unrelated edit, the visitor does not see a simpler version of your site. On a badly built one they see nothing.",
-          "That failure is quiet. Nobody files a ticket for a blank section. The visitor leaves, and your analytics record a bounce you will never connect to the animation.",
+          "Every reveal on a page is the page waiting for a script before it shows something it already has. Most of the time the script loads and nobody notices. But scripts load late, get blocked by a browser extension, or break after an edit that had nothing to do with the animation. When that happens on a site built the usual way, the visitor doesn't get a simpler version of the page. They get empty sections.",
+          "The annoying part is that nobody reports it. A visitor who sees a blank section just leaves, and in your analytics it looks like any other bounce.",
         ],
       },
       {
-        heading: "Three ways motion goes wrong",
-        paras: ["Most conversations only cover the first one."],
+        heading: "It's not only the script failing",
+        paras: [
+          "When I review a site with a lot of motion, I check three cases. Most people only think about the first one.",
+        ],
         list: [
-          "It never starts. A script fails to load or errors before it runs, and everything that was hidden waiting for it stays hidden.",
-          "The visitor asked for it not to run. People can tell their operating system to reduce motion, for vestibular reasons or simple preference. A site that ignores the setting is being rude. A site that honours it by switching animation off halfway through a sequence leaves things frozen in their starting state, which is worse.",
-          "The platform cuts it off. Builders control some states themselves. Webflow's mobile menu hides its panel the instant it closes, so a closing animation has nothing left on screen to animate, and the menu snaps shut.",
+          "The script never starts. It fails to load or throws an error before it runs, and everything that was hidden stays hidden.",
+          "The visitor has reduced motion turned on. People set this in their operating system, for vestibular reasons or just because they prefer it. The easy fix is to switch the animation off, but if you switch it off in the middle of a sequence, elements stay frozen where they started, for example half faded or pushed off to the side.",
+          "The platform takes over. Webflow controls some states itself. Its mobile menu hides the panel as soon as it closes, so if you add a closing animation there is nothing left on screen to animate, and the menu just disappears.",
         ],
       },
       {
-        heading: "What I did on Fully Dialed",
+        heading: "How I built it on Fully Dialed",
         paras: [
-          "Fully Dialed calibrates the cameras and radar in modern cars for repair shops in British Columbia. The design and motion direction came from their side in Figma, and the page moves a lot: text revealed line by line, photo masks that open, radar patterns tied to the scroll. My job was to build it so none of that could cost them a visitor. For a business whose entire message is about safety, a page that fails silently is the wrong kind of irony.",
-          "Three decisions did most of the work. The copy is in the HTML from the start, so search engines and screen readers get the whole page whether or not a script runs. The hiding only switches on once the animation code has actually started, so a script that never loads never hides anything. And there is a watchdog: if the motion layer has not reported in within six seconds, it gives up and shows everything, unanimated.",
-          "Reduced motion is handled by showing the finished state, not by switching animation off. The rotating ticker is where the difference shows. Stopped mid-rotation it would sit on half a word, so under reduced motion it renders its final position instead. The menu was the platform case: I catch the moment Webflow closes it, keep the panel on screen just long enough to play the curtain in reverse, then let it go.",
-          "All of the motion lives in one file of roughly 13 KB, driven by attributes on the page, rather than dozens of interactions configured by hand. That is what makes the rules above hold on every section instead of most of them.",
+          "Fully Dialed calibrates the cameras and radar in modern cars for repair shops in British Columbia. The design and the motion direction came from their side, in Figma, and the page moves a lot: text that appears line by line, photo masks that open, radar patterns tied to the scroll. My part was building it so none of that could make the page fail. Their whole message is about safety, so a page that breaks without anyone noticing was the thing I wanted to avoid the most.",
+          "First, all the copy is in the HTML from the start. Search engines and screen readers get the full page whether the script runs or not.",
+          "Second, the content only gets hidden once the animation code has actually started. If the script never loads, nothing was hidden in the first place.",
+          "Third, there is a watchdog. If the motion layer doesn't report back within six seconds, it stops waiting and shows everything without animation.",
+          "For reduced motion I show the final state instead of turning the animation off. The rotating ticker is a good example: if I stopped it in the middle it would show half a word, so with reduced motion it renders in its final position. For the menu, I catch the moment Webflow closes it and keep the panel on screen just long enough to play the curtain animation in reverse. Then Webflow hides it as usual.",
+          "All the motion lives in one file of around 13 KB, and each section opts in with attributes on the page. I did it this way on purpose instead of setting up dozens of interactions by hand, because it was the only way I could make sure the rules above apply to every section and not just most of them.",
         ],
       },
       {
-        heading: "The cost I have not removed",
+        heading: "What it still costs",
         paras: [
-          "Accessibility on the live site measures 90 in Lighthouse, not 100, and the points it loses come from the motion layer itself. Splitting a sentence into animated lines means describing the original sentence to assistive technology separately, and the way that description is attached is something the audit flags.",
-          "It is fixable, and it is also the honest price of the effect. Every line that slides in is extra markup that has to be explained to a screen reader. I would rather show you the 90 and tell you where it comes from than pretend the motion is free.",
+          "The live site scores 90 for accessibility in Lighthouse, not 100, and the points it loses come from the motion layer. To animate a sentence line by line you split it into pieces, and then you have to describe the original sentence to assistive technology separately. The way that description is attached is what the audit flags.",
+          "I think it can be fixed. But it's also the real cost of the effect: every line that slides in is extra markup a screen reader has to make sense of. I prefer to show the 90 and explain where it comes from.",
         ],
       },
       {
-        heading: "How to check what you are buying",
-        paras: ["You can do all of this on a staging link before launch, without me."],
+        heading: "How to check your own site",
+        paras: [
+          "You can do this on a staging link before launch. You don't need a developer for it.",
+        ],
         list: [
-          "Turn JavaScript off in your browser and load the page. Everything you need to read should still be there, just still. Empty sections mean the motion owns your content.",
-          "Turn on reduced motion (on a Mac: System Settings, Accessibility, Display, Reduce motion) and reload. Things should land in their finished state, not freeze mid-move.",
-          "Ask what happens if the animation script fails to load. “It won't” is not an answer.",
-          "Ask where the motion lives. One file can be reviewed and fixed in one place. Fifty interactions configured by hand are fifty places for one of them to drift.",
+          "Turn off JavaScript in your browser and reload the page. Everything you need to read should still be there, just without movement. If sections come up empty, the animation is in control of your content.",
+          "Turn on reduced motion (on a Mac: System Settings, Accessibility, Display, Reduce motion) and reload. Elements should appear in their final position, not frozen halfway.",
+          "Ask your developer what happens if the animation script doesn't load. If the answer is \u201cit won't happen\u201d, that's not really an answer.",
+          "Ask where the motion lives. If it's one file, it can be reviewed and fixed in one place. If it's fifty interactions set up by hand, that's fifty places where one can drift.",
         ],
       },
       {
-        heading: "When this is the wrong answer",
+        heading: "When I wouldn't build it this way",
         paras: [
-          "If your team needs to change the animations themselves, a motion layer written in code is the wrong choice, because nobody but a developer can touch it. Webflow's own interactions are harder to keep consistent across a large site, but your team can open and edit them, and on many sites that matters more.",
-          "And if the motion is decoration on a tight budget, the cheapest safe answer is less of it. Everything described here exists because the design called for a lot of movement. With a little movement, most of it is unnecessary.",
-        ],
-      },
-      {
-        heading: "The short answer",
-        paras: [
-          "An animated site fails exactly as badly as it was built to. Built carefully, a failed script costs you the animation and nothing else. Built carelessly, it costs you the page, and nobody tells you.",
+          "If your team needs to edit the animations themselves, a motion layer written in code is probably the wrong choice, because only a developer can change it. Webflow's own interactions are harder to keep consistent on a big site, but your team can open and edit them, and on a lot of sites that matters more.",
+          "And if the motion is just decoration and the budget is tight, I'd rather use less of it. Most of what I described here exists because the design had a lot of movement. With a few small animations, you don't need most of it.",
         ],
       },
     ],
