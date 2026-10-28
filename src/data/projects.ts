@@ -83,6 +83,8 @@ export interface CaseStudy {
   liveLabel?: string;
   /** Hero outcome line: `pre` + ember highlight. */
   outcome: { pre: string; ember: string };
+  /** Meta description override. Without it, one is built from `outcome`. */
+  seoDescription?: string;
   tags: string[];
   /** Big hero media. */
   heroImage?: string;
@@ -245,6 +247,8 @@ export const projects: Project[] = [
         pre: "A custom-kit brand that lives on detail. The store had to ",
         ember: "show it.",
       },
+      seoDescription:
+        "How I built True North Jerseys in Webflow: a CMS catalog the family-run team updates themselves, a custom-quote flow and scroll-tied product reveals.",
       tags: ["Webflow", "Ecommerce", "GSAP", "CMS"],
       heroImage: "/assets/truenorth-hero.webp",
       heroImageAlt: "True North Jerseys: 'built different' storefront",
@@ -799,6 +803,8 @@ export const projectsCopyEs: Record<string, ProjectCopy> = {
         pre: "Una marca de kits a medida que vive del detalle. La tienda tenía que ",
         ember: "mostrarlo.",
       },
+      seoDescription:
+        "Cómo armé True North Jerseys en Webflow: un catálogo en CMS que el equipo familiar actualiza solo, un flujo de cotización a medida y reveals de producto con el scroll.",
       heroImageAlt: "True North Jerseys: tienda 'built different'",
       heroBadge: "truenorthjerseys.com · tienda",
       highlights: [

@@ -30,7 +30,8 @@ export async function generateMetadata({
   const title = t("caseStudy.titleTemplate", { title: project.name });
   // `outcome.ember` already ends in a sentence-final period, so joining with
   // ". " produced a doubled period in every case study's meta description.
-  const description = `${project.caseStudy.outcome.pre}${project.caseStudy.outcome.ember} ${project.category}, ${project.year}.`;
+  const description = project.caseStudy.seoDescription ??
+    `${project.caseStudy.outcome.pre}${project.caseStudy.outcome.ember} ${project.category}, ${project.year}.`;
   const url = `${siteUrl}${locale === "en" ? "" : `/${locale}`}/work/${slug}`;
 
   return {
