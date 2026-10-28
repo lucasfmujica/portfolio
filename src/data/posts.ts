@@ -1,4 +1,4 @@
-import type { Locale } from "@/i18n/routing";
+import { routing, type Locale } from "@/i18n/routing";
 
 /**
  * Blog posts.
@@ -687,6 +687,17 @@ const copyByLocale: Record<Locale, Record<string, Partial<Post>>> = {
   en: {},
   es: postsCopyEs,
 };
+
+/**
+ * Locales a post is actually written in: the default one plus every overlay
+ * that has it. An untranslated post still renders under `/es`, in English, so
+ * its metadata must not present that page as a Spanish version.
+ */
+export function postLocales(slug: string): Locale[] {
+  return routing.locales.filter(
+    (l) => l === routing.defaultLocale || slug in (copyByLocale[l] ?? {}),
+  );
+}
 
 /**
  * A post is live once its `date` has arrived. Comparing ISO strings is enough

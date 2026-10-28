@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { caseStudies } from "@/data/projects";
-import { posts, isPublished } from "@/data/posts";
+import { posts, isPublished, postLocales } from "@/data/posts";
 import { routing } from "@/i18n/routing";
 import { siteUrl } from "@/lib/site";
 import { languagesFor, localizedPath } from "@/lib/alternates";
@@ -24,12 +24,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     path: string,
     changeFrequency: "weekly" | "monthly" | "yearly",
     priority: number,
+    locales: readonly string[] = routing.locales,
   ): MetadataRoute.Sitemap[number] => ({
     url: toUrl(localizedPath(path, routing.defaultLocale)),
     lastModified: now,
     changeFrequency,
     priority,
-    alternates: { languages: languagesFor(path, toUrl) },
+    alternates: { languages: languagesFor(path, toUrl, locales) },
   });
 
   return [
@@ -44,6 +45,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry("/privacy", "yearly", 0.2),
     ...caseStudies.map((p) => entry(`/work/${p.slug}`, "yearly", 0.8)),
     // Published only: advertising a queued URL would point Google at a 404.
-    ...posts.filter((p) => isPublished(p)).map((p) => entry(`/blog/${p.slug}`, "yearly", 0.7)),
+    // An untranslated post lists only English, so /es never claims to be Spanish.
+    ...posts
+      .filter((p) => isPublished(p))
+      .map((p) => entry(`/blog/${p.slug}`, "yearly", 0.7, postLocales(p.slug))),
   ];
 }
