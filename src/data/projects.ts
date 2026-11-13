@@ -227,9 +227,9 @@ export const projects: Project[] = [
     slug: "true-north-jerseys",
     index: "01",
     name: "True North Jerseys",
-    category: "E-commerce build",
+    category: "Webflow + custom build",
     year: "2026",
-    tags: ["Webflow", "Ecommerce", "GSAP"],
+    tags: ["Webflow", "Custom-quote flow", "GSAP"],
     blurb: {
       pre: "Custom hockey & baseball kits for a BC brand. A Webflow store, ",
       ember: "built different",
@@ -249,7 +249,7 @@ export const projects: Project[] = [
       },
       seoDescription:
         "How I built True North Jerseys in Webflow: a CMS catalog the family-run team updates themselves, a custom-quote flow and scroll-tied product reveals.",
-      tags: ["Webflow", "Ecommerce", "GSAP", "CMS"],
+      tags: ["Webflow", "Custom-quote flow", "GSAP", "CMS"],
       heroImage: "/assets/truenorth-hero.webp",
       heroImageAlt: "True North Jerseys: 'built different' storefront",
       heroBadge: "truenorthjerseys.com · shop",
@@ -791,7 +791,7 @@ function mergeCopy<T>(base: T, overlay: DeepPartial<T> | undefined): T {
  */
 export const projectsCopyEs: Record<string, ProjectCopy> = {
   "true-north-jerseys": {
-    category: "Proyecto e-commerce",
+    category: "Webflow + desarrollo a medida",
     blurb: {
       pre: "Kits de hockey y béisbol a medida para una marca de BC. Una tienda Webflow, ",
       ember: "construida distinta",

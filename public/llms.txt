@@ -2,14 +2,14 @@
 
 > Senior Webflow & front-end developer, 5+ years deep — high-performing, component-driven Webflow sites with GSAP motion that marketing teams and small businesses can own, scale and maintain.
 
-Lucas Mujica builds production-grade Webflow sites and custom-coded front-ends. Five-plus years and 100+ projects: component-first builds with CMS architecture, Webflow Localization and Ecommerce, GSAP/web animation, and React / Next.js when a build calls for it. Finsweet Client-First Certified Expert. Remote, worldwide.
+Lucas Mujica builds production-grade Webflow sites and custom-coded front-ends. Five-plus years and 100+ projects: component-first builds with CMS architecture, Webflow Localization, migrations into Webflow from WordPress (and Wix, Squarespace or custom builds), GSAP/web animation, and React / Next.js when a build calls for it. Finsweet Client-First Certified Expert. Remote, worldwide.
 
 ## Pages
 - [Home](https://lucasmujica.dev/): Overview, selected work, about, stack, process and contact.
 - [Work](https://lucasmujica.dev/work): All case studies and projects.
 - [Services](https://lucasmujica.dev/services): What Lucas can be hired for, what he needs from a client, and pricing. Webflow site builds and migrations; most projects land between USD 5k and 15k, with a USD 3k floor.
 - [About](https://lucasmujica.dev/about): Background, experience and how Lucas works.
-- [Blog](https://lucasmujica.dev/blog): Notes on Webflow performance, CMS architecture, ecommerce and motion, written from real builds.
+- [Blog](https://lucasmujica.dev/blog): Notes on Webflow performance, CMS architecture, migrations and motion, written from real builds.
 - [Privacy](https://lucasmujica.dev/privacy): Privacy policy and data handling.
 
 ## Posts
@@ -21,7 +21,7 @@ Lucas Mujica builds production-grade Webflow sites and custom-coded front-ends. 
 - [What happens to an animated site when the JavaScript fails?](https://lucasmujica.dev/blog/animated-site-when-javascript-fails): Most scroll animation hides content until a script runs. How to build motion so a failed script costs you the effect, not the page, from the Fully Dialed build. (2026)
 
 ## Case studies
-- [True North Jerseys](https://lucasmujica.dev/work/true-north-jerseys): Custom hockey & baseball kits for a BC brand — a Webflow store, built different, with scroll-tied product reveals. (E-commerce build, 2026)
+- [True North Jerseys](https://lucasmujica.dev/work/true-north-jerseys): Custom hockey & baseball kits for a BC brand — a Webflow store, built different, with scroll-tied product reveals. (Webflow + custom build, 2026)
 - [K2BTools](https://lucasmujica.dev/work/k2btools): Developer tooling for GeneXus — a trilingual (es/en/pt) Webflow site with performance-tuned Client-First motion. (Marketing site, 2025)
 - [BIKE](https://lucasmujica.dev/work/bike): A Montevideo English school that teaches by talking — a Webflow build with a custom loader and an interactive 3D bike on the 404. (Webflow build, 2025)
 - [Home Organizers LI](https://lucasmujica.dev/work/home-organizers): A Long Island organizing studio, hand-coded end to end — vanilla JS, GSAP, and a before/after slider built from scratch, down to JSON-LD LocalBusiness SEO. (Custom-coded site, 2026)
