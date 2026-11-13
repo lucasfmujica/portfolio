@@ -572,9 +572,9 @@ export const postsCopyEs: Record<string, Partial<Post>> = {
     ],
   },
   "webflow-ecommerce-made-to-order": {
-    title: "¿Webflow Ecommerce sirve para productos a medida?",
+    title: "Productos a medida con cotización: por qué no usé Webflow Ecommerce",
     description:
-      "En una tienda a medida que construí, el carrito corre sobre CartGenie y no sobre Webflow Ecommerce. Por qué lo decidí así y cuándo elegiría otra cosa.",
+      "En True North Jerseys los productos se cotizan a medida, así que el carrito corre sobre CartGenie. Qué miré para decidirlo y cuándo Webflow no alcanza.",
     tags: ["Webflow", "Ecommerce", "CMS"],
     lead:
       "En True North Jerseys, un fabricante de kits a medida en British Columbia, la tienda no corre sobre Webflow Ecommerce. Corre sobre CartGenie, una app del marketplace de Webflow, y los productos siguen viviendo en el CMS de Webflow. Creo que esa es la respuesta realista para la mayoría de los negocios a medida: sí, Webflow puede sostener la tienda, pero probablemente no con su propio ecommerce. Acá te cuento por qué lo decidí así y dónde creo que este setup deja de funcionar.",

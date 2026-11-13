@@ -1,8 +1,8 @@
 {
   "Meta": {
     "home": {
-      "title": "Lucas Mujica: I build websites that move.",
-      "description": "Senior Webflow & front-end developer, 5+ years in. Component-driven Webflow sites marketing teams can own, scale and maintain.",
+      "title": "Lucas Mujica · Senior Webflow Developer for marketing teams",
+      "description": "Senior Webflow and front-end developer, 5+ years and 100+ sites. New builds, rebuilds and WordPress migrations your marketing team can run. Remote, worldwide.",
       "ogAlt": "Lucas Mujica, senior Webflow & front-end developer"
     },
     "caseStudy": {
@@ -22,7 +22,7 @@
     },
     "blog": {
       "title": "Blog · Webflow notes · Lucas Mujica",
-      "description": "Notes on building Webflow sites that last: performance, CMS architecture, ecommerce and motion. Written from real builds."
+      "description": "Notes on building Webflow sites that last: performance, CMS architecture, migrations and motion. Written from real builds."
     }
   },
   "Nav": {

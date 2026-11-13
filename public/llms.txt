@@ -2,14 +2,14 @@
 
 > Senior Webflow & front-end developer, 5+ years deep — high-performing, component-driven Webflow sites with GSAP motion that marketing teams and small businesses can own, scale and maintain.
 
-Lucas Mujica builds production-grade Webflow sites and custom-coded front-ends. Five-plus years and 100+ projects: component-first builds with CMS architecture, Webflow Localization and Ecommerce, GSAP/web animation, and React / Next.js when a build calls for it. Finsweet Client-First Certified Expert. Remote, worldwide.
+Lucas Mujica builds production-grade Webflow sites and custom-coded front-ends. Five-plus years and 100+ projects: component-first builds with CMS architecture, Webflow Localization, migrations into Webflow from WordPress (and Wix, Squarespace or custom builds), GSAP/web animation, and React / Next.js when a build calls for it. Finsweet Client-First Certified Expert. Remote, worldwide.
 
 ## Pages
 - [Home](https://lucasmujica.dev/): Overview, selected work, about, stack, process and contact.
 - [Work](https://lucasmujica.dev/work): All case studies and projects.
 - [Services](https://lucasmujica.dev/services): What Lucas can be hired for, what he needs from a client, and pricing. Webflow site builds and migrations; most projects land between USD 5k and 15k, with a USD 3k floor.
 - [About](https://lucasmujica.dev/about): Background, experience and how Lucas works.
-- [Blog](https://lucasmujica.dev/blog): Notes on Webflow performance, CMS architecture, ecommerce and motion, written from real builds.
+- [Blog](https://lucasmujica.dev/blog): Notes on Webflow performance, CMS architecture, migrations and motion, written from real builds.
 - [Privacy](https://lucasmujica.dev/privacy): Privacy policy and data handling.
 
 ## Posts
